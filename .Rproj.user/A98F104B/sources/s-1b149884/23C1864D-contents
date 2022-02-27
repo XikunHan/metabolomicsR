@@ -1,0 +1,512 @@
+df_factor[, table(duplicated(conversion_factor_ID))]
+df_factor
+df_feature <- df_2016_QC_norm@featureData
+df_feature[, conversion_factor_ID := paste0(COMP_ID, "_", LIB_ID)]
+df_2016_QC_norm@featureData <- df_feature
+df_2016_QC_norm
+df_2016_QC_norm_rescale <- rescale(df_2016_QC_norm, conversion_factor_data = df_factor)
+df_2016_QC_norm_rescale
+df_feature <- df_2016_nearestQC_norm@featureData
+df_feature[, conversion_factor_ID := paste0(COMP_ID, "_", LIB_ID)]
+df_2016_nearestQC_norm@featureData <- df_feature
+df_2016_nearestQC_norm_rescale <- rescale(df_2016_nearestQC_norm, conversion_factor_data = df_factor)
+df_2016_nearestQC_norm
+df_feature <- df_2016_LOESS_norm@featureData
+df_feature[, conversion_factor_ID := paste0(COMP_ID, "_", LIB_ID)]
+df_2016_LOESS_norm@featureData <- df_feature
+df_2016_LOESS_norm_rescale <- rescale(df_2016_LOESS_norm, conversion_factor_data = df_factor)
+df_2016_LOESS_norm
+df_feature <- df_2017_QC_norm@featureData
+df_feature[, conversion_factor_ID := paste0(COMP_ID, "_", LIB_ID)]
+df_2017_QC_norm@featureData <- df_feature
+df_2017_QC_norm
+df_2017_QC_norm_rescale <- rescale(df_2017_QC_norm, conversion_factor_data = df_factor)
+df_2017_QC_norm_rescale
+df_feature <- df_2017_nearestQC_norm@featureData
+df_feature[, conversion_factor_ID := paste0(COMP_ID, "_", LIB_ID)]
+df_2017_nearestQC_norm@featureData <- df_feature
+df_2017_nearestQC_norm
+df_2017_nearestQC_norm_rescale <- rescale(df_2017_nearestQC_norm, conversion_factor_data = df_factor)
+df_2017_nearestQC_norm_rescale
+df_feature <- df_2017_nearestQC_norm@featureData
+df_feature[, conversion_factor_ID := paste0(COMP_ID, "_", LIB_ID)]
+df_2017_LOESS_norm@featureData <- df_feature
+df_2017_LOESS_norm
+df_2017_LOESS_norm_rescale <- rescale(df_2017_LOESS_norm, conversion_factor_data = df_factor)
+df_2017_LOESS_norm_rescale
+df_2017_LOESS_norm <- LOESS_norm(df_2017)
+df_2017_LOESS_norm <- QC_pipeline(df_2017_LOESS_norm, impute_method = NULL)
+df_feature <- df_2017_LOESS_norm@featureData
+df_feature[, conversion_factor_ID := paste0(COMP_ID, "_", LIB_ID)]
+df_2017_LOESS_norm@featureData <- df_feature
+df_2017_LOESS_norm
+df_2017_LOESS_norm_rescale <- rescale(df_2017_LOESS_norm, conversion_factor_data = df_factor)
+df_2017 <- load_excel(path = "/n/holylfs05/LABS/liang_lab/Lab/sharedata/AMD_boston_2021/portal_data/Metabolon/MEEI-01-17ML+/MEEI-01-17ML+ Data Tables_MTRX Included.xlsx",
+data_sheet = 4,
+feature_sheet = 2,
+sample_sheet = 3)
+df_2017
+df_2017@sampleData[, QC_sample := ifelse(str_detect(PARENT_SAMPLE_NAME, "MTRX"), 1, 0)]
+df_2017 <- update_Metabolite(df_2017, df_order_2017, action = "injection_order")
+df_2017
+df_2017 <- QC_pipeline(df_2017, impute_method = NULL)
+df_2017
+df_2017_QC_norm <- QCmatrix_norm(df_2017)
+df_2017_batch_norm <- batch_norm(df_2017)
+df_2017_nearestQC_norm <- nearestQC_norm(df_2017)
+df_2017_LOESS_norm <- LOESS_norm(df_2017)
+df_2017_QC_norm <- QC_pipeline(df_2017_QC_norm, impute_method = NULL)
+df_2017_batch_norm <- QC_pipeline(df_2017_batch_norm, impute_method = NULL)
+df_2017_nearestQC_norm <- QC_pipeline(df_2017_nearestQC_norm, impute_method = NULL)
+df_2017_LOESS_norm <- QC_pipeline(df_2017_LOESS_norm, impute_method = NULL)
+df_feature <- df_2017_LOESS_norm@featureData
+df_feature[, conversion_factor_ID := paste0(COMP_ID, "_", LIB_ID)]
+df_2017_LOESS_norm@featureData <- df_feature
+df_2017_LOESS_norm
+df_2017_LOESS_norm_rescale <- rescale(df_2017_LOESS_norm, conversion_factor_data = df_factor)
+df_2017_LOESS_norm
+df_2017_LOESS_norm@featureData
+df_2017_LOESS_norm
+LOESS
+df_2017
+df_2017 <- load_excel(path = "/n/holylfs05/LABS/liang_lab/Lab/sharedata/AMD_boston_2021/portal_data/Metabolon/MEEI-01-17ML+/MEEI-01-17ML+ Data Tables_MTRX Included.xlsx",
+data_sheet = 4,
+feature_sheet = 2,
+sample_sheet = 3)
+df_2017
+df_2017@sampleData[, QC_sample := ifelse(str_detect(PARENT_SAMPLE_NAME, "MTRX"), 1, 0)]
+df_2017 <- update_Metabolite(df_2017, df_order_2017, action = "injection_order")
+q()
+devtools::check()
+library(metabolomicsR)
+file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
+file_path
+df_plasma <- load_excel(path = file_path,
+data_sheet = 1,
+feature_sheet = 4,
+sample_sheet = 8,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_data <- readxl::read_excel(file_path, sheet = 1)
+setDT(df_data)
+df_sample <- readxl::read_excel(file_path, sheet = 8)
+setDT(df_sample)
+df_feature <- readxl::read_excel(file_path, sheet = 4)
+setDT(df_feature)
+geneticToolBox::merge_check(df_data, df_sample, by = "QMDiab-ID")
+View(df_feature)
+View(df_sample)
+View(df_data)
+names(df_data)
+warnings("ddff " paste0(1:10))
+warnings("ddff ", paste0(1:10))
+warnings("ddff ", paste0(1:10))
+devtools::check()
+devtools::document()
+devtools::install()
+library(metabolomicsR)
+library(metabolomicsR)
+file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
+file_path
+df_plasma <- load_excel(path = file_path,
+data_sheet = 1,
+feature_sheet = 4,
+sample_sheet = 8,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+View(df_sample)
+View(df_data)
+devtools::check()
+devtools::document()
+devtools::install()
+library(metabolomicsR)
+library(metabolomicsR)
+library(metabolomicsR)
+file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
+file_path
+df_plasma <- load_excel(path = file_path,
+data_sheet = 1,
+feature_sheet = 4,
+sample_sheet = 8,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_plasma
+devtools::install()
+library(metabolomicsR)
+file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
+file_path
+df_plasma <- load_excel(path = file_path,
+data_sheet = 1,
+feature_sheet = 4,
+sample_sheet = 8,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+paste0(5, " extra features in @featureData: ", 1:5)
+paste0(5, " extra features in @featureData: ", 1:5, collapse = ",")
+paste0(5, " extra features in @featureData: ", 1:5, collapse = ",", sep = "")
+paste0(5, " extra features in @featureData: ", 1:5, collapse = "", sep = "")
+paste0(5, " extra features in @featureData: ", 1:5, collapse = "", sep = ", ")
+paste0(5, " extra features in @featureData: ", paste0(1:5), collapse = "", sep = ", ")
+paste0(5, " extra features in @featureData: ", paste0(1:5, collapse = ""), sep = ", ")
+paste0(5, " extra features in @featureData: ", paste0(1:5, collapse = " "), sep = ", ")
+paste0(5, " extra features in @featureData: ", paste0(1:5, collapse = " "))
+devtools::document()
+devtools::install()
+library(metabolomicsR)
+file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
+file_path
+df_plasma <- load_excel(path = file_path,
+data_sheet = 1,
+feature_sheet = 4,
+sample_sheet = 8,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_sample
+df_plasma
+devtools::check()
+devtools::document()
+devtools::install()
+library(metabolomicsR)
+library(metabolomicsR)
+file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
+file_path
+df_plasma <- load_excel(path = file_path,
+data_sheet = 1,
+feature_sheet = 4,
+sample_sheet = 8,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+devtools::install()
+library(metabolomicsR)
+file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
+file_path
+df_plasma <- load_excel(path = file_path,
+data_sheet = 1,
+feature_sheet = 4,
+sample_sheet = 8,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_plasma
+update_Metabolite <- function(object,
+dataset = NULL,
+action = NULL
+) {
+df_data <- object@assayData
+df_feature <- object@featureData
+df_sample <- object@sampleData
+# df_feature <- df_feature[get(object@featureID) %in% names(df_data)]
+# df_sample <- df_sample[get(object@sampleID) %in% df_data[, get(object@sampleID)]]
+if(!is.null(action)) {
+if(action == "keep_feature") {
+if(! is.null(dataset)) {
+stopifnot(is.vector(dataset))
+df_data <- df_data[, unique(object@sampleID, dataset), with = FALSE]
+df_feature <- df_feature[df_feature$featureID %in% dataset]
+} else stop("No dataset provided for action `keep_feature`.")
+}
+if(action == "remove_feature") {
+if(! is.null(dataset)) {
+stopifnot(is.vector(dataset))
+df_data <- df_data[, setdiff(names(df_data), dataset), with = FALSE]
+df_feature <- df_feature[! df_feature$featureID %in% dataset]
+} else stop("No dataset provided for action `remove_feature`.")
+}
+if(action == "keep_sample") {
+if(! is.null(dataset)) {
+stopifnot(is.vector(dataset))
+df_data <- df_data[get(object@sampleID) %in% dataset]
+df_sample <- df_sample[get(object@sampleID) %in% dataset]
+} else stop("No dataset provided for action `keep_sample`.")
+}
+if(action == "remove_sample") {
+if(! is.null(dataset)) {
+stopifnot(is.vector(dataset))
+df_data <- df_data[! get(object@sampleID) %in% dataset]
+df_sample <- df_sample[! get(object@sampleID) %in% dataset]
+} else stop("No dataset provided for action `remove_sample`.")
+}
+if(action == "injection_order") {
+if(! is.null(dataset)) {
+stopifnot(is.data.frame(dataset))
+stopifnot(object@sampleID %in% names(dataset))
+stopifnot(all(df_data[, get(object@sampleID)] %in% dataset[, get(object@sampleID)]))
+df_sample <- merge(dataset[, object@sampleID, with = FALSE], df_sample, by = object@sampleID, sort = FALSE)
+df_data <- merge(dataset[, object@sampleID, with = FALSE], df_data, by = object@sampleID, sort = FALSE)
+if(! "ID_injection_order" %in% names(df_sample)) {
+cat("Creat a new column `ID_injection_order`. \n")
+} else {
+cat("`ID_injection_order` exist, will be overwritten. \n")
+}
+df_sample$ID_injection_order <- 1:NROW(df_sample)
+logs = paste0(object@logs, format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Update injection order. \n")
+} else stop("No dataset provided for action `injection_order`.")
+}
+if(action == "add_sample_annotation") {
+if(! is.null(dataset)) {
+stopifnot(is.data.frame(dataset))
+df_sample_merge <- merge(df_sample, dataset, by =  object@sampleID, sort = FALSE, all.x = TRUE)
+v_sample_name <- setdiff(intersect(names(df_sample), names(dataset)), object@sampleID)
+for(i in seq_along(v_sample_name)) {
+v_i <- v_sample_name[i]
+df_sample_merge[, (v_i) := ifelse(is.na(get(paste0(v_i, ".x"))),
+get(paste0(v_i, ".y")),
+get(paste0(v_i, ".x")))]
+df_sample_merge[, c(paste0(v_i, ".x"), paste0(v_i, ".y")) := NULL]
+}
+df_sample <- copy(df_sample_merge)
+} else stop("No dataset provided for action `remove_sample`.")
+}
+if(action == "change_featureID") {
+if(! is.null(dataset)) {
+if(!length(dataset) == 1) stop("dataset should be a column name in `@featureData`, create the column first if it does not exist.")
+object@featureID <- dataset
+setnames(df_data, df_feature$featureID, df_feature[get(dataset)])
+df_feature$featureID <- NULL
+df_feature$featureID <- df_feature[get(dataset)]
+} else stop("No dataset provided for action `change_featureID`.")
+}
+}
+if(is.null(action)) {
+logs = paste0(object@logs, format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Update data, ", NROW(df_sample), " samples and ", NROW(df_feature), " features. \n")
+} else {
+logs = paste0(object@logs, format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Update data, action: ", action, ", ", NROW(df_sample), " samples and ", NROW(df_feature), " features. \n")
+}
+new(
+Class = 'Metabolite',
+assayData = df_data,
+featureData = df_feature,
+sampleData = df_sample,
+featureID = object@featureID,
+sampleID = object@sampleID,
+logs = logs,
+miscData = object@miscData
+)
+}
+df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "change_featureID")
+update_Metabolite <- function(object,
+dataset = NULL,
+action = NULL
+) {
+df_data <- object@assayData
+df_feature <- object@featureData
+df_sample <- object@sampleData
+# df_feature <- df_feature[get(object@featureID) %in% names(df_data)]
+# df_sample <- df_sample[get(object@sampleID) %in% df_data[, get(object@sampleID)]]
+if(!is.null(action)) {
+if(action == "keep_feature") {
+if(! is.null(dataset)) {
+stopifnot(is.vector(dataset))
+df_data <- df_data[, unique(object@sampleID, dataset), with = FALSE]
+df_feature <- df_feature[df_feature$featureID %in% dataset]
+} else stop("No dataset provided for action `keep_feature`.")
+}
+if(action == "remove_feature") {
+if(! is.null(dataset)) {
+stopifnot(is.vector(dataset))
+df_data <- df_data[, setdiff(names(df_data), dataset), with = FALSE]
+df_feature <- df_feature[! df_feature$featureID %in% dataset]
+} else stop("No dataset provided for action `remove_feature`.")
+}
+if(action == "keep_sample") {
+if(! is.null(dataset)) {
+stopifnot(is.vector(dataset))
+df_data <- df_data[get(object@sampleID) %in% dataset]
+df_sample <- df_sample[get(object@sampleID) %in% dataset]
+} else stop("No dataset provided for action `keep_sample`.")
+}
+if(action == "remove_sample") {
+if(! is.null(dataset)) {
+stopifnot(is.vector(dataset))
+df_data <- df_data[! get(object@sampleID) %in% dataset]
+df_sample <- df_sample[! get(object@sampleID) %in% dataset]
+} else stop("No dataset provided for action `remove_sample`.")
+}
+if(action == "injection_order") {
+if(! is.null(dataset)) {
+stopifnot(is.data.frame(dataset))
+stopifnot(object@sampleID %in% names(dataset))
+stopifnot(all(df_data[, get(object@sampleID)] %in% dataset[, get(object@sampleID)]))
+df_sample <- merge(dataset[, object@sampleID, with = FALSE], df_sample, by = object@sampleID, sort = FALSE)
+df_data <- merge(dataset[, object@sampleID, with = FALSE], df_data, by = object@sampleID, sort = FALSE)
+if(! "ID_injection_order" %in% names(df_sample)) {
+cat("Creat a new column `ID_injection_order`. \n")
+} else {
+cat("`ID_injection_order` exist, will be overwritten. \n")
+}
+df_sample$ID_injection_order <- 1:NROW(df_sample)
+logs = paste0(object@logs, format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Update injection order. \n")
+} else stop("No dataset provided for action `injection_order`.")
+}
+if(action == "add_sample_annotation") {
+if(! is.null(dataset)) {
+stopifnot(is.data.frame(dataset))
+df_sample_merge <- merge(df_sample, dataset, by =  object@sampleID, sort = FALSE, all.x = TRUE)
+v_sample_name <- setdiff(intersect(names(df_sample), names(dataset)), object@sampleID)
+for(i in seq_along(v_sample_name)) {
+v_i <- v_sample_name[i]
+df_sample_merge[, (v_i) := ifelse(is.na(get(paste0(v_i, ".x"))),
+get(paste0(v_i, ".y")),
+get(paste0(v_i, ".x")))]
+df_sample_merge[, c(paste0(v_i, ".x"), paste0(v_i, ".y")) := NULL]
+}
+df_sample <- copy(df_sample_merge)
+} else stop("No dataset provided for action `remove_sample`.")
+}
+if(action == "change_featureID") {
+if(! is.null(dataset)) {
+if(!length(dataset) == 1) stop("dataset should be a column name in `@featureData`, create the column first if it does not exist.")
+object@featureID <- dataset
+setnames(df_data, df_feature$featureID, df_feature[, get(dataset)])
+df_feature$featureID <- NULL
+df_feature$featureID <- df_feature[, get(dataset)]
+} else stop("No dataset provided for action `change_featureID`.")
+}
+}
+if(is.null(action)) {
+logs = paste0(object@logs, format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Update data, ", NROW(df_sample), " samples and ", NROW(df_feature), " features. \n")
+} else {
+logs = paste0(object@logs, format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Update data, action: ", action, ", ", NROW(df_sample), " samples and ", NROW(df_feature), " features. \n")
+}
+new(
+Class = 'Metabolite',
+assayData = df_data,
+featureData = df_feature,
+sampleData = df_sample,
+featureID = object@featureID,
+sampleID = object@sampleID,
+logs = logs,
+miscData = object@miscData
+)
+}
+df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "change_featureID")
+df_plasma
+devtools::document()
+devtools::install()
+library(metabolomicsR)
+df_plasma <- load_excel(path = file_path,
+data_sheet = 1,
+feature_sheet = 4,
+sample_sheet = 8,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "change_featureID")
+df_plasma
+df_urine <- load_excel(path = file_path,
+data_sheet = 2,
+feature_sheet = 5,
+sample_sheet = 9,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_urine
+df_urine
+df_saliva <- load_excel(path = file_path,
+data_sheet = 3,
+feature_sheet = 6,
+sample_sheet = 10,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_urine
+df_saliva
+devtools::document()
+devtools::install()
+library(metabolomicsR)
+df_plasma <- load_excel(path = file_path,
+data_sheet = 1,
+feature_sheet = 4,
+sample_sheet = 8,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "change_featureID")
+df_plasma
+df_urine <- load_excel(path = file_path,
+data_sheet = 2,
+feature_sheet = 5,
+sample_sheet = 9,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_urine
+file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
+file_path
+df_plasma <- load_excel(path = file_path,
+data_sheet = 1,
+feature_sheet = 4,
+sample_sheet = 8,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "change_featureID")
+df_plasma
+df_urine <- load_excel(path = file_path,
+data_sheet = 2,
+feature_sheet = 5,
+sample_sheet = 9,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_urine
+df <- readxl::read_excel(file_path, sheet = 9)
+df <- readxl::read_excel(file_path, sheet = 9)
+file_path
+df <- readxl::read_excel(file_path, sheet  = 9)
+df_urine <- load_excel(path = file_path,
+data_sheet = 2,
+feature_sheet = 5,
+sample_sheet = 9,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_urine
+file_path
+df <- readxl::read_excel(file_path, sheet  = 10)
+df
+df <- readxl::read_excel(file_path, sheet  = 9)
+df <- readxl::read_excel(file_path, sheet  = 9)
+df
+df <- readxl::read_excel(file_path, sheet  = 9)
+df
+df <- readxl::read_excel(file_path, sheet  = 9)
+df
+file_path
+df <- readxl::read_excel(file_path, sheet  = 9)
+df
+setDT(df)
+file_path
+df <- readxl::read_excel(file_path, sheet  = 9)
+df
+df <- readxl::read_excel(file_path, sheet  = 9)
+df
+df_urine <- load_excel(path = file_path,
+data_sheet = 2,
+feature_sheet = 5,
+sample_sheet = 9,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_urine
+df_saliva <- load_excel(path = file_path,
+data_sheet = 3,
+feature_sheet = 6,
+sample_sheet = 10,
+sampleID = "QMDiab-ID",
+featureID = "BIOCHEMICAL"
+)
+df_saliva
+df <- readxl::read_excel(file_path, sheet  = 9)
+df
+q()
+library(metabolomicsR)
+q()
+dev
+q()

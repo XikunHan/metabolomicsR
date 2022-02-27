@@ -1,0 +1,50 @@
+#!/bin/bash
+#SBATCH --job-name OCT_glmer
+#SBATCH -c 1                             
+#SBATCH -p test
+#SBATCH -t 4:00:00   
+#SBATCH --mem=10M
+#SBATCH -o /n/liang_lab/Lab/xikun/temp/log/run_%x_%N_%j.out
+#SBATCH -e /n/liang_lab/Lab/xikun/temp/log/run_%x_%N_%j.err
+
+
+set -eu 
+
+
+
+threads=1
+mem=6000
+walltime=3:00:00
+partition=shared
+
+
+dir_main=/n/holylfs05/LABS/liang_lab/Lab/xikun/OCT/result/mixed
+
+
+
+for norm_metab in nearestQC_norm batch_norm
+do
+
+for trait in `awk '{ if(NR >=2 ) print  $1}' /n/holylfs05/LABS/liang_lab/Lab/xikun/OCT/data/OCT_trait_uniq_name_8`
+
+# for trait in Fluid
+do
+
+log_path=${dir_main}/logs
+
+mkdir -p ${log_path}
+
+
+echo "trait = ${trait}_${norm_metab}"
+
+	
+sbatch --job-name "${trait}_${norm_metab}" --export==ALL,dir_main=${dir_main},trait=${trait},norm_metab=${norm_metab} \
+-e ${log_path}/glmer_${trait}_${norm_metab}.err -o ${log_path}/glmer_${trait}_${norm_metab}.out \
+--cpus-per-task=${threads} --time=${walltime} --mem=${mem} --partition=${partition} ~/script/OCT/run_OCT_glmer_each.sh ;
+
+sleep 1
+echo  -e "\n\n"
+
+done 
+done
+
