@@ -1,0 +1,28 @@
+{
+    "id": "CA381A4E",
+    "path": "~/pkg/metabolomicsR/R/process.R",
+    "project_path": "R/process.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1645995984107.0,
+    "source_on_save": false,
+    "relative_order": 12,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "517,36",
+        "scrollLine": "0",
+        "docOutlineVisible": "1",
+        "docOutlineSize": "260"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1645567206,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1645567206,
+    "read_only": false,
+    "read_only_alternatives": []
+}
