@@ -457,6 +457,38 @@ RSD <- function(x) {
   return(res)
 }
 
+
+
+
+#' distinguish genuine untargeted metabolic features without QC samples
+#'
+#' The makefeature function from genuMet uses a Metabolite object as input. genuMet is an R package used  distinguish genuine untargeted metabolic features without quality control samples.
+#'
+#' @param object A Metabolite object.
+#' @param wsize Window size.
+#' @param ssize Slide size.
+#' @param defswitch Definition of a switch.
+#' @export
+#' @references <https://github.com/liucaomics/genuMet>
+#' @examples
+#'\dontrun{
+#' v <- genuMet_makefeature(df)
+#'}
+#'
+genuMet_makefeature <- function(object, wsize=100, ssize= 0.5, defswitch=0.2) {
+  if (! requireNamespace("genuMet", quietly = TRUE)) {
+    stop(paste0("Please install genuMet package first: ` devtools::install_github(\"xyomics/genuMet\") `."), call. = FALSE)
+  }
+  df <- object@assayData
+  df <- t(df[, -1])
+  colnames(df) <- object@assayData[, get(object@sampleID)]
+  df <- as.data.frame(df)
+  metf <- genuMet::makefeature(data=df, wsize=wsize, ssize= ssize, defswitch = defswitch)
+  return(metf)
+}
+
+
+
 ############### transformation #######################
 
 

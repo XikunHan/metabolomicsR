@@ -194,6 +194,28 @@ fit_logistic <- function(data = NULL, formula = NULL, keep = NULL) {
 
 
 
+#' @description `fit_poisson`: poisson regression model \code{\link{glm}}.
+#' @rdname fit_lm
+#' @export
+fit_poisson <- function(data = NULL, formula = NULL, keep = NULL) {
+  v_var <- all.vars(formula)
+  df <- data[, v_var, with = FALSE]
+  fit <- tryCatch(
+    do.call("glm", args = list(data = df, formula = formula,  family="poisson")),
+    error = function(e) {
+      cat(paste0("Failed to fit model: ", e), "\n")
+    })
+  if(inherits(fit, "glm")) {
+    res  <- as.data.table(broom::tidy(fit))
+    if(! is.null(keep)) res <- res[res$term %in% keep, ]
+    res$n <- length(fit$residuals)
+  } else {
+    res <- list(estimate = NA)
+  }
+  return(res)
+}
+
+
 #' @description `fit_cox`: proportional hazards regression model \code{\link[survival]{coxph}}.
 #' @rdname fit_lm
 #' @export

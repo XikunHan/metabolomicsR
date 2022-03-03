@@ -65,7 +65,72 @@ setMethod("assayData<-", "Metabolite", function(object, value) {
 })
 
 
+### featureData
 
+#' get featureData
+#'
+#'  Accessors for Metabolite object. Get the featureData in the Metabolite object.
+#' @param object A Metabolite object.
+setGeneric("featureData", function(object) standardGeneric("featureData"))
+
+#' @rdname featureData
+#' @docType methods
+#' @export
+setMethod("featureData", "Metabolite", function(object) object@featureData)
+
+
+#' set featureData
+#'
+#'  Accessors for Metabolite object. `featureData<-` will update the featureData in the Metabolite object.
+#' @param object A Metabolite object.
+#' @param value The new featureData.
+#' @rdname featureData_set
+#' @export
+setGeneric("featureData<-", function(object, value) standardGeneric("featureData<-"))
+
+#' @docType methods
+#' @rdname featureData_set
+#' @export
+setMethod("featureData<-", "Metabolite", function(object, value) {
+  stopifnot(inherits(object@featureData, "data.frame"))
+  object@featureData <- as.data.table(value)
+  update_Metabolite(object)
+})
+
+
+### sampleData
+
+#' get sampleData
+#'
+#'  Accessors for Metabolite object. Get the sampleData in the Metabolite object.
+#' @param object A Metabolite object.
+setGeneric("sampleData", function(object) standardGeneric("sampleData"))
+
+#' @rdname sampleData
+#' @docType methods
+#' @export
+setMethod("sampleData", "Metabolite", function(object) object@sampleData)
+
+
+
+
+#' set sampleData
+#'
+#'  Accessors for Metabolite object. `sampleData<-` will update the sampleData in the Metabolite object.
+#' @param object A Metabolite object.
+#' @param value The new sampleData.
+#' @rdname sampleData_set
+#' @export
+setGeneric("sampleData<-", function(object, value) standardGeneric("sampleData<-"))
+
+#' @docType methods
+#' @rdname sampleData_set
+#' @export
+setMethod("sampleData<-", "Metabolite", function(object, value) {
+  stopifnot(inherits(object@sampleData, "data.frame"))
+  object@sampleData <- as.data.table(value)
+  update_Metabolite(object)
+})
 
 
 
@@ -204,7 +269,6 @@ create_Metabolite <- function(
 ####### setValidity #####
 
 setValidity("Metabolite", function(object) {
-
 
   feature_IDs <- setdiff(names(object@assayData), object@sampleID)
   sample_IDs <- object@assayData[, get(object@sampleID)]

@@ -28,7 +28,8 @@ Suggests: ggthemes,
           future.apply, 
           progressr,
           ggrepel,
-          here
+          here,
+          genuMet
 RoxygenNote: 7.1.1
 LazyData: true
 VignetteBuilder: knitr
