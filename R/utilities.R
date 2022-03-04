@@ -98,3 +98,8 @@ f_injection_reorder <- function(data = NULL) {
   data <- data[order(data$SUBSET, data$RUN_ORDER)]
   return(data)
 }
+
+
+
+
+utils::globalVariables(c("featureID",  "highlight_",  "value",  "variable",  "x_"))

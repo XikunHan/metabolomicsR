@@ -155,14 +155,19 @@ plot_injection_order <- function(object, color = "NEG", shape = "NEG", size = 0.
 #' Plot a Metabolite object including boxplot (more to add.).
 #'
 #' @param object A Metabolite object.
-#' @param plot type of plot
+#' @param plot type of plot, current support `boxplot` and `betweenstats`.
 #' @param x The x-axis coordinate.
-#' @param y The y-axis coordinate.
+#' @param feature_name A vector of selected metabolites to plot. If NULL, will randomly select 16 (default) metabolites to plot.
 #' @param color A column in `@sampleData` to show the color of points.
 #' @param shape A column in `@sampleData` to show the shape of points.
-#' @param feature_name A vector of selected metabolites to plot. If NULL, will randomly select 16 (default) metabolites to plot.
 #' @param random_select An integer, number of randomly selected metabolites to plot.
 #' @param size Point size.
+#' @param n_row Number of rows of subfigures for `betweenstats`
+#' @param n_col Number of columns of subfigures for `betweenstats`
+#' @param ylab Column name to annotate the y-axis in `betweenstats` (eg. "BIOCHEMICAL"), default column: "featureID".
+#' @param height Height of the figure.
+#' @param width Width of the figure.
+#' @param save_to_file Path to save the figure.
 #' @export
 #' @examples
 #'\dontrun{
@@ -170,36 +175,138 @@ plot_injection_order <- function(object, color = "NEG", shape = "NEG", size = 0.
 #' p
 #'}
 #'
-plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", y = "value", color = "NEG", shape = "NEG", feature_name = NULL, random_select = 16, size = 0.6) {
+plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", feature_name = NULL, color = "NEG", shape = "NEG", random_select = 16, size = 0.6, n_row = 1, n_col = 1, ylab = "featureID", height = 10, width = 10, save_to_file = NULL) {
 
   if(is.null(feature_name)) {
     df_select <- object@assayData[, c(1, sample(2:NCOL(object@assayData), random_select, replace = FALSE)), with = FALSE]
-    names(df_select)
+
   } else {
+    stopifnot(all(feature_name %in% names(object@assayData)))
     df_select <- object@assayData[, c(object@sampleID, feature_name), with = FALSE]
   }
-
 
   df_select <- reshape2::melt(df_select, id = object@sampleID)
 
   df <- merge(object@sampleData, df_select, by = object@sampleID, sort = FALSE, all = TRUE, suffixes = c("", "_"))
 
-  df[, (color) := factor(get(color))]
-  df[, (shape) := factor(get(shape))]
-
   check_pkg("RColorBrewer")
 
   if( plot == "boxplot") {
-   p <- ggplot(data = df, aes_string(x = x, y = y, color = df[, get(color)])) +
-     # geom_violin() +
+    if(! color %in% names(df)) color <- x
+    if(! shape %in% names(df)) shape <- x
+    df[, (color) := factor(get(color))]
+    df[, (shape) := factor(get(shape))]
+    p <- ggplot(data = df, aes_string(x = x, y = "value", color = df[, get(color)])) +
+      # geom_violin() +
       geom_boxplot() +
-     facet_wrap(~variable, scales = "free_y") +
-     scale_color_manual(name = color, values = RColorBrewer::brewer.pal(9, "Set1")) +
-     theme(axis.text.x = element_text(angle = 60, hjust = 1))
-   return(p)
+      facet_wrap(~variable, scales = "free_y") +
+      scale_color_manual(name = color, values = RColorBrewer::brewer.pal(9, "Set1")) +
+      theme(axis.text.x = element_text(angle = 60, hjust = 1))
+    if(!is.null(save_to_file)) {
+      ggsave(save_to_file, p, height = height, width = width)
+    }
+    return(p)
   }
+
+  if(plot == "betweenstats") {
+
+    check_pkg("ggstatsplot")
+    v_n <- length(unique(df$variable))
+    if(n_row * n_col <  v_n) {
+      warning(paste0(n_row, " row and ", n_col, " column for ", v_n, " variables. To increase!"))
+      n_col <- ceiling(v_n/n_row)
+    }
+    p_list <- list()
+    if("x_" %in% names(df)) {
+      warning("Overwritten `x_` column.")
+      df$x <- NULL
+    }
+    setnames(df, x, "x_") # scope issue
+
+    for(i in seq_along(1L:v_n)) {
+      i_variable <- unique(df$variable)[i]
+      p <- ggstatsplot::ggbetweenstats(
+        data = df[variable == i_variable],
+        x = x_,
+        y = value,
+        pairwise.comparisons = TRUE,
+        ylab = object@featureData[featureID == i_variable, get(ylab)]
+      )
+      p_list[[i]] <- p
+    }
+    p <- ggstatsplot::combine_plots(
+      p_list,
+      plotgrid.args = list(nrow = n_row, ncol = n_col)
+    )
+    if(!is.null(save_to_file)) {
+      cowplot::save_plot(save_to_file, p, base_height = height, base_width = width)
+    }
+    return(p)
+  }
+  warning("Unkown plot type!")
+  return(0)
 }
 
 
+
+#' volcano plot for regression results
+#'
+#' @param fit regression summary results.
+#' @param x The x-axis column, eg. effect size.
+#' @param y The y-axis column, eg. p value.
+#' @param p.value_log10 whether to transforme p.value by -log10.
+#' @param color A column in fit to show different point colors. Set as NULL to turn off the color argument.
+#' @param label A column in fit to label points.
+#' @param highlight A column in fit to show the points to highlight. Values as 1 are hightlighted.
+#' @param x_lab labels for x-axis.
+#' @param y_lab labels for y-axis.
+#' @export
+#' @examples
+#'\dontrun{
+#' p <- plot_volcano(fit_lm, color = NULL)
+#' p
+#'}
+#'
+
+plot_volcano <- function(fit, x = "estimate", y = "p.value", p.value_log10 = TRUE,
+                    color = "outcome", label = "term", highlight = "significant",
+                    x_lab = "Effect size", y_lab = "-log10(P value)"
+
+) {
+  stopifnot(is.data.frame(fit))
+  fit <- as.data.table(fit)
+
+  if(p.value_log10) {
+    fit[, p.value_log10 := -log10(get(y))]
+  } else {
+    fit[, p.value_log10 :=  get(y)]
+  }
+
+  fit$highlight_ <- NA_integer_
+  if(! highlight %in% names(fit)) {
+    warning(paste0(highlight, " column not in regression data. Bonferroni correction method will be used."))
+    fit[, highlight_ := as.integer(get(y) < 0.05/NROW(fit))]
+  } else {
+    fit[, highlight_ := get(highlight)]
+  }
+
+  if(! is.null(color)) {
+    fit[, (color) := factor(get(color))]
+
+    p <- ggplot(data= fit, aes_string(x = x, y = "p.value_log10", color = color)) +
+      geom_point() +
+      ggrepel::geom_label_repel(data = fit[highlight_ == 1], aes(label = fit[highlight_ == 1, get(label)]), max.overlaps = 20, size = 2) +
+      theme_minimal()  +
+      labs(x = x_lab, y = y_lab)
+  } else {
+    p <- ggplot(data= fit, aes_string(x = x, y = "p.value_log10")) +
+      geom_point() +
+      ggrepel::geom_label_repel(data = fit[highlight_ == 1], aes(label = fit[highlight_ == 1, get(label)]), max.overlaps = 20, size = 2) +
+      theme_minimal()  +
+      labs(x = x_lab, y = y_lab)
+  }
+
+  p
+}
 
 

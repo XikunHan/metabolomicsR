@@ -3,8 +3,12 @@ Type: Package
 Title: Tools for metabolomic data
 Version: 0.1.0
 Date: 2022-01-10
-Author: person("Xikun", "Han", role = c("aut", "cre"))
-Maintainer: Xikun Han <xikun_han@hsph.harvard.edu>
+Authors@R: 
+    person(given = "Xikun",
+           family = "Han",
+           role = c("cre", "aut", "cph"),
+           email = "hanxikun2017@gmail.com")
+Maintainer: Xikun Han <hanxikun2017@gmail.com>
 URL: https://github.com/XikunHan/metabolomicsR
 Description: Tools to process, analyse, and visualize metabolomic data. 
 License: GPL-2
@@ -29,7 +33,9 @@ Suggests: ggthemes,
           progressr,
           ggrepel,
           here,
-          genuMet
+          genuMet,
+          ggstatsplot,
+          cowplot
 RoxygenNote: 7.1.1
 LazyData: true
 VignetteBuilder: knitr

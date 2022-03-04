@@ -2,9 +2,25 @@
 % Please edit documentation in R/regression.R
 \name{regression}
 \alias{regression}
+\alias{regression_each}
 \title{regression analysis}
 \usage{
 regression(
+  object,
+  phenoData = NULL,
+  model = NULL,
+  outcome = NULL,
+  covars = NULL,
+  factors = NULL,
+  feature_name = NULL,
+  time = NULL,
+  verbose = TRUE,
+  ncpus = 1,
+  p.adjust.method = "bonferroni",
+  ...
+)
+
+regression_each(
   object,
   phenoData = NULL,
   model = NULL,
@@ -25,9 +41,7 @@ regression(
 
 \item{phenoData}{A data.table with outcome and covariates. If `phenoData` is NULL, `@sampleData` will be used.}
 
-\item{model}{Specify a regression model. See \code{\link{fit_lm}} for more details.}
-
-\item{formula}{A character or formula object to fit model.}
+\item{model}{Specify a regression model. See \code{\link{fit_lm}} for more details. 'auto' can be used to infer 'lm' or 'logistic' (with only 0, 1, and NA).}
 
 \item{outcome}{Column name of the outcome variable.}
 
@@ -41,15 +55,17 @@ regression(
 
 \item{verbose}{Print log information.}
 
-\item{ncpus}{Number of Cpus for the parallele job.}
+\item{ncpus}{Number of CPUS for parallele job.}
 
 \item{p.adjust.method}{Adjust for P value method, see \code{\link{p.adjust}}.}
 
 \item{\dots}{Further arguments passed to regression model.}
+
+\item{formula}{A character or formula object to fit model (only used in `regression_each`)}
 }
 \value{
 term estimate std.error statistic p.value n outcome p.value.adj.
 }
 \description{
-Run regression models with adjusting for covariates.
+Run regression models with adjusting for covariates. `regression_each` is used for one outcome. In `regression`, several outcomes can be specified to run together.
 }
