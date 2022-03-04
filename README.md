@@ -208,8 +208,8 @@ df_plasma
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:11:17: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:11:18: Initiate data: 356 samples and 758 features.
+#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 04:42:26: Initiate data: 356 samples and 758 features.
 ```
 
 </details>
@@ -334,9 +334,9 @@ df_plasma
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:11:17: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:11:18: Initiate data: 356 samples and 758 features.
-#> 04/03/22 04:11:18: Update data, action: change_featureID, 356 samples and 758 features.
+#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 04:42:26: Initiate data: 356 samples and 758 features.
+#> 04/03/22 04:42:26: Update data, action: change_featureID, 356 samples and 758 features.
 ```
 
 </details>
@@ -468,9 +468,9 @@ df_urine
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:11:18: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:11:18: Initiate data: 359 samples and 891 features.
-#> 04/03/22 04:11:18: Update data, action: change_featureID, 359 samples and 891 features.
+#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 04:42:26: Initiate data: 359 samples and 891 features.
+#> 04/03/22 04:42:26: Update data, action: change_featureID, 359 samples and 891 features.
 ```
 
 </details>
@@ -603,9 +603,9 @@ df_saliva
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:11:18: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:11:19: Initiate data: 321 samples and 602 features.
-#> 04/03/22 04:11:19: Update data, action: change_featureID, 321 samples and 602 features.
+#> 04/03/22 04:42:27: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 04:42:27: Initiate data: 321 samples and 602 features.
+#> 04/03/22 04:42:27: Update data, action: change_featureID, 321 samples and 602 features.
 ```
 
 </details>
@@ -745,15 +745,15 @@ df_plasma_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:11:17: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:11:18: Initiate data: 356 samples and 758 features.
-#> 04/03/22 04:11:18: Update data, action: change_featureID, 356 samples and 758 features. 
+#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 04:42:26: Initiate data: 356 samples and 758 features.
+#> 04/03/22 04:42:26: Update data, action: change_featureID, 356 samples and 758 features. 
 #> 
-#> 04/03/22 04:11:19: Run QC pipeline.
-#> 04/03/22 04:11:19: Filter data with a constant column, removed 37 features. 
-#> 04/03/22 04:11:19: Update data, 356 samples and 758 features. 
-#> 04/03/22 04:11:19: Filter data with a missing rate >= 0.5, removed 176 features. 
-#> 04/03/22 04:11:19: Update data, 356 samples and 758 features.
+#> 04/03/22 04:42:27: Run QC pipeline.
+#> 04/03/22 04:42:27: Filter data with a constant column, removed 37 features. 
+#> 04/03/22 04:42:27: Update data, 356 samples and 758 features. 
+#> 04/03/22 04:42:27: Filter data with a missing rate >= 0.5, removed 176 features. 
+#> 04/03/22 04:42:27: Update data, 356 samples and 758 features.
 ```
 
 </details>
@@ -881,15 +881,15 @@ df_urine_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:11:18: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:11:18: Initiate data: 359 samples and 891 features.
-#> 04/03/22 04:11:18: Update data, action: change_featureID, 359 samples and 891 features. 
+#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 04:42:26: Initiate data: 359 samples and 891 features.
+#> 04/03/22 04:42:26: Update data, action: change_featureID, 359 samples and 891 features. 
 #> 
-#> 04/03/22 04:11:19: Run QC pipeline.
-#> 04/03/22 04:11:19: Filter data with a constant column, removed 28 features. 
-#> 04/03/22 04:11:19: Update data, 359 samples and 891 features. 
-#> 04/03/22 04:11:19: Filter data with a missing rate >= 0.5, removed 77 features. 
-#> 04/03/22 04:11:19: Update data, 359 samples and 891 features.
+#> 04/03/22 04:42:27: Run QC pipeline.
+#> 04/03/22 04:42:27: Filter data with a constant column, removed 28 features. 
+#> 04/03/22 04:42:27: Update data, 359 samples and 891 features. 
+#> 04/03/22 04:42:28: Filter data with a missing rate >= 0.5, removed 77 features. 
+#> 04/03/22 04:42:28: Update data, 359 samples and 891 features.
 ```
 
 </details>
@@ -1017,15 +1017,15 @@ df_saliva_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:11:18: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:11:19: Initiate data: 321 samples and 602 features.
-#> 04/03/22 04:11:19: Update data, action: change_featureID, 321 samples and 602 features. 
+#> 04/03/22 04:42:27: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 04:42:27: Initiate data: 321 samples and 602 features.
+#> 04/03/22 04:42:27: Update data, action: change_featureID, 321 samples and 602 features. 
 #> 
-#> 04/03/22 04:11:20: Run QC pipeline.
-#> 04/03/22 04:11:20: Filter data with a constant column, removed 35 features. 
-#> 04/03/22 04:11:20: Update data, 321 samples and 602 features. 
-#> 04/03/22 04:11:20: Filter data with a missing rate >= 0.5, removed 203 features. 
-#> 04/03/22 04:11:20: Update data, 321 samples and 602 features.
+#> 04/03/22 04:42:28: Run QC pipeline.
+#> 04/03/22 04:42:28: Filter data with a constant column, removed 35 features. 
+#> 04/03/22 04:42:28: Update data, 321 samples and 602 features. 
+#> 04/03/22 04:42:28: Filter data with a missing rate >= 0.5, removed 203 features. 
+#> 04/03/22 04:42:28: Update data, 321 samples and 602 features.
 ```
 
 </details>
@@ -1193,18 +1193,18 @@ df_plasma_scale
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:11:17: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:11:18: Initiate data: 356 samples and 758 features.
-#> 04/03/22 04:11:18: Update data, action: change_featureID, 356 samples and 758 features. 
+#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 04:42:26: Initiate data: 356 samples and 758 features.
+#> 04/03/22 04:42:26: Update data, action: change_featureID, 356 samples and 758 features. 
 #> 
-#> 04/03/22 04:11:19: Run QC pipeline.
-#> 04/03/22 04:11:19: Filter data with a constant column, removed 37 features. 
-#> 04/03/22 04:11:19: Update data, 356 samples and 758 features. 
-#> 04/03/22 04:11:19: Filter data with a missing rate >= 0.5, removed 176 features. 
-#> 04/03/22 04:11:19: Update data, 356 samples and 758 features. 
-#> 04/03/22 04:11:30: Impute data using `half-min` method. 
-#> 04/03/22 04:11:30: Transformation using `log` method. 
-#> 04/03/22 04:11:31: Transformation using `scale` method.
+#> 04/03/22 04:42:27: Run QC pipeline.
+#> 04/03/22 04:42:27: Filter data with a constant column, removed 37 features. 
+#> 04/03/22 04:42:27: Update data, 356 samples and 758 features. 
+#> 04/03/22 04:42:27: Filter data with a missing rate >= 0.5, removed 176 features. 
+#> 04/03/22 04:42:27: Update data, 356 samples and 758 features. 
+#> 04/03/22 04:42:39: Impute data using `half-min` method. 
+#> 04/03/22 04:42:39: Transformation using `log` method. 
+#> 04/03/22 04:42:40: Transformation using `scale` method.
 ```
 
 </details>
@@ -1248,11 +1248,11 @@ plot_tsne(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 
 Association analysis between metabolites and interested outcomes was
 implemented in the “regression” function, supporting general linear
-regression, logistic regression, proportional hazards regression model,
-linear mixed-effects model, and logistic linear mixed-effects model,
-with or without covariates. All the regression models can be run for
-selected metabolites or all metabolites in a single job with the support
-of parallel computing.
+regression, logistic regression, poisson regression, proportional
+hazards regression model, linear mixed-effects model, and logistic
+linear mixed-effects model, with or without covariates. All the
+regression models can be run for selected metabolites or all metabolites
+in a single job with the support of parallel computing.
 
 ``` r
 fit_lm <- regression(object = df_plasma_scale, phenoData = NULL, model = "lm", outcome = "BMI",
@@ -1354,6 +1354,75 @@ plot_volcano(dd, color = "outcome", label = "BIOCHEMICAL")
 
 <img src="man/figures/README-unnamed-chunk-28-1.png" width="100%" />
 
+## Association analysis 4: extension to other regression models
+
+We have provided various regression models in the `{metabolomicsR}`
+package. Here we show how to extend the `regression` function to other
+regression models.
+
+``` r
+# for example, to fit a Negative Binomial Generalized Linear Model, we first define a `fit_glm.nb` function. 
+
+library(MASS)
+
+fit_glm.nb <- function(data = NULL, formula = NULL, keep = NULL) {
+  v_var <- all.vars(formula)
+  df <- data[, v_var, with = FALSE]
+  fit <- tryCatch(
+    do.call("glm.nb", args = list(data = df, formula = formula)),
+    error = function(e) {
+      cat(paste0("Failed to fit model: ", e), "\n")
+    })
+  if(inherits(fit, "glm")) {
+    res  <- as.data.table(broom::tidy(fit))
+    if(! is.null(keep)) res <- res[res$term %in% keep, ]
+    res$n <- length(fit$residuals)
+  } else {
+    res <- list(estimate = NA)
+  }
+  return(res)
+}
+
+
+# the outcome 'toy_y' was only created to demonstrate the usage to extend regression models
+dd <- sampleData(df_plasma_scale) 
+dd[, toy_y := round(BMI, 0)]
+sampleData(df_plasma_scale)  <- dd
+
+fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "glm.nb", outcome = "toy_y",
+                         covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
+#> Regression for 1 outcomes. 
+#> 
+#> Build formula using covars and outcomes. 
+#> 
+#> Run `glm.nb` model for 545 features: 
+#> toy_y ~ AGE + GENDER + ETHNICITY + `feature`
+
+head(fit)
+#>      term      estimate   std.error   statistic   p.value   n outcome
+#> 1: M43027 -0.0107323856 0.009711869 -1.10507927 0.2691252 356   toy_y
+#> 2: M11953  0.0105842093 0.009977191  1.06084061 0.2887623 356   toy_y
+#> 3: M38002  0.0035035819 0.009878395  0.35467116 0.7228360 356   toy_y
+#> 4: M34404  0.0164862664 0.010605935  1.55443780 0.1200800 356   toy_y
+#> 5: M35963  0.0006788836 0.009853266  0.06889935 0.9450697 356   toy_y
+#> 6: M35728  0.0094055372 0.009975074  0.94290399 0.3457300 356   toy_y
+#>    p.value.adj
+#> 1:           1
+#> 2:           1
+#> 3:           1
+#> 4:           1
+#> 5:           1
+#> 6:           1
+```
+
+``` r
+dd <- merge(fit, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
+dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
+plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
+```
+
+<img src="man/figures/README-unnamed-chunk-30-1.png" width="100%" />
+
 <details>
 <summary>
 **Session Info**
@@ -1380,8 +1449,8 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] metabolomicsR_0.1.0 ggplot2_3.3.5       stringr_1.4.0      
-#> [4] data.table_1.14.0  
+#> [1] MASS_7.3-54         metabolomicsR_0.1.0 ggplot2_3.3.5      
+#> [4] stringr_1.4.0       data.table_1.14.0  
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] insight_0.16.0         doParallel_1.0.16      RColorBrewer_1.1-2    
@@ -1400,23 +1469,23 @@ sessionInfo()
 #> [40] magrittr_2.0.1         parameters_0.16.0      patchwork_1.1.1       
 #> [43] Matrix_1.3-4           Rcpp_1.0.6             munsell_0.5.0         
 #> [46] fansi_0.5.0            reticulate_1.20        lifecycle_1.0.0       
-#> [49] stringi_1.6.2          yaml_2.2.1             MASS_7.3-54           
-#> [52] Rtsne_0.15             plyr_1.8.6             matrixcalc_1.0-4      
-#> [55] grid_4.1.0             paletteer_1.4.0        listenv_0.8.0         
-#> [58] parallel_4.1.0         ggrepel_0.9.1          crayon_1.4.1          
-#> [61] doSNOW_1.0.19          lattice_0.20-44        zeallot_0.1.0         
-#> [64] knitr_1.33             pillar_1.6.1           boot_1.3-28           
-#> [67] effectsize_0.6.0.1     corpcor_1.6.9          reshape2_1.4.4        
-#> [70] codetools_0.2-18       glue_1.4.2             evaluate_0.14         
-#> [73] vctrs_0.3.8            png_0.1-7              foreach_1.5.1         
-#> [76] MatrixModels_0.5-0     cellranger_1.1.0       gtable_0.3.0          
-#> [79] openssl_1.4.4          purrr_0.3.4            BayesFactor_0.9.12-4.3
-#> [82] tidyr_1.1.3            rematch2_2.1.2         reshape_0.8.8         
-#> [85] future_1.21.0          assertthat_0.2.1       datawizard_0.2.3      
-#> [88] xfun_0.23              broom_0.7.8            correlation_0.8.0     
-#> [91] RSpectra_0.16-0        coda_0.19-4            tibble_3.1.2          
-#> [94] snow_0.4-3             iterators_1.0.13       ggstatsplot_0.9.1     
-#> [97] cluster_2.1.2          globals_0.14.0         ellipsis_0.3.2
+#> [49] stringi_1.6.2          yaml_2.2.1             Rtsne_0.15            
+#> [52] plyr_1.8.6             matrixcalc_1.0-4       grid_4.1.0            
+#> [55] paletteer_1.4.0        listenv_0.8.0          parallel_4.1.0        
+#> [58] ggrepel_0.9.1          crayon_1.4.1           doSNOW_1.0.19         
+#> [61] lattice_0.20-44        zeallot_0.1.0          knitr_1.33            
+#> [64] pillar_1.6.1           boot_1.3-28            effectsize_0.6.0.1    
+#> [67] corpcor_1.6.9          reshape2_1.4.4         codetools_0.2-18      
+#> [70] glue_1.4.2             evaluate_0.14          vctrs_0.3.8           
+#> [73] png_0.1-7              foreach_1.5.1          MatrixModels_0.5-0    
+#> [76] cellranger_1.1.0       gtable_0.3.0           openssl_1.4.4         
+#> [79] purrr_0.3.4            BayesFactor_0.9.12-4.3 tidyr_1.1.3           
+#> [82] rematch2_2.1.2         reshape_0.8.8          future_1.21.0         
+#> [85] assertthat_0.2.1       datawizard_0.2.3       xfun_0.23             
+#> [88] broom_0.7.8            correlation_0.8.0      RSpectra_0.16-0       
+#> [91] coda_0.19-4            tibble_3.1.2           snow_0.4-3            
+#> [94] iterators_1.0.13       ggstatsplot_0.9.1      cluster_2.1.2         
+#> [97] globals_0.14.0         ellipsis_0.3.2
 ```
 
 </details>

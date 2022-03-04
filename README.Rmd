@@ -236,7 +236,7 @@ plot_tsne(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 ```
 
 ## Association analysis 1: linear regression
-Association analysis between metabolites and interested outcomes was implemented in the “regression” function, supporting general linear regression, logistic regression, proportional hazards regression model, linear mixed-effects model, and logistic linear mixed-effects model, with or without covariates. All the regression models can be run for selected metabolites or all metabolites in a single job with the support of parallel computing.
+Association analysis between metabolites and interested outcomes was implemented in the “regression” function, supporting general linear regression, logistic regression, poisson regression, proportional hazards regression model, linear mixed-effects model, and logistic linear mixed-effects model, with or without covariates. All the regression models can be run for selected metabolites or all metabolites in a single job with the support of parallel computing.
 
 ```{r}
 fit_lm <- regression(object = df_plasma_scale, phenoData = NULL, model = "lm", outcome = "BMI",
@@ -299,8 +299,6 @@ head(fit)
 ```
 
 
-
-
 ```{r}
 
 dd <- merge(fit, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
@@ -310,6 +308,56 @@ plot_volcano(dd, color = "outcome", label = "BIOCHEMICAL")
 
 ```
 
+
+## Association analysis 4: extension to other regression models
+
+We have provided various regression models in the `{metabolomicsR}` package. 
+Here we show how to extend the `regression` function to other regression models.
+
+```{r}
+
+# for example, to fit a Negative Binomial Generalized Linear Model, we first define a `fit_glm.nb` function. 
+
+library(MASS)
+
+fit_glm.nb <- function(data = NULL, formula = NULL, keep = NULL) {
+  v_var <- all.vars(formula)
+  df <- data[, v_var, with = FALSE]
+  fit <- tryCatch(
+    do.call("glm.nb", args = list(data = df, formula = formula)),
+    error = function(e) {
+      cat(paste0("Failed to fit model: ", e), "\n")
+    })
+  if(inherits(fit, "glm")) {
+    res  <- as.data.table(broom::tidy(fit))
+    if(! is.null(keep)) res <- res[res$term %in% keep, ]
+    res$n <- length(fit$residuals)
+  } else {
+    res <- list(estimate = NA)
+  }
+  return(res)
+}
+
+
+# the outcome 'toy_y' was only created to demonstrate the usage to extend regression models
+dd <- sampleData(df_plasma_scale) 
+dd[, toy_y := round(BMI, 0)]
+sampleData(df_plasma_scale)  <- dd
+
+fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "glm.nb", outcome = "toy_y",
+                         covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
+
+head(fit)
+
+
+```
+
+
+```{r}
+dd <- merge(fit, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
+dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
+plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
+```
 
 
 <details>
