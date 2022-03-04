@@ -1,17 +1,17 @@
 #' regression analysis
 #'
-#' Run regression models with adjusting for covariates.
+#' Run regression models with adjusting for covariates. `regression_each` is used for one outcome. In `regression`, several outcomes can be specified to run together.
 #' @param object A Metabolite object.
 #' @param phenoData A data.table with outcome and covariates. If `phenoData` is NULL, `@sampleData` will be used.
-#' @param model Specify a regression model. See \code{\link{fit_lm}} for more details.
-#' @param formula A character or formula object to fit model.
+#' @param model Specify a regression model. See \code{\link{fit_lm}} for more details. 'auto' can be used to infer 'lm' or 'logistic' (with only 0, 1, and NA).
+#' @param formula A character or formula object to fit model (only used in `regression_each`)
 #' @param outcome Column name of the outcome variable.
 #' @param covars Column names of covariates.
 #' @param factors Variables to be treated as factor.
 #' @param feature_name A vector of selected metabolites to run. If both feature_name and random_select are NULL, will run regression for all features.
 #' @param time Column name of survival time, used in cox regression, see \code{\link[survival]{coxph}} for more details.
 #' @param verbose Print log information.
-#' @param ncpus Number of Cpus for the parallele job.
+#' @param ncpus Number of CPUS for parallele job.
 #' @param p.adjust.method Adjust for P value method, see \code{\link{p.adjust}}.
 #' @param \dots Further arguments passed to regression model.
 #' @export
@@ -19,8 +19,33 @@
 #' @returns term estimate std.error statistic p.value n outcome p.value.adj.
 #'
 #'
+regression <- function(object, phenoData = NULL, model = NULL, outcome = NULL, covars = NULL, factors = NULL, feature_name = NULL, time = NULL, verbose = TRUE, ncpus = 1, p.adjust.method = "bonferroni", ...) {
 
-regression <- function(object, phenoData = NULL, model = NULL, formula = NULL, outcome = NULL, covars = NULL, factors = NULL, feature_name = NULL, time = NULL, verbose = TRUE, ncpus = 1, p.adjust.method = "bonferroni", ...) {
+  cat(paste0("Regression for ", length(outcome) ," outcomes. \n\n"))
+  res_m <- NULL
+  for(i in seq_along(outcome)) {
+    v_i <- outcome[i]
+
+    res <- regression_each(object = object, phenoData = phenoData, model = model, outcome = v_i,
+                      covars = covars, factors =factors, feature_name = feature_name,
+                      time = time, verbose = verbose, ncpus = ncpus, p.adjust.method = p.adjust.method, ...
+                      )
+
+    if(NROW(res) == 0 || is.na(res)) next
+    res_m <- rbind(res_m, res)
+  }
+  return(res_m)
+}
+
+
+
+
+
+
+
+#' @rdname regression
+#' @export
+regression_each <- function(object, phenoData = NULL, model = NULL, formula = NULL, outcome = NULL, covars = NULL, factors = NULL, feature_name = NULL, time = NULL, verbose = TRUE, ncpus = 1, p.adjust.method = "bonferroni", ...) {
 
 
   if(is.null(model)) {
@@ -28,12 +53,6 @@ regression <- function(object, phenoData = NULL, model = NULL, formula = NULL, o
   }
 
   v_args <- list(...)
-
-  # model = c("lm", "logistic", "cox", "lme", "glmer")
-  # model <- match.arg(model)
-
-  fit_model <- paste0("fit_", model)
-  fit_model <- get(fit_model)
 
   if(!is.null(feature_name)) {
     x_list <- feature_name
@@ -60,12 +79,12 @@ regression <- function(object, phenoData = NULL, model = NULL, formula = NULL, o
   if(is.null(formula)) {
     cat("Build formula using covars and outcomes. \n")
     if(is.null(covars)) stop("Both formula and covars are NULL.")
-    v_formula <- paste(outcome,"~", paste(covars, sep="", collapse = " + "))
+    v_formula <- paste(outcome, "~", paste(covars, sep="", collapse = " + "))
 
   } else {
-
     if(!inherits(formula, "formula")) formula <- as.formula(formula)
     covars <- all.vars(formula)
+    outcome <- covars[1]
     v_formula <- deparse(formula)
   }
 
@@ -79,6 +98,23 @@ regression <- function(object, phenoData = NULL, model = NULL, formula = NULL, o
   }
 
   df <- merge(phenoData, object@assayData, by = object@sampleID)
+
+
+  # model = c("lm", "logistic", "cox", "lme", "glmer")
+  # model <- match.arg(model)
+
+  # check model == "auto"
+
+  if(model == "auto") {
+    cat("model = `auto`, to infer `lm` or `logistic` \n")
+    if(all(unique(df[, get(outcome)]) %in% c(0, 1, NA))) {
+      model <- "logistic"
+    } else {
+      model <- "lm"
+    }
+  }
+  fit_model <- paste0("fit_", model)
+  fit_model <- get(fit_model)
 
   if(NROW(df) < 3) {
     stop(paste0("Only "), NROW(df), " rows in the merged file.", call. = FALSE)

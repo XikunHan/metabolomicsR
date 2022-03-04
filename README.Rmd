@@ -1,44 +1,50 @@
 ---
-title: "Introduction of metabolomicsR"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{metabolomicsR_intro}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output:  
+   github_document: 
+     pandoc_args: --webtex=https://chart.apis.google.com/chart?cht=tx&chl= 
 ---
 
-```{r, include = FALSE}
+  <!-- README.md is generated from README.Rmd. Please edit that file -->
+  
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
 
 knitr::opts_chunk$set(
-  tidy = TRUE,
-  fig.width = 7,
-  fig.height = 7,
-  message = FALSE,
+  collapse = TRUE,
+  dpi = 300, ## change to 300 once on CRAN
   warning = FALSE,
+  message = FALSE,
+  out.width = "100%",
+  comment = "#>",
+  fig.path = "man/figures/README-",
   time_it = TRUE
 )
 
+library("metabolomicsR")
 
 ```
 
+### `{metabolomicsR}` Tools to process, analyze, and visualize metabolomic data. 
+
+`{metabolomicsR}` is a streamlined R package to preprocess, analyze, and visualize metabolomics data. We included broad utility functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression, metabolite annotation, enrichment analysis, and visualization of data and results. The `{metabolomicsR}` is designed to be an comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is versatile and is extensible to other various methods. Here, we demonstrate the step-by-step use of the main functions from this package. 
 
 
-##### metabolomicsR is a streamlined R package to preprocess, analyze, and visualize metabolomics data. We included broad utility functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression, metabolite annotation, enrichment analysis, and visualization of data and results. Here, we demonstrate the step-by-step use of the main functions from this package. 
+##### Seamless workflow to preprocess, analyze, and visualize metabolomics data in `{metabolomicsR}` <img src="inst/extdata/workflow.png" align="center" width="120%" height="180%" />
 
 
-### Seamless workflow to preprocess, analyze, and visualize metabolomics data in metabolomicsR
-```{r workflow, fig.align = 'center', out.width = "120%", out.height = "180%", echo = FALSE}
+## Installation
 
-workflow <- system.file("extdata", "workflow.png", package = "metabolomicsR", mustWork = TRUE)
-knitr::include_graphics(workflow)
+Type | Source | Command
+---|---|---
+Development | [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/##active) | `remotes::install_github("XikunHan/metabolomicsR")`
 
-```
-
-
-
-The metabolomicsR is designed to be an comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is versatile and is extensible to other various methods. 
 
 ## Data structure
+
+The `{metabolomicsR}` is designed to be an comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is versatile and is extensible to other various methods. 
+
 We first designed a “Metabolite” class based on the object-oriented programming system S4 in R. For a particular “Metabolite” data, it will included “assayData” (eg. peak area data or batch-normalized data, samples in rows and metabolites in columns), “featureData” (metabolite annotation), “sampleData” (sample annotation), “featureID”, “sampleID”, “logs” (log information of data analysis process), and “miscData” (other ancillary data). 
 
 
@@ -46,18 +52,14 @@ We first designed a “Metabolite” class based on the object-oriented programm
 
 To demonstrate the package, we obtained the data from the Qatar Metabolomics Study on Diabetes, similar to the data format from non-targeted mass spectrometry by Metabolon. The dataset is also available via [figshare](https://doi.org/10.6084/m9.figshare.5904022).
 
+
+In the “assayData”, the first column is the sample IDs to match with “sampleData”, the other columns are metabolite IDs to match with “featureData”. 
+
+
 ```{r}
-# download it from cran or github
-
-# install.packages("metabolomicsR")
-
-library("metabolomicsR")
-library("ggrepel")
-
 # Load the dataset
 
 file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
-# file_path
 
 df_plasma <- load_excel(path = file_path,
                         data_sheet = 1,
@@ -67,7 +69,18 @@ df_plasma <- load_excel(path = file_path,
                         featureID = "BIOCHEMICAL"
                         )
 
+```
 
+<details>
+<summary>**click to show plasma data**</summary>
+```{r}
+df_plasma
+```
+</details>
+
+
+```{r}
+# change the feature ID using the column `COMP_IDstr`
 df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "change_featureID")
 
 ```
@@ -79,8 +92,9 @@ df_plasma
 ```
 </details>
 
-```{r}
 
+```{r}
+# load urine metabolomic data
 df_urine <- load_excel(path = file_path,
                         data_sheet = 2,
                         feature_sheet = 5,
@@ -94,13 +108,13 @@ df_urine <- update_Metabolite(df_urine, dataset = "COMP_IDstr", action = "change
 <details>
 <summary>**click to show urine data**</summary>
 ```{r}
-df_plasma
+df_urine
 ```
 </details>
 
 
 ```{r}
-
+# load saliva metatabolomic data
 df_saliva <- load_excel(path = file_path,
                         data_sheet = 3,
                         feature_sheet = 6,
@@ -108,11 +122,8 @@ df_saliva <- load_excel(path = file_path,
                         sampleID = "QMDiab-ID",
                         featureID = "BIOCHEMICAL"
                         )
-# df_saliva
-
 
 df_saliva <- update_Metabolite(df_saliva, dataset = "COMP_IDstr", action = "change_featureID")
-
 ```
 
 
@@ -123,8 +134,6 @@ df_saliva
 ```
 </details>
 
-
-In the “assayData”, the first column is the sample IDs to match with “sampleData”, the other columns are metabolite IDs to match with “featureData”. 
 
 
 ##  Quality control pipeline
@@ -171,18 +180,29 @@ df_saliva_QC
 
 ## Boxplot
 
-```{r}
-# raw values
+```{r,  fig.width = 12, fig.height = 7}
+# if no features were selected, randomly show 16 metabolites
 plot_Metabolite(df_plasma_QC, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
 
 ```
+
+```{r, fig.width = 12, fig.height = 7}
+# select three metabolites
+plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot",  feature_name = c("M43027",  "M11953", "M38002"))
+```
+
+```{r, fig.width = 12, fig.height = 7}
+# comparisons between groups with ggbetweenstats
+plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = c("M43027",  "M11953", "M38002"))
+
+```
+
 
 ## Transformation
 
 Transformation of metabolites can alter the distribution of data and is an essential step for the following statistical analysis. We provided the following transformation methods: log (natural logarithm), pareto scale, scale, and rank-based inverse normal transformation.
 ```{r}
 df_plasma_QC <- impute(df_plasma_QC, method = "half-min")
-
 df_plasma_scale <-  transformation(df_plasma_QC, method = "log")
 df_plasma_scale <-  transformation(df_plasma_scale, method = "scale")
 ```
@@ -196,7 +216,7 @@ df_plasma_scale
 </details>
 
 
-```{r}
+```{r, fig.width = 12, fig.height = 7}
 plot_Metabolite(df_plasma_scale, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
 
 ```
@@ -221,12 +241,14 @@ plot_tsne(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 Association analysis between metabolites and interested outcomes was implemented in the “regression” function, supporting general linear regression, logistic regression, proportional hazards regression model, linear mixed-effects model, and logistic linear mixed-effects model, with or without covariates. All the regression models can be run for selected metabolites or all metabolites in a single job with the support of parallel computing.
 
 ```{r}
-
 fit_lm <- regression(object = df_plasma_scale, phenoData = NULL, model = "lm", outcome = "BMI",
                           covars = c("AGE", "GENDER", "ETHNICITY"), factors = "ETHNICITY")
 
 head(fit_lm)
+
 ```
+
+
 
 
 ```{r}
@@ -234,19 +256,7 @@ head(fit_lm)
 dd <- merge(fit_lm, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
 
 dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
-
-dd[, lab := ifelse(sig == 1, BIOCHEMICAL, NA)]
-
-dd[, sig := factor(sig, levels = c(1, 0), labels = c("FDR < 10%", "not significant"))]
-
-
-ggplot(data= dd, aes(x= estimate, y= -log10(p.value), color = factor(outcome), label = lab)) +
-    geom_point() +
-    geom_label_repel(max.overlaps = 20, size = 2) +
-   theme_minimal()  +
-  labs(x = "Effect size", y = "-log10(P value)") +
-  scale_color_discrete(name = "Outcome")
-
+plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 
 ```
 
@@ -261,7 +271,6 @@ fit_glm <- regression(object = df_plasma_scale, phenoData = NULL, model = "logis
 
 head(fit_glm)
 
-
 ```
 
 
@@ -272,20 +281,34 @@ dd <- merge(fit_glm, df_plasma_scale@featureData, by.x = "term", by.y = "feature
 
 dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 
-dd[, lab := ifelse(sig == 1, BIOCHEMICAL, NA)]
+plot_volcano(dd, label = "BIOCHEMICAL")
 
-dd[, sig := factor(sig, levels = c(1, 0), labels = c("FDR < 10%", "not significant"))]
-
-
-ggplot(data= dd, aes(x= estimate, y= -log10(p.value), color = factor(outcome), label = lab)) +
-    geom_point() +
-    geom_label_repel(max.overlaps = 20, size = 2) +
-   theme_minimal()  +
-  labs(x = "Effect size", y = "-log10(P value)") +
-  scale_color_discrete(name = "Outcome")
+```
 
 
 
+
+## Association analysis 3: multiple outcomes, using model = "auto"
+
+```{r}
+
+fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "auto", outcome = c("BMI", "T2D"),
+                         covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
+
+
+head(fit)
+
+```
+
+
+
+
+```{r}
+
+dd <- merge(fit, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
+
+dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
+plot_volcano(dd, color = "outcome", label = "BIOCHEMICAL")
 
 ```
 
