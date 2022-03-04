@@ -160,6 +160,7 @@ plot_injection_order <- function(object, color = "NEG", shape = "NEG", size = 0.
 #' @param feature_name A vector of selected metabolites to plot. If NULL, will randomly select 16 (default) metabolites to plot.
 #' @param color A column in `@sampleData` to show the color of points.
 #' @param shape A column in `@sampleData` to show the shape of points.
+#' @param fill A column in `@sampleData` to show the `fill` for histogram.
 #' @param random_select An integer, number of randomly selected metabolites to plot.
 #' @param size Point size.
 #' @param n_row Number of rows of subfigures for `betweenstats`
@@ -175,7 +176,7 @@ plot_injection_order <- function(object, color = "NEG", shape = "NEG", size = 0.
 #' p
 #'}
 #'
-plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", feature_name = NULL, color = "NEG", shape = "NEG", random_select = 16, size = 0.6, n_row = 1, n_col = 1, ylab = "featureID", height = 10, width = 10, save_to_file = NULL) {
+plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", feature_name = NULL, color = "NEG", shape = "NEG", fill = "NEG",random_select = 16, size = 0.6, n_row = 1, n_col = 1, ylab = "featureID", height = 10, width = 10, save_to_file = NULL) {
 
   if(is.null(feature_name)) {
     df_select <- object@assayData[, c(1, sample(2:NCOL(object@assayData), random_select, replace = FALSE)), with = FALSE]
@@ -208,8 +209,32 @@ plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", feature_name = 
     return(p)
   }
 
-  if(plot == "betweenstats") {
 
+  if( plot == "histogram") {
+    if(! color %in% names(df)) {
+      warning("Color not specified")
+      df$color_ <- 1
+      color <- "color_"
+    }
+    if(! fill %in% names(df)) fill <- color
+    df[, (color) := factor(get(color))]
+    df[, (fill) := factor(get(fill))]
+
+    p <- ggplot(data = df, aes_string(x = "value", color = df[, get(color)], fill = df[, get(fill)])) +
+      geom_histogram(alpha=0.5) +
+      facet_wrap(~variable, scales = "free_y") +
+      scale_color_manual(name = color, values = RColorBrewer::brewer.pal(8, "Dark2")) +
+      scale_fill_manual(name = fill, values = RColorBrewer::brewer.pal(8, "Dark2")) +
+      # scale_fill_viridis(discrete=TRUE) +
+      # scale_color_viridis(discrete=TRUE) +
+      theme(axis.text.x = element_text(angle = 60, hjust = 1))
+    if(!is.null(save_to_file)) {
+      ggsave(save_to_file, p, height = height, width = width)
+    }
+    return(p)
+  }
+
+  if(plot == "betweenstats") {
     check_pkg("ggstatsplot")
     v_n <- length(unique(df$variable))
     if(n_row * n_col <  v_n) {
@@ -305,8 +330,7 @@ plot_volcano <- function(fit, x = "estimate", y = "p.value", p.value_log10 = TRU
       theme_minimal()  +
       labs(x = x_lab, y = y_lab)
   }
-
-  p
+  return(p)
 }
 
 

@@ -11,6 +11,7 @@ plot_Metabolite(
   feature_name = NULL,
   color = "NEG",
   shape = "NEG",
+  fill = "NEG",
   random_select = 16,
   size = 0.6,
   n_row = 1,
@@ -33,6 +34,8 @@ plot_Metabolite(
 \item{color}{A column in `@sampleData` to show the color of points.}
 
 \item{shape}{A column in `@sampleData` to show the shape of points.}
+
+\item{fill}{A column in `@sampleData` to show the `fill` for histogram.}
 
 \item{random_select}{An integer, number of randomly selected metabolites to plot.}
 

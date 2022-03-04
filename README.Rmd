@@ -176,24 +176,6 @@ df_saliva_QC
 ```
 </details>
 
-## Boxplot
-
-```{r,  fig.width = 12, fig.height = 7}
-# if no features were selected, randomly show 16 metabolites
-plot_Metabolite(df_plasma_QC, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
-
-```
-
-```{r, fig.width = 12, fig.height = 6}
-# select three metabolites
-plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot",  feature_name = c("M43027",  "M11953", "M38002"))
-```
-
-```{r, fig.width = 12, fig.height = 7}
-# comparisons between groups with ggbetweenstats
-plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = c("M43027",  "M11953", "M38002"))
-
-```
 
 
 ## Transformation
@@ -203,6 +185,9 @@ Transformation of metabolites can alter the distribution of data and is an essen
 df_plasma_QC <- impute(df_plasma_QC, method = "half-min")
 df_plasma_scale <-  transformation(df_plasma_QC, method = "log")
 df_plasma_scale <-  transformation(df_plasma_scale, method = "scale")
+
+
+
 ```
 
 
@@ -214,8 +199,45 @@ df_plasma_scale
 </details>
 
 
+
+## Visualization: boxplot
+
+#####  before transformation
+```{r,  fig.width = 12, fig.height = 7}
+# if no features were selected, randomly show 16 metabolites
+plot_Metabolite(df_plasma_QC, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
+
+```
+
+```{r, fig.width = 12, fig.height = 6}
+# select three metabolites
+plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot",  feature_name = c("M43027",  "M11953", "M38002"))
+```
+
+
+## Visualization: comparisons between groups
+
+```{r, fig.width = 12, fig.height = 7}
+# comparisons between groups using `ggbetweenstats`
+plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = c("M43027",  "M11953", "M38002"))
+
+```
+
+
+#####  After transformation
 ```{r, fig.width = 12, fig.height = 7}
 plot_Metabolite(df_plasma_scale, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
+
+```
+
+
+## Visualization: histogram
+
+```{r, fig.width = 12, fig.height = 7}
+
+plot_Metabolite(df_plasma_scale, plot = "histogram", color = "T2D")
+
+plot_Metabolite(df_plasma_scale, plot = "histogram", color = "ETHNICITY")
 
 ```
 
@@ -225,7 +247,6 @@ plot_Metabolite(df_plasma_scale, plot = "boxplot", x = "T2D", color ="ETHNICITY"
 Dimensional reduction strategies on metabolites data can be used to detect batch effects, sample outliers, and real biological subgroups. We included principal components analysis (PCA), manifold approximation and projection (UMAP), and t-distributed stochastic neighbor embedding (tSNE) methods. Figures will be displayed in ggplot2 style.
 ```{r}
 df_plasma_PCA <- run_PCA(df_plasma_QC)
-# df_plasma_PCA
 
 plot_PCA(df_plasma_PCA, color ="ETHNICITY", shape = "T2D")
 
@@ -348,7 +369,6 @@ fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "glm.nb", 
                          covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
 
 head(fit)
-
 
 ```
 

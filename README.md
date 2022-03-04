@@ -208,8 +208,8 @@ df_plasma
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:42:26: Initiate data: 356 samples and 758 features.
+#> 04/03/22 14:19:36: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 14:19:36: Initiate data: 356 samples and 758 features.
 ```
 
 </details>
@@ -334,9 +334,9 @@ df_plasma
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:42:26: Initiate data: 356 samples and 758 features.
-#> 04/03/22 04:42:26: Update data, action: change_featureID, 356 samples and 758 features.
+#> 04/03/22 14:19:36: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 14:19:36: Initiate data: 356 samples and 758 features.
+#> 04/03/22 14:19:36: Update data, action: change_featureID, 356 samples and 758 features.
 ```
 
 </details>
@@ -468,9 +468,9 @@ df_urine
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:42:26: Initiate data: 359 samples and 891 features.
-#> 04/03/22 04:42:26: Update data, action: change_featureID, 359 samples and 891 features.
+#> 04/03/22 14:19:37: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 14:19:37: Initiate data: 359 samples and 891 features.
+#> 04/03/22 14:19:37: Update data, action: change_featureID, 359 samples and 891 features.
 ```
 
 </details>
@@ -603,9 +603,9 @@ df_saliva
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:42:27: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:42:27: Initiate data: 321 samples and 602 features.
-#> 04/03/22 04:42:27: Update data, action: change_featureID, 321 samples and 602 features.
+#> 04/03/22 14:19:37: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 14:19:37: Initiate data: 321 samples and 602 features.
+#> 04/03/22 14:19:37: Update data, action: change_featureID, 321 samples and 602 features.
 ```
 
 </details>
@@ -745,15 +745,15 @@ df_plasma_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:42:26: Initiate data: 356 samples and 758 features.
-#> 04/03/22 04:42:26: Update data, action: change_featureID, 356 samples and 758 features. 
+#> 04/03/22 14:19:36: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 14:19:36: Initiate data: 356 samples and 758 features.
+#> 04/03/22 14:19:36: Update data, action: change_featureID, 356 samples and 758 features. 
 #> 
-#> 04/03/22 04:42:27: Run QC pipeline.
-#> 04/03/22 04:42:27: Filter data with a constant column, removed 37 features. 
-#> 04/03/22 04:42:27: Update data, 356 samples and 758 features. 
-#> 04/03/22 04:42:27: Filter data with a missing rate >= 0.5, removed 176 features. 
-#> 04/03/22 04:42:27: Update data, 356 samples and 758 features.
+#> 04/03/22 14:19:37: Run QC pipeline.
+#> 04/03/22 14:19:37: Filter data with a constant column, removed 37 features. 
+#> 04/03/22 14:19:37: Update data, 356 samples and 758 features. 
+#> 04/03/22 14:19:38: Filter data with a missing rate >= 0.5, removed 176 features. 
+#> 04/03/22 14:19:38: Update data, 356 samples and 758 features.
 ```
 
 </details>
@@ -881,15 +881,15 @@ df_urine_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:42:26: Initiate data: 359 samples and 891 features.
-#> 04/03/22 04:42:26: Update data, action: change_featureID, 359 samples and 891 features. 
+#> 04/03/22 14:19:37: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 14:19:37: Initiate data: 359 samples and 891 features.
+#> 04/03/22 14:19:37: Update data, action: change_featureID, 359 samples and 891 features. 
 #> 
-#> 04/03/22 04:42:27: Run QC pipeline.
-#> 04/03/22 04:42:27: Filter data with a constant column, removed 28 features. 
-#> 04/03/22 04:42:27: Update data, 359 samples and 891 features. 
-#> 04/03/22 04:42:28: Filter data with a missing rate >= 0.5, removed 77 features. 
-#> 04/03/22 04:42:28: Update data, 359 samples and 891 features.
+#> 04/03/22 14:19:38: Run QC pipeline.
+#> 04/03/22 14:19:38: Filter data with a constant column, removed 28 features. 
+#> 04/03/22 14:19:38: Update data, 359 samples and 891 features. 
+#> 04/03/22 14:19:38: Filter data with a missing rate >= 0.5, removed 77 features. 
+#> 04/03/22 14:19:38: Update data, 359 samples and 891 features.
 ```
 
 </details>
@@ -1017,41 +1017,18 @@ df_saliva_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:42:27: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:42:27: Initiate data: 321 samples and 602 features.
-#> 04/03/22 04:42:27: Update data, action: change_featureID, 321 samples and 602 features. 
+#> 04/03/22 14:19:37: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 14:19:37: Initiate data: 321 samples and 602 features.
+#> 04/03/22 14:19:37: Update data, action: change_featureID, 321 samples and 602 features. 
 #> 
-#> 04/03/22 04:42:28: Run QC pipeline.
-#> 04/03/22 04:42:28: Filter data with a constant column, removed 35 features. 
-#> 04/03/22 04:42:28: Update data, 321 samples and 602 features. 
-#> 04/03/22 04:42:28: Filter data with a missing rate >= 0.5, removed 203 features. 
-#> 04/03/22 04:42:28: Update data, 321 samples and 602 features.
+#> 04/03/22 14:19:38: Run QC pipeline.
+#> 04/03/22 14:19:38: Filter data with a constant column, removed 35 features. 
+#> 04/03/22 14:19:38: Update data, 321 samples and 602 features. 
+#> 04/03/22 14:19:38: Filter data with a missing rate >= 0.5, removed 203 features. 
+#> 04/03/22 14:19:38: Update data, 321 samples and 602 features.
 ```
 
 </details>
-
-## Boxplot
-
-``` r
-# if no features were selected, randomly show 16 metabolites
-plot_Metabolite(df_plasma_QC, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
-```
-
-<img src="man/figures/README-unnamed-chunk-16-1.png" width="100%" />
-
-``` r
-# select three metabolites
-plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot",  feature_name = c("M43027",  "M11953", "M38002"))
-```
-
-<img src="man/figures/README-unnamed-chunk-17-1.png" width="100%" />
-
-``` r
-# comparisons between groups with ggbetweenstats
-plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = c("M43027",  "M11953", "M38002"))
-```
-
-<img src="man/figures/README-unnamed-chunk-18-1.png" width="100%" />
 
 ## Transformation
 
@@ -1193,27 +1170,70 @@ df_plasma_scale
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 04:42:26: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 04:42:26: Initiate data: 356 samples and 758 features.
-#> 04/03/22 04:42:26: Update data, action: change_featureID, 356 samples and 758 features. 
+#> 04/03/22 14:19:36: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 14:19:36: Initiate data: 356 samples and 758 features.
+#> 04/03/22 14:19:36: Update data, action: change_featureID, 356 samples and 758 features. 
 #> 
-#> 04/03/22 04:42:27: Run QC pipeline.
-#> 04/03/22 04:42:27: Filter data with a constant column, removed 37 features. 
-#> 04/03/22 04:42:27: Update data, 356 samples and 758 features. 
-#> 04/03/22 04:42:27: Filter data with a missing rate >= 0.5, removed 176 features. 
-#> 04/03/22 04:42:27: Update data, 356 samples and 758 features. 
-#> 04/03/22 04:42:39: Impute data using `half-min` method. 
-#> 04/03/22 04:42:39: Transformation using `log` method. 
-#> 04/03/22 04:42:40: Transformation using `scale` method.
+#> 04/03/22 14:19:37: Run QC pipeline.
+#> 04/03/22 14:19:37: Filter data with a constant column, removed 37 features. 
+#> 04/03/22 14:19:37: Update data, 356 samples and 758 features. 
+#> 04/03/22 14:19:38: Filter data with a missing rate >= 0.5, removed 176 features. 
+#> 04/03/22 14:19:38: Update data, 356 samples and 758 features. 
+#> 04/03/22 14:19:39: Impute data using `half-min` method. 
+#> 04/03/22 14:19:39: Transformation using `log` method. 
+#> 04/03/22 14:19:39: Transformation using `scale` method.
 ```
 
 </details>
+
+## Visualization: boxplot
+
+##### before transformation
+
+``` r
+# if no features were selected, randomly show 16 metabolites
+plot_Metabolite(df_plasma_QC, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
+```
+
+<img src="man/figures/README-unnamed-chunk-18-1.png" width="100%" />
+
+``` r
+# select three metabolites
+plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot",  feature_name = c("M43027",  "M11953", "M38002"))
+```
+
+<img src="man/figures/README-unnamed-chunk-19-1.png" width="100%" />
+
+## Visualization: comparisons between groups
+
+``` r
+# comparisons between groups using `ggbetweenstats`
+plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = c("M43027",  "M11953", "M38002"))
+```
+
+<img src="man/figures/README-unnamed-chunk-20-1.png" width="100%" />
+
+##### After transformation
 
 ``` r
 plot_Metabolite(df_plasma_scale, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
 ```
 
 <img src="man/figures/README-unnamed-chunk-21-1.png" width="100%" />
+
+## Visualization: histogram
+
+``` r
+plot_Metabolite(df_plasma_scale, plot = "histogram", color = "T2D")
+```
+
+<img src="man/figures/README-unnamed-chunk-22-1.png" width="100%" />
+
+``` r
+plot_Metabolite(df_plasma_scale, plot = "histogram", color = "ETHNICITY")
+```
+
+<img src="man/figures/README-unnamed-chunk-22-2.png" width="100%" />
 
 ## Dimensional reduction
 
@@ -1225,24 +1245,23 @@ projection (UMAP), and t-distributed stochastic neighbor embedding
 
 ``` r
 df_plasma_PCA <- run_PCA(df_plasma_QC)
-# df_plasma_PCA
 
 plot_PCA(df_plasma_PCA, color ="ETHNICITY", shape = "T2D")
 ```
 
-<img src="man/figures/README-unnamed-chunk-22-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-23-1.png" width="100%" />
 
 ``` r
 plot_UMAP(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 ```
 
-<img src="man/figures/README-unnamed-chunk-22-2.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-23-2.png" width="100%" />
 
 ``` r
 plot_tsne(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 ```
 
-<img src="man/figures/README-unnamed-chunk-22-3.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-23-3.png" width="100%" />
 
 ## Association analysis 1: linear regression
 
@@ -1281,7 +1300,7 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 ```
 
-<img src="man/figures/README-unnamed-chunk-24-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-25-1.png" width="100%" />
 
 ## Association analysis 2: logistic regression
 
@@ -1314,7 +1333,7 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, label = "BIOCHEMICAL")
 ```
 
-<img src="man/figures/README-unnamed-chunk-26-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-27-1.png" width="100%" />
 
 ## Association analysis 3: multiple outcomes, using model = “auto”
 
@@ -1352,7 +1371,7 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = "outcome", label = "BIOCHEMICAL")
 ```
 
-<img src="man/figures/README-unnamed-chunk-28-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-29-1.png" width="100%" />
 
 ## Association analysis 4: extension to other regression models
 
@@ -1421,7 +1440,7 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 ```
 
-<img src="man/figures/README-unnamed-chunk-30-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-31-1.png" width="100%" />
 
 <details>
 <summary>
