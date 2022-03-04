@@ -214,8 +214,8 @@ df_plasma
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 03:12:41: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 03:12:42: Initiate data: 356 samples and 758 features.
+#> 04/03/22 03:28:38: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 03:28:38: Initiate data: 356 samples and 758 features.
 ```
 
 </details>
@@ -340,9 +340,9 @@ df_plasma
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 03:12:41: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 03:12:42: Initiate data: 356 samples and 758 features.
-#> 04/03/22 03:12:42: Update data, action: change_featureID, 356 samples and 758 features.
+#> 04/03/22 03:28:38: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 03:28:38: Initiate data: 356 samples and 758 features.
+#> 04/03/22 03:28:38: Update data, action: change_featureID, 356 samples and 758 features.
 ```
 
 </details>
@@ -474,9 +474,9 @@ df_urine
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 03:12:42: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 03:12:42: Initiate data: 359 samples and 891 features.
-#> 04/03/22 03:12:42: Update data, action: change_featureID, 359 samples and 891 features.
+#> 04/03/22 03:28:39: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 03:28:39: Initiate data: 359 samples and 891 features.
+#> 04/03/22 03:28:39: Update data, action: change_featureID, 359 samples and 891 features.
 ```
 
 </details>
@@ -609,9 +609,9 @@ df_saliva
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 03:12:42: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 03:12:43: Initiate data: 321 samples and 602 features.
-#> 04/03/22 03:12:43: Update data, action: change_featureID, 321 samples and 602 features.
+#> 04/03/22 03:28:39: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 03:28:39: Initiate data: 321 samples and 602 features.
+#> 04/03/22 03:28:39: Update data, action: change_featureID, 321 samples and 602 features.
 ```
 
 </details>
@@ -751,15 +751,15 @@ df_plasma_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 03:12:41: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 03:12:42: Initiate data: 356 samples and 758 features.
-#> 04/03/22 03:12:42: Update data, action: change_featureID, 356 samples and 758 features. 
+#> 04/03/22 03:28:38: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 03:28:38: Initiate data: 356 samples and 758 features.
+#> 04/03/22 03:28:38: Update data, action: change_featureID, 356 samples and 758 features. 
 #> 
-#> 04/03/22 03:12:43: Run QC pipeline.
-#> 04/03/22 03:12:43: Filter data with a constant column, removed 37 features. 
-#> 04/03/22 03:12:43: Update data, 356 samples and 758 features. 
-#> 04/03/22 03:12:43: Filter data with a missing rate >= 0.5, removed 176 features. 
-#> 04/03/22 03:12:43: Update data, 356 samples and 758 features.
+#> 04/03/22 03:28:39: Run QC pipeline.
+#> 04/03/22 03:28:39: Filter data with a constant column, removed 37 features. 
+#> 04/03/22 03:28:39: Update data, 356 samples and 758 features. 
+#> 04/03/22 03:28:40: Filter data with a missing rate >= 0.5, removed 176 features. 
+#> 04/03/22 03:28:40: Update data, 356 samples and 758 features.
 ```
 
 </details>
@@ -887,15 +887,15 @@ df_urine_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 03:12:42: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 03:12:42: Initiate data: 359 samples and 891 features.
-#> 04/03/22 03:12:42: Update data, action: change_featureID, 359 samples and 891 features. 
+#> 04/03/22 03:28:39: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 03:28:39: Initiate data: 359 samples and 891 features.
+#> 04/03/22 03:28:39: Update data, action: change_featureID, 359 samples and 891 features. 
 #> 
-#> 04/03/22 03:12:43: Run QC pipeline.
-#> 04/03/22 03:12:43: Filter data with a constant column, removed 28 features. 
-#> 04/03/22 03:12:43: Update data, 359 samples and 891 features. 
-#> 04/03/22 03:12:44: Filter data with a missing rate >= 0.5, removed 77 features. 
-#> 04/03/22 03:12:44: Update data, 359 samples and 891 features.
+#> 04/03/22 03:28:40: Run QC pipeline.
+#> 04/03/22 03:28:40: Filter data with a constant column, removed 28 features. 
+#> 04/03/22 03:28:40: Update data, 359 samples and 891 features. 
+#> 04/03/22 03:28:40: Filter data with a missing rate >= 0.5, removed 77 features. 
+#> 04/03/22 03:28:40: Update data, 359 samples and 891 features.
 ```
 
 </details>
@@ -1023,15 +1023,15 @@ df_saliva_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 03:12:42: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 03:12:43: Initiate data: 321 samples and 602 features.
-#> 04/03/22 03:12:43: Update data, action: change_featureID, 321 samples and 602 features. 
+#> 04/03/22 03:28:39: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 03:28:39: Initiate data: 321 samples and 602 features.
+#> 04/03/22 03:28:39: Update data, action: change_featureID, 321 samples and 602 features. 
 #> 
-#> 04/03/22 03:12:44: Run QC pipeline.
-#> 04/03/22 03:12:44: Filter data with a constant column, removed 35 features. 
-#> 04/03/22 03:12:44: Update data, 321 samples and 602 features. 
-#> 04/03/22 03:12:44: Filter data with a missing rate >= 0.5, removed 203 features. 
-#> 04/03/22 03:12:44: Update data, 321 samples and 602 features.
+#> 04/03/22 03:28:40: Run QC pipeline.
+#> 04/03/22 03:28:40: Filter data with a constant column, removed 35 features. 
+#> 04/03/22 03:28:40: Update data, 321 samples and 602 features. 
+#> 04/03/22 03:28:40: Filter data with a missing rate >= 0.5, removed 203 features. 
+#> 04/03/22 03:28:40: Update data, 321 samples and 602 features.
 ```
 
 </details>
@@ -1199,18 +1199,18 @@ df_plasma_scale
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 03:12:41: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 03:12:42: Initiate data: 356 samples and 758 features.
-#> 04/03/22 03:12:42: Update data, action: change_featureID, 356 samples and 758 features. 
+#> 04/03/22 03:28:38: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 03:28:38: Initiate data: 356 samples and 758 features.
+#> 04/03/22 03:28:38: Update data, action: change_featureID, 356 samples and 758 features. 
 #> 
-#> 04/03/22 03:12:43: Run QC pipeline.
-#> 04/03/22 03:12:43: Filter data with a constant column, removed 37 features. 
-#> 04/03/22 03:12:43: Update data, 356 samples and 758 features. 
-#> 04/03/22 03:12:43: Filter data with a missing rate >= 0.5, removed 176 features. 
-#> 04/03/22 03:12:43: Update data, 356 samples and 758 features. 
-#> 04/03/22 03:12:54: Impute data using `half-min` method. 
-#> 04/03/22 03:12:54: Transformation using `log` method. 
-#> 04/03/22 03:12:55: Transformation using `scale` method.
+#> 04/03/22 03:28:39: Run QC pipeline.
+#> 04/03/22 03:28:39: Filter data with a constant column, removed 37 features. 
+#> 04/03/22 03:28:39: Update data, 356 samples and 758 features. 
+#> 04/03/22 03:28:40: Filter data with a missing rate >= 0.5, removed 176 features. 
+#> 04/03/22 03:28:40: Update data, 356 samples and 758 features. 
+#> 04/03/22 03:28:51: Impute data using `half-min` method. 
+#> 04/03/22 03:28:51: Transformation using `log` method. 
+#> 04/03/22 03:28:52: Transformation using `scale` method.
 ```
 
 </details>
