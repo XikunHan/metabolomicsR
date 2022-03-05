@@ -566,9 +566,9 @@ transformation <- function(object, method = "log") {
 
 
 
-#' rescale based on conversion factors
+#' bridge different data sets based on conversion factors
 #'
-#' Rescale metabolite data based on a conversion factor file
+#' Bridge metabolite data based on a conversion factor file
 #'
 #' @param object A Metabolite object. In the `featureData`, `conversion_factor_ID` column should be created to match with conversion_factor_data.
 #' @param conversion_factor_data A data set with columns `conversion_factor_ID` and `conversion_factor_value`.
@@ -579,10 +579,10 @@ transformation <- function(object, method = "log") {
 #' @examples
 #'
 #'\dontrun{
-#' d <- rescale(object)
+#' d <- bridge(object)
 #'}
 #'
-rescale <- function(object, conversion_factor_data = NULL, QC_ID_pattern = "MTRX", verbose = TRUE) {
+bridge <- function(object, conversion_factor_data = NULL, QC_ID_pattern = "MTRX", verbose = TRUE) {
 
   conversion_factor_data <- as.data.table(conversion_factor_data)
 
@@ -1234,14 +1234,13 @@ correlation <- function(
   verbose = TRUE
 )  {
 
-  v_feature <- setdiff(intersect(names(object_X@assayData), names(object_X@assayData)),
+  v_feature <- setdiff(intersect(names(object_X@assayData), names(object_Y@assayData)),
                        c(object_X@sampleID, object_Y@sampleID))
 
   v_sample <- intersect(object_X@assayData[, get(object_X@sampleID)], object_Y@assayData[, get(object_Y@sampleID)])
 
   if(verbose) {
-cat("Identify ", length(object_X@assayData[, get(object_X@sampleID)]), " samples in data A, and ", length(object_Y@assayData[, get(object_Y@sampleID)]), " samples in data B, with ", length(v_sample), " overlap samples.\n")
-
+    cat("Identify ", length(object_X@assayData[, get(object_X@sampleID)]), " samples in data A, and ", length(object_Y@assayData[, get(object_Y@sampleID)]), " samples in data B, with ", length(v_sample), " overlap samples.\n")
     cat("Identify ", length(names(object_X@assayData))-1, " features in data A, and ", length(names(object_Y@assayData))-1, " features in data B, with ", length(v_feature), " overlap features.\n")
   }
 
@@ -1253,9 +1252,9 @@ cat("Identify ", length(object_X@assayData[, get(object_X@sampleID)]), " samples
   }
 
   res <- NULL
-
+  p <- progressr::progressor(along = length(v_feature))
   for(i in seq_along(v_feature)) {
-
+    p(sprintf("i=%g", i))
     v_i <- v_feature[i]
 
     df_one <- tryCatch(
@@ -1264,7 +1263,7 @@ cat("Identify ", length(object_X@assayData[, get(object_X@sampleID)]), " samples
           # cat(paste0("Failed : ", v_i, " ", e, "\n"))
           NA
         })
-    if(length(df_one) == 2 ) res <- rbind(res, c(name = v_i, df_one))
+    if(length(df_one) == 2 ) res <- rbind(res, c(term = v_i, df_one))
   }
 
   res <- data.table(res)

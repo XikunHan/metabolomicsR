@@ -44,6 +44,11 @@ In the “assayData”, the first column is the sample IDs to match with
 “featureData”.
 
 ``` r
+library(metabolomicsR)
+library(ggplot2)
+library(cowplot)
+library(data.table)
+
 # Load the dataset
 
 file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
@@ -208,8 +213,8 @@ df_plasma
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 14:19:36: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 14:19:36: Initiate data: 356 samples and 758 features.
+#> 04/03/22 20:10:11: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 20:10:11: Initiate data: 356 samples and 758 features.
 ```
 
 </details>
@@ -334,9 +339,9 @@ df_plasma
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 14:19:36: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 14:19:36: Initiate data: 356 samples and 758 features.
-#> 04/03/22 14:19:36: Update data, action: change_featureID, 356 samples and 758 features.
+#> 04/03/22 20:10:11: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 20:10:11: Initiate data: 356 samples and 758 features.
+#> 04/03/22 20:10:11: Update data, action: change_featureID, 356 samples and 758 features.
 ```
 
 </details>
@@ -350,6 +355,7 @@ df_urine <- load_excel(path = file_path,
                         sampleID = "QMDiab-ID",
                         featureID = "BIOCHEMICAL"
                         )
+
 df_urine <- update_Metabolite(df_urine, dataset = "COMP_IDstr", action = "change_featureID")
 ```
 
@@ -468,9 +474,9 @@ df_urine
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 14:19:37: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 14:19:37: Initiate data: 359 samples and 891 features.
-#> 04/03/22 14:19:37: Update data, action: change_featureID, 359 samples and 891 features.
+#> 04/03/22 20:10:12: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 20:10:12: Initiate data: 359 samples and 891 features.
+#> 04/03/22 20:10:12: Update data, action: change_featureID, 359 samples and 891 features.
 ```
 
 </details>
@@ -603,9 +609,9 @@ df_saliva
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 14:19:37: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 14:19:37: Initiate data: 321 samples and 602 features.
-#> 04/03/22 14:19:37: Update data, action: change_featureID, 321 samples and 602 features.
+#> 04/03/22 20:10:12: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 20:10:12: Initiate data: 321 samples and 602 features.
+#> 04/03/22 20:10:12: Update data, action: change_featureID, 321 samples and 602 features.
 ```
 
 </details>
@@ -618,9 +624,9 @@ the following functions: remove metabolites or samples beyond a
 particular missing rate threshold (eg. 0.5), detect outliers (eg. +- 5
 SD) and replace outliers with NA or winsorize outliers, and popular
 methods to impute missing values (eg. half of the minimum value). All
-the steps can be customized to implement in the “QC\_pipeline” function
+the steps can be customized to implement in the “QC_pipeline” function
 or be used from the individual functions (eg.
-“filter\_column\_missing\_rate”, “replace\_outlier”, and “impute”).
+“filter_column_missing_rate”, “replace_outlier”, and “impute”).
 
 ``` r
 df_plasma_QC <- QC_pipeline(df_plasma, impute_method = NULL)
@@ -745,15 +751,15 @@ df_plasma_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 14:19:36: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 14:19:36: Initiate data: 356 samples and 758 features.
-#> 04/03/22 14:19:36: Update data, action: change_featureID, 356 samples and 758 features. 
+#> 04/03/22 20:10:11: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 20:10:11: Initiate data: 356 samples and 758 features.
+#> 04/03/22 20:10:11: Update data, action: change_featureID, 356 samples and 758 features. 
 #> 
-#> 04/03/22 14:19:37: Run QC pipeline.
-#> 04/03/22 14:19:37: Filter data with a constant column, removed 37 features. 
-#> 04/03/22 14:19:37: Update data, 356 samples and 758 features. 
-#> 04/03/22 14:19:38: Filter data with a missing rate >= 0.5, removed 176 features. 
-#> 04/03/22 14:19:38: Update data, 356 samples and 758 features.
+#> 04/03/22 20:10:12: Run QC pipeline.
+#> 04/03/22 20:10:12: Filter data with a constant column, removed 37 features. 
+#> 04/03/22 20:10:12: Update data, 356 samples and 758 features. 
+#> 04/03/22 20:10:13: Filter data with a missing rate >= 0.5, removed 176 features. 
+#> 04/03/22 20:10:13: Update data, 356 samples and 758 features.
 ```
 
 </details>
@@ -881,15 +887,15 @@ df_urine_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 14:19:37: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 14:19:37: Initiate data: 359 samples and 891 features.
-#> 04/03/22 14:19:37: Update data, action: change_featureID, 359 samples and 891 features. 
+#> 04/03/22 20:10:12: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 20:10:12: Initiate data: 359 samples and 891 features.
+#> 04/03/22 20:10:12: Update data, action: change_featureID, 359 samples and 891 features. 
 #> 
-#> 04/03/22 14:19:38: Run QC pipeline.
-#> 04/03/22 14:19:38: Filter data with a constant column, removed 28 features. 
-#> 04/03/22 14:19:38: Update data, 359 samples and 891 features. 
-#> 04/03/22 14:19:38: Filter data with a missing rate >= 0.5, removed 77 features. 
-#> 04/03/22 14:19:38: Update data, 359 samples and 891 features.
+#> 04/03/22 20:10:13: Run QC pipeline.
+#> 04/03/22 20:10:13: Filter data with a constant column, removed 28 features. 
+#> 04/03/22 20:10:13: Update data, 359 samples and 891 features. 
+#> 04/03/22 20:10:13: Filter data with a missing rate >= 0.5, removed 77 features. 
+#> 04/03/22 20:10:13: Update data, 359 samples and 891 features.
 ```
 
 </details>
@@ -1017,15 +1023,15 @@ df_saliva_QC
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 14:19:37: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 14:19:37: Initiate data: 321 samples and 602 features.
-#> 04/03/22 14:19:37: Update data, action: change_featureID, 321 samples and 602 features. 
+#> 04/03/22 20:10:12: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 20:10:12: Initiate data: 321 samples and 602 features.
+#> 04/03/22 20:10:12: Update data, action: change_featureID, 321 samples and 602 features. 
 #> 
-#> 04/03/22 14:19:38: Run QC pipeline.
-#> 04/03/22 14:19:38: Filter data with a constant column, removed 35 features. 
-#> 04/03/22 14:19:38: Update data, 321 samples and 602 features. 
-#> 04/03/22 14:19:38: Filter data with a missing rate >= 0.5, removed 203 features. 
-#> 04/03/22 14:19:38: Update data, 321 samples and 602 features.
+#> 04/03/22 20:10:13: Run QC pipeline.
+#> 04/03/22 20:10:13: Filter data with a constant column, removed 35 features. 
+#> 04/03/22 20:10:13: Update data, 321 samples and 602 features. 
+#> 04/03/22 20:10:14: Filter data with a missing rate >= 0.5, removed 203 features. 
+#> 04/03/22 20:10:14: Update data, 321 samples and 602 features.
 ```
 
 </details>
@@ -1170,18 +1176,18 @@ df_plasma_scale
 #> list()
 #> 
 #> ***  @logs  ***
-#> 04/03/22 14:19:36: Import data from: /n/home00/xikun/R/ifxrstudio/RELEASE_3_13/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#> 04/03/22 14:19:36: Initiate data: 356 samples and 758 features.
-#> 04/03/22 14:19:36: Update data, action: change_featureID, 356 samples and 758 features. 
+#> 04/03/22 20:10:11: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#> 04/03/22 20:10:11: Initiate data: 356 samples and 758 features.
+#> 04/03/22 20:10:11: Update data, action: change_featureID, 356 samples and 758 features. 
 #> 
-#> 04/03/22 14:19:37: Run QC pipeline.
-#> 04/03/22 14:19:37: Filter data with a constant column, removed 37 features. 
-#> 04/03/22 14:19:37: Update data, 356 samples and 758 features. 
-#> 04/03/22 14:19:38: Filter data with a missing rate >= 0.5, removed 176 features. 
-#> 04/03/22 14:19:38: Update data, 356 samples and 758 features. 
-#> 04/03/22 14:19:39: Impute data using `half-min` method. 
-#> 04/03/22 14:19:39: Transformation using `log` method. 
-#> 04/03/22 14:19:39: Transformation using `scale` method.
+#> 04/03/22 20:10:12: Run QC pipeline.
+#> 04/03/22 20:10:12: Filter data with a constant column, removed 37 features. 
+#> 04/03/22 20:10:12: Update data, 356 samples and 758 features. 
+#> 04/03/22 20:10:13: Filter data with a missing rate >= 0.5, removed 176 features. 
+#> 04/03/22 20:10:13: Update data, 356 samples and 758 features. 
+#> 04/03/22 20:10:14: Impute data using `half-min` method. 
+#> 04/03/22 20:10:14: Transformation using `log` method. 
+#> 04/03/22 20:10:14: Transformation using `scale` method.
 ```
 
 </details>
@@ -1199,7 +1205,7 @@ plot_Metabolite(df_plasma_QC, plot = "boxplot", x = "T2D", color ="ETHNICITY", s
 
 ``` r
 # select three metabolites
-plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot",  feature_name = c("M43027",  "M11953", "M38002"))
+plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot", feature_name = c("M43027",  "M11953", "M38002"))
 ```
 
 <img src="man/figures/README-unnamed-chunk-19-1.png" width="100%" />
@@ -1208,7 +1214,7 @@ plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot",  feature_name = c("M4
 
 ``` r
 # comparisons between groups using `ggbetweenstats`
-plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = c("M43027",  "M11953", "M38002"))
+plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = c("M43027",  "M11953"))
 ```
 
 <img src="man/figures/README-unnamed-chunk-20-1.png" width="100%" />
@@ -1263,6 +1269,59 @@ plot_tsne(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 
 <img src="man/figures/README-unnamed-chunk-23-3.png" width="100%" />
 
+## Correlation
+
+``` r
+# pairwise correlation of metabolites between two different fluids
+
+# plasma vs urine
+dd <- correlation(df_plasma_QC, df_urine_QC)
+#> Identify  356  samples in data A, and  359  samples in data B, with  346  overlap samples.
+#> Identify  545  features in data A, and  786  features in data B, with  248  overlap features.
+dd <- merge(dd, df_plasma_QC@featureData, by.x = "term", by.y = "featureID")
+
+p1 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
+  geom_boxplot() +
+  geom_jitter( size=0.4, alpha=0.9) +
+  scale_fill_manual(values = RColorBrewer::brewer.pal(9, "Set1")) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))+
+  labs(title = "plasma vs urine")
+
+
+# plasma vs saliva
+dd <- correlation(df_plasma_QC, df_saliva_QC)
+#> Identify  356  samples in data A, and  321  samples in data B, with  319  overlap samples.
+#> Identify  545  features in data A, and  364  features in data B, with  137  overlap features.
+dd <- merge(dd, df_plasma_QC@featureData, by.x = "term", by.y = "featureID")
+
+p2 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
+  geom_boxplot() +
+  geom_jitter(size=0.4, alpha=0.9) +
+  scale_fill_manual(values = RColorBrewer::brewer.pal(9, "Set1")) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs(title = "plasma vs urine")
+
+
+# urine vs saliva
+dd <- correlation(df_urine_QC, df_saliva_QC)
+#> Identify  359  samples in data A, and  321  samples in data B, with  312  overlap samples.
+#> Identify  786  features in data A, and  364  features in data B, with  155  overlap features.
+dd <- merge(dd, df_urine_QC@featureData, by.x = "term", by.y = "featureID")
+
+p3 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
+  geom_boxplot() +
+  geom_jitter(size=0.4, alpha=0.9) +
+   scale_fill_manual(values = RColorBrewer::brewer.pal(9, "Set1")) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs(title = "urine vs saliva")
+
+
+p <- cowplot::plot_grid(p1, p2, p3, nrow = 3)
+p
+```
+
+<img src="man/figures/README-unnamed-chunk-24-1.png" width="100%" />
+
 ## Association analysis 1: linear regression
 
 Association analysis between metabolites and interested outcomes was
@@ -1300,7 +1359,7 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 ```
 
-<img src="man/figures/README-unnamed-chunk-25-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-26-1.png" width="100%" />
 
 ## Association analysis 2: logistic regression
 
@@ -1313,7 +1372,6 @@ fit_glm <- regression(object = df_plasma_scale, phenoData = NULL, model = "logis
 #> 
 #> Run `logistic` model for 545 features: 
 #> T2D ~ AGE + GENDER + ETHNICITY + `feature`
-
 
 head(fit_glm)
 #>      term    estimate std.error   statistic    p.value   n outcome p.value.adj
@@ -1333,7 +1391,7 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, label = "BIOCHEMICAL")
 ```
 
-<img src="man/figures/README-unnamed-chunk-27-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-28-1.png" width="100%" />
 
 ## Association analysis 3: multiple outcomes, using model = “auto”
 
@@ -1353,7 +1411,6 @@ fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "auto", ou
 #> Run `logistic` model for 545 features: 
 #> T2D ~ AGE + GENDER + ETHNICITY + `feature`
 
-
 head(fit)
 #>      term     estimate std.error   statistic   p.value   n outcome p.value.adj
 #> 1: M43027 -0.277575167 0.2909921 -0.95389246 0.3407983 356     BMI           1
@@ -1371,7 +1428,7 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = "outcome", label = "BIOCHEMICAL")
 ```
 
-<img src="man/figures/README-unnamed-chunk-29-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-30-1.png" width="100%" />
 
 ## Association analysis 4: extension to other regression models
 
@@ -1404,34 +1461,25 @@ fit_glm.nb <- function(data = NULL, formula = NULL, keep = NULL) {
 
 
 # the outcome 'toy_y' was only created to demonstrate the usage to extend regression models
-dd <- sampleData(df_plasma_scale) 
-dd[, toy_y := round(BMI, 0)]
-sampleData(df_plasma_scale)  <- dd
+
+sampleData(df_plasma_scale)[, toy_y := round(BMI, 0)]
+
+# equivalent to:
+if(0) {
+  dd <- sampleData(df_plasma_scale) 
+  dd[, toy_y := round(BMI, 0)]
+  sampleData(df_plasma_scale)  <- dd
+}
 
 fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "glm.nb", outcome = "toy_y",
-                         covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
+                  covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY", 
+                  feature_name = df_plasma_scale@featureData$featureID[1:50])
 #> Regression for 1 outcomes. 
 #> 
 #> Build formula using covars and outcomes. 
 #> 
-#> Run `glm.nb` model for 545 features: 
+#> Run `glm.nb` model for 50 features: 
 #> toy_y ~ AGE + GENDER + ETHNICITY + `feature`
-
-head(fit)
-#>      term      estimate   std.error   statistic   p.value   n outcome
-#> 1: M43027 -0.0107323856 0.009711869 -1.10507927 0.2691252 356   toy_y
-#> 2: M11953  0.0105842093 0.009977191  1.06084061 0.2887623 356   toy_y
-#> 3: M38002  0.0035035819 0.009878395  0.35467116 0.7228360 356   toy_y
-#> 4: M34404  0.0164862664 0.010605935  1.55443780 0.1200800 356   toy_y
-#> 5: M35963  0.0006788836 0.009853266  0.06889935 0.9450697 356   toy_y
-#> 6: M35728  0.0094055372 0.009975074  0.94290399 0.3457300 356   toy_y
-#>    p.value.adj
-#> 1:           1
-#> 2:           1
-#> 3:           1
-#> 4:           1
-#> 5:           1
-#> 6:           1
 ```
 
 ``` r
@@ -1440,7 +1488,7 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 ```
 
-<img src="man/figures/README-unnamed-chunk-31-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-32-1.png" width="100%" />
 
 <details>
 <summary>
@@ -1450,61 +1498,58 @@ plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 ``` r
 sessionInfo()
 #> R version 4.1.0 (2021-05-18)
-#> Platform: x86_64-pc-linux-gnu (64-bit)
-#> Running under: Ubuntu 20.04.2 LTS
+#> Platform: x86_64-apple-darwin17.0 (64-bit)
+#> Running under: macOS Big Sur 10.16
 #> 
 #> Matrix products: default
-#> BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.8.so
+#> BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.dylib
+#> LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
 #> 
 #> locale:
-#>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-#>  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-#>  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=C             
-#>  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-#>  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-#> [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+#> [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 #> 
 #> attached base packages:
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] MASS_7.3-54         metabolomicsR_0.1.0 ggplot2_3.3.5      
-#> [4] stringr_1.4.0       data.table_1.14.0  
+#> [1] MASS_7.3-55         data.table_1.14.2   cowplot_1.1.1      
+#> [4] ggplot2_3.3.5       metabolomicsR_0.1.0
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] insight_0.16.0         doParallel_1.0.16      RColorBrewer_1.1-2    
-#>  [4] backports_1.2.1        tools_4.1.0            utf8_1.2.1            
-#>  [7] R6_2.5.0               statsExpressions_1.3.0 DBI_1.1.1             
-#> [10] colorspace_2.0-2       withr_2.4.2            tidyselect_1.1.1      
-#> [13] compiler_4.1.0         progressr_0.8.0        performance_0.8.0     
-#> [16] prismatic_1.1.0        labeling_0.4.2         bayestestR_0.11.5     
-#> [19] scales_1.1.1           mvtnorm_1.1-2          mc2d_0.1-21           
-#> [22] pbapply_1.4-3          askpass_1.1            digest_0.6.27         
-#> [25] rmarkdown_2.9          M3C_1.9.5              WRS2_1.1-3            
-#> [28] pkgconfig_2.0.3        htmltools_0.5.1.1      parallelly_1.26.0     
-#> [31] umap_0.2.7.0           highr_0.9              rlang_0.4.11          
-#> [34] readxl_1.3.1           farver_2.1.0           generics_0.1.0        
-#> [37] jsonlite_1.7.2         gtools_3.9.2           dplyr_1.0.7           
-#> [40] magrittr_2.0.1         parameters_0.16.0      patchwork_1.1.1       
-#> [43] Matrix_1.3-4           Rcpp_1.0.6             munsell_0.5.0         
-#> [46] fansi_0.5.0            reticulate_1.20        lifecycle_1.0.0       
-#> [49] stringi_1.6.2          yaml_2.2.1             Rtsne_0.15            
-#> [52] plyr_1.8.6             matrixcalc_1.0-4       grid_4.1.0            
-#> [55] paletteer_1.4.0        listenv_0.8.0          parallel_4.1.0        
-#> [58] ggrepel_0.9.1          crayon_1.4.1           doSNOW_1.0.19         
-#> [61] lattice_0.20-44        zeallot_0.1.0          knitr_1.33            
-#> [64] pillar_1.6.1           boot_1.3-28            effectsize_0.6.0.1    
-#> [67] corpcor_1.6.9          reshape2_1.4.4         codetools_0.2-18      
-#> [70] glue_1.4.2             evaluate_0.14          vctrs_0.3.8           
-#> [73] png_0.1-7              foreach_1.5.1          MatrixModels_0.5-0    
-#> [76] cellranger_1.1.0       gtable_0.3.0           openssl_1.4.4         
-#> [79] purrr_0.3.4            BayesFactor_0.9.12-4.3 tidyr_1.1.3           
-#> [82] rematch2_2.1.2         reshape_0.8.8          future_1.21.0         
-#> [85] assertthat_0.2.1       datawizard_0.2.3       xfun_0.23             
-#> [88] broom_0.7.8            correlation_0.8.0      RSpectra_0.16-0       
-#> [91] coda_0.19-4            tibble_3.1.2           snow_0.4-3            
-#> [94] iterators_1.0.13       ggstatsplot_0.9.1      cluster_2.1.2         
-#> [97] globals_0.14.0         ellipsis_0.3.2
+#>   [1] insight_0.16.0         doParallel_1.0.17      RColorBrewer_1.1-2    
+#>   [4] backports_1.4.1        tools_4.1.0            utf8_1.2.2            
+#>   [7] R6_2.5.1               statsExpressions_1.3.0 DBI_1.1.2             
+#>  [10] colorspace_2.0-3       withr_2.5.0            tidyselect_1.1.2      
+#>  [13] compiler_4.1.0         progressr_0.10.0       performance_0.8.0     
+#>  [16] cli_3.2.0              prismatic_1.1.0        labeling_0.4.2        
+#>  [19] bayestestR_0.11.5      scales_1.1.1           mvtnorm_1.1-3         
+#>  [22] mc2d_0.1-21            pbapply_1.5-0          askpass_1.1           
+#>  [25] stringr_1.4.0          digest_0.6.29          rmarkdown_2.12        
+#>  [28] M3C_1.14.0             WRS2_1.1-3             pkgconfig_2.0.3       
+#>  [31] htmltools_0.5.2        parallelly_1.30.0      umap_0.2.7.0          
+#>  [34] fastmap_1.1.0          highr_0.9              rlang_1.0.2           
+#>  [37] readxl_1.3.1           rstudioapi_0.13        farver_2.1.0          
+#>  [40] generics_0.1.2         jsonlite_1.8.0         gtools_3.9.2          
+#>  [43] dplyr_1.0.8            magrittr_2.0.2         parameters_0.16.0     
+#>  [46] patchwork_1.1.1        Matrix_1.4-0           Rcpp_1.0.8            
+#>  [49] munsell_0.5.0          fansi_1.0.2            reticulate_1.24       
+#>  [52] lifecycle_1.0.1        stringi_1.7.6          yaml_2.3.5            
+#>  [55] Rtsne_0.15             plyr_1.8.6             matrixcalc_1.0-5      
+#>  [58] grid_4.1.0             paletteer_1.4.0        listenv_0.8.0         
+#>  [61] parallel_4.1.0         ggrepel_0.9.1          crayon_1.5.0          
+#>  [64] doSNOW_1.0.20          lattice_0.20-45        zeallot_0.1.0         
+#>  [67] knitr_1.37             pillar_1.7.0           boot_1.3-28           
+#>  [70] corpcor_1.6.10         effectsize_0.6.0.1     reshape2_1.4.4        
+#>  [73] codetools_0.2-18       glue_1.6.2             evaluate_0.15         
+#>  [76] vctrs_0.3.8            png_0.1-7              foreach_1.5.2         
+#>  [79] MatrixModels_0.5-0     cellranger_1.1.0       gtable_0.3.0          
+#>  [82] openssl_2.0.0          purrr_0.3.4            BayesFactor_0.9.12-4.3
+#>  [85] tidyr_1.2.0            future_1.24.0          rematch2_2.1.2        
+#>  [88] reshape_0.8.8          assertthat_0.2.1       datawizard_0.3.0      
+#>  [91] xfun_0.29              broom_0.7.12           correlation_0.8.0     
+#>  [94] RSpectra_0.16-0        coda_0.19-4            tibble_3.1.6          
+#>  [97] snow_0.4-4             iterators_1.0.14       ggstatsplot_0.9.1     
+#> [100] cluster_2.1.2          globals_0.14.0         ellipsis_0.3.2
 ```
 
 </details>

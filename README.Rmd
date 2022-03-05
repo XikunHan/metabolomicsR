@@ -9,8 +9,6 @@ output:
 
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-
-
 knitr::opts_chunk$set(
   collapse = TRUE,
   dpi = 300, ## change to 300 once on CRAN
@@ -21,8 +19,6 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   time_it = TRUE
 )
-
-library("metabolomicsR")
 
 ```
 
@@ -55,6 +51,12 @@ In the “assayData”, the first column is the sample IDs to match with “samp
 
 
 ```{r}
+
+library(metabolomicsR)
+library(ggplot2)
+library(cowplot)
+library(data.table)
+
 # Load the dataset
 
 file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
@@ -100,6 +102,7 @@ df_urine <- load_excel(path = file_path,
                         sampleID = "QMDiab-ID",
                         featureID = "BIOCHEMICAL"
                         )
+
 df_urine <- update_Metabolite(df_urine, dataset = "COMP_IDstr", action = "change_featureID")
 ```
 
@@ -165,7 +168,6 @@ df_urine_QC
 
 
 ```{r}
-
 df_saliva_QC <- QC_pipeline(df_saliva, impute_method = NULL)
 ```
 
@@ -185,9 +187,6 @@ Transformation of metabolites can alter the distribution of data and is an essen
 df_plasma_QC <- impute(df_plasma_QC, method = "half-min")
 df_plasma_scale <-  transformation(df_plasma_QC, method = "log")
 df_plasma_scale <-  transformation(df_plasma_scale, method = "scale")
-
-
-
 ```
 
 
@@ -211,15 +210,14 @@ plot_Metabolite(df_plasma_QC, plot = "boxplot", x = "T2D", color ="ETHNICITY", s
 
 ```{r, fig.width = 12, fig.height = 6}
 # select three metabolites
-plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot",  feature_name = c("M43027",  "M11953", "M38002"))
+plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot", feature_name = c("M43027",  "M11953", "M38002"))
 ```
-
 
 ## Visualization: comparisons between groups
 
 ```{r, fig.width = 12, fig.height = 7}
 # comparisons between groups using `ggbetweenstats`
-plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = c("M43027",  "M11953", "M38002"))
+plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = c("M43027",  "M11953"))
 
 ```
 
@@ -246,6 +244,7 @@ plot_Metabolite(df_plasma_scale, plot = "histogram", color = "ETHNICITY")
 
 Dimensional reduction strategies on metabolites data can be used to detect batch effects, sample outliers, and real biological subgroups. We included principal components analysis (PCA), manifold approximation and projection (UMAP), and t-distributed stochastic neighbor embedding (tSNE) methods. Figures will be displayed in ggplot2 style.
 ```{r}
+
 df_plasma_PCA <- run_PCA(df_plasma_QC)
 
 plot_PCA(df_plasma_PCA, color ="ETHNICITY", shape = "T2D")
@@ -255,6 +254,55 @@ plot_UMAP(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 plot_tsne(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 
 ```
+
+
+
+## Correlation
+```{r, fig.width = 6, fig.height = 15}
+
+# pairwise correlation of metabolites between two different fluids
+
+# plasma vs urine
+dd <- correlation(df_plasma_QC, df_urine_QC)
+dd <- merge(dd, df_plasma_QC@featureData, by.x = "term", by.y = "featureID")
+
+p1 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
+  geom_boxplot() +
+  geom_jitter( size=0.4, alpha=0.9) +
+  scale_fill_manual(values = RColorBrewer::brewer.pal(9, "Set1")) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))+
+  labs(title = "plasma vs urine")
+
+
+# plasma vs saliva
+dd <- correlation(df_plasma_QC, df_saliva_QC)
+dd <- merge(dd, df_plasma_QC@featureData, by.x = "term", by.y = "featureID")
+
+p2 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
+  geom_boxplot() +
+  geom_jitter(size=0.4, alpha=0.9) +
+  scale_fill_manual(values = RColorBrewer::brewer.pal(9, "Set1")) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs(title = "plasma vs urine")
+
+
+# urine vs saliva
+dd <- correlation(df_urine_QC, df_saliva_QC)
+dd <- merge(dd, df_urine_QC@featureData, by.x = "term", by.y = "featureID")
+
+p3 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
+  geom_boxplot() +
+  geom_jitter(size=0.4, alpha=0.9) +
+   scale_fill_manual(values = RColorBrewer::brewer.pal(9, "Set1")) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs(title = "urine vs saliva")
+
+
+p <- cowplot::plot_grid(p1, p2, p3, nrow = 3)
+p
+
+```
+
 
 ## Association analysis 1: linear regression
 Association analysis between metabolites and interested outcomes was implemented in the “regression” function, supporting general linear regression, logistic regression, poisson regression, proportional hazards regression model, linear mixed-effects model, and logistic linear mixed-effects model, with or without covariates. All the regression models can be run for selected metabolites or all metabolites in a single job with the support of parallel computing.
@@ -287,15 +335,12 @@ plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 fit_glm <- regression(object = df_plasma_scale, phenoData = NULL, model = "logistic", outcome = "T2D",
                          covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
 
-
 head(fit_glm)
-
 ```
 
 
 
 ```{r}
-
 dd <- merge(fit_glm, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
 
 dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
@@ -314,9 +359,7 @@ plot_volcano(dd, label = "BIOCHEMICAL")
 fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "auto", outcome = c("BMI", "T2D"),
                          covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
 
-
 head(fit)
-
 ```
 
 
@@ -361,14 +404,19 @@ fit_glm.nb <- function(data = NULL, formula = NULL, keep = NULL) {
 
 
 # the outcome 'toy_y' was only created to demonstrate the usage to extend regression models
-dd <- sampleData(df_plasma_scale) 
-dd[, toy_y := round(BMI, 0)]
-sampleData(df_plasma_scale)  <- dd
+
+sampleData(df_plasma_scale)[, toy_y := round(BMI, 0)]
+
+# equivalent to:
+if(0) {
+  dd <- sampleData(df_plasma_scale) 
+  dd[, toy_y := round(BMI, 0)]
+  sampleData(df_plasma_scale)  <- dd
+}
 
 fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "glm.nb", outcome = "toy_y",
-                         covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
-
-head(fit)
+                  covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY", 
+                  feature_name = df_plasma_scale@featureData$featureID[1:50])
 
 ```
 

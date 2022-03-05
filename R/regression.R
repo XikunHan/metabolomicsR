@@ -99,10 +99,6 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
 
   df <- merge(phenoData, object@assayData, by = object@sampleID)
 
-
-  # model = c("lm", "logistic", "cox", "lme", "glmer")
-  # model <- match.arg(model)
-
   # check model == "auto"
 
   if(model == "auto") {
@@ -134,8 +130,6 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
     cat(paste0("\nRun `", model, "` model for ", length(x_list), " features: \n"))
     cat(v_formula, "+ `feature` \n")
   }
-
-
   if(ncpus > 1) {
     future::plan(future::multiprocess, workers = ncpus)
   }
@@ -146,10 +140,7 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
   } else {
       pbapply::pblapply
     }
-
-
   v_ids <- 1L:length(x_list)
-
   # progressr::handlers(global = TRUE)
   p <- progressr::progressor(along = v_ids)
 
@@ -163,20 +154,16 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
         do.call(fit_model, args = list(data = df, formula = v_formula_i, keep = v_i, ...)),
         error = function(e) {
           paste0("Failed to fit model: ", e)
+          list()
         })
     }
   )
-
   if(all(is.na(fit_res))) return(NA)
-
   fit_res <- rbindlist(fit_res, fill=TRUE)
   fit_res$outcome <- outcome
   fit_res$p.value.adj <- stats::p.adjust(fit_res$p.value, method = p.adjust.method)
   return(fit_res)
 }
-
-
-
 
 
 

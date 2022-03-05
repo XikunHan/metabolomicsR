@@ -34,10 +34,8 @@ load_excel <- function(
   # as.numeric
   df_data[, (setdiff(names(df_data), sampleID)) := lapply(.SD, as.numeric) , .SDcols= setdiff(names(df_data), sampleID)]
 
-
   df_feature <- setDT(readxl::read_excel(path, sheet = feature_sheet))
   df_sample <- setDT(readxl::read_excel(path, sheet = sample_sheet))
-
 
   logs <- paste0(format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Import data from: ", path, " .\n")
 

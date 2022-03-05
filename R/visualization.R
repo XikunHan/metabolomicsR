@@ -176,7 +176,7 @@ plot_injection_order <- function(object, color = "NEG", shape = "NEG", size = 0.
 #' p
 #'}
 #'
-plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", feature_name = NULL, color = "NEG", shape = "NEG", fill = "NEG",random_select = 16, size = 0.6, n_row = 1, n_col = 1, ylab = "featureID", height = 10, width = 10, save_to_file = NULL) {
+plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", feature_name = NULL, color = "NEG", shape = "NEG", fill = "NEG", random_select = 16, size = 0.6, n_row = 1, n_col = 1, ylab = "featureID", height = 10, width = 10, save_to_file = NULL) {
 
   if(is.null(feature_name)) {
     df_select <- object@assayData[, c(1, sample(2:NCOL(object@assayData), random_select, replace = FALSE)), with = FALSE]
@@ -195,10 +195,11 @@ plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", feature_name = 
   if( plot == "boxplot") {
     if(! color %in% names(df)) color <- x
     if(! shape %in% names(df)) shape <- x
+    
     df[, (color) := factor(get(color))]
     df[, (shape) := factor(get(shape))]
+    
     p <- ggplot(data = df, aes_string(x = x, y = "value", color = df[, get(color)])) +
-      # geom_violin() +
       geom_boxplot() +
       facet_wrap(~variable, scales = "free_y") +
       scale_color_manual(name = color, values = RColorBrewer::brewer.pal(9, "Set1")) +
@@ -225,8 +226,6 @@ plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", feature_name = 
       facet_wrap(~variable, scales = "free_y") +
       scale_color_manual(name = color, values = RColorBrewer::brewer.pal(8, "Dark2")) +
       scale_fill_manual(name = fill, values = RColorBrewer::brewer.pal(8, "Dark2")) +
-      # scale_fill_viridis(discrete=TRUE) +
-      # scale_color_viridis(discrete=TRUE) +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
     if(!is.null(save_to_file)) {
       ggsave(save_to_file, p, height = height, width = width)

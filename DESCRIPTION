@@ -36,6 +36,6 @@ Suggests: ggthemes,
           genuMet,
           ggstatsplot,
           cowplot
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 LazyData: true
 VignetteBuilder: knitr
