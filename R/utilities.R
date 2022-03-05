@@ -1,6 +1,6 @@
 #' @import data.table
 #' @import ggplot2
-#' @importFrom stats median qnorm sd na.omit cor.test complete.cases as.formula binomial predict
+#' @importFrom stats median qnorm sd na.omit cor.test complete.cases as.formula binomial predict glm
 #' @importFrom methods new is show
 #' @importFrom utils head str
 #'

@@ -21,7 +21,7 @@
 #'
 regression <- function(object, phenoData = NULL, model = NULL, outcome = NULL, covars = NULL, factors = NULL, feature_name = NULL, time = NULL, verbose = TRUE, ncpus = 1, p.adjust.method = "bonferroni", ...) {
 
-  cat(paste0("Regression for ", length(outcome) ," outcomes. \n\n"))
+  cat(paste0("Regression for ", length(outcome) ," outcome(s). \n\n"))
   res_m <- NULL
   for(i in seq_along(outcome)) {
     v_i <- outcome[i]

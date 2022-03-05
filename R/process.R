@@ -1169,10 +1169,12 @@ LOESS_norm <- function(object, feature_platform = "PLATFORM" , QC_ID_pattern = "
 #' d <- impute(object)
 #' }
 #'
-impute.Metabolite <- function(object, method = "half-min") {
+impute.Metabolite <- function(object, method = c('half-min', "median", "mean", "zero", "kNN")) {
 
-  if(!method %in% c('half-min', "median", "mean", "zero")) {
-    stop(paste0(paste0(c('half-min', "median", "mean", "zero"), collapse = ", "), " are currently supported."), call. = FALSE)
+  method <- match.arg(method)
+  
+  if(method == "kNN") {
+    return(impute_kNN(object))
   }
 
   object@assayData <- cbind(object@assayData[, 1],
@@ -1182,12 +1184,11 @@ impute.Metabolite <- function(object, method = "half-min") {
                         format(Sys.time(), "%d/%m/%y %H:%M:%OS"),
                         ": Impute data using `",method, "` method. \n")
   return(object)
-
 }
-
 
 #' @rdname impute
 #' @export
+#' @note default method is used for a vector
 impute.default <- function(object, method = "half-min") {
   if(is.vector(object)) {
     x <- as.numeric(object)
@@ -1206,6 +1207,20 @@ impute.default <- function(object, method = "half-min") {
 }
 
 
+#' @rdname impute
+#' @export
+#' @note `impute_kNN`: Imputation using nearest neighbor averaging (kNN) method, the input is a Metabolite object, assayData was first transposed to row as metabolties and column as samples. 
+impute_kNN <- function(object) {
+  check_pkg("impute")
+  
+  x <- transpose(object@assayData, make.names = object@sampleID)
+  x <- impute::impute.knn(as.matrix(x))$data
+  x <- transpose(as.data.table(x), keep.names = object@sampleID)
+  
+  setnames(x, names(object@assayData))
+  object@assayData <- x
+  return(object)
+}
 
 ############### correlation #######################
 

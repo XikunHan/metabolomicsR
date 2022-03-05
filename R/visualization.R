@@ -333,3 +333,109 @@ plot_volcano <- function(fit, x = "estimate", y = "p.value", p.value_log10 = TRU
 }
 
 
+
+
+#' ROC
+#'
+#' Plot Receiver Operating Characteristic (ROC) curve for metabolites with or without covariates
+#' @param object A Metabolite object.
+#' @param y A column name for the disease (0, 1)
+#' @param x One variable name (if x is provided, model_a and model_b should be NULL or vice versa).  
+#' @param model_a Column names for model a (one or more covariates, as the first model).
+#' @param model_b Column names for model b (one or more covariates, as the second model).
+#' @param lab Title (eg. "BIOCHEMICAL"), default value is x.
+#' @export
+#' 
+
+plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b = NULL, lab = NULL) {
+  
+  df <- merge(object@sampleData, object@assayData, by = object@sampleID)
+  
+  if(length(x) == 0 ) {
+    stopifnot(!any(is.null(model_a), is.null(model_b)))
+  }
+  
+  # NULL is removed in c()
+  stopifnot(all(c(x, y,model_a, model_b) %in% names(df)))
+  
+  if(is.null(lab)) lab <- x[1]
+  
+  df <- df[, c(x, y,model_a, model_b), with = FALSE]
+  df <- df[complete.cases(df), ]
+  
+  df$y_magic <- df[, get(y)]
+  
+  check_pkg("pROC")
+  check_pkg("RColorBrewer")
+  
+  f_auc_ci <- function(formula = NULL, data = NULL) {
+    fit <- pROC::roc(formula = formula, data = data , ci = TRUE)
+    auc_ci <- as.numeric(fit$ci)
+    auc_ci <- paste0(sprintf("%1.2f",auc_ci[2]),
+                     " [",sprintf("%1.2f",auc_ci[1]),
+                     ", ",sprintf("%1.2f",auc_ci[3]),"]")
+    return(list(fit = fit, auc_ci = auc_ci))
+  }
+  
+  if(length(x) != 0) {
+    fit1 <- glm(as.formula(paste(y , " ~ ", paste0(x, collapse = " + "))), 
+                data = df,family = binomial())
+    df$model_A <- predict(fit1, type=c("response"))
+    auc_ci <- f_auc_ci(as.formula(paste(y , " ~ ", "model_A")), data = df)
+    
+    p <- ggplot(df, aes(d = y_magic, m = model_A)) + 
+      geom_roc(labels=FALSE, n.cuts = 0) +
+      geom_abline(intercept = 0, slope = 1,linetype=4) +
+      theme(legend.justification=c(0,0),
+            plot.title = element_text(hjust = 0.5),
+            legend.position=c(0.18,0.02),
+            legend.title = element_blank(),
+            legend.background = element_rect(fill=alpha("blue", 0)),
+            panel.background = element_blank(),
+            axis.line.x = element_line(colour = "black"),
+            axis.line.y = element_line(colour = "black"),
+            text=element_text(face="bold", size=12)) +
+      labs(x="1 - Specificity", y = "Sensitivity",title= lab) + 
+      annotate("text",x=0.2,y= 0.85, label = auc_ci$auc_ci,
+               parse = FALSE,colour = "red", size =5)
+    return(p)
+    
+  } else {
+    v_color <- RColorBrewer::brewer.pal(9,"Set1")[c(3,1)]
+    fit1 <- glm(as.formula(paste(y , " ~ ", paste0(model_a, collapse = " + "))), 
+                data = df,family = binomial())
+    df$model_A <- predict(fit1, type=c("response"))
+    
+    fit2 <- glm(as.formula(paste(y , " ~ ", paste0(model_b, collapse = " + "))), 
+                data =df,family = binomial())
+    df$model_B <- predict(fit2, type=c("response"))
+    
+    auc_ci1 <- f_auc_ci(as.formula(paste(y , " ~ ", "model_A")), data = df)
+    auc_ci2 <- f_auc_ci(as.formula(paste(y , " ~ ", "model_B")), data = df)
+    
+    fit_p.value <- pROC::roc.test(auc_ci1$fit, auc_ci2$fit)$p.value
+    df_roc <- melt_roc(df, y, c("model_A", "model_B"))
+    
+    p <- ggplot(df_roc, aes(d = D, m = M, color = name)) + 
+      geom_roc(labels=FALSE, n.cuts=0) +
+      scale_color_manual(values = v_color) +
+      geom_abline(intercept = 0, slope = 1,linetype=4) +
+      theme(legend.justification=c(0,0),
+            plot.title = element_text(hjust = 0.5),
+            legend.position=c(0.18,0.02),
+            legend.title = element_blank(),
+            legend.background = element_rect(fill=alpha("blue", 0)),
+            panel.background = element_blank(),
+            axis.line.x = element_line(colour = "black"),
+            axis.line.y = element_line(colour = "black"),
+            text=element_text(face="bold", size=12)) +
+      labs(x="1 - Specificity", y = "Sensitivity",title= lab) + 
+      annotate("text",x=0.6,y= 0.2, label = paste0("Model A: ", auc_ci1$auc_ci, "\n",
+                                                   "Model B: ", auc_ci2$auc_ci, "\n", 
+                                                   "(P-diff: ", sprintf("%1.3f",fit_p.value), ")\n"), 
+               parse = FALSE,colour = v_color[1], size =4) 
+    return(p)
+  }
+}
+
+

@@ -4,21 +4,29 @@
 \alias{impute}
 \alias{impute.Metabolite}
 \alias{impute.default}
+\alias{impute_kNN}
 \title{impute missing values}
 \usage{
 impute(object, method)
 
-\method{impute}{Metabolite}(object, method = "half-min")
+\method{impute}{Metabolite}(object, method = c("half-min", "median", "mean", "zero", "kNN"))
 
 \method{impute}{default}(object, method = "half-min")
+
+impute_kNN(object)
 }
 \arguments{
 \item{object}{An object, a vector, data.frame, data.table or Metabolite.}
 
-\item{method}{Imputation method, the default method is half the minimum value (`half-min`) of the metabolite. Currently support 'half-min', "median", "mean", "zero".}
+\item{method}{Imputation method, the default method is half the minimum value (`half-min`) of the metabolite. Currently support 'half-min', "median", "mean", "zero", "kNN".}
 }
 \description{
 impute missing values
+}
+\note{
+default method is used for a vector
+
+`impute_kNN`: Imputation using nearest neighbor averaging (kNN) method, the input is a Metabolite object, assayData was first transposed to row as metabolties and column as samples.
 }
 \examples{
 
@@ -27,4 +35,7 @@ impute missing values
 d <- impute(object)
 }
 
+}
+\references{
+Wei, R., Wang, J., Su, M. et al. Missing Value Imputation Approach for Mass Spectrometry-based Metabolomics Data. Sci Rep 8, 663 (2018). https://doi.org/10.1038/s41598-017-19120-0
 }

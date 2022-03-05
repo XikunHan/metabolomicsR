@@ -4,58 +4,51 @@ output:
      pandoc_args: --webtex=https://chart.apis.google.com/chart?cht=tx&chl= 
 ---
 
-  <!-- README.md is generated from README.Rmd. Please edit that file -->
-  
-
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  dpi = 300, ## change to 300 once on CRAN
+  dpi = 300, 
   warning = FALSE,
   message = FALSE,
   out.width = "100%",
-  comment = "#>",
+  comment = "#> ",
   fig.path = "man/figures/README-",
   time_it = TRUE
 )
 
 ```
 
-### `{metabolomicsR}` Tools to process, analyze, and visualize metabolomic data. 
+### `{metabolomicsR}` Tools to process, analyze, and visualize metabolomic data.
 
-`{metabolomicsR}` is a streamlined R package to preprocess, analyze, and visualize metabolomics data. We included broad utility functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression, metabolite annotation, enrichment analysis, and visualization of data and results. The `{metabolomicsR}` is designed to be a comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is versatile and is extensible to other various methods. Here, we demonstrate the step-by-step use of the main functions from this package. 
+`{metabolomicsR}` is a streamlined R package to preprocess, analyze, and visualize metabolomics data. We included broad utility functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression, metabolite annotation, enrichment analysis, and visualization of data and results. The `{metabolomicsR}` is designed to be a comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is versatile and is extensible to other various methods. Here, we demonstrate the step-by-step use of the main functions from this package.
 
-
-##### Seamless workflow to preprocess, analyze, and visualize metabolomics data in `{metabolomicsR}` <img src="inst/extdata/workflow.png" align="center" width="120%" height="180%" />
-
+##### Seamless workflow to preprocess, analyze, and visualize metabolomics data in `{metabolomicsR}` <img src="inst/extdata/workflow.png" align="center" width="120%" height="180%"/>
 
 ## Installation
 
-Type | Source | Command
----|---|---
-Development | [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/##active) | `remotes::install_github("XikunHan/metabolomicsR")`
-
+| Type        | Command                                             |
+|-------------|-----------------------------------------------------|
+| Development | `remotes::install_github("XikunHan/metabolomicsR")` |
 
 ## Data structure
 
-We first designed a “Metabolite” class based on the object-oriented programming system S4 in R. For a particular “Metabolite” data, it will include “assayData” (eg. peak area data or batch-normalized data, samples in rows and metabolites in columns), “featureData” (metabolite annotation), “sampleData” (sample annotation), “featureID”, “sampleID”, “logs” (log information of data analysis process), and “miscData” (other ancillary data). 
-
+We first designed a “Metabolite” class based on the object-oriented programming system S4 in R. For a particular “Metabolite” data, it will include “assayData” (eg. peak area data or batch-normalized data, samples in rows and metabolites in columns), “featureData” (metabolite annotation), “sampleData” (sample annotation), “featureID”, “sampleID”, “logs” (log information of data analysis process), and “miscData” (other ancillary data).
 
 ## Import data
 
 To demonstrate the package, we obtained the data from the Qatar Metabolomics Study on Diabetes, similar to the data format from non-targeted mass spectrometry by Metabolon. The dataset is also available via [figshare](https://doi.org/10.6084/m9.figshare.5904022).
 
-
-In the “assayData”, the first column is the sample IDs to match with “sampleData”, the other columns are metabolite IDs to match with “featureData”. 
-
+In the “assayData”, the first column is the sample IDs to match with “sampleData”, the other columns are metabolite IDs to match with “featureData”.
 
 ```{r}
 
 library(metabolomicsR)
+library(data.table)
 library(ggplot2)
 library(cowplot)
-library(data.table)
+library(plotROC)
 
 # Load the dataset
 
@@ -78,7 +71,6 @@ df_plasma
 ```
 </details>
 
-
 ```{r}
 # change the feature ID to the column `COMP_IDstr`
 df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "change_featureID")
@@ -91,7 +83,6 @@ df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "chan
 df_plasma
 ```
 </details>
-
 
 ```{r}
 # load urine metabolomic data
@@ -113,7 +104,6 @@ df_urine
 ```
 </details>
 
-
 ```{r}
 # load saliva metatabolomic data
 df_saliva <- load_excel(path = file_path,
@@ -127,7 +117,6 @@ df_saliva <- load_excel(path = file_path,
 df_saliva <- update_Metabolite(df_saliva, dataset = "COMP_IDstr", action = "change_featureID")
 ```
 
-
 <details>
 <summary>**click to show saliva data**</summary>
 ```{r}
@@ -135,13 +124,9 @@ df_saliva
 ```
 </details>
 
+## Quality control pipeline
 
-
-##  Quality control pipeline
-
-We provided a pipeline for metabolite and sample quality control (QC) procedures with a series of functions.
-In the QC pipeline, we included the following functions: remove metabolites or samples beyond a particular missing rate threshold (eg. 0.5), detect outliers (eg. +- 5 SD) and replace outliers with NA or winsorize outliers, and popular methods to impute missing values (eg. half of the minimum value). All the steps can be customized to implement in the “QC_pipeline” function or be used from the individual functions (eg. “filter_column_missing_rate”, “replace_outlier”, and “impute”).
-
+We provided a pipeline for metabolite and sample quality control (QC) procedures with a series of functions. In the QC pipeline, we included the following functions: remove metabolites or samples beyond a particular missing rate threshold (eg. 0.5), detect outliers (eg. +- 5 SD) and replace outliers with NA or winsorize outliers, and popular methods to impute missing values (eg. half of the minimum value). All the steps can be customized to implement in the “QC_pipeline” function or be used from the individual functions (eg. “filter_column_missing_rate”, “replace_outlier”, and “impute”).
 
 ```{r}
 df_plasma_QC <- QC_pipeline(df_plasma, impute_method = NULL)
@@ -154,7 +139,6 @@ df_plasma_QC
 ```
 </details>
 
-
 ```{r}
 df_urine_QC <- QC_pipeline(df_urine, impute_method = NULL)
 ```
@@ -165,7 +149,6 @@ df_urine_QC <- QC_pipeline(df_urine, impute_method = NULL)
 df_urine_QC
 ```
 </details>
-
 
 ```{r}
 df_saliva_QC <- QC_pipeline(df_saliva, impute_method = NULL)
@@ -178,17 +161,15 @@ df_saliva_QC
 ```
 </details>
 
-
-
 ## Transformation
 
 Transformation of metabolites can alter the distribution of data and is an essential step for the following statistical analysis. We provided the following transformation methods: log (natural logarithm), pareto scale, scale, and rank-based inverse normal transformation.
+
 ```{r}
 df_plasma_QC <- impute(df_plasma_QC, method = "half-min")
 df_plasma_scale <-  transformation(df_plasma_QC, method = "log")
 df_plasma_scale <-  transformation(df_plasma_scale, method = "scale")
 ```
-
 
 <details>
 <summary>**click to show plasma data after scaling**</summary>
@@ -197,11 +178,19 @@ df_plasma_scale
 ```
 </details>
 
+# normalization
 
+```{r}
+
+
+
+
+```
 
 ## Visualization: boxplot
 
-#####  before transformation
+##### before transformation
+
 ```{r,  fig.width = 12, fig.height = 7}
 # if no features were selected, randomly show 16 metabolites
 plot_Metabolite(df_plasma_QC, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
@@ -221,13 +210,12 @@ plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = 
 
 ```
 
+##### After transformation
 
-#####  After transformation
 ```{r, fig.width = 12, fig.height = 7}
 plot_Metabolite(df_plasma_scale, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
 
 ```
-
 
 ## Visualization: histogram
 
@@ -239,10 +227,10 @@ plot_Metabolite(df_plasma_scale, plot = "histogram", color = "ETHNICITY")
 
 ```
 
-
 ## Dimensional reduction
 
 Dimensional reduction strategies on metabolites data can be used to detect batch effects, sample outliers, and real biological subgroups. We included principal components analysis (PCA), manifold approximation and projection (UMAP), and t-distributed stochastic neighbor embedding (tSNE) methods. Figures will be displayed in ggplot2 style.
+
 ```{r}
 
 df_plasma_PCA <- run_PCA(df_plasma_QC)
@@ -255,27 +243,32 @@ plot_tsne(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 
 ```
 
-
-
 ## Correlation
-```{r, fig.width = 6, fig.height = 15}
+
+```{r, fig.width = 10, fig.height = 7}
 
 # pairwise correlation of metabolites between two different fluids
 
 # plasma vs urine
-dd <- correlation(df_plasma_QC, df_urine_QC)
+dd <- correlation(df_plasma_QC, df_urine_QC, method = "spearman")
 dd <- merge(dd, df_plasma_QC@featureData, by.x = "term", by.y = "featureID")
 
-p1 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
+p <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
   geom_boxplot() +
   geom_jitter( size=0.4, alpha=0.9) +
   scale_fill_manual(values = RColorBrewer::brewer.pal(9, "Set1")) +
   theme(axis.text.x = element_text(angle = 60, hjust = 1))+
   labs(title = "plasma vs urine")
 
+p
 
+```
+
+<details>
+<summary>**click to show plasma vs saliva & urine vs saliva**</summary>
+```{r, fig.width = 14, fig.height = 7}
 # plasma vs saliva
-dd <- correlation(df_plasma_QC, df_saliva_QC)
+dd <- correlation(df_plasma_QC, df_saliva_QC, method = "spearman")
 dd <- merge(dd, df_plasma_QC@featureData, by.x = "term", by.y = "featureID")
 
 p2 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
@@ -283,11 +276,11 @@ p2 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
   geom_jitter(size=0.4, alpha=0.9) +
   scale_fill_manual(values = RColorBrewer::brewer.pal(9, "Set1")) +
   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
-  labs(title = "plasma vs urine")
+  labs(title = "plasma vs saliva")
 
 
 # urine vs saliva
-dd <- correlation(df_urine_QC, df_saliva_QC)
+dd <- correlation(df_urine_QC, df_saliva_QC, method = "spearman")
 dd <- merge(dd, df_urine_QC@featureData, by.x = "term", by.y = "featureID")
 
 p3 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
@@ -298,13 +291,13 @@ p3 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
   labs(title = "urine vs saliva")
 
 
-p <- cowplot::plot_grid(p1, p2, p3, nrow = 3)
+p <- cowplot::plot_grid(p2, p3, nrow = 1)
 p
-
 ```
-
+</details>
 
 ## Association analysis 1: linear regression
+
 Association analysis between metabolites and interested outcomes was implemented in the “regression” function, supporting general linear regression, logistic regression, poisson regression, proportional hazards regression model, linear mixed-effects model, and logistic linear mixed-effects model, with or without covariates. All the regression models can be run for selected metabolites or all metabolites in a single job with the support of parallel computing.
 
 ```{r}
@@ -312,11 +305,7 @@ fit_lm <- regression(object = df_plasma_scale, phenoData = NULL, model = "lm", o
                           covars = c("AGE", "GENDER", "ETHNICITY"), factors = "ETHNICITY")
 
 head(fit_lm)
-
 ```
-
-
-
 
 ```{r}
 
@@ -326,7 +315,6 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 
 ```
-
 
 ## Association analysis 2: logistic regression
 
@@ -338,8 +326,6 @@ fit_glm <- regression(object = df_plasma_scale, phenoData = NULL, model = "logis
 head(fit_glm)
 ```
 
-
-
 ```{r}
 dd <- merge(fit_glm, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
 
@@ -349,34 +335,28 @@ plot_volcano(dd, label = "BIOCHEMICAL")
 
 ```
 
-
-
-
 ## Association analysis 3: multiple outcomes, using model = "auto"
 
 ```{r}
 
-fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "auto", outcome = c("BMI", "T2D"),
+fit2 <- regression(object = df_plasma_scale, phenoData = NULL, model = "auto", outcome = c("BMI", "T2D"),
                          covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
 
-head(fit)
+head(fit2)
 ```
-
 
 ```{r}
 
-dd <- merge(fit, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
+dd2 <- merge(fit2, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
 
-dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
-plot_volcano(dd, color = "outcome", label = "BIOCHEMICAL")
+dd2[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
+plot_volcano(dd2, color = "outcome", label = "BIOCHEMICAL")
 
 ```
 
-
 ## Association analysis 4: extension to other regression models
 
-We have provided various regression models in the `{metabolomicsR}` package. 
-Here we show how to extend the `regression` function to other regression models.
+We have provided various regression models in the `{metabolomicsR}` package. Here we show how to extend the `regression` function to other regression models.
 
 ```{r}
 
@@ -420,11 +400,30 @@ fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "glm.nb", 
 
 ```
 
-
 ```{r}
 dd <- merge(fit, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
 dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
+```
+
+## ROC
+
+```{r}
+
+# ROC for one variable, to add a wrapped for many metabolites separately
+plot_ROC(object = df_plasma_scale, y = "T2D", x = "M00527")
+plot_ROC(object = df_plasma_scale, y = "T2D", x = c("M00527", "BMI"))
+
+```
+
+## ROC 2: compare two models:
+
+```{r}
+
+plot_ROC(object = df_plasma_scale, y = "T2D", 
+         model_a = c("BMI", "AGE", "GENDER"), 
+         model_b = c("M00527", "BMI", "AGE", "GENDER"))
+
 ```
 
 

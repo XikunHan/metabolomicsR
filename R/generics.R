@@ -401,9 +401,11 @@ subset <- function(object, subset, select) {
 #' impute missing values
 #'
 #' @param object An object, a vector, data.frame, data.table or Metabolite.
-#' @param method Imputation method, the default method is half the minimum value (`half-min`) of the metabolite. Currently support 'half-min', "median", "mean", "zero".
+#' @param method Imputation method, the default method is half the minimum value (`half-min`) of the metabolite. Currently support 'half-min', "median", "mean", "zero", "kNN".
 #' @export
 #' @rdname impute
+#' @references Wei, R., Wang, J., Su, M. et al. Missing Value Imputation Approach for Mass Spectrometry-based Metabolomics Data. Sci Rep 8, 663 (2018). https://doi.org/10.1038/s41598-017-19120-0
+#' 
 #'
 impute <- function(object,  method) {
   UseMethod(generic = 'impute', object = object)

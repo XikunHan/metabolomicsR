@@ -14,7 +14,7 @@ Description: Tools to process, analyse, and visualize metabolomic data.
 License: GPL-2
 Encoding: UTF-8
 Depends: R (>= 3.4.1), methods
-Imports: ggplot2 (>= 2.0.0), data.table (>= 1.9.8), utils, stats
+Imports: ggplot2 (>= 2.0.0),data.table (>= 1.9.8), plotROC, utils, stats
 Suggests: ggthemes,
           knitr, 
           rmarkdown, 
@@ -22,7 +22,8 @@ Suggests: ggthemes,
           lme4, 
           nlme, 
           broom, 
-          reshape2, 
+          reshape2,
+          impute,
           M3C, 
           RColorBrewer, 
           readxl, 
@@ -35,7 +36,8 @@ Suggests: ggthemes,
           here,
           genuMet,
           ggstatsplot,
-          cowplot
+          cowplot,
+          pROC
 RoxygenNote: 7.1.2
 LazyData: true
 VignetteBuilder: knitr
