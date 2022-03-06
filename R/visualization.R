@@ -386,15 +386,15 @@ plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b 
     p <- ggplot(df, aes(d = y_magic, m = model_A)) + 
       geom_roc(labels=FALSE, n.cuts = 0) +
       geom_abline(intercept = 0, slope = 1,linetype=4) +
-      theme(legend.justification=c(0,0),
-            plot.title = element_text(hjust = 0.5),
-            legend.position=c(0.18,0.02),
-            legend.title = element_blank(),
-            legend.background = element_rect(fill=alpha("blue", 0)),
-            panel.background = element_blank(),
-            axis.line.x = element_line(colour = "black"),
-            axis.line.y = element_line(colour = "black"),
-            text=element_text(face="bold", size=12)) +
+      # theme(legend.justification=c(0,0),
+      #       plot.title = element_text(hjust = 0.5),
+      #       legend.position=c(0.18,0.02),
+      #       legend.title = element_blank(),
+      #       legend.background = element_rect(fill=alpha("blue", 0)),
+      #       panel.background = element_blank(),
+      #       axis.line.x = element_line(colour = "black"),
+      #       axis.line.y = element_line(colour = "black"),
+      #       text=element_text(face="bold", size=12)) +
       labs(x="1 - Specificity", y = "Sensitivity",title= lab) + 
       annotate("text",x=0.2,y= 0.85, label = auc_ci$auc_ci,
                parse = FALSE,colour = "red", size =5)
@@ -418,14 +418,14 @@ plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b 
     
     p <- ggplot(df_roc, aes(d = D, m = M, color = name)) + 
       geom_roc(labels=FALSE, n.cuts=0) +
+      style_roc() +
       scale_color_manual(values = v_color) +
       geom_abline(intercept = 0, slope = 1,linetype=4) +
       theme(legend.justification=c(0,0),
-            plot.title = element_text(hjust = 0.5),
             legend.position=c(0.18,0.02),
             legend.title = element_blank(),
             legend.background = element_rect(fill=alpha("blue", 0)),
-            panel.background = element_blank(),
+            # panel.background = element_blank(),
             axis.line.x = element_line(colour = "black"),
             axis.line.y = element_line(colour = "black"),
             text=element_text(face="bold", size=12)) +

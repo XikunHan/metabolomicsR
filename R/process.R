@@ -686,12 +686,8 @@ bridge <- function(object, conversion_factor_data = NULL, QC_ID_pattern = "MTRX"
 #'
 #'
 QCmatrix_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern = "MTRX", test = FALSE, verbose = TRUE) {
-
   stopifnot(inherits(object, "Metabolite"))
-
   OutputData <- copy(object@assayData)
-  OutputData
-
   InputData <- copy(object@assayData)
 
   # check platform column
@@ -728,10 +724,7 @@ QCmatrix_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern =
     cat(paste0("\n Number of QC samples n = ", n_QC_sample, "\n"))
   }
 
-
   v_n_col <- dim(object@assayData)[2]
-  v_n_col
-
   if(isTRUE(test)) {
     v_n_col <- 10
   } else if(test >=2 ) {
@@ -819,9 +812,7 @@ QCmatrix_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern =
 #'
 #'
 nearestQC_norm <- function(object, n_nearest_QCsample= 3, feature_platform = "PLATFORM", QC_ID_pattern = "MTRX", test = FALSE, verbose = TRUE) {
-
   stopifnot(inherits(object, "Metabolite"))
-
   OutputData <- copy(object@assayData)
   InputData <- copy(object@assayData)
 
@@ -939,13 +930,9 @@ nearestQC_norm <- function(object, n_nearest_QCsample= 3, feature_platform = "PL
 #'
 #'
 batch_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern = "MTRX", test = FALSE, verbose = TRUE) {
-
   stopifnot(inherits(object, "Metabolite"))
-
   OutputData <- copy(object@assayData)
-
   InputData <- copy(object@assayData)
-
   # check platform column
   if(! feature_platform %in% names(object@featureData)) {
     stop(paste0("`", feature_platform, "` column does no exist in @featureData"), call. = FALSE)
@@ -1027,12 +1014,14 @@ batch_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern = "M
 
 #' LOESS normalization
 #'
-#' Normalization data by fitting locally estimated scatterplot smoothing (LOESS) on QC samples in each batch. For each metabolite, the values (eg. raw peak area data) were divided by the median value of QC samples in that batch. QC samples and metabolite batches should be specified (see parameters below).
+#' Normalization data by machine learning modelling, eg. locally estimated scatterplot smoothing (LOESS) on QC samples in each batch. For each metabolite, the values (eg. raw peak area data) were divided by the median value of QC samples in that batch. QC samples and metabolite batches should be specified (see parameters below).
 #'
 #' @param object A Metabolite object. In the feature annotation slot `feature`, a platform column should be provided for metabolite measurement platform (eg. `PLATFORM`). The values in the `PLATFORM` column (eg. `Neg`, `Polar`, `Pos Early`, and `Pos Late`) are column names in the sample annotation `sample` to determine the batches of samples.
+#' @param method Modelling method for the normalization, currently support LOESS and KNN. 
 #' @param feature_platform The column name of feature platform for metabolite measurements (eg. `PLATFORM`).
 #' @param span default value 0.4
 #' @param degree default value 2
+#' @param k Number of neighbors in KNN modelling (default value 3)
 #' @param QC_ID_pattern A character pattern to determine QC samples. Default value: "MTRX".
 #' @param test test the function for the first 20 columns.
 #' @param verbose print log information.
@@ -1045,22 +1034,20 @@ batch_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern = "M
 #' @export
 #'
 #'
-LOESS_norm <- function(object, feature_platform = "PLATFORM" , QC_ID_pattern = "MTRX", span = 0.75, degree = 2, test = FALSE, verbose = TRUE) {
+modelling_norm <- function(object, method = c("LOESS", "KNN"), feature_platform = "PLATFORM" , QC_ID_pattern = "MTRX", span = 0.75, degree = 2, k = 3, test = FALSE, verbose = TRUE) {
 
   stopifnot(inherits(object, "Metabolite"))
-
+  
+  method <- match.arg(method)
+  
   OutputData <- copy(object@assayData)
-  OutputData
-
   InputData <- copy(object@assayData)
-
   # check platform column
   if(! feature_platform %in% names(object@featureData)) {
     stop(paste0("`", feature_platform, "` column does no exist in @featureData"), call. = FALSE)
   }
 
   platforms <- object@featureData[, get(feature_platform)]
-
   if(verbose) {
     cat("\nPlatform information in @featureData:\n")
     print(table(platforms))
@@ -1102,7 +1089,6 @@ LOESS_norm <- function(object, feature_platform = "PLATFORM" , QC_ID_pattern = "
 
   sample_IDs <- object@assayData[,get(object@sampleID)]
 
-
   list_norm_fail <- c()
 
   for(j in 2L:v_n_col) {
@@ -1123,34 +1109,53 @@ LOESS_norm <- function(object, feature_platform = "PLATFORM" , QC_ID_pattern = "
 
       QCIndex <- grep(QC_ID_pattern, sample_IDs)
       QCIndex <- QCIndex[QCIndex %in% Index_each]
-
-
-
-    fit <- tryCatch(
-      stats::loess(InputData_each[QCIndex] ~ QCIndex, span = span, degree = degree),
-      error = function(e) {
-        cat(paste0("Failed to fit model: ", e), "\n")
-      })
-
-    if(inherits(fit, "loess") && (!is.na(fit$enp))) {
-      yfit <- predict(fit, Index_each)
-      yfit <- ifelse(yfit <=0, NA, yfit)
-      set(OutputData, Index_each, j, InputData_each[Index_each]/yfit)
-    } else {
-      set(OutputData, Index_each, j, NA)
-      list_norm_fail <- c(list_norm_fail, v_metab)
+      
+      
+      if(method == "LOESS") {
+        fit <- tryCatch(
+          stats::loess(InputData_each[QCIndex] ~ QCIndex, span = span, degree = degree),
+          error = function(e) {
+            cat(paste0("Failed to fit model: ", e), "\n")
+          })
+        
+        if(inherits(fit, "loess") && (!is.na(fit$enp))) {
+          yfit <- predict(fit, Index_each)
+          yfit <- ifelse(yfit <=0, NA, yfit)
+          set(OutputData, Index_each, j, InputData_each[Index_each]/yfit)
+        } else {
+          set(OutputData, Index_each, j, NA)
+          list_norm_fail <- c(list_norm_fail, v_metab)
+        }
+        
+      } else if(method == "KNN") {
+        # missing values?
+        fit <- tryCatch(
+          FNN::knn.reg(train = matrix(QCIndex), test = matrix(Index_each), y = InputData_each[QCIndex], k = k),
+          error = function(e) {
+            cat(paste0("Failed to fit model: ", e), "\n")
+          })
+        
+        if(inherits(fit, "knnReg")) {
+          yfit <- fit$pred
+          yfit <- ifelse(yfit <=0, NA, yfit)
+          set(OutputData, Index_each, j, InputData_each[Index_each]/yfit)
+        } else {
+          set(OutputData, Index_each, j, NA)
+          list_norm_fail <- c(list_norm_fail, v_metab)
+        }
+      }
     }
-
-    }
-
   }
   close(con = pb)
   object@assayData <- OutputData
-  object@miscData[['list_norm_fail_LOESS']] <- list_norm_fail
-
-  object@logs <- paste0(object@logs, "\n",
-                        format(Sys.time(), "%d/%m/%y %H:%M:%OS"),
-                        ": LOESS normalization.\n")
+  
+  if(method == "LOESS") {
+    object@miscData[['list_norm_fail_LOESS']] <- list_norm_fail
+    object@logs <- paste0(object@logs, "\n", format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": LOESS normalization.\n")
+  } else {
+    object@miscData[['list_norm_fail_KNN']] <- list_norm_fail
+    object@logs <- paste0(object@logs, "\n", format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": KNN normalization.\n")
+  }
   return(object)
 }
 

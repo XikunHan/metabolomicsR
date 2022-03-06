@@ -145,6 +145,9 @@ setMethod("sampleData<-", "Metabolite", function(object, value) {
 #'
 setMethod("show", "Metabolite", function(object) {
   cat("An object of ", is(object), "\n")
+  
+  validObject(object)
+  
   cat("\n***  @assayData (first and last 10 columns [",NROW(object@assayData), " * ", NCOL(object@assayData), "])  ***\n")
 
   # first 10 and last 10
@@ -410,7 +413,6 @@ subset <- function(object, subset, select) {
 impute <- function(object,  method) {
   UseMethod(generic = 'impute', object = object)
 }
-
 
 
 
