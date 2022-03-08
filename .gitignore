@@ -3,3 +3,7 @@ inst/doc
 /Meta/
 metabolomicsR.Rproj
 .Rproj.user
+.Rbuildignore
+.gitignore
+.git
+README.Rmd

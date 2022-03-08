@@ -1,47 +1,44 @@
 ---
-output:  
-   github_document: 
-     pandoc_args: --webtex=https://chart.apis.google.com/chart?cht=tx&chl= 
+title: "An introduction to the metabolomicsR"
+author: 
+- name: Xikun Han
+package: metabolomicsR
+output:
+  BiocStyle::html_document:
+    toc_float: true
+vignette: >
+  %\VignetteIndexEntry{An introduction to the metabolomicsR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  dpi = 300, 
-  warning = FALSE,
-  message = FALSE,
-  out.width = "100%",
-  comment = "#> ",
-  fig.path = "man/figures/README-",
-  time_it = TRUE
-)
-
+```{r options, include=FALSE, echo=FALSE}
+library(BiocStyle)
+knitr::opts_chunk$set(warning=FALSE, error=FALSE, message=FALSE)
 ```
 
-### `{metabolomicsR}` Tools to process, analyze, and visualize metabolomic data.
+
+`{metabolomicsR}` Tools to process, analyze, and visualize metabolomic data.
 
 `{metabolomicsR}` is a streamlined R package to preprocess, analyze, and visualize metabolomics data. We included broad utility functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression, metabolite annotation, enrichment analysis, and visualization of data and results. The `{metabolomicsR}` is designed to be a comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is versatile and is extensible to other various methods. Here, we demonstrate the step-by-step use of the main functions from this package.
 
-##### Seamless workflow to preprocess, analyze, and visualize metabolomics data in `{metabolomicsR}` <img src="inst/extdata/workflow.png" align="center" width="120%" height="180%"/>
+Figure: Seamless workflow to preprocess, analyze, and visualize metabolomics data in `{metabolomicsR}` <img src="../inst/extdata/workflow.png" align="center" width="120%" height="180%"/>
 
-## Installation
+# Installation
 
 | Type        | Command                                             |
 |-------------|-----------------------------------------------------|
 | Development | `remotes::install_github("XikunHan/metabolomicsR")` |
 
-## Data structure
+# Data structure
 
 We first designed a “Metabolite” class based on the object-oriented programming system S4 in R. For a particular “Metabolite” data, it will include “assayData” (eg. peak area data or batch-normalized data, samples in rows and metabolites in columns), “featureData” (metabolite annotation), “sampleData” (sample annotation), “featureID”, “sampleID”, “logs” (log information of data analysis process), and “miscData” (other ancillary data).
 
-## Import data
+# Import data
 
 To demonstrate the package, we obtained the data from the Qatar Metabolomics Study on Diabetes, similar to the data format from non-targeted mass spectrometry by Metabolon. The dataset is also available via [figshare](https://doi.org/10.6084/m9.figshare.5904022).
 
 In the “assayData”, the first column is the sample IDs to match with “sampleData”, the other columns are metabolite IDs to match with “featureData”.
-
 
 ```{r}
 
@@ -502,11 +499,10 @@ plot_ROC(object = df_plasma_scale, y = "T2D", x = c("M00527", "BMI"))
 
 ```{r, fig.height=8,fig.width=7}
 
-p <- plot_ROC(object = df_plasma_scale, y = "T2D", 
+plot_ROC(object = df_plasma_scale, y = "T2D", 
          model_a = c("BMI", "AGE", "GENDER"), 
          model_b = c("M00527", "BMI", "AGE", "GENDER"))
 
-print(p)
 ```
 
 

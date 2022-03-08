@@ -23,14 +23,11 @@ batch_norm(
 
 \item{verbose}{print log information.}
 }
+\value{
+A Metabolite object after normalization.
+}
 \description{
 Normalization data by the median value of each batch
-}
-\examples{
-\dontrun{
-
-d <- batch_norm(object = df)
-}
 }
 \seealso{
 \code{\link{QCmatrix_norm}}

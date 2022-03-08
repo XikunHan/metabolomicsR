@@ -13,27 +13,22 @@ load_data(
 )
 }
 \arguments{
-\item{data_path}{Path to the metabolite measurements (peak area data or normalized data, sample [row] * feature [column])}
+\item{data_path}{Path to the metabolite measurements (peak area data or normalized data, 
+sample [row] * feature [column])}
 
 \item{feature_path}{Path to the metabolite annotation (chemical annotation)}
 
 \item{sample_path}{Path to the sample annotation (sample meta data)}
 
-\item{featureID}{a character of the metabolite ID column (in feature file and the column names of data file), default: CHEM_ID (provided from Metabolon file)}
+\item{featureID}{a character of the metabolite ID column (in feature file and the column names of data file), 
+default: CHEM_ID (provided from Metabolon file)}
 
-\item{sampleID}{a character of the sample ID column (in sample file and the first column of data file), default: PARENT_SAMPLE_NAME (provided from Metabolon file)}
+\item{sampleID}{a character of the sample ID column (in sample file and the first column of data file), 
+default: PARENT_SAMPLE_NAME (provided from Metabolon file).}
 }
 \value{
 A Metabolite object with slots: assayData, featureData, and sampleData.
 }
 \description{
 Load metabolite data from three separate files (import files using `fread` from data.table).
-}
-\examples{
-\dontrun{
-
-df <- load_data(data_path = "data.csv", feature_path =  "feature.csv", sample_path =  "sample.csv")
-
-}
-
 }

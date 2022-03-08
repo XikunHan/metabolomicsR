@@ -73,7 +73,7 @@ df_plasma
 #>  An object of  Metabolite 
 #>  
 #>  ***  @assayData (first and last 10 columns [ 356  *  759 ])  ***
-#>       QMDiab-ID 1,11-Undecanedicarboxylic acid 1,2-dipalmitoylglycerol
+#>        sampleID 1,11-Undecanedicarboxylic acid 1,2-dipalmitoylglycerol
 #>    1: QMDiab222                           8578                      NA
 #>    2: QMDiab113                          15145                      NA
 #>    3:  QMDiab29                             NA                   96455
@@ -196,8 +196,8 @@ df_plasma
 #>  757:      <NA>     M42927                      X - 19451
 #>  758:      <NA>     M43130                      X - 19574
 #>  
-#>  ***  @sampleData (ID:  QMDiab-ID ) ***
-#>       QMDiab-ID      AGE GENDER      BMI ETHNICITY T2D
+#>  ***  @sampleData (ID:  sampleID ) ***
+#>        sampleID      AGE GENDER      BMI ETHNICITY T2D
 #>    1: QMDiab222 34.50513      0 25.01021         2   0
 #>    2: QMDiab113 47.06639      1 28.36776         3   0
 #>    3:  QMDiab29 55.49076      1 29.70564         1   0
@@ -211,11 +211,11 @@ df_plasma
 #>  356: QMDiab103 23.85489      0 35.96389         1   0
 #>  
 #>  ***  @miscData  ***
-#>  list()
+#>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  06/03/22 09:48:22: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  06/03/22 09:48:22: Initiate data: 356 samples and 758 features.
+#>  08/03/22 12:06:12: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  08/03/22 12:06:12: Initiate data: 356 samples and 758 features.
 ```
 
 </details>
@@ -235,7 +235,7 @@ df_plasma
 #>  An object of  Metabolite 
 #>  
 #>  ***  @assayData (first and last 10 columns [ 356  *  759 ])  ***
-#>       QMDiab-ID M43027 M11953 M38002 M34404 M35963 M35728 M20675 M34400  M33228
+#>        sampleID M43027 M11953 M38002 M34404 M35963 M35728 M20675 M34400  M33228
 #>    1: QMDiab222   8578     NA 103724  22259 104059   7067 357499  19986 2173598
 #>    2: QMDiab113  15145     NA     NA  39841     NA  36542 440058  16620 2464846
 #>    3:  QMDiab29     NA  96455 159945  10605 165416  54209 355790  12220 2613798
@@ -322,8 +322,8 @@ df_plasma
 #>  757:      <NA>     M42927    M42927
 #>  758:      <NA>     M43130    M43130
 #>  
-#>  ***  @sampleData (ID:  QMDiab-ID ) ***
-#>       QMDiab-ID      AGE GENDER      BMI ETHNICITY T2D
+#>  ***  @sampleData (ID:  sampleID ) ***
+#>        sampleID      AGE GENDER      BMI ETHNICITY T2D
 #>    1: QMDiab222 34.50513      0 25.01021         2   0
 #>    2: QMDiab113 47.06639      1 28.36776         3   0
 #>    3:  QMDiab29 55.49076      1 29.70564         1   0
@@ -337,12 +337,12 @@ df_plasma
 #>  356: QMDiab103 23.85489      0 35.96389         1   0
 #>  
 #>  ***  @miscData  ***
-#>  list()
+#>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  06/03/22 09:48:22: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  06/03/22 09:48:22: Initiate data: 356 samples and 758 features.
-#>  06/03/22 09:48:23: Update data, action: change_featureID, 356 samples and 758 features.
+#>  08/03/22 12:06:12: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  08/03/22 12:06:12: Initiate data: 356 samples and 758 features.
+#>  08/03/22 12:06:12: Update data, action: change_featureID, 356 samples and 758 features.
 ```
 
 </details>
@@ -370,7 +370,7 @@ df_urine
 #>  An object of  Metabolite 
 #>  
 #>  ***  @assayData (first and last 10 columns [ 359  *  892 ])  ***
-#>       QMDiab-ID   M38002 M34404  M32391 M20675   M21049  M34400 M40506  M34455
+#>        sampleID   M38002 M34404  M32391 M20675   M21049  M34400 M40506  M34455
 #>    1: QMDiab254  1189337 146900  265120  53499 15379982  619745  53261  227263
 #>    2: QMDiab290  9944836 716781 2042008  71989 26406420 1988553 123129 1221563
 #>    3:  QMDiab54   926350 182438  775726  48752  7551248 1159521  72837  215868
@@ -457,8 +457,8 @@ df_urine
 #>  890:     M43129    M43129
 #>  891:     M43130    M43130
 #>  
-#>  ***  @sampleData (ID:  QMDiab-ID ) ***
-#>       QMDiab-ID      AGE GENDER      BMI ETHNICITY T2D
+#>  ***  @sampleData (ID:  sampleID ) ***
+#>        sampleID      AGE GENDER      BMI ETHNICITY T2D
 #>    1: QMDiab254 53.10335      0 32.05128         1   0
 #>    2: QMDiab290 39.79192      1 30.51426         4   0
 #>    3:  QMDiab54 36.82136      0 24.16831         1   0
@@ -472,12 +472,12 @@ df_urine
 #>  359:   QMDiab4 24.22450      0 41.66521         1   0
 #>  
 #>  ***  @miscData  ***
-#>  list()
+#>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  06/03/22 09:48:23: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  06/03/22 09:48:23: Initiate data: 359 samples and 891 features.
-#>  06/03/22 09:48:23: Update data, action: change_featureID, 359 samples and 891 features.
+#>  08/03/22 12:06:13: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  08/03/22 12:06:13: Initiate data: 359 samples and 891 features.
+#>  08/03/22 12:06:13: Update data, action: change_featureID, 359 samples and 891 features.
 ```
 
 </details>
@@ -505,7 +505,7 @@ df_saliva
 #>  An object of  Metabolite 
 #>  
 #>  ***  @assayData (first and last 10 columns [ 321  *  603 ])  ***
-#>       QMDiab-ID M43027  M38002 M01654 M35963 M35690 M20675 M21049 M34400 M35628
+#>        sampleID M43027  M38002 M01654 M35963 M35690 M20675 M21049 M34400 M35628
 #>    1: QMDiab370  11974  720004     NA     NA  91544 211457     NA   2661     NA
 #>    2: QMDiab245  15485  481889  24313  53097  80819 175312  25921   2250  27847
 #>    3:  QMDiab34  13916  979243     NA  44158 104042 271930     NA     NA     NA
@@ -592,8 +592,8 @@ df_saliva
 #>  601:     M43128    M43128
 #>  602:     M43137    M43137
 #>  
-#>  ***  @sampleData (ID:  QMDiab-ID ) ***
-#>       QMDiab-ID      AGE GENDER      BMI ETHNICITY T2D
+#>  ***  @sampleData (ID:  sampleID ) ***
+#>        sampleID      AGE GENDER      BMI ETHNICITY T2D
 #>    1: QMDiab370 56.49829      1 25.76591         1   1
 #>    2: QMDiab245 51.51540      0 23.89943         1   0
 #>    3:  QMDiab34 28.00548      0 23.90118         3   0
@@ -607,17 +607,17 @@ df_saliva
 #>  321: QMDiab127 34.69952      1 30.47797         1   0
 #>  
 #>  ***  @miscData  ***
-#>  list()
+#>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  06/03/22 09:48:23: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  06/03/22 09:48:23: Initiate data: 321 samples and 602 features.
-#>  06/03/22 09:48:23: Update data, action: change_featureID, 321 samples and 602 features.
+#>  08/03/22 12:06:13: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  08/03/22 12:06:13: Initiate data: 321 samples and 602 features.
+#>  08/03/22 12:06:13: Update data, action: change_featureID, 321 samples and 602 features.
 ```
 
 </details>
 
-## Quality control pipeline
+# Quality control pipeline
 
 We provided a pipeline for metabolite and sample quality control (QC)
 procedures with a series of functions. In the QC pipeline, we included
@@ -647,7 +647,7 @@ df_plasma_QC
 #>  An object of  Metabolite 
 #>  
 #>  ***  @assayData (first and last 10 columns [ 356  *  546 ])  ***
-#>       QMDiab-ID M43027 M11953 M38002 M34404 M35963 M35728 M20675 M34400  M33228
+#>        sampleID M43027 M11953 M38002 M34404 M35963 M35728 M20675 M34400  M33228
 #>    1: QMDiab222   8578     NA 103724  22259 104059   7067 357499  19986 2173598
 #>    2: QMDiab113  15145     NA     NA  39841     NA  36542 440058  16620 2464846
 #>    3:  QMDiab29     NA  96455 159945  10605 165416  54209 355790  12220 2613798
@@ -734,8 +734,8 @@ df_plasma_QC
 #>  757:      <NA>     M42927    M42927
 #>  758:      <NA>     M43130    M43130
 #>  
-#>  ***  @sampleData (ID:  QMDiab-ID ) ***
-#>       QMDiab-ID      AGE GENDER      BMI ETHNICITY T2D
+#>  ***  @sampleData (ID:  sampleID ) ***
+#>        sampleID      AGE GENDER      BMI ETHNICITY T2D
 #>    1: QMDiab222 34.50513      0 25.01021         2   0
 #>    2: QMDiab113 47.06639      1 28.36776         3   0
 #>    3:  QMDiab29 55.49076      1 29.70564         1   0
@@ -749,19 +749,19 @@ df_plasma_QC
 #>  356: QMDiab103 23.85489      0 35.96389         1   0
 #>  
 #>  ***  @miscData  ***
-#>  list()
+#>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  06/03/22 09:48:22: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  06/03/22 09:48:22: Initiate data: 356 samples and 758 features.
-#>  06/03/22 09:48:23: Update data, action: change_featureID, 356 samples and 758 features. 
+#>  08/03/22 12:06:12: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  08/03/22 12:06:12: Initiate data: 356 samples and 758 features.
+#>  08/03/22 12:06:12: Update data, action: change_featureID, 356 samples and 758 features. 
 #>  
-#>  06/03/22 09:48:23: Run QC pipeline.
-#>  06/03/22 09:48:23: Filter data with a constant column, removed 37 features. 
-#>  06/03/22 09:48:23: Update data, 356 samples and 758 features. 
-#>  06/03/22 09:48:24: Filter data with a missing rate >= 0.5, removed 176 features. 
-#>  06/03/22 09:48:24: Update data, 356 samples and 758 features. 
-#>  06/03/22 09:48:24: Replace outliers using `winsorize` method 5 SDs.
+#>  08/03/22 12:06:13: Run QC pipeline.
+#>  08/03/22 12:06:13: Filter data with a constant column, removed 37 features. 
+#>  08/03/22 12:06:13: Update data, 356 samples and 758 features. 
+#>  08/03/22 12:06:14: Filter data with a missing rate >= 0.5, removed 176 features. 
+#>  08/03/22 12:06:14: Update data, 356 samples and 758 features. 
+#>  08/03/22 12:06:14: Replace outliers using `winsorize` method 5 SDs.
 ```
 
 </details>
@@ -784,7 +784,7 @@ df_urine_QC
 #>  An object of  Metabolite 
 #>  
 #>  ***  @assayData (first and last 10 columns [ 359  *  787 ])  ***
-#>       QMDiab-ID   M38002 M34404  M32391 M20675   M21049  M34400 M40506  M34455
+#>        sampleID   M38002 M34404  M32391 M20675   M21049  M34400 M40506  M34455
 #>    1: QMDiab254  1189337 146900  265120  53499 15379982  619745  53261  227263
 #>    2: QMDiab290  9944836 716781 2042008  71989 26406420 1988553 123129 1221563
 #>    3:  QMDiab54   926350 182438  775726  48752  7551248 1159521  72837  215868
@@ -871,8 +871,8 @@ df_urine_QC
 #>  890:     M43129    M43129
 #>  891:     M43130    M43130
 #>  
-#>  ***  @sampleData (ID:  QMDiab-ID ) ***
-#>       QMDiab-ID      AGE GENDER      BMI ETHNICITY T2D
+#>  ***  @sampleData (ID:  sampleID ) ***
+#>        sampleID      AGE GENDER      BMI ETHNICITY T2D
 #>    1: QMDiab254 53.10335      0 32.05128         1   0
 #>    2: QMDiab290 39.79192      1 30.51426         4   0
 #>    3:  QMDiab54 36.82136      0 24.16831         1   0
@@ -886,19 +886,19 @@ df_urine_QC
 #>  359:   QMDiab4 24.22450      0 41.66521         1   0
 #>  
 #>  ***  @miscData  ***
-#>  list()
+#>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  06/03/22 09:48:23: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  06/03/22 09:48:23: Initiate data: 359 samples and 891 features.
-#>  06/03/22 09:48:23: Update data, action: change_featureID, 359 samples and 891 features. 
+#>  08/03/22 12:06:13: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  08/03/22 12:06:13: Initiate data: 359 samples and 891 features.
+#>  08/03/22 12:06:13: Update data, action: change_featureID, 359 samples and 891 features. 
 #>  
-#>  06/03/22 09:48:24: Run QC pipeline.
-#>  06/03/22 09:48:24: Filter data with a constant column, removed 28 features. 
-#>  06/03/22 09:48:24: Update data, 359 samples and 891 features. 
-#>  06/03/22 09:48:24: Filter data with a missing rate >= 0.5, removed 77 features. 
-#>  06/03/22 09:48:24: Update data, 359 samples and 891 features. 
-#>  06/03/22 09:48:25: Replace outliers using `winsorize` method 5 SDs.
+#>  08/03/22 12:06:14: Run QC pipeline.
+#>  08/03/22 12:06:14: Filter data with a constant column, removed 28 features. 
+#>  08/03/22 12:06:14: Update data, 359 samples and 891 features. 
+#>  08/03/22 12:06:15: Filter data with a missing rate >= 0.5, removed 77 features. 
+#>  08/03/22 12:06:15: Update data, 359 samples and 891 features. 
+#>  08/03/22 12:06:15: Replace outliers using `winsorize` method 5 SDs.
 ```
 
 </details>
@@ -921,7 +921,7 @@ df_saliva_QC
 #>  An object of  Metabolite 
 #>  
 #>  ***  @assayData (first and last 10 columns [ 321  *  365 ])  ***
-#>       QMDiab-ID M43027  M38002 M35690 M20675 M35628 M37536 M37752  M35691 M38276
+#>        sampleID M43027  M38002 M35690 M20675 M35628 M37536 M37752  M35691 M38276
 #>    1: QMDiab370  11974  720004  91544 211457     NA     NA 121286  352891 161984
 #>    2: QMDiab245  15485  481889  80819 175312  27847  24251  78051  179709 155695
 #>    3:  QMDiab34  13916  979243 104042 271930     NA  19333  54685   58106  99814
@@ -1008,8 +1008,8 @@ df_saliva_QC
 #>  601:     M43128    M43128
 #>  602:     M43137    M43137
 #>  
-#>  ***  @sampleData (ID:  QMDiab-ID ) ***
-#>       QMDiab-ID      AGE GENDER      BMI ETHNICITY T2D
+#>  ***  @sampleData (ID:  sampleID ) ***
+#>        sampleID      AGE GENDER      BMI ETHNICITY T2D
 #>    1: QMDiab370 56.49829      1 25.76591         1   1
 #>    2: QMDiab245 51.51540      0 23.89943         1   0
 #>    3:  QMDiab34 28.00548      0 23.90118         3   0
@@ -1023,24 +1023,24 @@ df_saliva_QC
 #>  321: QMDiab127 34.69952      1 30.47797         1   0
 #>  
 #>  ***  @miscData  ***
-#>  list()
+#>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  06/03/22 09:48:23: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  06/03/22 09:48:23: Initiate data: 321 samples and 602 features.
-#>  06/03/22 09:48:23: Update data, action: change_featureID, 321 samples and 602 features. 
+#>  08/03/22 12:06:13: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  08/03/22 12:06:13: Initiate data: 321 samples and 602 features.
+#>  08/03/22 12:06:13: Update data, action: change_featureID, 321 samples and 602 features. 
 #>  
-#>  06/03/22 09:48:25: Run QC pipeline.
-#>  06/03/22 09:48:25: Filter data with a constant column, removed 35 features. 
-#>  06/03/22 09:48:25: Update data, 321 samples and 602 features. 
-#>  06/03/22 09:48:25: Filter data with a missing rate >= 0.5, removed 203 features. 
-#>  06/03/22 09:48:25: Update data, 321 samples and 602 features. 
-#>  06/03/22 09:48:25: Replace outliers using `winsorize` method 5 SDs.
+#>  08/03/22 12:06:15: Run QC pipeline.
+#>  08/03/22 12:06:15: Filter data with a constant column, removed 35 features. 
+#>  08/03/22 12:06:15: Update data, 321 samples and 602 features. 
+#>  08/03/22 12:06:15: Filter data with a missing rate >= 0.5, removed 203 features. 
+#>  08/03/22 12:06:15: Update data, 321 samples and 602 features. 
+#>  08/03/22 12:06:15: Replace outliers using `winsorize` method 5 SDs.
 ```
 
 </details>
 
-## Transformation
+# Transformation
 
 Transformation of metabolites can alter the distribution of data and is
 an essential step for the following statistical analysis. We provided
@@ -1063,7 +1063,7 @@ df_plasma_scale
 #>  An object of  Metabolite 
 #>  
 #>  ***  @assayData (first and last 10 columns [ 356  *  546 ])  ***
-#>       QMDiab-ID      M43027      M11953      M38002     M34404     M35963
+#>        sampleID      M43027      M11953      M38002     M34404     M35963
 #>    1: QMDiab222  0.38328962 -2.06937034 -0.25776988  0.1300954  0.1329676
 #>    2: QMDiab113  1.09208975 -2.06937034 -2.09811585  0.7401431 -2.7715161
 #>    3:  QMDiab29 -2.07224771  0.37986636  0.19492231 -0.6468556  0.7526296
@@ -1162,8 +1162,8 @@ df_plasma_scale
 #>  757:      <NA>     M42927    M42927
 #>  758:      <NA>     M43130    M43130
 #>  
-#>  ***  @sampleData (ID:  QMDiab-ID ) ***
-#>       QMDiab-ID      AGE GENDER      BMI ETHNICITY T2D
+#>  ***  @sampleData (ID:  sampleID ) ***
+#>        sampleID      AGE GENDER      BMI ETHNICITY T2D
 #>    1: QMDiab222 34.50513      0 25.01021         2   0
 #>    2: QMDiab113 47.06639      1 28.36776         3   0
 #>    3:  QMDiab29 55.49076      1 29.70564         1   0
@@ -1177,29 +1177,29 @@ df_plasma_scale
 #>  356: QMDiab103 23.85489      0 35.96389         1   0
 #>  
 #>  ***  @miscData  ***
-#>  list()
+#>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  06/03/22 09:48:22: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  06/03/22 09:48:22: Initiate data: 356 samples and 758 features.
-#>  06/03/22 09:48:23: Update data, action: change_featureID, 356 samples and 758 features. 
+#>  08/03/22 12:06:12: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  08/03/22 12:06:12: Initiate data: 356 samples and 758 features.
+#>  08/03/22 12:06:12: Update data, action: change_featureID, 356 samples and 758 features. 
 #>  
-#>  06/03/22 09:48:23: Run QC pipeline.
-#>  06/03/22 09:48:23: Filter data with a constant column, removed 37 features. 
-#>  06/03/22 09:48:23: Update data, 356 samples and 758 features. 
-#>  06/03/22 09:48:24: Filter data with a missing rate >= 0.5, removed 176 features. 
-#>  06/03/22 09:48:24: Update data, 356 samples and 758 features. 
-#>  06/03/22 09:48:24: Replace outliers using `winsorize` method 5 SDs. 
-#>  06/03/22 09:48:25: Impute data using `half-min` method. 
-#>  06/03/22 09:48:25: Transformation using `log` method. 
-#>  06/03/22 09:48:25: Transformation using `scale` method.
+#>  08/03/22 12:06:13: Run QC pipeline.
+#>  08/03/22 12:06:13: Filter data with a constant column, removed 37 features. 
+#>  08/03/22 12:06:13: Update data, 356 samples and 758 features. 
+#>  08/03/22 12:06:14: Filter data with a missing rate >= 0.5, removed 176 features. 
+#>  08/03/22 12:06:14: Update data, 356 samples and 758 features. 
+#>  08/03/22 12:06:14: Replace outliers using `winsorize` method 5 SDs. 
+#>  08/03/22 12:06:15: Impute data using `half-min` method. 
+#>  08/03/22 12:06:15: Transformation using `log` method. 
+#>  08/03/22 12:06:15: Transformation using `scale` method.
 ```
 
 </details>
 
-## Visualization: boxplot
+# Visualization
 
-##### before transformation
+## Boxplot: before transformation
 
 ``` r
 # if no features were selected, randomly show 16 metabolites
@@ -1224,7 +1224,7 @@ plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = 
 
 <img src="man/figures/README-unnamed-chunk-20-1.png" width="100%" />
 
-##### After transformation
+## Boxplot after transformation
 
 ``` r
 plot_Metabolite(df_plasma_scale, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
@@ -1246,7 +1246,7 @@ plot_Metabolite(df_plasma_scale, plot = "histogram", color = "ETHNICITY")
 
 <img src="man/figures/README-unnamed-chunk-22-2.png" width="100%" />
 
-## Normalization
+# Normalization
 
 Normalization of metabolomic data is an important step to remove
 systematic variation, and to facilitate the identification of real
@@ -1263,36 +1263,36 @@ of internal QC samples are available.
 
 ``` r
 # Take the urine data for example, the batch of the samples are missing. To illustrate the usage of the normalization method data, we assume that 120 samples in each batch. 
-unique(df_urine_QC@featureData$PLATFORM)
+unique(featureData(df_urine_QC)$PLATFORM)
 #>  [1] "GC/MS"     "LC/MS Neg" "LC/MS Pos"
 
 # add new columns by reference (column name uppercase)
 sampleData(df_urine_QC)[, `GC/MS` := rep(1:3, each = 120)[1:359]]
-df_urine_QC@sampleData[, `LC/MS NEG` := rep(1:3, each = 120)[1:359]]
-df_urine_QC@sampleData[, `LC/MS POS` := rep(1:3, each = 120)[1:359]]
+sampleData(df_urine_QC)[, `LC/MS NEG` := rep(1:3, each = 120)[1:359]]
+sampleData(df_urine_QC)[, `LC/MS POS` := rep(1:3, each = 120)[1:359]]
 
 # we also added a injection order column (in the current order)
-df_urine_QC <- update_Metabolite(df_urine_QC, df_urine_QC@sampleData[, 1], action = "injection_order")
+df_urine_QC <- update_Metabolite(df_urine_QC, sampleData(df_urine_QC)[, 1], action = "injection_order")
 #>  Creat a new column `ID_injection_order`.
 
 # and set one as QC samples for each 10 samples. 
 
-df_urine_QC@sampleData[, QCsample := ifelse(1:359%%10 == 0, 1, 0)]
-df_urine_QC@sampleData[, QCsample := factor(QCsample, levels = c(1, 0))]
+sampleData(df_urine_QC)[, QCsample := ifelse(1:359%%10 == 0, 1, 0)]
+sampleData(df_urine_QC)[, QCsample := factor(QCsample, levels = c(1, 0))]
                        
-df_urine_QC@sampleData[, `QMDiab-ID` := ifelse(1:359 %% 10 == 0, paste0("MTRX-", `QMDiab-ID`), `QMDiab-ID`)]
+sampleData(df_urine_QC)[, sampleID := ifelse(1:359 %% 10 == 0, paste0("MTRX-", sampleID), sampleID)]
 
-table(df_urine_QC@sampleData$QCsample)
+table(sampleData(df_urine_QC)$QCsample)
 #>  
 #>    1   0 
 #>   35 324
 
-df_urine_QC@assayData$`QMDiab-ID` <- df_urine_QC@sampleData$`QMDiab-ID` # also change the ID in assayData
+assayData(df_urine_QC)$sampleID <- sampleData(df_urine_QC)$sampleID # also change the ID in assayData
 df_urine_QC
 #>  An object of  Metabolite 
 #>  
 #>  ***  @assayData (first and last 10 columns [ 359  *  787 ])  ***
-#>       QMDiab-ID   M38002 M34404  M32391 M20675   M21049  M34400 M40506  M34455
+#>        sampleID   M38002 M34404  M32391 M20675   M21049  M34400 M40506  M34455
 #>    1: QMDiab254  1189337 146900  265120  53499 15379982  619745  53261  227263
 #>    2: QMDiab290  9944836 716781 2042008  71989 26406420 1988553 123129 1221563
 #>    3:  QMDiab54   926350 182438  775726  48752  7551248 1159521  72837  215868
@@ -1379,8 +1379,8 @@ df_urine_QC
 #>  890:     M43129    M43129
 #>  891:     M43130    M43130
 #>  
-#>  ***  @sampleData (ID:  QMDiab-ID ) ***
-#>       QMDiab-ID      AGE GENDER      BMI ETHNICITY T2D GC/MS LC/MS NEG LC/MS POS
+#>  ***  @sampleData (ID:  sampleID ) ***
+#>        sampleID      AGE GENDER      BMI ETHNICITY T2D GC/MS LC/MS NEG LC/MS POS
 #>    1: QMDiab254 53.10335      0 32.05128         1   0     1         1         1
 #>    2: QMDiab290 39.79192      1 30.51426         4   0     1         1         1
 #>    3:  QMDiab54 36.82136      0 24.16831         1   0     1         1         1
@@ -1406,20 +1406,21 @@ df_urine_QC
 #>  359:                359        0
 #>  
 #>  ***  @miscData  ***
-#>  list()
+#>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  06/03/22 09:48:23: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  06/03/22 09:48:23: Initiate data: 359 samples and 891 features.
-#>  06/03/22 09:48:23: Update data, action: change_featureID, 359 samples and 891 features. 
+#>  08/03/22 12:06:13: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  08/03/22 12:06:13: Initiate data: 359 samples and 891 features.
+#>  08/03/22 12:06:13: Update data, action: change_featureID, 359 samples and 891 features. 
 #>  
-#>  06/03/22 09:48:24: Run QC pipeline.
-#>  06/03/22 09:48:24: Filter data with a constant column, removed 28 features. 
-#>  06/03/22 09:48:24: Update data, 359 samples and 891 features. 
-#>  06/03/22 09:48:24: Filter data with a missing rate >= 0.5, removed 77 features. 
-#>  06/03/22 09:48:24: Update data, 359 samples and 891 features. 
-#>  06/03/22 09:48:25: Replace outliers using `winsorize` method 5 SDs. 
-#>  06/03/22 09:48:50: Update data, action: injection_order, 359 samples and 891 features.
+#>  08/03/22 12:06:14: Run QC pipeline.
+#>  08/03/22 12:06:14: Filter data with a constant column, removed 28 features. 
+#>  08/03/22 12:06:14: Update data, 359 samples and 891 features. 
+#>  08/03/22 12:06:15: Filter data with a missing rate >= 0.5, removed 77 features. 
+#>  08/03/22 12:06:15: Update data, 359 samples and 891 features. 
+#>  08/03/22 12:06:15: Replace outliers using `winsorize` method 5 SDs. 
+#>  08/03/22 12:06:40: Update data, action: injection_order, 359 samples and 891 features. 
+#>  08/03/22 12:06:40: Update data, 359 samples and 891 features.
 ```
 
 </details>
@@ -1427,7 +1428,7 @@ df_urine_QC
 We then selected the first 16 metabolites to show boxplot
 
 ``` r
-v_features <- df_urine_QC@featureData$featureID[1:16]
+v_features <- featureData(df_urine_QC)$featureID[1:16]
 
 plot_injection_order(df_urine_QC, color = "QCsample", shape = "GC/MS", feature_name = v_features)
 ```
@@ -1459,7 +1460,7 @@ p1
 **click to show other normalization methods **
 </summary>
 
-## Normalization 2: QCmatrix_norm
+Normalization 2: QCmatrix_norm
 
 ``` r
 df_urine_QC_norm <- QCmatrix_norm(df_urine_QC)
@@ -1482,7 +1483,7 @@ p2
 
 <img src="man/figures/README-unnamed-chunk-26-1.png" width="100%" />
 
-## Normalization 3: nearestQC_norm
+Normalization 3: nearestQC_norm
 
 ``` r
 df_urine_QC_norm <- nearestQC_norm(df_urine_QC)
@@ -1508,7 +1509,7 @@ p3
 
 <img src="man/figures/README-unnamed-chunk-27-1.png" width="100%" />
 
-## Normalization 4: modelling_norm
+Normalization 4: modelling_norm
 
 ``` r
 df_urine_QC_norm_LOESS <- modelling_norm(df_urine_QC, method = "LOESS")
@@ -1532,8 +1533,8 @@ p4
 <img src="man/figures/README-unnamed-chunk-28-1.png" width="100%" />
 
 ``` r
-
-df_urine_QC_norm_KNN <- modelling_norm(df_urine_QC, method = "KNN", k = 3)
+# to benchmark the performance
+df_urine_QC_norm_KNN <- modelling_norm(df_urine_QC, method = "KNN", k = 3) 
 #>  
 #>  Platform information in @featureData:
 #>  platforms
@@ -1552,9 +1553,10 @@ p5
 ```
 
 <img src="man/figures/README-unnamed-chunk-28-2.png" width="100%" />
+
 </details>
 
-## Dimensional reduction
+# Dimensional reduction
 
 Dimensional reduction strategies on metabolites data can be used to
 detect batch effects, sample outliers, and real biological subgroups. We
@@ -1582,7 +1584,7 @@ plot_tsne(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 
 <img src="man/figures/README-unnamed-chunk-29-3.png" width="100%" />
 
-## Correlation
+# Correlation
 
 ``` r
 # pairwise correlation of metabolites between two different fluids
@@ -1591,7 +1593,7 @@ plot_tsne(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 dd <- correlation(df_plasma_QC, df_urine_QC, method = "spearman")
 #>  Identify  356  samples in data A, and  359  samples in data B, with  312  overlap samples.
 #>  Identify  545  features in data A, and  786  features in data B, with  248  overlap features.
-dd <- merge(dd, df_plasma_QC@featureData, by.x = "term", by.y = "featureID")
+dd <- merge(dd, featureData(df_plasma_QC), by.x = "term", by.y = "featureID")
 
 p <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
   geom_boxplot() +
@@ -1615,7 +1617,7 @@ p
 dd <- correlation(df_plasma_QC, df_saliva_QC, method = "spearman")
 #>  Identify  356  samples in data A, and  321  samples in data B, with  319  overlap samples.
 #>  Identify  545  features in data A, and  364  features in data B, with  137  overlap features.
-dd <- merge(dd, df_plasma_QC@featureData, by.x = "term", by.y = "featureID")
+dd <- merge(dd, featureData(df_plasma_QC), by.x = "term", by.y = "featureID")
 
 p2 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
   geom_boxplot() +
@@ -1629,7 +1631,7 @@ p2 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
 dd <- correlation(df_urine_QC, df_saliva_QC, method = "spearman")
 #>  Identify  359  samples in data A, and  321  samples in data B, with  282  overlap samples.
 #>  Identify  786  features in data A, and  364  features in data B, with  155  overlap features.
-dd <- merge(dd, df_urine_QC@featureData, by.x = "term", by.y = "featureID")
+dd <- merge(dd, featureData(df_urine_QC), by.x = "term", by.y = "featureID")
 
 p3 <- ggplot(dd, aes(x = SUPER_PATHWAY, y = r, fill = SUPER_PATHWAY)) +
   geom_boxplot() +
@@ -1645,6 +1647,8 @@ p
 
 <img src="man/figures/README-unnamed-chunk-31-1.png" width="100%" />
 </details>
+
+# Association analysis
 
 ## Association analysis 1: linear regression
 
@@ -1667,17 +1671,24 @@ fit_lm <- regression(object = df_plasma_scale, phenoData = NULL, model = "lm", o
 #>  BMI ~ AGE + GENDER + ETHNICITY + `feature`
 
 head(fit_lm)
-#>       term     estimate std.error   statistic   p.value   n outcome p.value.adj
-#>  1: M43027 -0.287065678 0.2909369 -0.98669400 0.3244762 356     BMI           1
-#>  2: M11953  0.285148910 0.2945365  0.96812761 0.3336511 356     BMI           1
-#>  3: M38002  0.063510129 0.2960686  0.21451153 0.8302735 356     BMI           1
-#>  4: M34404  0.459471416 0.3109698  1.47754337 0.1404319 356     BMI           1
-#>  5: M35963 -0.008355339 0.2942752 -0.02839294 0.9773650 356     BMI           1
-#>  6: M35728  0.280617622 0.2929012  0.95806251 0.3386944 356     BMI           1
+#>       term     estimate std.error   statistic   p.value   n outcome model
+#>  1: M43027 -0.287065678 0.2909369 -0.98669400 0.3244762 356     BMI    lm
+#>  2: M11953  0.285148910 0.2945365  0.96812761 0.3336511 356     BMI    lm
+#>  3: M38002  0.063510129 0.2960686  0.21451153 0.8302735 356     BMI    lm
+#>  4: M34404  0.459471416 0.3109698  1.47754337 0.1404319 356     BMI    lm
+#>  5: M35963 -0.008355339 0.2942752 -0.02839294 0.9773650 356     BMI    lm
+#>  6: M35728  0.280617622 0.2929012  0.95806251 0.3386944 356     BMI    lm
+#>     p.value.adj
+#>  1:           1
+#>  2:           1
+#>  3:           1
+#>  4:           1
+#>  5:           1
+#>  6:           1
 ```
 
 ``` r
-dd <- merge(fit_lm, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
+dd <- merge(fit_lm, featureData(df_plasma_scale), by.x = "term", by.y = "featureID")
 
 dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
@@ -1698,17 +1709,24 @@ fit_glm <- regression(object = df_plasma_scale, phenoData = NULL, model = "logis
 #>  T2D ~ AGE + GENDER + ETHNICITY + `feature`
 
 head(fit_glm)
-#>       term    estimate std.error   statistic    p.value   n outcome p.value.adj
-#>  1: M43027 -0.01513772 0.1249949 -0.12110676 0.90360647 356     T2D           1
-#>  2: M11953  0.07313020 0.1258779  0.58096115 0.56126664 356     T2D           1
-#>  3: M38002  0.01273692 0.1286644  0.09899333 0.92114357 356     T2D           1
-#>  4: M34404  0.02452545 0.1413296  0.17353372 0.86223193 356     T2D           1
-#>  5: M35963  0.35664968 0.1338055  2.66543322 0.00768892 356     T2D           1
-#>  6: M35728  0.01557804 0.1306566  0.11922888 0.90509402 356     T2D           1
+#>       term    estimate std.error   statistic    p.value   n outcome    model
+#>  1: M43027 -0.01513772 0.1249949 -0.12110676 0.90360647 356     T2D logistic
+#>  2: M11953  0.07313020 0.1258779  0.58096115 0.56126664 356     T2D logistic
+#>  3: M38002  0.01273692 0.1286644  0.09899333 0.92114357 356     T2D logistic
+#>  4: M34404  0.02452545 0.1413296  0.17353372 0.86223193 356     T2D logistic
+#>  5: M35963  0.35664968 0.1338055  2.66543322 0.00768892 356     T2D logistic
+#>  6: M35728  0.01557804 0.1306566  0.11922888 0.90509402 356     T2D logistic
+#>     p.value.adj
+#>  1:           1
+#>  2:           1
+#>  3:           1
+#>  4:           1
+#>  5:           1
+#>  6:           1
 ```
 
 ``` r
-dd <- merge(fit_glm, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
+dd <- merge(fit_glm, featureData(df_plasma_scale), by.x = "term", by.y = "featureID")
 
 dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 
@@ -1736,17 +1754,24 @@ fit2 <- regression(object = df_plasma_scale, phenoData = NULL, model = "auto", o
 #>  T2D ~ AGE + GENDER + ETHNICITY + `feature`
 
 head(fit2)
-#>       term     estimate std.error   statistic   p.value   n outcome p.value.adj
-#>  1: M43027 -0.287065678 0.2909369 -0.98669400 0.3244762 356     BMI           1
-#>  2: M11953  0.285148910 0.2945365  0.96812761 0.3336511 356     BMI           1
-#>  3: M38002  0.063510129 0.2960686  0.21451153 0.8302735 356     BMI           1
-#>  4: M34404  0.459471416 0.3109698  1.47754337 0.1404319 356     BMI           1
-#>  5: M35963 -0.008355339 0.2942752 -0.02839294 0.9773650 356     BMI           1
-#>  6: M35728  0.280617622 0.2929012  0.95806251 0.3386944 356     BMI           1
+#>       term     estimate std.error   statistic   p.value   n outcome model
+#>  1: M43027 -0.287065678 0.2909369 -0.98669400 0.3244762 356     BMI    lm
+#>  2: M11953  0.285148910 0.2945365  0.96812761 0.3336511 356     BMI    lm
+#>  3: M38002  0.063510129 0.2960686  0.21451153 0.8302735 356     BMI    lm
+#>  4: M34404  0.459471416 0.3109698  1.47754337 0.1404319 356     BMI    lm
+#>  5: M35963 -0.008355339 0.2942752 -0.02839294 0.9773650 356     BMI    lm
+#>  6: M35728  0.280617622 0.2929012  0.95806251 0.3386944 356     BMI    lm
+#>     p.value.adj
+#>  1:           1
+#>  2:           1
+#>  3:           1
+#>  4:           1
+#>  5:           1
+#>  6:           1
 ```
 
 ``` r
-dd2 <- merge(fit2, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
+dd2 <- merge(fit2, featureData(df_plasma_scale), by.x = "term", by.y = "featureID")
 
 dd2[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd2, color = "outcome", label = "BIOCHEMICAL")
@@ -1796,7 +1821,7 @@ if(0) {
 
 fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "glm.nb", outcome = "toy_y",
                   covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY", 
-                  feature_name = df_plasma_scale@featureData$featureID[1:50])
+                  feature_name = featureData(df_plasma_scale)$featureID[1:50])
 #>  Regression for 1 outcome(s). 
 #>  
 #>  Build formula using covars and outcomes. 
@@ -1806,18 +1831,16 @@ fit <- regression(object = df_plasma_scale, phenoData = NULL, model = "glm.nb", 
 ```
 
 ``` r
-dd <- merge(fit, df_plasma_scale@featureData, by.x = "term", by.y = "featureID")
+dd <- merge(fit, featureData(df_plasma_scale), by.x = "term", by.y = "featureID")
 dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 ```
 
 <img src="man/figures/README-unnamed-chunk-39-1.png" width="100%" />
 
-## ROC
+# ROC
 
 ``` r
-library(plotROC)
-
 # ROC for one variable, to add a wrapped for many metabolites separately
 plot_ROC(object = df_plasma_scale, y = "T2D", x = "M00527")
 ```
@@ -1830,12 +1853,14 @@ plot_ROC(object = df_plasma_scale, y = "T2D", x = c("M00527", "BMI"))
 
 <img src="man/figures/README-unnamed-chunk-40-2.png" width="100%" />
 
-## ROC 2: compare two models:
+## ROC: compare two models
 
 ``` r
-plot_ROC(object = df_plasma_scale, y = "T2D", 
+p <- plot_ROC(object = df_plasma_scale, y = "T2D", 
          model_a = c("BMI", "AGE", "GENDER"), 
          model_b = c("M00527", "BMI", "AGE", "GENDER"))
+
+print(p)
 ```
 
 <img src="man/figures/README-unnamed-chunk-41-1.png" width="100%" />
@@ -1862,8 +1887,8 @@ sessionInfo()
 #>  [1] stats     graphics  grDevices utils     datasets  methods   base     
 #>  
 #>  other attached packages:
-#>  [1] MASS_7.3-54         plotROC_2.2.1       cowplot_1.1.1      
-#>  [4] ggplot2_3.3.5       data.table_1.14.2   metabolomicsR_0.1.0
+#>  [1] MASS_7.3-55         plotROC_2.2.1       cowplot_1.1.1      
+#>  [4] ggplot2_3.3.5       data.table_1.14.2   metabolomicsR_1.0.0
 #>  
 #>  loaded via a namespace (and not attached):
 #>    [1] insight_0.16.0         doParallel_1.0.17      RColorBrewer_1.1-2    
@@ -1881,7 +1906,7 @@ sessionInfo()
 #>   [37] readxl_1.3.1           rstudioapi_0.13        FNN_1.1.3             
 #>   [40] farver_2.1.0           generics_0.1.2         jsonlite_1.8.0        
 #>   [43] gtools_3.9.2           dplyr_1.0.8            magrittr_2.0.2        
-#>   [46] parameters_0.16.0      patchwork_1.1.1        Matrix_1.3-4          
+#>   [46] parameters_0.16.0      patchwork_1.1.1        Matrix_1.4-0          
 #>   [49] Rcpp_1.0.8             munsell_0.5.0          fansi_1.0.2           
 #>   [52] reticulate_1.24        lifecycle_1.0.1        pROC_1.18.0           
 #>   [55] stringi_1.7.6          yaml_2.3.5             Rtsne_0.15            
@@ -1896,7 +1921,7 @@ sessionInfo()
 #>   [82] cellranger_1.1.0       gtable_0.3.0           openssl_2.0.0         
 #>   [85] purrr_0.3.4            BayesFactor_0.9.12-4.3 tidyr_1.2.0           
 #>   [88] future_1.24.0          rematch2_2.1.2         reshape_0.8.8         
-#>   [91] assertthat_0.2.1       datawizard_0.3.0       xfun_0.29             
+#>   [91] assertthat_0.2.1       datawizard_0.3.0       xfun_0.30             
 #>   [94] broom_0.7.12           correlation_0.8.0      RSpectra_0.16-0       
 #>   [97] coda_0.19-4            tibble_3.1.6           snow_0.4-4            
 #>  [100] iterators_1.0.14       ggstatsplot_0.9.1      cluster_2.1.2         

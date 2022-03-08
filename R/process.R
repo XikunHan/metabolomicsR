@@ -477,7 +477,7 @@ RSD <- function(x) {
 #'
 genuMet_makefeature <- function(object, wsize=100, ssize= 0.5, defswitch=0.2) {
   if (! requireNamespace("genuMet", quietly = TRUE)) {
-    stop(paste0("Please install genuMet package first: ` devtools::install_github(\"xyomics/genuMet\") `."), call. = FALSE)
+    stop(paste0("Please install genuMet package first: ` (\"xyomics/genuMet\") `."), call. = FALSE)
   }
   df <- object@assayData
   df <- t(df[, -1])
@@ -576,12 +576,8 @@ transformation <- function(object, method = "log") {
 #' @param verbose print log information.
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
-#' @examples
-#'
-#'\dontrun{
-#' d <- bridge(object)
-#'}
-#'
+#' @return A Metabolite object after multiplying by conversion factor. 
+#' 
 bridge <- function(object, conversion_factor_data = NULL, QC_ID_pattern = "MTRX", verbose = TRUE) {
 
   conversion_factor_data <- as.data.table(conversion_factor_data)
@@ -603,7 +599,7 @@ bridge <- function(object, conversion_factor_data = NULL, QC_ID_pattern = "MTRX"
   v_metabolite_remove <- object@featureData[! object@featureData$conversion_factor_ID %in% conversion_factor_data$conversion_factor_ID , get(object@featureID)]
 
   if(verbose) {
-    cat(paste0("\n Remove ", length(v_metabolite_remove), " metabolites without conversion factors: ", paste0(v_metabolite_remove[1:5], collapse = ", "),  " ... \n"))
+    cat(paste0("\n Remove ", length(v_metabolite_remove), " metabolites without conversion factors: ", paste0(v_metabolite_remove[seq_len(5)], collapse = ", "),  " ... \n"))
   }
 
   # check sample IDs
@@ -825,7 +821,7 @@ nearestQC_norm <- function(object, n_nearest_QCsample= 3, feature_platform = "PL
   platforms <- object@featureData[, get(feature_platform)]
   if(verbose) {
     cat("\nThe top ten sample ID (in injection order):\n")
-    cat(paste0(object@assayData[,get(object@sampleID)][1:10], collapse = ", "),"\n")
+    cat(paste0(object@assayData[,get(object@sampleID)][seq_len(10)], collapse = ", "),"\n")
     cat("\nPlatform information in @featureData:\n")
     print(table(platforms))
     cat("\n")
@@ -892,7 +888,7 @@ nearestQC_norm <- function(object, n_nearest_QCsample= 3, feature_platform = "PL
       QCIndex_no_missing <- QCIndex[!is.na(InputData_each[QCIndex])]
 
       for(i in Index_each) {
-        closeQC <- QCIndex_no_missing[which(abs(i-QCIndex_no_missing) %in%  sort(abs(i-QCIndex_no_missing))[1:n_nearest_QCsample])]
+        closeQC <- QCIndex_no_missing[which(abs(i-QCIndex_no_missing) %in%  sort(abs(i-QCIndex_no_missing))[seq_len(n_nearest_QCsample)])]
         v_median <- median(InputData_each[closeQC], na.rm = TRUE)
         set(OutputData, i, j, InputData_each[i]/v_median)
       }
@@ -920,11 +916,7 @@ nearestQC_norm <- function(object, n_nearest_QCsample= 3, feature_platform = "PL
 #' @param verbose print log information.
 #' @seealso \code{\link{QCmatrix_norm}}
 #' @importFrom utils txtProgressBar setTxtProgressBar
-#' @examples
-#' \dontrun{
-#'
-#' d <- batch_norm(object = df)
-#' }
+#' @return A Metabolite object after normalization. 
 #' @export
 #'
 #'
@@ -1129,6 +1121,7 @@ modelling_norm <- function(object, method = c("LOESS", "KNN"), feature_platform 
         
       } else if(method == "KNN") {
         # missing values?
+        check_pkg("FNN")
         fit <- tryCatch(
           FNN::knn.reg(train = matrix(QCIndex), test = matrix(Index_each), y = InputData_each[QCIndex], k = k),
           error = function(e) {
@@ -1240,13 +1233,8 @@ impute_kNN <- function(object) {
 #' @param verbose print log information.
 #' @seealso \code{\link{cor}}
 #' @export
-#' @examples
-#' \dontrun{
-#'
-#' r <- correlation(object_X, object_Y)
-#'
-#' }
-#'
+#' @return A data.table with correlation coefficients.
+#' 
 correlation <- function(
   object_X = NULL,
   object_Y = NULL,

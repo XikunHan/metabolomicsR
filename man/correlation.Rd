@@ -20,16 +20,11 @@ correlation(
 
 \item{verbose}{print log information.}
 }
+\value{
+A data.table with correlation coefficients.
+}
 \description{
 Calculate the correlation of features between two Metabolite objects
-}
-\examples{
-\dontrun{
-
-r <- correlation(object_X, object_Y)
-
-}
-
 }
 \seealso{
 \code{\link{cor}}

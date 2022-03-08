@@ -11,7 +11,8 @@ merge_data(object_X = NULL, object_Y = NULL, all = TRUE, verbose = TRUE)
 
 \item{object_Y}{The second Metabolite object.}
 
-\item{all}{logical; all = TRUE: keep all metabolites; all = FALSE, keep common metabolites that were present in both datasets.}
+\item{all}{logical; all = TRUE: keep all metabolites; all = FALSE, 
+keep common metabolites that were present in both datasets.}
 
 \item{verbose}{print log information.}
 }
@@ -22,10 +23,7 @@ A Metabolite object after merging with slots: assayData, featureData, and sample
 Merge two Metabolite objects.
 }
 \examples{
-\dontrun{
-
-df <- merge_data(object_X, object_Y)
-
-}
+# to merge two Metabolite objects
+# df <- merge_data(df_plasma, df_plasma)
 
 }

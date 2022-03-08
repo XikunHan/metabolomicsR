@@ -1,8 +1,9 @@
 #' @import data.table
 #' @import ggplot2
 #' @importFrom stats median qnorm sd na.omit cor.test complete.cases as.formula binomial predict glm
-#' @importFrom methods new is show
+#' @importFrom methods new is show validObject
 #' @importFrom utils head str
+#' @importFrom plotROC geom_roc melt_roc stat_roc
 #'
 NULL
 
@@ -13,7 +14,7 @@ NULL
 #' @noRd
 head_tail <- function(x) {
   stopifnot(is.vector(x))
-  v_1 <- x[1:10]
+  v_1 <- x[seq_len(10)]
   v_2 <- x[ifelse(length(x) -10 > 0, length(x) -10, 1):length(x)]
   return(unique(na.omit(c(v_1, v_2))))
 }
@@ -23,7 +24,7 @@ head_tail <- function(x) {
 #' @param x A vector
 #' @noRd
 paste5 <- function(x) {
-  if(length(x) >=5) return(paste0(paste0(x[1:5], collapse = " "), " ...")) else return(paste0(x, collapse = " "))
+  if(length(x) >=5) return(paste0(paste0(x[seq_len(5)], collapse = " "), " ...")) else return(paste0(x, collapse = " "))
 }
 
 
@@ -101,5 +102,5 @@ f_injection_reorder <- function(data = NULL) {
 
 
 
-
-utils::globalVariables(c("featureID",  "highlight_",  "value",  "variable",  "x_"))
+utils::globalVariables(c("featureID",  "highlight_", "value",  "variable",  "x_",
+                         "D", "M", "model_A", "name", "y_magic"))

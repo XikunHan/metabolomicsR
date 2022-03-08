@@ -20,13 +20,9 @@ bridge(
 
 \item{verbose}{print log information.}
 }
+\value{
+A Metabolite object after multiplying by conversion factor.
+}
 \description{
 Bridge metabolite data based on a conversion factor file
-}
-\examples{
-
-\dontrun{
-d <- bridge(object)
-}
-
 }

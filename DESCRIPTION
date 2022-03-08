@@ -1,20 +1,27 @@
 Package: metabolomicsR
 Type: Package
 Title: Tools for metabolomic data
-Version: 0.1.0
+Version: 1.0.0
 Date: 2022-01-10
 Authors@R: 
     person(given = "Xikun",
            family = "Han",
            role = c("cre", "aut", "cph"),
            email = "hanxikun2017@gmail.com")
-Maintainer: Xikun Han <hanxikun2017@gmail.com>
 URL: https://github.com/XikunHan/metabolomicsR
-Description: Tools to process, analyse, and visualize metabolomic data. 
+Description: Tools to preproces, analyse, and visualize metabolomic data. 
+  We included a set of functions for sample and metabolite quality control, 
+  outlier detection, missing value imputation, dimensional reduction, normalization, 
+  data integration, regression, metabolite annotation, enrichment analysis, 
+  and visualization of data and results. The package is designed to be a comprehensive R package 
+  that can be easily used by researchers with basic R programming skills. 
+  The framework designed here is versatile and is extensible to other various methods.
 License: GPL-2
 Encoding: UTF-8
-Depends: R (>= 3.4.1), methods
-Imports: ggplot2 (>= 2.0.0),data.table (>= 1.9.8), plotROC, utils, stats
+Depends: 
+    methods,
+    R (>= 4.1)
+Imports: ggplot2, data.table, plotROC, utils, stats
 Suggests: ggthemes,
           knitr, 
           rmarkdown, 
@@ -24,7 +31,8 @@ Suggests: ggthemes,
           broom, 
           reshape2,
           impute,
-          M3C, 
+          M3C,
+          FNN,
           RColorBrewer, 
           readxl, 
           survival, 
@@ -37,7 +45,10 @@ Suggests: ggthemes,
           genuMet,
           ggstatsplot,
           cowplot,
-          pROC
+          pROC,
+          BiocStyle, 
+          MASS
 RoxygenNote: 7.1.2
-LazyData: true
+biocViews: Software, Metabolomics, MassSpectrometry, Regression, Normalization, QualityControl
+LazyData: FALSE
 VignetteBuilder: knitr

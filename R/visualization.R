@@ -382,22 +382,23 @@ plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b 
                 data = df,family = binomial())
     df$model_A <- predict(fit1, type=c("response"))
     auc_ci <- f_auc_ci(as.formula(paste(y , " ~ ", "model_A")), data = df)
+    df$y_magic <- as.integer(df$y_magic)
     
-    p <- ggplot(df, aes(d = y_magic, m = model_A)) + 
+    p <- ggplot(df, aes(m = model_A, d = y_magic)) + 
       geom_roc(labels=FALSE, n.cuts = 0) +
       geom_abline(intercept = 0, slope = 1,linetype=4) +
-      # theme(legend.justification=c(0,0),
-      #       plot.title = element_text(hjust = 0.5),
-      #       legend.position=c(0.18,0.02),
-      #       legend.title = element_blank(),
-      #       legend.background = element_rect(fill=alpha("blue", 0)),
-      #       panel.background = element_blank(),
-      #       axis.line.x = element_line(colour = "black"),
-      #       axis.line.y = element_line(colour = "black"),
-      #       text=element_text(face="bold", size=12)) +
-      labs(x="1 - Specificity", y = "Sensitivity",title= lab) + 
       annotate("text",x=0.2,y= 0.85, label = auc_ci$auc_ci,
-               parse = FALSE,colour = "red", size =5)
+               parse = FALSE,colour = "red", size =5) +
+      theme(legend.justification=c(0,0),
+            plot.title = element_text(hjust = 0.5),
+            legend.position=c(0.18,0.02),
+            legend.title = element_blank(),
+            legend.background = element_rect(fill=alpha("blue", 0)),
+            panel.background = element_blank(),
+            axis.line.x = element_line(colour = "black"),
+            axis.line.y = element_line(colour = "black"),
+            text=element_text(face="bold", size=12)) +
+      labs(x="1 - Specificity", y = "Sensitivity",title= lab)
     return(p)
     
   } else {
@@ -415,25 +416,26 @@ plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b 
     
     fit_p.value <- pROC::roc.test(auc_ci1$fit, auc_ci2$fit)$p.value
     df_roc <- melt_roc(df, y, c("model_A", "model_B"))
+    df_roc$D <- as.integer(df_roc$D) # seems a bug in plotROC, need to convert to integer for html
     
-    p <- ggplot(df_roc, aes(d = D, m = M, color = name)) + 
-      geom_roc(labels=FALSE, n.cuts=0) +
-      style_roc() +
+    p <- ggplot(df_roc, aes(m = M, d = D, color = name)) + 
+      stat_roc(labels=FALSE, n.cuts=0) +
       scale_color_manual(values = v_color) +
       geom_abline(intercept = 0, slope = 1,linetype=4) +
+      annotate("text",x=0.6,y= 0.2, label = paste0("Model A: ", auc_ci1$auc_ci, "\n",
+                                                   "Model B: ", auc_ci2$auc_ci, "\n",
+                                                   "(P-diff: ", sprintf("%1.3f",fit_p.value), ")\n"),
+               parse = FALSE,colour = v_color[1], size =4) +
       theme(legend.justification=c(0,0),
             legend.position=c(0.18,0.02),
             legend.title = element_blank(),
             legend.background = element_rect(fill=alpha("blue", 0)),
-            # panel.background = element_blank(),
+            panel.background = element_blank(),
             axis.line.x = element_line(colour = "black"),
             axis.line.y = element_line(colour = "black"),
             text=element_text(face="bold", size=12)) +
-      labs(x="1 - Specificity", y = "Sensitivity",title= lab) + 
-      annotate("text",x=0.6,y= 0.2, label = paste0("Model A: ", auc_ci1$auc_ci, "\n",
-                                                   "Model B: ", auc_ci2$auc_ci, "\n", 
-                                                   "(P-diff: ", sprintf("%1.3f",fit_p.value), ")\n"), 
-               parse = FALSE,colour = v_color[1], size =4) 
+      labs(x="1 - Specificity", y = "Sensitivity",title= lab) 
+ 
     return(p)
   }
 }

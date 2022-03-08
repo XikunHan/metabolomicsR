@@ -16,15 +16,18 @@ load_excel(
 \arguments{
 \item{path}{Path to the xls/xlsx file.}
 
-\item{data_sheet}{A integer of xlsx sheet number for metabolite measurements (peak area data or normalized data, sample [row] * feature [column])}
+\item{data_sheet}{A integer of xlsx sheet number for metabolite measurements 
+(peak area data or normalized data, sample [row] * feature [column])}
 
 \item{feature_sheet}{A integer of xlsx sheet number for metabolite annotation (chemical annotation)}
 
 \item{sample_sheet}{A integer of xlsx sheet number for sample annotation (sample meta data)}
 
-\item{featureID}{a character of the metabolite ID column (in feature file and the column names of data file), default: CHEM_ID (provided from Metabolon file)}
+\item{featureID}{a character of the metabolite ID column (in feature file and the column names of data file), 
+default: CHEM_ID (provided from Metabolon file)}
 
-\item{sampleID}{a character of the sample ID column (in sample file and the first column of data file), default: PARENT_SAMPLE_NAME (provided from Metabolon file)}
+\item{sampleID}{a character of the sample ID column (in sample file and the first column of data file), 
+default: PARENT_SAMPLE_NAME (provided from Metabolon file)}
 }
 \value{
 A Metabolite object with slots: assayData, featureData, and sampleData.
@@ -33,10 +36,11 @@ A Metabolite object with slots: assayData, featureData, and sampleData.
 Load metabolite data from an excel file
 }
 \examples{
-\dontrun{
 
-df <- load_excel(path = "raw.xlsx", data_sheet = 4, feature_sheet = 2, sample_sheet = 3)
+file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", 
+package = "metabolomicsR", mustWork = TRUE)
 
-}
+df_plasma <- load_excel(path = file_path, data_sheet = 1, feature_sheet = 4, sample_sheet = 8, 
+sampleID = "QMDiab-ID", featureID = "BIOCHEMICAL")
 
 }

@@ -69,3 +69,9 @@ term estimate std.error statistic p.value n outcome p.value.adj.
 \description{
 Run regression models with adjusting for covariates. `regression_each` is used for one outcome. In `regression`, several outcomes can be specified to run together.
 }
+\examples{
+data(df_plasma)
+fit_lm <- regression(object = df_plasma, phenoData = NULL, model = "lm", 
+outcome = "BMI", covars = c("AGE", "GENDER", "ETHNICITY"), factors = "ETHNICITY")
+
+}

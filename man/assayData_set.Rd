@@ -15,6 +15,9 @@ assayData(object) <- value
 
 \item{value}{The new assayData.}
 }
+\value{
+assayData
+}
 \description{
 Accessors for Metabolite object. `assayData<-` will update the assayData in the Metabolite object.
 }

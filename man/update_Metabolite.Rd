@@ -13,7 +13,8 @@ update_Metabolite(object, dataset = NULL, action = NULL)
 
 \item{action}{Currently support:
 \itemize{
-\item{"injection_order": `@sampleData` will be updated by the order of sampleID that provided in the injection order data}
+\item{"injection_order": `@sampleData` will be updated by the order of sampleID that provided 
+in the injection order data}
 \item{"keep_feature": feature ID list to keep}
 \item{"remove_feature": feature ID list to remove}
 \item{"keep_sample": sample ID list to keep}
@@ -24,4 +25,8 @@ update_Metabolite(object, dataset = NULL, action = NULL)
 }
 \description{
 Update a Metabolite object.
+}
+\examples{
+# df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "change_featureID")
+
 }

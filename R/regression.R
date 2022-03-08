@@ -14,10 +14,11 @@
 #' @param ncpus Number of CPUS for parallele job.
 #' @param p.adjust.method Adjust for P value method, see \code{\link{p.adjust}}.
 #' @param \dots Further arguments passed to regression model.
-#' @export
 #'
 #' @returns term estimate std.error statistic p.value n outcome p.value.adj.
-#'
+#' @export
+#' fit_lm <- regression(object = df_plasma, phenoData = NULL, model = "lm", 
+#' outcome = "BMI", covars = c("AGE", "GENDER", "ETHNICITY"), factors = "ETHNICITY")
 #'
 regression <- function(object, phenoData = NULL, model = NULL, outcome = NULL, covars = NULL, factors = NULL, feature_name = NULL, time = NULL, verbose = TRUE, ncpus = 1, p.adjust.method = "bonferroni", ...) {
 
@@ -25,27 +26,325 @@ regression <- function(object, phenoData = NULL, model = NULL, outcome = NULL, c
   res_m <- NULL
   for(i in seq_along(outcome)) {
     v_i <- outcome[i]
-
     res <- regression_each(object = object, phenoData = phenoData, model = model, outcome = v_i,
                       covars = covars, factors =factors, feature_name = feature_name,
                       time = time, verbose = verbose, ncpus = ncpus, p.adjust.method = p.adjust.method, ...
                       )
-
-    if(NROW(res) == 0 || is.na(res)) next
-    res_m <- rbind(res_m, res)
+    if(NROW(res) == 0 || length(res) == 1) next
+    res_m <- rbind(res_m, res, fill = TRUE)
   }
   return(res_m)
 }
 
 
 
+#' @title available regression methods
+#' @description `fit_lm`: linear regression model \code{\link{lm}}.
+#'
+#' @param data A data.table with all variables to be fitted.
+#' @param formula A "formula" object to be fitted.
+#' @param keep Variables to keep regression results.
+#' @seealso  \code{\link{regression}}
+#' @export
+fit_lm <- function(data = NULL, formula = NULL, keep = NULL) {
+  v_var <- all.vars(formula)
+  df <- data[, v_var, with = FALSE]
+  fit <- tryCatch(
+    do.call("lm", args = list(data = df, formula = formula)),
+    error = function(e) {
+      cat(paste0("Failed to fit model: ", e), "\n")
+    })
+  if(inherits(fit, "lm")) {
+    res  <- as.data.table(broom::tidy(fit))
+    if(! is.null(keep))  res <- res[res$term %in% keep, ]
+    res$n <- length(fit$residuals)
+  } else {
+    res <- list(estimate = NA)
+  }
+  return(res)
+}
+
+
+#' @description `fit_logistic`: logistic regression model \code{\link{glm}}.
+#' @rdname fit_lm
+#' @export
+fit_logistic <- function(data = NULL, formula = NULL, keep = NULL) {
+  v_var <- all.vars(formula)
+  df <- data[, v_var, with = FALSE]
+  fit <- tryCatch(
+    do.call("glm", args = list(data = df, formula = formula,  family = binomial(link = "logit"))),
+    error = function(e) {
+      cat(paste0("Failed to fit model: ", e), "\n")
+    })
+  if(inherits(fit, "glm")) {
+    res  <- as.data.table(broom::tidy(fit))
+    if(! is.null(keep)) res <- res[res$term %in% keep, ]
+    res$n <- length(fit$residuals)
+  } else {
+    res <- list(estimate = NA)
+  }
+  return(res)
+}
+
+
+
+#' @description `fit_poisson`: poisson regression model \code{\link{glm}}.
+#' @rdname fit_lm
+#' @export
+fit_poisson <- function(data = NULL, formula = NULL, keep = NULL) {
+  v_var <- all.vars(formula)
+  df <- data[, v_var, with = FALSE]
+  fit <- tryCatch(
+    do.call("glm", args = list(data = df, formula = formula,  family="poisson")),
+    error = function(e) {
+      cat(paste0("Failed to fit model: ", e), "\n")
+    })
+  if(inherits(fit, "glm")) {
+    res  <- as.data.table(broom::tidy(fit))
+    if(! is.null(keep)) res <- res[res$term %in% keep, ]
+    res$n <- length(fit$residuals)
+  } else {
+    res <- list(estimate = NA)
+  }
+  return(res)
+}
+
+
+#' @description `fit_cox`: proportional hazards regression model \code{\link[survival]{coxph}}.
+#' @rdname fit_lm
+#' @export
+fit_cox <- function(data = NULL, formula = NULL, keep = NULL) {
+  check_pkg("survival")
+  
+  v_var <- all.vars(formula)
+  df <- data[, v_var, with = FALSE]
+  fit <- tryCatch(
+    do.call(getExportedValue("survival","coxph"), args = list(data = df, formula = formula)),
+    error = function(e) {
+      cat(paste0("Failed to fit model: ", e), "\n")
+    })
+  
+  if(inherits(fit, "coxph")) {
+    res  <- as.data.table(broom::tidy(fit))
+    if(! is.null(keep)) res <- res[res$term %in% keep, ]
+    res$n <- length(fit$residuals)
+  } else {
+    res <- list(estimate = NA)
+  }
+  return(res)
+}
+
+
+
+#' @description `fit_lme`: linear mixed-effects model \code{\link[nlme]{lme}}.
+#' @param \dots Further arguments passed to regression model.
+#' @rdname fit_lm
+#' @export
+
+fit_lme <- function(data = NULL, formula = NULL, keep = NULL, ...) {
+  check_pkg("nlme")
+  
+  v_var <- all.vars(formula)
+  
+  v_args <- list(...)
+  
+  if (! "random" %in% names(v_args)) {
+    warnings("`random` formula should be specified for `lme`.")
+  } else {
+    random <- v_args[["random"]]
+  }
+  
+  if (! "na.action" %in% names(v_args)) {
+    na.action <- na.omit
+  } else {
+    na.action <- v_args[["na.action"]]
+  }
+  
+  if (! "control" %in% names(v_args)) {
+    control  <- nlme::lmeControl(opt = "optim")
+  } else {
+    control <- v_args[["control"]]
+  }
+  
+  v_args <- v_args[! names(v_args) %in% c("random", "na.action", "control", "keep.data")]
+  
+  if(length(v_args) != 0) {
+    warning(paste0("Unknown args in lme: ", paste0(names(v_args), collapse = ", "),"\n"))
+  }
+  
+  
+  # select variables.
+  df <- data[, c(v_var, all.vars(random)), with = FALSE]
+  
+  
+  
+  fit <- tryCatch(
+    do.call(getExportedValue("nlme", "lme"), args = list(fixed = formula, data = df,
+                                                         random = random,
+                                                         na.action = na.action,
+                                                         control = control,
+                                                         keep.data = FALSE
+    )),
+    error = function(e) {
+      cat(paste0("Failed to fit model: ", e), "\n")
+    })
+  
+  if(inherits(fit, "lme")) {
+    res <- as.data.table(summary(fit)$tTable, keep.rownames = TRUE)
+    res <- res[, list(term = res$rn, estimate = res$Value, std.error = res$Std.Error,  statistic = res$`t-value`, p.value = res$`p-value`,  n = fit$dims[["N"]])]
+    if(! is.null(keep)) res <- res[res$term %in% keep, ]
+  } else {
+    res <- list(estimate = NA)
+  }
+  return(res)
+}
+
+
+
+
+
+#' @description `fit_glmer`: logistic linear mixed-effects model \code{\link[lme4]{glmer}}.
+#' @param \dots Further arguments passed to regression model.
+#' @rdname fit_lm
+#' @export
+fit_glmer <- function(data = NULL, formula = NULL, keep = NULL, ...) {
+  
+  
+  check_pkg("lme4")
+  
+  v_var <- all.vars(formula)
+  
+  v_args <- list(...)
+  
+  if ("random" %in% names(v_args)) {
+    random <- v_args[["random"]]
+    formula <- as.formula(paste0(deparse(formula)," ",  gsub("~", " + ", deparse(random))))
+    v_var <- c(v_var, all.vars(random))
+  }
+  
+  if (! "nAGQ" %in% names(v_args)) {
+    nAGQ  <- 25
+  } else {
+    nAGQ <- v_args[["nAGQ"]]
+  }
+  
+  if (! "control" %in% names(v_args)) {
+    control = lme4::glmerControl()
+  } else {
+    control <- v_args[["control"]]
+  }
+  
+  
+  v_args <- v_args[! names(v_args) %in% c("random", "nAGQ", "control")]
+  
+  if(length(v_args) != 0) {
+    warning(paste0("Unknown args in glmer: ", paste0(names(v_args), collapse = ", "),"\n"))
+  }
+  
+  
+  # select variables.
+  df <- data[, v_var, with = FALSE]
+  
+  fit <- tryCatch(
+    do.call(getExportedValue("lme4", "glmer"), args = list(formula = formula, data = df,
+                                                           family = binomial,
+                                                           nAGQ = nAGQ,
+                                                           control = control
+    )),
+    error = function(e) {
+      cat(paste0("Failed to fit model: ", e), "\n")
+    })
+  
+  
+  if(inherits(fit, "glmerMod")) {
+    
+    v_messages <- fit@optinfo$conv$lme4$messages
+    if(!is.null(v_messages) && grepl("Model failed to converge", v_messages)) {
+      
+      control <- lme4::glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=2e5))
+      
+      fit <- tryCatch(
+        do.call(getExportedValue("lme4", "glmer"), args = list(formula = formula, data = df,
+                                                               family = binomial,
+                                                               nAGQ = nAGQ,
+                                                               control = control
+        )),
+        error = function(e) {
+          cat(paste0("Failed to fit model: ", e), "\n")
+        })
+      
+    }
+    res <- as.data.table(summary(fit)$coefficients, keep.rownames = TRUE)
+    
+    v_message <- fit@optinfo$conv$lme4$messages
+    v_message <- ifelse(is.null(v_message), NA, v_message)
+    
+    res <- res[, list(term = res$rn, estimate = res$Estimate, std.error = res$`Std. Error`,  statistic = res$`z value`, p.value = res$`Pr(>|z|)`,  n = fit@devcomp$dims[["n"]], message = fit@optinfo$conv$lme4$messages)]
+    if(! is.null(keep)) res <- res[res$term %in% keep, ]
+  } else {
+    res <- list(estimate = NA)
+  }
+  return(res)
+}
+
+
+
+
+#' @description `fit_lmer`: linear mixed-effects model \code{\link[lme4]{lmer}}.
+#' @param \dots Further arguments passed to regression model.
+#' @rdname fit_lm
+#' @export
+fit_lmer <- function(data = NULL, formula = NULL, keep = NULL, ...) {
+  
+  check_pkg("lmerTest")
+  
+  v_var <- all.vars(formula)
+  
+  v_args <- list(...)
+  
+  if ("random" %in% names(v_args)) {
+    random <- v_args[["random"]]
+    formula <- as.formula(paste0(deparse(formula)," ",  gsub("~", " + ", deparse(random))))
+    v_var <- c(v_var, all.vars(random))
+  }
+  
+  v_args <- v_args[! names(v_args) %in% c("random")]
+  
+  if(length(v_args) != 0) {
+    warning(paste0("Unknown args in lmer: ", paste0(names(v_args), collapse = ", "),"\n"))
+  }
+  
+  # select variables.
+  df <- data[, v_var, with = FALSE]
+  
+  check_pkg("lme4")
+  
+  fit <- tryCatch(
+    do.call(getExportedValue("lmerTest", "lmer"), args = list(formula = formula, data = df)),
+    error = function(e) {
+      cat(paste0("Failed to fit model: ", e), "\n")
+    })
+  
+  if(inherits(fit, "lmerMod")) {
+    res <- as.data.table(summary(fit)$coefficients, keep.rownames = TRUE)
+    v_message <- fit@optinfo$conv$lme4$messages
+    v_message <- ifelse(is.null(v_message), NA, v_message)
+    res <- res[, list(term = res$rn, estimate = res$Estimate, std.error = res$`Std. Error`,  statistic = res$`t value`, p.value = res$`Pr(>|t|)`,  n = fit@devcomp$dims[["n"]], message = v_message)]
+    if(! is.null(keep)) res <- res[res$term %in% keep, ]
+  } else {
+    res <- list(estimate = NA)
+  }
+  return(res)
+}
 
 
 
 
 #' @rdname regression
 #' @export
-regression_each <- function(object, phenoData = NULL, model = NULL, formula = NULL, outcome = NULL, covars = NULL, factors = NULL, feature_name = NULL, time = NULL, verbose = TRUE, ncpus = 1, p.adjust.method = "bonferroni", ...) {
+regression_each <- function(object, phenoData = NULL, model = NULL, formula = NULL, 
+                            outcome = NULL, covars = NULL, factors = NULL, feature_name = NULL, 
+                            time = NULL, verbose = TRUE, ncpus = 1, p.adjust.method = "bonferroni", ...) {
 
 
   if(is.null(model)) {
@@ -94,7 +393,7 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
   if (!is.null(factors)) {
     stopifnot(all(factors %in% names(phenoData)))
     stopifnot(all(factors %in% covars))
-    phenoData[, factors := lapply(.SD, as.factor) , .SDcols = factors]
+    phenoData[, (factors) := lapply(.SD, as.factor) , .SDcols = factors]
   }
 
   df <- merge(phenoData, object@assayData, by = object@sampleID)
@@ -161,312 +460,12 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
   if(all(is.na(fit_res))) return(NA)
   fit_res <- rbindlist(fit_res, fill=TRUE)
   fit_res$outcome <- outcome
+  fit_res$model <- model
   fit_res$p.value.adj <- stats::p.adjust(fit_res$p.value, method = p.adjust.method)
   return(fit_res)
 }
 
 
 
-#' @title available regression methods
-#' @description `fit_lm`: linear regression model \code{\link{lm}}.
-#'
-#' @param data A data.table with all variables to be fitted.
-#' @param formula A "formula" object to be fitted.
-#' @param keep Variables to keep regression results.
-#' @seealso  \code{\link{regression}}
-#' @export
-fit_lm <- function(data = NULL, formula = NULL, keep = NULL) {
-  v_var <- all.vars(formula)
-  df <- data[, v_var, with = FALSE]
-  fit <- tryCatch(
-    do.call("lm", args = list(data = df, formula = formula)),
-    error = function(e) {
-      cat(paste0("Failed to fit model: ", e), "\n")
-    })
-  if(inherits(fit, "lm")) {
-    res  <- as.data.table(broom::tidy(fit))
-    if(! is.null(keep))  res <- res[res$term %in% keep, ]
-    res$n <- length(fit$residuals)
-  } else {
-    res <- list(estimate = NA)
-  }
-  return(res)
-  }
-
-
-#' @description `fit_logistic`: logistic regression model \code{\link{glm}}.
-#' @rdname fit_lm
-#' @export
-fit_logistic <- function(data = NULL, formula = NULL, keep = NULL) {
-  v_var <- all.vars(formula)
-  df <- data[, v_var, with = FALSE]
-  fit <- tryCatch(
-     do.call("glm", args = list(data = df, formula = formula,  family = binomial(link = "logit"))),
-    error = function(e) {
-      cat(paste0("Failed to fit model: ", e), "\n")
-    })
-  if(inherits(fit, "glm")) {
-    res  <- as.data.table(broom::tidy(fit))
-    if(! is.null(keep)) res <- res[res$term %in% keep, ]
-    res$n <- length(fit$residuals)
-  } else {
-    res <- list(estimate = NA)
-  }
-  return(res)
-}
-
-
-
-#' @description `fit_poisson`: poisson regression model \code{\link{glm}}.
-#' @rdname fit_lm
-#' @export
-fit_poisson <- function(data = NULL, formula = NULL, keep = NULL) {
-  v_var <- all.vars(formula)
-  df <- data[, v_var, with = FALSE]
-  fit <- tryCatch(
-    do.call("glm", args = list(data = df, formula = formula,  family="poisson")),
-    error = function(e) {
-      cat(paste0("Failed to fit model: ", e), "\n")
-    })
-  if(inherits(fit, "glm")) {
-    res  <- as.data.table(broom::tidy(fit))
-    if(! is.null(keep)) res <- res[res$term %in% keep, ]
-    res$n <- length(fit$residuals)
-  } else {
-    res <- list(estimate = NA)
-  }
-  return(res)
-}
-
-
-#' @description `fit_cox`: proportional hazards regression model \code{\link[survival]{coxph}}.
-#' @rdname fit_lm
-#' @export
-fit_cox <- function(data = NULL, formula = NULL, keep = NULL) {
-  check_pkg("survival")
-
-  v_var <- all.vars(formula)
-  df <- data[, v_var, with = FALSE]
-  fit <- tryCatch(
-    do.call(getExportedValue("survival","coxph"), args = list(data = df, formula = formula)),
-    error = function(e) {
-      cat(paste0("Failed to fit model: ", e), "\n")
-    })
-
-  if(inherits(fit, "coxph")) {
-    res  <- as.data.table(broom::tidy(fit))
-    if(! is.null(keep)) res <- res[res$term %in% keep, ]
-    res$n <- length(fit$residuals)
-  } else {
-    res <- list(estimate = NA)
-  }
-  return(res)
-}
-
-
-
-#' @description `fit_lme`: linear mixed-effects model \code{\link[nlme]{lme}}.
-#' @param \dots Further arguments passed to regression model.
-#' @rdname fit_lm
-#' @export
-
-fit_lme <- function(data = NULL, formula = NULL, keep = NULL, ...) {
-  check_pkg("nlme")
-
-  v_var <- all.vars(formula)
-
-  v_args <- list(...)
-
-  if (! "random" %in% names(v_args)) {
-    warnings("`random` formula should be specified for `lme`.")
-  } else {
-    random <- v_args[["random"]]
-  }
-
-if (! "na.action" %in% names(v_args)) {
-  na.action <- na.omit
-} else {
-  na.action <- v_args[["na.action"]]
-}
-
-if (! "control" %in% names(v_args)) {
-  control  <- nlme::lmeControl(opt = "optim")
-} else {
-  control <- v_args[["control"]]
-}
-
-  v_args <- v_args[! names(v_args) %in% c("random", "na.action", "control", "keep.data")]
-
-  if(length(v_args) != 0) {
-  warning(paste0("Unknown args in lme: ", paste0(names(v_args), collapse = ", "),"\n"))
-  }
-
-
-  # select variables.
-  df <- data[, c(v_var, all.vars(random)), with = FALSE]
-
-
-
-  fit <- tryCatch(
-    do.call(getExportedValue("nlme", "lme"), args = list(fixed = formula, data = df,
-                               random = random,
-                               na.action = na.action,
-                               control = control,
-                               keep.data = FALSE
-                               )),
-    error = function(e) {
-      cat(paste0("Failed to fit model: ", e), "\n")
-    })
-
-  if(inherits(fit, "lme")) {
-    res <- as.data.table(summary(fit)$tTable, keep.rownames = TRUE)
-    res <- res[, list(term = res$rn, estimate = res$Value, std.error = res$Std.Error,  statistic = res$`t-value`, p.value = res$`p-value`,  n = fit$dims[["N"]])]
-    if(! is.null(keep)) res <- res[res$term %in% keep, ]
-  } else {
-    res <- list(estimate = NA)
-  }
-  return(res)
-}
-
-
-
-
-
-#' @description `fit_glmer`: logistic linear mixed-effects model \code{\link[lme4]{glmer}}.
-#' @param \dots Further arguments passed to regression model.
-#' @rdname fit_lm
-#' @export
-fit_glmer <- function(data = NULL, formula = NULL, keep = NULL, ...) {
-
-
-  check_pkg("lme4")
-
-  v_var <- all.vars(formula)
-
-  v_args <- list(...)
-
-  if ("random" %in% names(v_args)) {
-    random <- v_args[["random"]]
-    formula <- as.formula(paste0(deparse(formula)," ",  gsub("~", " + ", deparse(random))))
-    v_var <- c(v_var, all.vars(random))
-  }
-
-  if (! "nAGQ" %in% names(v_args)) {
-    nAGQ  <- 25
-  } else {
-    nAGQ <- v_args[["nAGQ"]]
-  }
-
-  if (! "control" %in% names(v_args)) {
-    control = lme4::glmerControl()
-  } else {
-    control <- v_args[["control"]]
-  }
-
-
-  v_args <- v_args[! names(v_args) %in% c("random", "nAGQ", "control")]
-
-  if(length(v_args) != 0) {
-    warning(paste0("Unknown args in glmer: ", paste0(names(v_args), collapse = ", "),"\n"))
-  }
-
-
-  # select variables.
-  df <- data[, v_var, with = FALSE]
-
-  fit <- tryCatch(
-    do.call(getExportedValue("lme4", "glmer"), args = list(formula = formula, data = df,
-                                 family = binomial,
-                                 nAGQ = nAGQ,
-                                 control = control
-    )),
-    error = function(e) {
-      cat(paste0("Failed to fit model: ", e), "\n")
-    })
-
-
-  if(inherits(fit, "glmerMod")) {
-
-    v_messages <- fit@optinfo$conv$lme4$messages
-    if(!is.null(v_messages) && grepl("Model failed to converge", v_messages)) {
-
-      control <- lme4::glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=2e5))
-
-      fit <- tryCatch(
-        do.call(getExportedValue("lme4", "glmer"), args = list(formula = formula, data = df,
-                                                               family = binomial,
-                                                               nAGQ = nAGQ,
-                                                               control = control
-        )),
-        error = function(e) {
-          cat(paste0("Failed to fit model: ", e), "\n")
-        })
-
-    }
-    res <- as.data.table(summary(fit)$coefficients, keep.rownames = TRUE)
-
-    v_message <- fit@optinfo$conv$lme4$messages
-    v_message <- ifelse(is.null(v_message), NA, v_message)
-
-    res <- res[, list(term = res$rn, estimate = res$Estimate, std.error = res$`Std. Error`,  statistic = res$`z value`, p.value = res$`Pr(>|z|)`,  n = fit@devcomp$dims[["n"]], message = fit@optinfo$conv$lme4$messages)]
-    if(! is.null(keep)) res <- res[res$term %in% keep, ]
-  } else {
-    res <- list(estimate = NA)
-  }
-  return(res)
-}
-
-
-
-
-#' @description `fit_lmer`: linear mixed-effects model \code{\link[lme4]{lmer}}.
-#' @param \dots Further arguments passed to regression model.
-#' @rdname fit_lm
-#' @export
-fit_lmer <- function(data = NULL, formula = NULL, keep = NULL, ...) {
-
-  check_pkg("lmerTest")
-
-  v_var <- all.vars(formula)
-
-  v_args <- list(...)
-
-
-  if ("random" %in% names(v_args)) {
-    random <- v_args[["random"]]
-    formula <- as.formula(paste0(deparse(formula)," ",  gsub("~", " + ", deparse(random))))
-    v_var <- c(v_var, all.vars(random))
-  }
-
-
-
-  v_args <- v_args[! names(v_args) %in% c("random")]
-
-  if(length(v_args) != 0) {
-    warning(paste0("Unknown args in lmer: ", paste0(names(v_args), collapse = ", "),"\n"))
-  }
-
-  # select variables.
-  df <- data[, v_var, with = FALSE]
-
-  check_pkg("lme4")
-
-  fit <- tryCatch(
-    do.call(getExportedValue("lmerTest", "lmer"), args = list(formula = formula, data = df)),
-    error = function(e) {
-      cat(paste0("Failed to fit model: ", e), "\n")
-    })
-
-  if(inherits(fit, "lmerMod")) {
-    res <- as.data.table(summary(fit)$coefficients, keep.rownames = TRUE)
-    v_message <- fit@optinfo$conv$lme4$messages
-    v_message <- ifelse(is.null(v_message), NA, v_message)
-    res <- res[, list(term = res$rn, estimate = res$Estimate, std.error = res$`Std. Error`,  statistic = res$`t value`, p.value = res$`Pr(>|t|)`,  n = fit@devcomp$dims[["n"]], message = v_message)]
-    if(! is.null(keep)) res <- res[res$term %in% keep, ]
-  } else {
-    res <- list(estimate = NA)
-  }
-  return(res)
-}
 
 

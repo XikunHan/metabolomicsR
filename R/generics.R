@@ -36,6 +36,7 @@ Metabolite <- setClass(
 #'
 #'  Accessors for Metabolite object. Get the assayData in the Metabolite object.
 #' @param object A Metabolite object.
+#' 
 setGeneric("assayData", function(object) standardGeneric("assayData"))
 
 #' @rdname assayData
@@ -52,12 +53,15 @@ setMethod("assayData", "Metabolite", function(object) object@assayData)
 #' @param object A Metabolite object.
 #' @param value The new assayData.
 #' @rdname assayData_set
+#' @return assayData
 #' @export
+#' 
 setGeneric("assayData<-", function(object, value) standardGeneric("assayData<-"))
 
 #' @docType methods
 #' @rdname assayData_set
 #' @export
+#' 
 setMethod("assayData<-", "Metabolite", function(object, value) {
   stopifnot(inherits(object@assayData, "data.frame"))
   object@assayData <- as.data.table(value)
@@ -160,7 +164,7 @@ setMethod("show", "Metabolite", function(object) {
   print(object@sampleData)
 
   cat("\n***  @miscData  ***\n")
-  print(sapply(object@miscData, length))
+  print(vapply(object@miscData, length, integer(1)))
 
   cat("\n***  @logs  ***\n")
   cat(object@logs)
@@ -223,9 +227,18 @@ create_Metabolite <- function(
     featureData[, featureID := get(featureID)]
   }
 
+
+  setnames(sampleData, sampleID ,"sampleID")
+  setnames(assayData, sampleID ,"sampleID")
+  
+  # sampleID in the first column
+  
+  stopifnot(names(sampleData)[1] == "sampleID")
+  stopifnot(names(assayData)[1] == "sampleID")
+  
   # check extra features and samples
 
-  v_feature <- intersect(featureData$featureID, setdiff(names(assayData), sampleID))
+  v_feature <- intersect(featureData$featureID, setdiff(names(assayData), "sampleID"))
 
   v_featureData <- setdiff(featureData$featureID, v_feature)
   if(length(v_featureData) > 0) {
@@ -234,26 +247,26 @@ create_Metabolite <- function(
 
   featureData <- featureData[featureID %in% v_feature]
 
-  v_assayData <- setdiff(setdiff(names(assayData), sampleID), v_feature)
+  v_assayData <- setdiff(setdiff(names(assayData), "sampleID"), v_feature)
 
   if(length(v_assayData) > 0) {
     warning(paste0(length(v_assayData), " extra features in @assayData: ", paste5(v_assayData)))
   }
-  assayData <- assayData[, c(sampleID, v_feature), with = FALSE]
+  assayData <- assayData[, c("sampleID", v_feature), with = FALSE]
 
-  v_sample <- intersect(assayData[, get(sampleID)], sampleData[, get(sampleID)])
+  v_sample <- intersect(assayData$sampleID, sampleData$sampleID)
 
-  v_sampleData <- setdiff(sampleData[, get(sampleID)], v_sample)
+  v_sampleData <- setdiff(sampleData$sampleID, v_sample)
   if(length(v_sampleData) > 0) {
     warning(paste0(length(v_sampleData), " extra samples in @sampleData: ", paste5(v_sampleData)))
   }
 
-  sampleData <- sampleData[get(sampleID) %in% v_sample]
-  v_assayData <- setdiff(assayData[, get(sampleID)],  v_sample)
+  sampleData <- sampleData[get("sampleID") %in% v_sample]
+  v_assayData <- setdiff(assayData$sampleID,  v_sample)
   if(length(v_assayData) > 0) {
     warning(paste0(length(v_assayData), " extra samples in @assayData: ", paste5(v_assayData)))
   }
-  assayData <- assayData[get(sampleID) %in% v_sample]
+  assayData <- assayData[get("sampleID") %in% v_sample]
 
   new(
     Class = 'Metabolite',
@@ -261,7 +274,7 @@ create_Metabolite <- function(
     featureData = featureData,
     sampleData = sampleData,
     featureID = "featureID",
-    sampleID = sampleID,
+    sampleID = "sampleID",
     logs = paste0(logs, format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Initiate data: ", NROW(sampleData), " samples and ", NROW(featureData), " features.\n"),
     miscData = list()
   )
@@ -287,12 +300,12 @@ setValidity("Metabolite", function(object) {
 
 
   if(! all(feature_IDs %in%  object@featureData[, get(object@featureID)])) {
-    msg_list <- paste0(feature_IDs[which(! feature_IDs %in%  object@featureData[, get(object@featureID)])[1:5]], collapse = ", ")
+    msg_list <- paste0(feature_IDs[which(! feature_IDs %in%  object@featureData[, get(object@featureID)])[seq_len(5)]], collapse = ", ")
     msg <- append(msg, paste0(msg, "\n", "Some feature IDs (",msg_list, ") are missing in @featureData"))
   }
 
   if(! all(sample_IDs %in%  object@sampleData[, get(object@sampleID)])) {
-    msg_list <- paste0(sample_IDs[which(! sample_IDs %in%  object@sampleData[, get(object@sampleID)])[1:5]], collapse = ", ")
+    msg_list <- paste0(sample_IDs[which(! sample_IDs %in%  object@sampleData[, get(object@sampleID)])[seq_len(5)]], collapse = ", ")
 
     msg <- append(msg, paste0(msg, "\n", "Some sample IDs (", msg_list, ") are missing in @sampleData"))
   }

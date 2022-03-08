@@ -51,7 +51,7 @@ run_PCA <- function(object, nPCs = 10, impute_method = "half-min", log = TRUE, s
 
   res <- prcomp(X, center = TRUE, scale = scale, rank. = nPCs)
   PCs <- cbind(object@assayData[, 1], res$x)
-  Variances <- (res$sdev^2/sum(res$sdev^2))[1:nPCs]
+  Variances <- (res$sdev^2/sum(res$sdev^2))[seq_len(nPCs)]
 
 if (addPC) {
   object@sampleData <- merge(object@sampleData, PCs, by = object@sampleID, all = TRUE, sort = FALSE)
