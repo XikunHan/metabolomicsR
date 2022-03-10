@@ -18,11 +18,11 @@ knitr::opts_chunk$set(warning=FALSE, error=FALSE, message=FALSE)
 ```
 
 
-`{metabolomicsR}` Tools to process, analyze, and visualize metabolomic data.
+<strong>`{metabolomicsR}` Tools to process, analyze, and visualize metabolomic data.</strong>
 
-`{metabolomicsR}` is a streamlined R package to preprocess, analyze, and visualize metabolomics data. We included broad utility functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression, metabolite annotation, enrichment analysis, and visualization of data and results. The `{metabolomicsR}` is designed to be a comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is versatile and is extensible to other various methods. Here, we demonstrate the step-by-step use of the main functions from this package.
+`{metabolomicsR}` is a streamlined R package to preprocess, analyze, and visualize metabolomic data. We included a set of functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression analysis, annotation, enrichment analysis, and visualization of data and results. The `{metabolomicsR}` is designed to be a comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is also versatile and is extensible to various methods and metabolomic platforms. Here, we demonstrate the step-by-step use of the main functions from this package.
 
-Figure: Seamless workflow to preprocess, analyze, and visualize metabolomics data in `{metabolomicsR}` <img src="../man/figures/workflow.png" align="center" width="120%" height="180%"/>
+<strong>Figure:</strong> Seamless workflow to preprocess, analyze, and visualize metabolomic data in `{metabolomicsR}` <img src="../man/figures/workflow.png" align="center" width="120%" height="180%"/>
 
 <br>
 
@@ -32,19 +32,17 @@ Figure: Seamless workflow to preprocess, analyze, and visualize metabolomics dat
 |-------------|-----------------------------------------------------|
 | Development | `remotes::install_github("XikunHan/metabolomicsR")` |
 
-<br>
+<br><br>
 
 # Data structure
 
-We first designed a “Metabolite” class based on the object-oriented programming system S4 in R. For a particular “Metabolite” data, it will include “assayData” (eg. peak area data or batch-normalized data, samples in rows and metabolites in columns), “featureData” (metabolite annotation), “sampleData” (sample annotation), “featureID”, “sampleID”, “logs” (log information of data analysis process), and “miscData” (other ancillary data).
+We first designed a “Metabolite” class based on the object-oriented programming system S4 in R. For a particular “Metabolite” data, it will include “assayData” (eg. peak area data or batch-normalized data, samples in rows and metabolites in columns), “featureData” (metabolite annotation), “sampleData” (sample annotation), “featureID”, “sampleID”, “logs” (log information of data analysis process), and “miscData” (other ancillary data). For metabolites, current platforms typically measure ~1,000 features. It will be much easier to manipulate the data with samples in rows and metabolites in columns, rather than the `{SummarizedExperiment}` container where the columns represent samples. 
 
-<br>
+<br><br>
 
 # Import data
 
-To demonstrate the package, we obtained the data from the Qatar Metabolomics Study on Diabetes, similar to the data format from non-targeted mass spectrometry by Metabolon. The dataset is also available via [figshare](https://doi.org/10.6084/m9.figshare.5904022).
-
-In the “assayData”, the first column is the sample IDs to match with “sampleData”, the other columns are metabolite IDs to match with “featureData”.
+To demonstrate the package, we obtained metabolomic data from Qatar Metabolomics Study on Diabetes, similar to the data format from non-targeted mass spectrometry by Metabolon. The dataset is available via [figshare](https://doi.org/10.6084/m9.figshare.5904022).
 
 ```{r}
 
@@ -67,14 +65,19 @@ df_plasma <- load_excel(path = file_path,
                         )
 
 ```
+In the “assayData”, the first column is the sample IDs to match with “sampleData”, the other columns are metabolite IDs to match with “featureData”.
 
 <br>
+
 <details>
 <summary>**click to show plasma data**</summary>
 ```{r}
 df_plasma
 ```
 </details>
+
+The `{update_Metabolite}` fuction provides several methods to update the data, including "injection_order", "keep_feature", "remove_feature", "keep_sample", "remove_sample", "add_sample_annotation", and "change_featureID". 
+
 
 ```{r}
 # change the feature ID to the column `COMP_IDstr`
@@ -83,6 +86,7 @@ df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "chan
 ```
 
 <br>
+
 <details>
 <summary>**click to show plasma data**</summary>
 ```{r}
@@ -104,6 +108,7 @@ df_urine <- update_Metabolite(df_urine, dataset = "COMP_IDstr", action = "change
 ```
 
 <br>
+
 <details>
 <summary>**click to show urine data**</summary>
 ```{r}
@@ -132,11 +137,11 @@ df_saliva
 ```
 </details>
 
-<br>
+<br><br>
 
 # Quality control pipeline
 
-We provided a pipeline for metabolite and sample quality control (QC) procedures with a series of functions. In the QC pipeline, we included the following functions: remove metabolites or samples beyond a particular missing rate threshold (eg. 0.5), detect outliers (eg. +- 5 SD) and replace outliers with NA or winsorize outliers, and popular methods to impute missing values (eg. half of the minimum value). All the steps can be customized to implement in the “QC_pipeline” function or be used from the individual functions (eg. “filter_column_missing_rate”, “replace_outlier”, and “impute”).
+We provided a pipeline for metabolite and sample quality control (QC) procedures. In the QC pipeline, we included the following functions: remove metabolites or samples beyond a particular missing rate threshold (eg. 0.5), detect outliers (eg. +- 5 SD) and replace outliers with NA or winsorize outliers, and popular methods to impute missing values (eg. half of the minimum value). All the steps can be customized in the “QC_pipeline” function or be used in each function (eg. “filter_column_missing_rate”, “replace_outlier”, and “impute”).
 
 ```{r}
 df_plasma_QC <- QC_pipeline(df_plasma, replace_outlier_method = "winsorize", impute_method = NULL)
@@ -171,7 +176,7 @@ df_saliva_QC
 ```
 </details>
 
-<br>
+<br><br>
 
 # Transformation
 
@@ -191,7 +196,7 @@ df_plasma_scale
 </details>
 
 
-<br>
+<br><br>
 
 # Visualization
 
@@ -208,7 +213,7 @@ plot_Metabolite(df_plasma_QC, plot = "boxplot", x = "T2D", color ="ETHNICITY", s
 plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot", feature_name = c("M43027",  "M11953", "M38002"))
 ```
 
-<br>
+<br><br>
 
 ## Visualization: comparisons between groups
 
@@ -218,7 +223,7 @@ plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = 
 
 ```
 
-<br>
+<br><br>
 
 ## Boxplot after transformation
 
@@ -227,7 +232,7 @@ plot_Metabolite(df_plasma_scale, plot = "boxplot", x = "T2D", color ="ETHNICITY"
 
 ```
 
-<br>
+<br><br>
 
 ## Visualization: histogram
 
@@ -239,19 +244,17 @@ plot_Metabolite(df_plasma_scale, plot = "histogram", color = "ETHNICITY")
 
 ```
 
-
-
-<br>
+<br><br>
 
 # Normalization
 
-Normalization of metabolomic data is an important step to remove systematic variation, and to facilitate the identification of real biological metabolites. Here we provided several commonly used normalization method, including batch-based normalization, QC sample-based/nearest QC sample-based normalization, and LOESS normalization. The latter three methods are used when the measurements of internal QC samples are available.
+Normalization of metabolomic data is an important step to remove systematic variation, and to facilitate the identification of real biological metabolites. Here we provided the following normalization methods: batch-based normalization, QC sample-based/nearest QC sample-based normalization, and LOESS normalization. The last three methods are used when the internal QC samples are available.
 
 
 <details>
 <summary>**click to show urine toy example for normalization **</summary>
 ```{r}
-# Take the urine data for example, the batch of the samples are missing. To illustrate the usage of the normalization method data, we assume that 120 samples in each batch. 
+# Take the urine data for example, the batch of the samples are missing. To illustrate the usage of the normalization method, we assume that 120 samples in each batch. 
 unique(featureData(df_urine_QC)$PLATFORM)
 
 # add new columns by reference (column name uppercase)
@@ -259,10 +262,10 @@ sampleData(df_urine_QC)[, `GC/MS` := rep(1:3, each = 120)[1:359]]
 sampleData(df_urine_QC)[, `LC/MS NEG` := rep(1:3, each = 120)[1:359]]
 sampleData(df_urine_QC)[, `LC/MS POS` := rep(1:3, each = 120)[1:359]]
 
-# we also added a injection order column (in the current order)
+# we also added an injection order column (in the current order)
 df_urine_QC <- update_Metabolite(df_urine_QC, sampleData(df_urine_QC)[, 1], action = "injection_order")
 
-# and set one as QC samples for each 10 samples. 
+# and set one QC sample for each 10 samples. 
 
 sampleData(df_urine_QC)[, QCsample := ifelse(1:359%%10 == 0, 1, 0)]
 sampleData(df_urine_QC)[, QCsample := factor(QCsample, levels = c(1, 0))]
@@ -286,7 +289,7 @@ plot_injection_order(df_urine_QC, color = "QCsample", shape = "GC/MS", feature_n
 ```
 
 
-<br>
+<br><br>
 
 ## Normalization 1: batch-norm
 ```{r, fig.width = 12, fig.height = 7}
@@ -331,11 +334,11 @@ p5
 
 </details>
 
-<br>
+<br><br>
 
 # Dimensional reduction
 
-Dimensional reduction strategies on metabolites data can be used to detect batch effects, sample outliers, and real biological subgroups. We included principal components analysis (PCA), manifold approximation and projection (UMAP), and t-distributed stochastic neighbor embedding (tSNE) methods. Figures will be displayed in ggplot2 style.
+Dimensional reduction strategies on metabolites data can be used to detect batch effects, sample outliers, and real biological subgroups. We included principal components analysis (PCA), manifold approximation and projection (UMAP), and t-distributed stochastic neighbor embedding (tSNE) methods.
 
 ```{r}
 
@@ -349,7 +352,7 @@ plot_tsne(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 
 ```
 
-<br>
+<br><br>
 
 # Correlation
 
@@ -404,13 +407,13 @@ p
 ```
 </details>
 
-<br>
+<br><br>
 
 # Association analysis 
 
 
 ## Association analysis 1: linear regression
-Association analysis between metabolites and interested outcomes was implemented in the “regression” function, supporting general linear regression, logistic regression, poisson regression, proportional hazards regression model, linear mixed-effects model, and logistic linear mixed-effects model, with or without covariates. All the regression models can be run for selected metabolites or all metabolites in a single job with the support of parallel computing.
+Association analysis between metabolites and interested outcomes was implemented in the `{regression}` function, supporting general linear regression, logistic regression, poisson regression, proportional hazards regression model, linear mixed-effects model, and logistic linear mixed-effects model, with or without covariates. All the regression models can be run for selected metabolites or all metabolites in a single job with the support of parallel computing.
 
 ```{r}
 fit_lm <- regression(object = df_plasma_scale, phenoData = NULL, model = "lm", outcome = "BMI",
@@ -429,7 +432,8 @@ plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 
 ```
 
-<br>
+<br><br>
+
 
 ## Association analysis 2: logistic regression
 
@@ -475,7 +479,7 @@ plot_volcano(dd2, color = "outcome", label = "BIOCHEMICAL")
 
 ## Association analysis 4: extension to other regression models
 
-We have provided various regression models in the `{metabolomicsR}` package. Here we show how to extend the `regression` function to other regression models.
+We have provided various regression models in the `{metabolomicsR}` package. Here we show how to extend the `{regression}` function to other models.
 
 ```{r}
 
@@ -524,7 +528,7 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 ```
 
-<br>
+<br><br>
 
 # ROC
 
@@ -536,7 +540,7 @@ plot_ROC(object = df_plasma_scale, y = "T2D", x = c("M00527", "BMI"))
 
 ```
 
-<br>
+<br><br>
 
 ## ROC: compare two models
 
