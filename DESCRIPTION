@@ -6,7 +6,7 @@ Date: 2022-01-10
 Authors@R: 
     person(given = "Xikun",
            family = "Han",
-           role = c("cre", "aut", "cph"),
+           role = c("cre", "aut"),
            email = "hanxikun2017@gmail.com")
 URL: https://github.com/XikunHan/metabolomicsR
 Description: Tools to preproces, analyse, and visualize metabolomic data. 

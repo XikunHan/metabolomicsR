@@ -24,16 +24,19 @@ knitr::opts_chunk$set(warning=FALSE, error=FALSE, message=FALSE)
 
 Figure: Seamless workflow to preprocess, analyze, and visualize metabolomics data in `{metabolomicsR}` <img src="../man/figures/workflow.png" align="center" width="120%" height="180%"/>
 
+<br>
 # Installation
 
 | Type        | Command                                             |
 |-------------|-----------------------------------------------------|
 | Development | `remotes::install_github("XikunHan/metabolomicsR")` |
 
+<br>
 # Data structure
 
 We first designed a “Metabolite” class based on the object-oriented programming system S4 in R. For a particular “Metabolite” data, it will include “assayData” (eg. peak area data or batch-normalized data, samples in rows and metabolites in columns), “featureData” (metabolite annotation), “sampleData” (sample annotation), “featureID”, “sampleID”, “logs” (log information of data analysis process), and “miscData” (other ancillary data).
 
+<br>
 # Import data
 
 To demonstrate the package, we obtained the data from the Qatar Metabolomics Study on Diabetes, similar to the data format from non-targeted mass spectrometry by Metabolon. The dataset is also available via [figshare](https://doi.org/10.6084/m9.figshare.5904022).
@@ -62,6 +65,7 @@ df_plasma <- load_excel(path = file_path,
 
 ```
 
+<br>
 <details>
 <summary>**click to show plasma data**</summary>
 ```{r}
@@ -75,6 +79,7 @@ df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "chan
 
 ```
 
+<br>
 <details>
 <summary>**click to show plasma data**</summary>
 ```{r}
@@ -95,6 +100,7 @@ df_urine <- load_excel(path = file_path,
 df_urine <- update_Metabolite(df_urine, dataset = "COMP_IDstr", action = "change_featureID")
 ```
 
+<br>
 <details>
 <summary>**click to show urine data**</summary>
 ```{r}
@@ -115,6 +121,7 @@ df_saliva <- load_excel(path = file_path,
 df_saliva <- update_Metabolite(df_saliva, dataset = "COMP_IDstr", action = "change_featureID")
 ```
 
+<br>
 <details>
 <summary>**click to show saliva data**</summary>
 ```{r}
@@ -122,6 +129,7 @@ df_saliva
 ```
 </details>
 
+<br>
 # Quality control pipeline
 
 We provided a pipeline for metabolite and sample quality control (QC) procedures with a series of functions. In the QC pipeline, we included the following functions: remove metabolites or samples beyond a particular missing rate threshold (eg. 0.5), detect outliers (eg. +- 5 SD) and replace outliers with NA or winsorize outliers, and popular methods to impute missing values (eg. half of the minimum value). All the steps can be customized to implement in the “QC_pipeline” function or be used from the individual functions (eg. “filter_column_missing_rate”, “replace_outlier”, and “impute”).
@@ -159,6 +167,7 @@ df_saliva_QC
 ```
 </details>
 
+<br>
 # Transformation
 
 Transformation of metabolites can alter the distribution of data and is an essential step for the following statistical analysis. We provided the following transformation methods: log (natural logarithm), pareto scale, scale, and rank-based inverse normal transformation.
@@ -177,6 +186,7 @@ df_plasma_scale
 </details>
 
 
+<br>
 # Visualization
 
 ## Boxplot: before transformation
@@ -192,6 +202,7 @@ plot_Metabolite(df_plasma_QC, plot = "boxplot", x = "T2D", color ="ETHNICITY", s
 plot_Metabolite(df_plasma_QC, x = "T2D", plot = "boxplot", feature_name = c("M43027",  "M11953", "M38002"))
 ```
 
+<br>
 ## Visualization: comparisons between groups
 
 ```{r, fig.width = 12, fig.height = 7}
@@ -200,6 +211,7 @@ plot_Metabolite(df_plasma_QC, x = "T2D", plot = "betweenstats",  feature_name = 
 
 ```
 
+<br>
 ## Boxplot after transformation
 
 ```{r, fig.width = 12, fig.height = 7}
@@ -207,6 +219,7 @@ plot_Metabolite(df_plasma_scale, plot = "boxplot", x = "T2D", color ="ETHNICITY"
 
 ```
 
+<br>
 ## Visualization: histogram
 
 ```{r, fig.width = 12, fig.height = 7}
@@ -219,6 +232,7 @@ plot_Metabolite(df_plasma_scale, plot = "histogram", color = "ETHNICITY")
 
 
 
+<br>
 # Normalization
 
 Normalization of metabolomic data is an important step to remove systematic variation, and to facilitate the identification of real biological metabolites. Here we provided several commonly used normalization method, including batch-based normalization, QC sample-based/nearest QC sample-based normalization, and LOESS normalization. The latter three methods are used when the measurements of internal QC samples are available.
@@ -262,6 +276,7 @@ plot_injection_order(df_urine_QC, color = "QCsample", shape = "GC/MS", feature_n
 ```
 
 
+<br>
 ## Normalization 1: batch-norm
 ```{r, fig.width = 12, fig.height = 7}
 df_urine_QC_norm <- batch_norm(df_urine_QC)
@@ -270,6 +285,7 @@ p1
 ```
 
 
+<br>
 <details>
 <summary>**click to show other normalization methods **</summary>
 
@@ -304,6 +320,7 @@ p5
 
 </details>
 
+<br>
 # Dimensional reduction
 
 Dimensional reduction strategies on metabolites data can be used to detect batch effects, sample outliers, and real biological subgroups. We included principal components analysis (PCA), manifold approximation and projection (UMAP), and t-distributed stochastic neighbor embedding (tSNE) methods. Figures will be displayed in ggplot2 style.
@@ -320,6 +337,7 @@ plot_tsne(df_plasma_QC, color ="ETHNICITY", shape = "T2D")
 
 ```
 
+<br>
 # Correlation
 
 ```{r, fig.width = 10, fig.height = 7}
@@ -373,6 +391,7 @@ p
 ```
 </details>
 
+<br>
 # Association analysis 
 
 
@@ -396,6 +415,7 @@ plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 
 ```
 
+<br>
 ## Association analysis 2: logistic regression
 
 ```{r}
@@ -415,6 +435,7 @@ plot_volcano(dd, label = "BIOCHEMICAL")
 
 ```
 
+<br>
 ## Association analysis 3: multiple outcomes, using model = "auto"
 
 ```{r}
@@ -434,6 +455,7 @@ plot_volcano(dd2, color = "outcome", label = "BIOCHEMICAL")
 
 ```
 
+<br>
 ## Association analysis 4: extension to other regression models
 
 We have provided various regression models in the `{metabolomicsR}` package. Here we show how to extend the `regression` function to other regression models.
@@ -485,6 +507,8 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 ```
 
+<br>
+
 # ROC
 
 ```{r, fig.height=8,fig.width=9}
@@ -494,6 +518,8 @@ plot_ROC(object = df_plasma_scale, y = "T2D", x = "M00527")
 plot_ROC(object = df_plasma_scale, y = "T2D", x = c("M00527", "BMI"))
 
 ```
+
+<br>
 
 ## ROC: compare two models
 

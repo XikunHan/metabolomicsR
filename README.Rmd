@@ -30,7 +30,7 @@ knitr::opts_chunk$set(
 
 ## Getting started
 
-The detailed tutorial [vignettes](https://xikunhan.github.io/metabolomicsR/docs/articles/Introduction.html). 
+[The detailed tutorial](https://xikunhan.github.io/metabolomicsR/docs/articles/Introduction.html). 
 
 
 `{metabolomicsR}` is a streamlined R package to preprocess, analyze, and visualize metabolomics data. We included broad utility functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression, metabolite annotation, enrichment analysis, and visualization of data and results. The `{metabolomicsR}` is designed to be a comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is versatile and is extensible to other various methods.
