@@ -25,7 +25,7 @@ step-by-step use of the main functions from this package.
 ## Getting started
 
 The detailed tutorial
-[vignettes](https://xikunhan.github.io/metabolomicsR/).
+[vignettes](https://xikunhan.github.io/metabolomicsR/docs/index.html).
 
 ### Contact:
 
