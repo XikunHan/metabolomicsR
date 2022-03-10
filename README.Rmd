@@ -34,7 +34,7 @@ knitr::opts_chunk$set(
 
 ## Getting started
 
-The detailed tutorial [vignettes](https://xikunhan.github.io/metabolomicsR/docs/index.html). 
+The detailed tutorial [vignettes](https://xikunhan.github.io/metabolomicsR/docs/articles/Introduction.html). 
 
 ### Contact:
 [Xikun Han](mailto:hanxikun2017@gmail.com) maintains this package.
