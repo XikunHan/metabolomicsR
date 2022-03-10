@@ -3,8 +3,8 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   Introduction: Introduction.html
-last_built: 2022-03-10T02:45Z
+last_built: 2022-03-10T03:24Z
 urls:
-  reference: https://XikunHan.github.io/metabolomicsR/reference
-  article: https://XikunHan.github.io/metabolomicsR/articles
+  reference: https://xikunhan.github.io/metabolomicsR/reference
+  article: https://xikunhan.github.io/metabolomicsR/articles
 

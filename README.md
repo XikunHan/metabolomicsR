@@ -29,6 +29,6 @@ The detailed tutorial
 
 ### Contact:
 
-[Xikun Han](hanxikun2017@gmail.com) maintains this package.
+[Xikun Han](mailto:hanxikun2017@gmail.com) maintains this package.
 
 <br><br>
