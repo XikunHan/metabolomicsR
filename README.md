@@ -14,7 +14,7 @@ basic R programming skills. The framework designed here is versatile and
 is extensible to other various methods. Here, we demonstrate the
 step-by-step use of the main functions from this package.
 
-##### Seamless workflow to preprocess, analyze, and visualize metabolomics data in `{metabolomicsR}` <img src="inst/extdata/workflow.png" align="center" width="120%" height="180%"/>
+##### Seamless workflow to preprocess, analyze, and visualize metabolomics data in `{metabolomicsR}` <img src="man/figures/workflow.png" align="center" width="120%" height="180%"/>
 
 ## Installation
 
@@ -214,8 +214,8 @@ df_plasma
 #>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  08/03/22 12:28:18: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  08/03/22 12:28:18: Initiate data: 356 samples and 758 features.
+#>  09/03/22 21:41:31: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  09/03/22 21:41:31: Initiate data: 356 samples and 758 features.
 ```
 
 </details>
@@ -340,9 +340,9 @@ df_plasma
 #>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  08/03/22 12:28:18: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  08/03/22 12:28:18: Initiate data: 356 samples and 758 features.
-#>  08/03/22 12:28:18: Update data, action: change_featureID, 356 samples and 758 features.
+#>  09/03/22 21:41:31: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  09/03/22 21:41:31: Initiate data: 356 samples and 758 features.
+#>  09/03/22 21:41:31: Update data, action: change_featureID, 356 samples and 758 features.
 ```
 
 </details>
@@ -475,9 +475,9 @@ df_urine
 #>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  08/03/22 12:28:18: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  08/03/22 12:28:19: Initiate data: 359 samples and 891 features.
-#>  08/03/22 12:28:19: Update data, action: change_featureID, 359 samples and 891 features.
+#>  09/03/22 21:41:31: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  09/03/22 21:41:31: Initiate data: 359 samples and 891 features.
+#>  09/03/22 21:41:31: Update data, action: change_featureID, 359 samples and 891 features.
 ```
 
 </details>
@@ -610,9 +610,9 @@ df_saliva
 #>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  08/03/22 12:28:19: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  08/03/22 12:28:19: Initiate data: 321 samples and 602 features.
-#>  08/03/22 12:28:19: Update data, action: change_featureID, 321 samples and 602 features.
+#>  09/03/22 21:41:32: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  09/03/22 21:41:32: Initiate data: 321 samples and 602 features.
+#>  09/03/22 21:41:32: Update data, action: change_featureID, 321 samples and 602 features.
 ```
 
 </details>
@@ -752,16 +752,16 @@ df_plasma_QC
 #>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  08/03/22 12:28:18: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  08/03/22 12:28:18: Initiate data: 356 samples and 758 features.
-#>  08/03/22 12:28:18: Update data, action: change_featureID, 356 samples and 758 features. 
+#>  09/03/22 21:41:31: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  09/03/22 21:41:31: Initiate data: 356 samples and 758 features.
+#>  09/03/22 21:41:31: Update data, action: change_featureID, 356 samples and 758 features. 
 #>  
-#>  08/03/22 12:28:19: Run QC pipeline.
-#>  08/03/22 12:28:19: Filter data with a constant column, removed 37 features. 
-#>  08/03/22 12:28:19: Update data, 356 samples and 758 features. 
-#>  08/03/22 12:28:20: Filter data with a missing rate >= 0.5, removed 176 features. 
-#>  08/03/22 12:28:20: Update data, 356 samples and 758 features. 
-#>  08/03/22 12:28:20: Replace outliers using `winsorize` method 5 SDs.
+#>  09/03/22 21:41:32: Run QC pipeline.
+#>  09/03/22 21:41:32: Filter data with a constant column, removed 37 features. 
+#>  09/03/22 21:41:32: Update data, 356 samples and 758 features. 
+#>  09/03/22 21:41:32: Filter data with a missing rate >= 0.5, removed 176 features. 
+#>  09/03/22 21:41:32: Update data, 356 samples and 758 features. 
+#>  09/03/22 21:41:32: Replace outliers using `winsorize` method 5 SDs.
 ```
 
 </details>
@@ -889,16 +889,16 @@ df_urine_QC
 #>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  08/03/22 12:28:18: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  08/03/22 12:28:19: Initiate data: 359 samples and 891 features.
-#>  08/03/22 12:28:19: Update data, action: change_featureID, 359 samples and 891 features. 
+#>  09/03/22 21:41:31: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  09/03/22 21:41:31: Initiate data: 359 samples and 891 features.
+#>  09/03/22 21:41:31: Update data, action: change_featureID, 359 samples and 891 features. 
 #>  
-#>  08/03/22 12:28:20: Run QC pipeline.
-#>  08/03/22 12:28:20: Filter data with a constant column, removed 28 features. 
-#>  08/03/22 12:28:20: Update data, 359 samples and 891 features. 
-#>  08/03/22 12:28:21: Filter data with a missing rate >= 0.5, removed 77 features. 
-#>  08/03/22 12:28:21: Update data, 359 samples and 891 features. 
-#>  08/03/22 12:28:21: Replace outliers using `winsorize` method 5 SDs.
+#>  09/03/22 21:41:32: Run QC pipeline.
+#>  09/03/22 21:41:32: Filter data with a constant column, removed 28 features. 
+#>  09/03/22 21:41:32: Update data, 359 samples and 891 features. 
+#>  09/03/22 21:41:33: Filter data with a missing rate >= 0.5, removed 77 features. 
+#>  09/03/22 21:41:33: Update data, 359 samples and 891 features. 
+#>  09/03/22 21:41:33: Replace outliers using `winsorize` method 5 SDs.
 ```
 
 </details>
@@ -1026,16 +1026,16 @@ df_saliva_QC
 #>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  08/03/22 12:28:19: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  08/03/22 12:28:19: Initiate data: 321 samples and 602 features.
-#>  08/03/22 12:28:19: Update data, action: change_featureID, 321 samples and 602 features. 
+#>  09/03/22 21:41:32: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  09/03/22 21:41:32: Initiate data: 321 samples and 602 features.
+#>  09/03/22 21:41:32: Update data, action: change_featureID, 321 samples and 602 features. 
 #>  
-#>  08/03/22 12:28:21: Run QC pipeline.
-#>  08/03/22 12:28:21: Filter data with a constant column, removed 35 features. 
-#>  08/03/22 12:28:21: Update data, 321 samples and 602 features. 
-#>  08/03/22 12:28:22: Filter data with a missing rate >= 0.5, removed 203 features. 
-#>  08/03/22 12:28:22: Update data, 321 samples and 602 features. 
-#>  08/03/22 12:28:22: Replace outliers using `winsorize` method 5 SDs.
+#>  09/03/22 21:41:33: Run QC pipeline.
+#>  09/03/22 21:41:33: Filter data with a constant column, removed 35 features. 
+#>  09/03/22 21:41:33: Update data, 321 samples and 602 features. 
+#>  09/03/22 21:41:33: Filter data with a missing rate >= 0.5, removed 203 features. 
+#>  09/03/22 21:41:33: Update data, 321 samples and 602 features. 
+#>  09/03/22 21:41:33: Replace outliers using `winsorize` method 5 SDs.
 ```
 
 </details>
@@ -1180,19 +1180,19 @@ df_plasma_scale
 #>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  08/03/22 12:28:18: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  08/03/22 12:28:18: Initiate data: 356 samples and 758 features.
-#>  08/03/22 12:28:18: Update data, action: change_featureID, 356 samples and 758 features. 
+#>  09/03/22 21:41:31: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  09/03/22 21:41:31: Initiate data: 356 samples and 758 features.
+#>  09/03/22 21:41:31: Update data, action: change_featureID, 356 samples and 758 features. 
 #>  
-#>  08/03/22 12:28:19: Run QC pipeline.
-#>  08/03/22 12:28:19: Filter data with a constant column, removed 37 features. 
-#>  08/03/22 12:28:19: Update data, 356 samples and 758 features. 
-#>  08/03/22 12:28:20: Filter data with a missing rate >= 0.5, removed 176 features. 
-#>  08/03/22 12:28:20: Update data, 356 samples and 758 features. 
-#>  08/03/22 12:28:20: Replace outliers using `winsorize` method 5 SDs. 
-#>  08/03/22 12:28:22: Impute data using `half-min` method. 
-#>  08/03/22 12:28:22: Transformation using `log` method. 
-#>  08/03/22 12:28:22: Transformation using `scale` method.
+#>  09/03/22 21:41:32: Run QC pipeline.
+#>  09/03/22 21:41:32: Filter data with a constant column, removed 37 features. 
+#>  09/03/22 21:41:32: Update data, 356 samples and 758 features. 
+#>  09/03/22 21:41:32: Filter data with a missing rate >= 0.5, removed 176 features. 
+#>  09/03/22 21:41:32: Update data, 356 samples and 758 features. 
+#>  09/03/22 21:41:32: Replace outliers using `winsorize` method 5 SDs. 
+#>  09/03/22 21:41:33: Impute data using `half-min` method. 
+#>  09/03/22 21:41:33: Transformation using `log` method. 
+#>  09/03/22 21:41:34: Transformation using `scale` method.
 ```
 
 </details>
@@ -1409,18 +1409,18 @@ df_urine_QC
 #>  integer(0)
 #>  
 #>  ***  @logs  ***
-#>  08/03/22 12:28:18: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
-#>  08/03/22 12:28:19: Initiate data: 359 samples and 891 features.
-#>  08/03/22 12:28:19: Update data, action: change_featureID, 359 samples and 891 features. 
+#>  09/03/22 21:41:31: Import data from: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .
+#>  09/03/22 21:41:31: Initiate data: 359 samples and 891 features.
+#>  09/03/22 21:41:31: Update data, action: change_featureID, 359 samples and 891 features. 
 #>  
-#>  08/03/22 12:28:20: Run QC pipeline.
-#>  08/03/22 12:28:20: Filter data with a constant column, removed 28 features. 
-#>  08/03/22 12:28:20: Update data, 359 samples and 891 features. 
-#>  08/03/22 12:28:21: Filter data with a missing rate >= 0.5, removed 77 features. 
-#>  08/03/22 12:28:21: Update data, 359 samples and 891 features. 
-#>  08/03/22 12:28:21: Replace outliers using `winsorize` method 5 SDs. 
-#>  08/03/22 12:28:50: Update data, action: injection_order, 359 samples and 891 features. 
-#>  08/03/22 12:28:50: Update data, 359 samples and 891 features.
+#>  09/03/22 21:41:32: Run QC pipeline.
+#>  09/03/22 21:41:32: Filter data with a constant column, removed 28 features. 
+#>  09/03/22 21:41:32: Update data, 359 samples and 891 features. 
+#>  09/03/22 21:41:33: Filter data with a missing rate >= 0.5, removed 77 features. 
+#>  09/03/22 21:41:33: Update data, 359 samples and 891 features. 
+#>  09/03/22 21:41:33: Replace outliers using `winsorize` method 5 SDs. 
+#>  09/03/22 21:41:57: Update data, action: injection_order, 359 samples and 891 features. 
+#>  09/03/22 21:41:57: Update data, 359 samples and 891 features.
 ```
 
 </details>
