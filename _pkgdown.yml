@@ -1,5 +1,3 @@
 url: https://xikunhan.github.io/metabolomicsR/
 template:
   bootstrap: 5
-bootswatch: cyborg
-  theme: arrow-dark
