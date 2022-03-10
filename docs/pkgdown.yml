@@ -1,0 +1,10 @@
+pandoc: 2.17.1.1
+pkgdown: 2.0.2
+pkgdown_sha: ~
+articles:
+  Introduction: Introduction.html
+last_built: 2022-03-10T02:45Z
+urls:
+  reference: https://XikunHan.github.io/metabolomicsR/reference
+  article: https://XikunHan.github.io/metabolomicsR/articles
+
