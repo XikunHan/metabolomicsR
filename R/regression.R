@@ -14,9 +14,10 @@
 #' @param ncpus Number of CPUS for parallele job.
 #' @param p.adjust.method Adjust for P value method, see \code{\link{p.adjust}}.
 #' @param \dots Further arguments passed to regression model.
-#'
 #' @returns term estimate std.error statistic p.value n outcome p.value.adj.
 #' @export
+#' @examples
+#' data(df_plasma)
 #' fit_lm <- regression(object = df_plasma, phenoData = NULL, model = "lm", 
 #' outcome = "BMI", covars = c("AGE", "GENDER", "ETHNICITY"), factors = "ETHNICITY")
 #'

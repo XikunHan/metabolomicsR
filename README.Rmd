@@ -490,7 +490,7 @@ plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 
 # ROC
 
-```{r, fig.height=8,fig.width=7}
+```{r, fig.height=8,fig.width=9}
 
 # ROC for one variable, to add a wrapped for many metabolites separately
 plot_ROC(object = df_plasma_scale, y = "T2D", x = "M00527")
@@ -500,7 +500,7 @@ plot_ROC(object = df_plasma_scale, y = "T2D", x = c("M00527", "BMI"))
 
 ## ROC: compare two models
 
-```{r, fig.height=8,fig.width=7}
+```{r, fig.height=8,fig.width=9}
 
 p <- plot_ROC(object = df_plasma_scale, y = "T2D", 
          model_a = c("BMI", "AGE", "GENDER"), 
