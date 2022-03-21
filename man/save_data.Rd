@@ -10,8 +10,8 @@ save_data(object, file = "")
 \item{object}{A Metabolite object}
 
 \item{file}{Output file to save the metabolite measurements 
-(suffixes: "_assay.csv", "_feature_annotation.csv", "_sample_annotation.csv",).}
+(suffixes: "_assay.txt", "_feature_annotation.txt", "_sample_annotation.txt", "_logs.txt).}
 }
 \description{
-Save metabolite data in three separate csv files
+Save metabolite data in separate txt files
 }
