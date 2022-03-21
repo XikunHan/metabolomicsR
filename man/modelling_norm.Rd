@@ -6,7 +6,7 @@
 \usage{
 modelling_norm(
   object,
-  method = c("LOESS", "KNN"),
+  method = c("LOESS", "KNN", "XGBoost"),
   feature_platform = "PLATFORM",
   QC_ID_pattern = "MTRX",
   span = 0.75,

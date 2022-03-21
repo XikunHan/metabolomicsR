@@ -459,7 +459,6 @@ RSD <- function(x) {
 
 
 
-
 #' distinguish genuine untargeted metabolic features without QC samples
 #'
 #' The makefeature function from genuMet uses a Metabolite object as input. genuMet is an R package used  distinguish genuine untargeted metabolic features without quality control samples.
@@ -1026,11 +1025,17 @@ batch_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern = "M
 #' @export
 #'
 #'
-modelling_norm <- function(object, method = c("LOESS", "KNN"), feature_platform = "PLATFORM" , QC_ID_pattern = "MTRX", span = 0.75, degree = 2, k = 3, test = FALSE, verbose = TRUE) {
+modelling_norm <- function(object, method = c("LOESS", "KNN", "XGBoost"), 
+                           feature_platform = "PLATFORM", 
+                           QC_ID_pattern = "MTRX",
+                           span = 0.75, degree = 2, k = 3, 
+                           test = FALSE, verbose = TRUE) {
 
   stopifnot(inherits(object, "Metabolite"))
   
   method <- match.arg(method)
+  
+  cat(" ******** modelling methods are in testing! ********\n")
   
   OutputData <- copy(object@assayData)
   InputData <- copy(object@assayData)
@@ -1067,9 +1072,7 @@ modelling_norm <- function(object, method = c("LOESS", "KNN"), feature_platform 
     cat(paste0("\n Number of QC samples n = ", n_QC_sample, "\n"))
   }
 
-
   v_n_col <- dim(object@assayData)[2]
-  v_n_col
 
   if(isTRUE(test)) {
     v_n_col <- 10
@@ -1102,7 +1105,6 @@ modelling_norm <- function(object, method = c("LOESS", "KNN"), feature_platform 
       QCIndex <- grep(QC_ID_pattern, sample_IDs)
       QCIndex <- QCIndex[QCIndex %in% Index_each]
       
-      
       if(method == "LOESS") {
         fit <- tryCatch(
           stats::loess(InputData_each[QCIndex] ~ QCIndex, span = span, degree = degree),
@@ -1130,6 +1132,31 @@ modelling_norm <- function(object, method = c("LOESS", "KNN"), feature_platform 
         
         if(inherits(fit, "knnReg")) {
           yfit <- fit$pred
+          yfit <- ifelse(yfit <=0, NA, yfit)
+          set(OutputData, Index_each, j, InputData_each[Index_each]/yfit)
+        } else {
+          set(OutputData, Index_each, j, NA)
+          list_norm_fail <- c(list_norm_fail, v_metab)
+        }
+      } else if(method == "XGBoost") {
+        check_pkg("xgboost")
+        fit <- tryCatch(
+          xgboost::xgboost(
+            data = matrix(QCIndex),
+            label = InputData_each[QCIndex],
+            nrounds = 1000,
+            objective = "reg:squarederror",
+            early_stopping_rounds = 3,
+            max_depth = 3,
+            eta = .25,
+            verbose = 0
+          ),
+          error = function(e) {
+            cat(paste0("Failed to fit model: ", e), "\n")
+          })
+        
+        if(inherits(fit, "xgb.Booster")) {
+          yfit <- predict(fit, matrix(Index_each))
           yfit <- ifelse(yfit <=0, NA, yfit)
           set(OutputData, Index_each, j, InputData_each[Index_each]/yfit)
         } else {

@@ -17,12 +17,12 @@ library(BiocStyle)
 knitr::opts_chunk$set(warning=FALSE, error=FALSE, message=FALSE)
 ```
 
+<br>
+<strong>`{metabolomicsR}`: Tools to process, analyze, and visualize metabolomic data.</strong>
 
-<strong>`{metabolomicsR}` Tools to process, analyze, and visualize metabolomic data.</strong>
+<strong>metabolomicsR</strong> is a streamlined R package to preprocess, analyze, and visualize metabolomic data. We included a set of functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression analysis, annotation, enrichment analysis, and visualization of data and results. The <strong>metabolomicsR</strong> is designed to be a comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is also versatile and is extensible to various methods and metabolomic platforms. Here, we demonstrate the step-by-step use of the main functions from this package.
 
-`{metabolomicsR}` is a streamlined R package to preprocess, analyze, and visualize metabolomic data. We included a set of functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression analysis, annotation, enrichment analysis, and visualization of data and results. The `{metabolomicsR}` is designed to be a comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is also versatile and is extensible to various methods and metabolomic platforms. Here, we demonstrate the step-by-step use of the main functions from this package.
-
-<strong>Figure:</strong> Seamless workflow to preprocess, analyze, and visualize metabolomic data in `{metabolomicsR}` <img src="../man/figures/workflow.png" align="center" width="120%" height="180%"/>
+<strong>Figure:</strong> Seamless workflow to preprocess, analyze, and visualize metabolomic data in <strong>metabolomicsR</strong> <img src="../man/figures/workflow.png" align="center" width="120%" height="180%"/>
 
 <br>
 
@@ -63,6 +63,9 @@ df_plasma <- load_excel(path = file_path,
                         sampleID = "QMDiab-ID",
                         featureID = "BIOCHEMICAL"
                         )
+
+# To save the data
+# save_data(df_plasma, file = "~/test")
 
 ```
 In the “assayData”, the first column is the sample IDs to match with “sampleData”, the other columns are metabolite IDs to match with “featureData”.
@@ -329,6 +332,12 @@ p4
 df_urine_QC_norm_KNN <- modelling_norm(df_urine_QC, method = "KNN", k = 3) 
 p5 <- plot_injection_order(df_urine_QC_norm_KNN, color = "QCsample", shape = "GC/MS", feature_name = v_features)
 p5
+
+
+# to benchmark the performance
+df_urine_QC_norm_xgboost <- modelling_norm(df_urine_QC, method = "XGBoost") 
+p6 <- plot_injection_order(df_urine_QC_norm_xgboost, color = "QCsample", shape = "GC/MS", feature_name = v_features)
+p6
 
 ```
 

@@ -48,7 +48,8 @@ Suggests:
     cowplot,
     pROC,
     BiocStyle,
-    MASS
+    MASS,
+    xgboost
 RoxygenNote: 7.1.2
 biocViews: Software, Metabolomics, MassSpectrometry, Regression, Normalization, QualityControl
 LazyData: FALSE

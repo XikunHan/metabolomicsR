@@ -111,6 +111,21 @@ load_data <- function(
 }
 
 
+#' Save metabolite data 
+#'
+#' Save metabolite data in three separate csv files
+#'
+#' @param object A Metabolite object
+#' @param file Output file to save the metabolite measurements 
+#' (suffixes: "_assay.csv", "_feature_annotation.csv", "_sample_annotation.csv",). 
+#' @export
+#'
+#'
+save_data <- function(object, file = "")  {
+  fwrite(object@assayData, file = paste0(file, "_assay.csv"), sep = "\t", na = "NA", quote = FALSE)
+  fwrite(object@featureData, file = paste0(file, "_feature_annotation.csv"), sep = "\t", na = "NA", quote = FALSE)
+  fwrite(object@sampleData, file = paste0(file, "_sample_annotation.csv"), sep = "\t", na = "NA", quote = FALSE)
+}
 
 
 #' merge two Metabolite objects
