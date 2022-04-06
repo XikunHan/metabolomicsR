@@ -15,7 +15,6 @@ plot_PCA <- function(object, color = "NEG", shape = "NEG", size = 1.5) {
   }
 
   df <- object@sampleData
-  df[, (color) := factor(get(color))]
   df[, (shape) := factor(get(shape))]
 
   p <- ggplot(df, aes_string("PC1", "PC2")) +
@@ -247,6 +246,8 @@ plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", feature_name = 
     }
     setnames(df, x, "x_") # scope issue
 
+    value <- variable <- x_ <- NULL
+    
     for(i in seq_along(1L:v_n)) {
       i_variable <- unique(df$variable)[i]
       p <- ggstatsplot::ggbetweenstats(
@@ -297,6 +298,10 @@ plot_volcano <- function(fit, x = "estimate", y = "p.value", p.value_log10 = TRU
                     x_lab = "Effect size", y_lab = "-log10(P value)"
 
 ) {
+  
+  
+  highlight_ <- NULL
+  
   stopifnot(is.data.frame(fit))
   fit <- as.data.table(fit)
 
@@ -348,6 +353,8 @@ plot_volcano <- function(fit, x = "estimate", y = "p.value", p.value_log10 = TRU
 #' 
 
 plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b = NULL, lab = NULL) {
+  
+  D <- M <- model_A <- name <- y_magic <- NULL
   
   df <- merge(object@sampleData, object@assayData, by = object@sampleID)
   

@@ -209,6 +209,10 @@ create_Metabolite <- function(
   setDT(featureData)
   setDT(sampleData)
 
+  
+  featureID_ <- featureID
+  featureID <- NULL
+  
   assayData[, (setdiff(names(assayData), sampleID)) := lapply(.SD, as.numeric) , .SDcols= setdiff(names(assayData), sampleID)]
 
   if("featureID" %in% names(featureData)) {
@@ -221,10 +225,10 @@ create_Metabolite <- function(
   # test feature ID, if a numeric, add X (provided from Metabolon file)
   if(!is.na(as.integer(feature_IDs[1]))) {
     cat(paste0("\n Add X to feature IDs.\n"), file = stderr())
-    featureData[, featureID := paste0("X", get(featureID))]
+    featureData[, featureID := paste0("X", get(featureID_))]
     setnames(assayData, feature_IDs, paste0("X", feature_IDs))
   } else {
-    featureData[, featureID := get(featureID)]
+    featureData[, featureID := get(featureID_)]
   }
 
 

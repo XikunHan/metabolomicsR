@@ -102,5 +102,8 @@ f_injection_reorder <- function(data = NULL) {
 
 
 
-utils::globalVariables(c("featureID",  "highlight_", "value",  "variable",  "x_",
-                         "D", "M", "model_A", "name", "y_magic"))
+# utils::globalVariables(c("featureID"))
+
+
+# utils::globalVariables(c("featureID",  "highlight_", "value", "variable", "x_",
+#                          "D", "M", "model_A", "name", "y_magic"))
