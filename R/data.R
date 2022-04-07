@@ -236,7 +236,7 @@ update_Metabolite <- function(object,
     if(action == "keep_feature") {
       if(! is.null(dataset)) {
         stopifnot(is.vector(dataset))
-        df_data <- df_data[, unique(object@sampleID, dataset), with = FALSE]
+        df_data <- df_data[, unique(c(df_met@sampleID, dataset)), with = FALSE]
         df_feature <- df_feature[df_feature$featureID %in% dataset]
       } else stop("No dataset provided for action `keep_feature`.")
     }
