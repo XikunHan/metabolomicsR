@@ -226,19 +226,21 @@ create_Metabolite <- function(
   if(!is.na(as.integer(feature_IDs[1]))) {
     cat(paste0("\n Add X to feature IDs.\n"), file = stderr())
     # featureData[, featureID := paste0("X", get(featureID_))]
-    if("featureID" %in% names(featureData)) {
-      featureData$featureID <- NULL
+    if(! "featureID" %in% names(featureData)) {
+      featureData <- cbind(featureID = paste0("X", unlist(featureData[, featureID_, with = FALSE])), featureData)
+    } else {
+      featureData <- cbind(featureID = paste0("X", unlist(featureData[, featureID_, with = FALSE])), featureData[, -c("featureID"), with = FALSE])
     }
-    featureData <- cbind(featureID = paste0("X", unlist(featureData[, featureID_, with = FALSE])), featureData)
     setnames(assayData, feature_IDs, paste0("X", feature_IDs))
+    
   } else {
     # featureData[, featureID := get(featureID_)]
-    if("featureID" %in% names(featureData)) {
-      featureData$featureID <- NULL
+    if(! "featureID" %in% names(featureData)) {
+      featureData <- cbind(featureID = unlist(featureData[, featureID_, with = FALSE]), featureData)
+    } else {
+      featureData <- cbind(featureID = unlist(featureData[, featureID_, with = FALSE]), featureData[, -c("featureID"), with = FALSE])
     }
-    featureData <- cbind(featureID = unlist(featureData[, featureID_, with = FALSE]), featureData)
   }
-
 
   setnames(sampleData, sampleID ,"sampleID")
   setnames(assayData, sampleID ,"sampleID")
