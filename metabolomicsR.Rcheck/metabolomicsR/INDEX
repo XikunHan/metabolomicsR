@@ -1,0 +1,55 @@
+Metabolite-class        The Metabolite class
+QC_pipeline             quality control pipeline
+QCmatrix_norm           QCmatrix normalization
+RSD                     RSD
+assayData               get assayData
+assayData<-             set assayData
+batch_norm              batch normalization
+bridge                  bridge different data sets based on conversion
+                        factors
+column_missing_rate     column missing rate
+correlation             correlation of features between two Metabolite
+                        objects
+create_Metabolite       Create a Metabolite object
+df_plasma               Example data.
+featureData             get featureData
+featureData<-           set featureData
+filter_column_constant
+                        filter columns if values are constant
+filter_column_missing_rate
+                        filter columns using missing rate
+filter_row_missing_rate
+                        filter rows using missing rate
+fit_lm                  available regression methods
+genuMet_makefeature     distinguish genuine untargeted metabolic
+                        features without QC samples
+impute                  impute missing values
+inverse_rank_transform
+                        rank-based inverse normal transformation
+is_outlier              is outlier
+load_data               Load metabolite data from three separate files
+load_excel              Load metabolite data from an excel file
+merge_data              merge two Metabolite objects
+modelling_norm          LOESS normalization
+nearestQC_norm          nearest QC sample normalization
+outlier_rate            outlier rate
+pareto_scale            pareto scale transformation
+plot_Metabolite         plot a Metabolite object
+plot_PCA                plot PCA
+plot_ROC                ROC
+plot_UMAP               Plot UMAP
+plot_injection_order    injection order scatterplot
+plot_tsne               plot tSNE
+plot_volcano            volcano plot for regression results
+regression              regression analysis
+replace_outlier         change outlier values as NA or winsorize
+row_missing_rate        row missing rate
+run_PCA                 Principal Components Analysis
+sampleData              get sampleData
+sampleData<-            set sampleData
+save_data               Save metabolite data
+show,Metabolite-method
+                        Print a Metabolite class object
+subset                  subset a Metabolite object.
+transformation          apply transformation to a Metabolite object
+update_Metabolite       Update a Metabolite object

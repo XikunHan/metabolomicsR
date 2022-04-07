@@ -1,0 +1,38 @@
+Package: metabolomicsR
+Type: Package
+Title: Tools for Metabolomics Data
+Version: 1.0.0
+Date: 2022-01-10
+Authors@R: 
+    person(given = "Xikun",
+           family = "Han",
+           role = c("cre", "aut"),
+           email = "hanxikun2017@gmail.com")
+Maintainer: 'Xikun Han <hanxikun2017@gmail.com>
+URL: https://github.com/XikunHan/metabolomicsR
+Description: Tools to preprocess, analyse, and visualize metabolomics data. 
+  We included a set of functions for sample and metabolite quality control, 
+  outlier detection, missing value imputation, dimensional reduction, normalization, 
+  data integration, regression, metabolite annotation, enrichment analysis, 
+  and visualization of data and results. The package is designed to be a comprehensive R package 
+  that can be easily used by researchers with basic R programming skills. 
+  The framework designed here is versatile and is extensible to other various methods.
+License: GPL-2
+Encoding: UTF-8
+Depends: methods, R (>= 4.1)
+Imports: ggplot2, data.table, plotROC, utils, stats
+Suggests: ggthemes, knitr, rmarkdown, testthat (>= 3.0.0), lme4, nlme,
+        broom, reshape2, impute, M3C, FNN, RColorBrewer, readxl,
+        survival, future, pbapply, future.apply, progressr, ggrepel,
+        here, genuMet, ggstatsplot, cowplot, pROC, BiocStyle, MASS,
+        xgboost
+RoxygenNote: 7.1.2
+biocViews: Software, Metabolomics, MassSpectrometry, Regression,
+        Normalization, QualityControl
+LazyData: FALSE
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+NeedsCompilation: no
+Packaged: 2022-04-07 14:33:32 UTC; xih628
+Author: Xikun Han [cre, aut]
+Built: R 4.1.2; ; 2022-04-07 14:33:42 UTC; unix
