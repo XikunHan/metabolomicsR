@@ -2,13 +2,13 @@ Package: metabolomicsR
 Type: Package
 Title: Tools for Metabolomics Data
 Version: 1.0.0
-Date: 2022-01-10
+Date: 2022-04-07
 Authors@R: 
     person(given = "Xikun",
            family = "Han",
            role = c("cre", "aut"),
            email = "hanxikun2017@gmail.com")
-Maintainer: 'Xikun Han <hanxikun2017@gmail.com>
+Maintainer: Xikun Han <hanxikun2017@gmail.com>
 URL: https://github.com/XikunHan/metabolomicsR
 Description: Tools to preprocess, analyse, and visualize metabolomics data. 
   We included a set of functions for sample and metabolite quality control, 
