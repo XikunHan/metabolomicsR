@@ -35,13 +35,9 @@ plot_volcano(
 
 \item{y_lab}{labels for y-axis.}
 }
+\value{
+A volcano plot.
+}
 \description{
 volcano plot for regression results
-}
-\examples{
-\dontrun{
-p <- plot_volcano(fit_lm, color = NULL)
-p
-}
-
 }

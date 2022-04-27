@@ -15,6 +15,9 @@ featureData(object) <- value
 
 \item{value}{The new featureData.}
 }
+\value{
+A data.table of featureData.
+}
 \description{
 Accessors for Metabolite object. `featureData<-` will update the featureData in the Metabolite object.
 }

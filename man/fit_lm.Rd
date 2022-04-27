@@ -33,6 +33,9 @@ fit_lmer(data = NULL, formula = NULL, keep = NULL, ...)
 
 \item{\dots}{Further arguments passed to regression model.}
 }
+\value{
+term estimate std.error statistic p.value n.
+}
 \description{
 `fit_lm`: linear regression model \code{\link{lm}}.
 

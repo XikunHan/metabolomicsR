@@ -8,6 +8,7 @@
 #' @param shape A column in `@sampleData` to show the shape of points.
 #' @param size Point size.
 #' @export
+#' @return PCA plot. 
 plot_PCA <- function(object, color = "NEG", shape = "NEG", size = 1.5) {
 
   if(! all(c("PC1", "PC2") %in%  names(object@sampleData))) {
@@ -35,11 +36,7 @@ plot_PCA <- function(object, color = "NEG", shape = "NEG", size = 1.5) {
 #' @param shape A column in `@sampleData` to show the shape of points.
 #' @param size Point size.
 #' @export
-#' @examples
-#' \dontrun{
-#' p<- plot_UMAP(df_2017_QC_norm_PCA, color = "NEG", shape = "QCSample")
-#' p
-#' }
+#' @return UMAP plot.
 plot_UMAP <- function(object, color = "NEG", shape = "NEG", size = 1.5) {
 
   check_pkg("M3C")
@@ -72,12 +69,8 @@ plot_UMAP <- function(object, color = "NEG", shape = "NEG", size = 1.5) {
 #' @param shape A column in `@sampleData` to show the shape of points.
 #' @param size Point size.
 #' @export
-#' @examples
-#' \dontrun{
-#' p<- plot_tsne(df_2017_QC_norm_PCA, color = "NEG", shape = "QCSample")
-#' p
+#' @return tSNE plot.
 #'
-#' }
 plot_tsne <- function(object, color = "NEG", shape = "NEG", size = 1.5) {
 
   check_pkg("M3C")
@@ -112,14 +105,7 @@ plot_tsne <- function(object, color = "NEG", shape = "NEG", size = 1.5) {
 #' @param feature_name A vector of selected metabolites to plot. If NULL, will randomly select 16 (default) metabolites to plot.
 #' @param random_select An integer, number of randomly selected metabolites to plot.
 #' @export
-#' @examples
-#'\dontrun{
-#' p <- plot_injection_order(df_m_PCA, color = "QC_sample")
-#' p
-#'
-#' p <- plot_injection_order(df_m_PCA, color = "QC_sample", feature_name = "X563")
-#' p
-#'}
+#' @return A scatterplot.
 #'
 plot_injection_order <- function(object, color = "NEG", shape = "NEG", size = 0.6, ID_order = "ID_injection_order", feature_name = NULL, random_select = 16) {
 
@@ -169,12 +155,7 @@ plot_injection_order <- function(object, color = "NEG", shape = "NEG", size = 0.
 #' @param width Width of the figure.
 #' @param save_to_file Path to save the figure.
 #' @export
-#' @examples
-#'\dontrun{
-#' p <- plot_Metabolite(df_m_PCA, plot = "boxplot")
-#' p
-#'}
-#'
+#' @return A boxplot of a Metabolite object
 plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", feature_name = NULL, color = "NEG", shape = "NEG", fill = "NEG", random_select = 16, size = 0.6, n_row = 1, n_col = 1, ylab = "featureID", height = 10, width = 10, save_to_file = NULL) {
 
   featureID <- NULL
@@ -288,22 +269,13 @@ plot_Metabolite <- function(object, plot = "boxplot", x = "NEG", feature_name = 
 #' @param x_lab labels for x-axis.
 #' @param y_lab labels for y-axis.
 #' @export
-#' @examples
-#'\dontrun{
-#' p <- plot_volcano(fit_lm, color = NULL)
-#' p
-#'}
-#'
-
+#' @return A volcano plot.
 plot_volcano <- function(fit, x = "estimate", y = "p.value", p.value_log10 = TRUE,
                     color = "outcome", label = "term", highlight = "significant",
                     x_lab = "Effect size", y_lab = "-log10(P value)"
 
 ) {
-  
-  
   highlight_ <- NULL
-  
   stopifnot(is.data.frame(fit))
   fit <- as.data.table(fit)
 
@@ -352,8 +324,7 @@ plot_volcano <- function(fit, x = "estimate", y = "p.value", p.value_log10 = TRU
 #' @param model_b Column names for model b (one or more covariates, as the second model).
 #' @param lab Title (eg. "BIOCHEMICAL"), default value is x.
 #' @export
-#' 
-
+#' @return ROC. 
 plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b = NULL, lab = NULL) {
   
   D <- M <- model_A <- name <- y_magic <- NULL

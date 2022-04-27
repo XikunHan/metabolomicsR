@@ -54,9 +54,9 @@ library(ggplot2)
 library(cowplot)
 library(plotROC)
 
-# Load the dataset
+# Load the metabolomic dataset from an excel file
 
-file_path <- system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
+file_path <- base::system.file("extdata", "QMDiab_metabolomics_OrigScale.xlsx", package = "metabolomicsR", mustWork = TRUE)
 
 df_plasma <- load_excel(path = file_path,
                         data_sheet = 1,
@@ -66,10 +66,11 @@ df_plasma <- load_excel(path = file_path,
                         featureID = "BIOCHEMICAL"
                         )
 
-# To save the data
+# To save the data in disc. 
 # save_data(df_plasma, file = "~/test")
 
 ```
+
 In the “assayData”, the first column is the sample IDs to match with “sampleData”, the other columns are metabolite IDs to match with “featureData”.
 
 <br>

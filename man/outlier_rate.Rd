@@ -22,21 +22,15 @@ outlier_rate(object, nSD)
 }
 \value{
 Returns a vector of the outlier rate.
+
+A data.table of outlier rate.
 }
 \description{
 Calculate outlier rate.
 }
 \examples{
-
-\dontrun{
-v <- outlier_rate(x)
-}
-
-\dontrun{
-
 # for a Metabolite object
-v <- outlier_rate(object)
-
-}
+data(df_plasma)
+v <- outlier_rate(df_plasma)
 
 }

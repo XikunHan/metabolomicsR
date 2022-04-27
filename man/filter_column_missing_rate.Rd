@@ -19,14 +19,14 @@ filter_column_missing_rate(object, threshold, verbose)
 
 \item{verbose}{print log information.}
 }
+\value{
+An object after filtering column missing rate.
+}
 \description{
 Remove columns below a specific missing rate threshold.
 }
 \examples{
-\dontrun{
-
-d <- filter_column_missing_rate(object)
-
-}
+data(df_plasma)
+d <- filter_column_missing_rate(df_plasma)
 
 }

@@ -26,6 +26,9 @@ plot_ROC(
 
 \item{lab}{Title (eg. "BIOCHEMICAL"), default value is x.}
 }
+\value{
+ROC.
+}
 \description{
 Plot Receiver Operating Characteristic (ROC) curve for metabolites with or without covariates
 }

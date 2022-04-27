@@ -13,14 +13,11 @@
 #' @param addPC If TRUE, merge PCs with `@sampleData` and return the `object`, else return `PC`.
 #' @importFrom stats prcomp
 #' @export
+#' @return A list of PCs  and variances explained.
 #' @examples
+#' data(df_plasma)
+#' d <- run_PCA(df_plasma)
 #'
-#' # skip the first column (eg. ID) to impute missing values
-#' \dontrun{
-#' d <- run_PCA(object)
-#' }
-#'
-
 run_PCA <- function(object, nPCs = 10, impute_method = "half-min", log = TRUE, scale = TRUE, addPC = TRUE) {
 
   if(! is.null(impute_method)) {

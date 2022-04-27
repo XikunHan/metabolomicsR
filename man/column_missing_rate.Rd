@@ -17,24 +17,15 @@ column_missing_rate(object)
 }
 \value{
 Returns a vector of the missing rate for each column
+
+A data.table of column missing rate.
 }
 \description{
 Calculate column missing rate -- metabolite missingness.
 }
 \examples{
-\dontrun{
-# for a data.frame or data.table
-v <- column_missing_rate(object = df)
-
-# to skip the first column (eg. ID)
-v <- column_missing_rate(object = df[, -1])
-}
-
-\dontrun{
-
 # for a Metabolite object
-v <- column_missing_rate(object)
-
-}
+data(df_plasma)
+v <- column_missing_rate(df_plasma)
 
 }

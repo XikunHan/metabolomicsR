@@ -11,13 +11,14 @@ transformation(object, method = "log")
 
 \item{method}{Transform method, eg. "log", "pareto_scale", "scale", "inverse_rank_transform". A User defined method is also supported.}
 }
+\value{
+A Metabolite object after transformation.
+}
 \description{
 Apply transformation to Metabolite  object
 }
 \examples{
-
-\dontrun{
-d <- transformation(x)
-}
+data(df_plasma)
+d <- transformation(df_plasma)
 
 }

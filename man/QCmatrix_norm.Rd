@@ -23,13 +23,11 @@ QCmatrix_norm(
 
 \item{verbose}{print log information.}
 }
+\value{
+A Metabolite object after normalization.
+}
 \description{
 Normalization data by the median value of QC samples in each batch. For each metabolite, the values (eg. raw peak area data) were divided by the median value of QC samples in that batch. QC samples and metabolite batches should be specified (see parameters below).
-}
-\examples{
-\dontrun{
-d <- QCmatrix_norm(object = df)
-}
 }
 \seealso{
 \code{\link{batch_norm}}

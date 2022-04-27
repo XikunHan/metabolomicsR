@@ -21,14 +21,7 @@ filter_column_constant(object, verbose)
 Remove columns if values are constant
 }
 \examples{
-\dontrun{
-
-# for a data.frame or data.table
-v <- filter_column_missing_rate(object = df)
-
-# if skip the first column (eg. ID)
-v <- filter_column_missing_rate(object = df[, -1])
-
-}
+data(df_plasma)
+v <- filter_column_constant(df_plasma)
 
 }

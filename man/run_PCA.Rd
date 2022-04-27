@@ -26,14 +26,14 @@ run_PCA(
 
 \item{addPC}{If TRUE, merge PCs with `@sampleData` and return the `object`, else return `PC`.}
 }
+\value{
+A list of PCs  and variances explained.
+}
 \description{
 Performs a principal components analysis on the Metabolite object.
 }
 \examples{
-
-# skip the first column (eg. ID) to impute missing values
-\dontrun{
-d <- run_PCA(object)
-}
+data(df_plasma)
+d <- run_PCA(df_plasma)
 
 }

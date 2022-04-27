@@ -9,16 +9,11 @@ is_outlier(object, nSD = 5)
 \arguments{
 \item{object}{An object, a vector.}
 
-\item{nSD}{N times of the SD as outliers.
-Return TRUE or FALSE for a vector.}
+\item{nSD}{N times of the SD as outliers.}
+}
+\value{
+TRUE or FALSE for a vector.
 }
 \description{
 is outlier
-}
-\examples{
-
-\dontrun{
-v <- is_outlier(x)
-}
-
 }

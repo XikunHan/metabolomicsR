@@ -14,6 +14,7 @@
 #' @slot miscData Ancillary data.
 #' @name Metabolite-class
 #' @export
+#' @return A Metabolite class. 
 #' @seealso \code{\link{Metabolite}}, \code{\link{load_excel}}, \code{\link{load_data}}
 #'
 Metabolite <- setClass(
@@ -42,6 +43,7 @@ setGeneric("assayData", function(object) standardGeneric("assayData"))
 #' @rdname assayData
 #' @docType methods
 #' @export
+#' @return A data.table of assayData. 
 setMethod("assayData", "Metabolite", function(object) object@assayData)
 
 
@@ -53,15 +55,13 @@ setMethod("assayData", "Metabolite", function(object) object@assayData)
 #' @param object A Metabolite object.
 #' @param value The new assayData.
 #' @rdname assayData_set
-#' @return assayData
 #' @export
-#' 
+#' @return A data.table of assayData. 
 setGeneric("assayData<-", function(object, value) standardGeneric("assayData<-"))
 
 #' @docType methods
 #' @rdname assayData_set
 #' @export
-#' 
 setMethod("assayData<-", "Metabolite", function(object, value) {
   stopifnot(inherits(object@assayData, "data.frame"))
   object@assayData <- as.data.table(value)
@@ -80,6 +80,7 @@ setGeneric("featureData", function(object) standardGeneric("featureData"))
 #' @rdname featureData
 #' @docType methods
 #' @export
+#' @return A data.table of featureData. 
 setMethod("featureData", "Metabolite", function(object) object@featureData)
 
 
@@ -90,6 +91,7 @@ setMethod("featureData", "Metabolite", function(object) object@featureData)
 #' @param value The new featureData.
 #' @rdname featureData_set
 #' @export
+#' @return A data.table of featureData. 
 setGeneric("featureData<-", function(object, value) standardGeneric("featureData<-"))
 
 #' @docType methods
@@ -113,6 +115,7 @@ setGeneric("sampleData", function(object) standardGeneric("sampleData"))
 #' @rdname sampleData
 #' @docType methods
 #' @export
+#' @return A data.table of sampleData. 
 setMethod("sampleData", "Metabolite", function(object) object@sampleData)
 
 
@@ -125,6 +128,7 @@ setMethod("sampleData", "Metabolite", function(object) object@sampleData)
 #' @param value The new sampleData.
 #' @rdname sampleData_set
 #' @export
+#' @return A data.table of sampleData. 
 setGeneric("sampleData<-", function(object, value) standardGeneric("sampleData<-"))
 
 #' @docType methods
@@ -146,7 +150,7 @@ setMethod("sampleData<-", "Metabolite", function(object, value) {
 #' @param object A Metabolite object.
 #' @docType methods
 #' @export
-#'
+#' @return print a Metabolite object. 
 setMethod("show", "Metabolite", function(object) {
   cat("An object of ", is(object), "\n")
   
@@ -189,13 +193,9 @@ setMethod("show", "Metabolite", function(object) {
 #' @return A Metabolite object with slots: assayData, featureData, and sampleData.
 #' @seealso \code{\link{Metabolite}}, \code{\link{load_excel}}, \code{\link{load_data}}
 #' @export
+#' @return A Metabolite object. 
 #' @examples
-#' \dontrun{
-#'
-#' df <- create_Metabolite(assayData = df_data, featureData = df_feature, sampleData =  df_sample)
-#'
-#' }
-#'
+#' # df <- create_Metabolite(assayData = df_data, featureData = df_feature, sampleData =  df_sample)
 create_Metabolite <- function(
   assayData,
   featureData,
@@ -340,6 +340,7 @@ setValidity("Metabolite", function(object) {
 #' @return Returns a vector of the missing rate for each column
 #' @rdname column_missing_rate
 #' @export
+#' @return A data.table of column missing rate.
 #'
 column_missing_rate <- function(object) {
   UseMethod(generic = 'column_missing_rate', object = object)
@@ -355,6 +356,7 @@ column_missing_rate <- function(object) {
 #' @param threshold missing rate threshold, default is 0.5. Other values: 0.2, 0.8.
 #' @param verbose print log information.
 #' @export
+#' @return An object after filtering column missing rate. 
 #' @rdname filter_column_missing_rate
 #'
 filter_column_missing_rate <- function(object, threshold, verbose) {
@@ -371,7 +373,7 @@ filter_column_missing_rate <- function(object, threshold, verbose) {
 #' @return Returns a vector of the missing rate for each row
 #' @rdname row_missing_rate
 #' @export
-#'
+#' @return A data.table of row missing rate.
 row_missing_rate <- function(object) {
   UseMethod(generic = 'row_missing_rate', object = object)
 }
@@ -418,6 +420,7 @@ filter_column_constant <- function(object, verbose) {
 #' @param subset logical expression indicating rows to keep (samples). Expression will be evaluate in the `@sampleData`.
 #' @param select expression indicating columns to select (features). See \code{\link[base]{subset}}. Expression will be evaluate in the `@assayData`.
 #' @export
+#' @return An object after subsetting rows or columns. 
 #' @rdname subset
 #'
 subset <- function(object, subset, select) {
@@ -433,8 +436,9 @@ subset <- function(object, subset, select) {
 #' @param object An object, a vector, data.frame, data.table or Metabolite.
 #' @param method Imputation method, the default method is half the minimum value (`half-min`) of the metabolite. Currently support 'half-min', "median", "mean", "zero", "kNN".
 #' @export
+#' @return An object after imputing missing values. 
 #' @rdname impute
-#' @references Wei, R., Wang, J., Su, M. et al. Missing Value Imputation Approach for Mass Spectrometry-based Metabolomics Data. Sci Rep 8, 663 (2018). https://doi.org/10.1038/s41598-017-19120-0
+#' @note Wei, R., Wang, J., Su, M. et al. Missing Value Imputation Approach for Mass Spectrometry-based Metabolomics Data. Sci Rep 8, 663 (2018). https://doi.org/10.1038/s41598-017-19120-0
 #' 
 #'
 impute <- function(object,  method) {
@@ -449,6 +453,7 @@ impute <- function(object,  method) {
 #' @param method Replace outlier value method, the default method is `winsorize`: replace the outlier values by the maximum and/or minimum values of the remaining values. `as_NA`: set as NA (do not use this method if using half-min imputation).
 #' @param nSD Define the N times of the SD as outliers.
 #' @export
+#' @return An object after replacing outlier values. 
 #' @rdname replace_outlier
 #'
 replace_outlier <- function(object, method, nSD) {
@@ -466,6 +471,7 @@ replace_outlier <- function(object, method, nSD) {
 #' @return Returns a vector of the outlier rate.
 #' @rdname outlier_rate
 #' @export
+#' @return A data.table of outlier rate. 
 #'
 outlier_rate <- function(object, nSD) {
   UseMethod(generic = 'outlier_rate', object = object)

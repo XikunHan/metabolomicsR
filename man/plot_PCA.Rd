@@ -15,6 +15,9 @@ plot_PCA(object, color = "NEG", shape = "NEG", size = 1.5)
 
 \item{size}{Point size.}
 }
+\value{
+PCA plot.
+}
 \description{
 Plot first two principal components.
 }

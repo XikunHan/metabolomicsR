@@ -13,6 +13,9 @@ sampleData(object)
 \arguments{
 \item{object}{A Metabolite object.}
 }
+\value{
+A data.table of sampleData.
+}
 \description{
 Accessors for Metabolite object. Get the sampleData in the Metabolite object.
 }

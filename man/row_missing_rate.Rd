@@ -17,25 +17,15 @@ row_missing_rate(object)
 }
 \value{
 Returns a vector of the missing rate for each row
+
+A data.table of row missing rate.
 }
 \description{
 Calculate row missing rate -- sample missingness.
 }
 \examples{
-\dontrun{
-
-# for a data.frame or data.table
-v <- row_missing_rate(object = df)
-
-# to skip the first column (eg. ID)
-v <- row_missing_rate(object = df[, -1])
-}
-
-\dontrun{
-
 # for a Metabolite object
-v <- row_missing_rate(object)
-
-}
+data(df_plasma)
+v <- row_missing_rate(df_plasma)
 
 }

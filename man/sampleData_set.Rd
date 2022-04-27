@@ -15,6 +15,9 @@ sampleData(object) <- value
 
 \item{value}{The new sampleData.}
 }
+\value{
+A data.table of sampleData.
+}
 \description{
 Accessors for Metabolite object. `sampleData<-` will update the sampleData in the Metabolite object.
 }

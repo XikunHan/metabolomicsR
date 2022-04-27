@@ -20,22 +20,20 @@ impute_kNN(object)
 
 \item{method}{Imputation method, the default method is half the minimum value (`half-min`) of the metabolite. Currently support 'half-min', "median", "mean", "zero", "kNN".}
 }
+\value{
+An object after imputing missing values.
+}
 \description{
 impute missing values
 }
 \note{
-default method is used for a vector
+Wei, R., Wang, J., Su, M. et al. Missing Value Imputation Approach for Mass Spectrometry-based Metabolomics Data. Sci Rep 8, 663 (2018). https://doi.org/10.1038/s41598-017-19120-0
 
-`impute_kNN`: Imputation using nearest neighbor averaging (kNN) method, the input is a Metabolite object, assayData was first transposed to row as metabolties and column as samples.
+`impute_kNN`: Imputation using nearest neighbor averaging (kNN) method, 
+the input is a Metabolite object, assayData was first transposed to row as metabolties and column as samples.
 }
 \examples{
+data(df_plasma)
+d <- impute(df_plasma)
 
-
-\dontrun{
-d <- impute(object)
-}
-
-}
-\references{
-Wei, R., Wang, J., Su, M. et al. Missing Value Imputation Approach for Mass Spectrometry-based Metabolomics Data. Sci Rep 8, 663 (2018). https://doi.org/10.1038/s41598-017-19120-0
 }

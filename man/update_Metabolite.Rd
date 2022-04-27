@@ -23,10 +23,9 @@ in the injection order data}
 \item{"change_featureID": change the name of featureID (provide the new column name in `@featureData` for dataset)}
 }}
 }
+\value{
+A Metabolite object after updating.
+}
 \description{
 Update a Metabolite object.
-}
-\examples{
-# df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "change_featureID")
-
 }

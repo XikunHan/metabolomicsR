@@ -26,13 +26,11 @@ nearestQC_norm(
 
 \item{verbose}{print log information.}
 }
+\value{
+A Metabolite object after normalization.
+}
 \description{
 Normalization data by the median value of the nearest QC samples. For each metabolite, the values (eg. raw peak area data) were divided by the median value of nearest QC samples (eg. the nearest three QC samples). To identify the nearest QC samples, `@assayData` should be ordered by the injection order.
-}
-\examples{
-\dontrun{
-d <- nearestQC_norm(object = df)
-}
 }
 \seealso{
 \code{\link{batch_norm}}, \code{\link{QCmatrix_norm}}

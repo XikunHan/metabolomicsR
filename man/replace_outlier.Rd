@@ -22,20 +22,14 @@ replace_outlier(object, method, nSD)
 
 \item{nSD}{Define the N times of the SD as outliers.}
 }
+\value{
+An object after replacing outlier values.
+}
 \description{
 change outlier values as NA or winsorize
 }
 \examples{
-
-
-\dontrun{
-d <- replace_outlier(object, method = "winsorize", nSD = 5)
-}
-
-
-
-\dontrun{
-d <- replace_outlier(object, method = "winsorize", nSD = 5)
-}
+data(df_plasma)
+d <- replace_outlier(df_plasma, method = "winsorize", nSD = 5)
 
 }

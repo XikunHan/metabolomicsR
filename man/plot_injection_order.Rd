@@ -29,16 +29,9 @@ plot_injection_order(
 
 \item{random_select}{An integer, number of randomly selected metabolites to plot.}
 }
+\value{
+A scatterplot.
+}
 \description{
 Injection order scatterplot. The `@sampleData` should be sorted by injection order, with a new column `ID` from 1 to N.
-}
-\examples{
-\dontrun{
-p <- plot_injection_order(df_m_PCA, color = "QC_sample")
-p
-
-p <- plot_injection_order(df_m_PCA, color = "QC_sample", feature_name = "X563")
-p
-}
-
 }

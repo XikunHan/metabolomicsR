@@ -5,6 +5,9 @@
 \alias{Metabolite-class}
 \alias{Metabolite}
 \title{The Metabolite class}
+\value{
+A Metabolite class.
+}
 \description{
 The Metabolite object is a representation of metabolomic data, metabolomic annotation, and sample annotation.
 }

@@ -13,6 +13,9 @@ featureData(object)
 \arguments{
 \item{object}{A Metabolite object.}
 }
+\value{
+A data.table of featureData.
+}
 \description{
 Accessors for Metabolite object. Get the featureData in the Metabolite object.
 }

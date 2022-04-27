@@ -47,6 +47,7 @@ regression <- function(object, phenoData = NULL, model = NULL, outcome = NULL, c
 #' @param keep Variables to keep regression results.
 #' @seealso  \code{\link{regression}}
 #' @export
+#' @returns term estimate std.error statistic p.value n.
 fit_lm <- function(data = NULL, formula = NULL, keep = NULL) {
   v_var <- all.vars(formula)
   df <- data[, v_var, with = FALSE]
@@ -141,7 +142,6 @@ fit_cox <- function(data = NULL, formula = NULL, keep = NULL) {
 #' @param \dots Further arguments passed to regression model.
 #' @rdname fit_lm
 #' @export
-
 fit_lme <- function(data = NULL, formula = NULL, keep = NULL, ...) {
   check_pkg("nlme")
   

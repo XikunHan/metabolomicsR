@@ -15,12 +15,9 @@ plot_UMAP(object, color = "NEG", shape = "NEG", size = 1.5)
 
 \item{size}{Point size.}
 }
+\value{
+UMAP plot.
+}
 \description{
 Plot manifold approximation and projection (UMAP). See more details in \code{\link[M3C]{umap}}.
-}
-\examples{
-\dontrun{
-p<- plot_UMAP(df_2017_QC_norm_PCA, color = "NEG", shape = "QCSample")
-p
-}
 }

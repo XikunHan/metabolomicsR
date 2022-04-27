@@ -9,11 +9,9 @@ RSD(x)
 \arguments{
 \item{x}{A vector}
 }
+\value{
+A vector of RDS values.
+}
 \description{
 calculate RDS (%)
-}
-\examples{
-\dontrun{
-v <- RSD(x)
-}
 }

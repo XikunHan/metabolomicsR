@@ -32,6 +32,9 @@ QC_pipeline(
 
 \item{verbose}{print log information.}
 }
+\value{
+A Metabolite object after QC.
+}
 \description{
 This function will run QC steps on a Metabolite object
 }

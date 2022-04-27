@@ -2,7 +2,7 @@ Package: metabolomicsR
 Type: Package
 Title: Tools for Metabolomics Data
 Version: 1.0.0
-Date: 2022-04-07
+Date: 2022-04-27
 Authors@R: 
     person(given = "Xikun",
            family = "Han",

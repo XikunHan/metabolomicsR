@@ -5,15 +5,6 @@
 
 #' @rdname column_missing_rate
 #' @export
-#' @examples
-#' \dontrun{
-#' # for a data.frame or data.table
-#' v <- column_missing_rate(object = df)
-#'
-#' # to skip the first column (eg. ID)
-#' v <- column_missing_rate(object = df[, -1])
-#' }
-#'
 column_missing_rate.default <- function(object) {
   r <- apply(object, 2, function(x) sum(is.na(x)) / length(x))
   names(r) <- names(object)
@@ -23,13 +14,10 @@ column_missing_rate.default <- function(object) {
 
 #' @rdname column_missing_rate
 #' @export
-#' @examples
-#' \dontrun{
-#'
+#' @examples 
 #' # for a Metabolite object
-#' v <- column_missing_rate(object)
-#'
-#' }
+#' data(df_plasma)
+#' v <- column_missing_rate(df_plasma)
 #'
 column_missing_rate.Metabolite <- function(object) {
   object <- object@assayData
@@ -43,13 +31,6 @@ column_missing_rate.Metabolite <- function(object) {
 
 #' @rdname filter_column_missing_rate
 #' @export
-#' @examples
-#' \dontrun{
-#'
-#' d <- filter_column_missing_rate(object)
-#'
-#' }
-#'
 filter_column_missing_rate.default <- function(object, threshold = 0.5, verbose = TRUE) {
   object <- as.data.table(object)
   r <- column_missing_rate(object)
@@ -66,6 +47,9 @@ filter_column_missing_rate.default <- function(object, threshold = 0.5, verbose 
 
 #' @rdname filter_column_missing_rate
 #' @export
+#' @examples 
+#' data(df_plasma)
+#' d <- filter_column_missing_rate(df_plasma)
 #'
 filter_column_missing_rate.Metabolite <- function(object, threshold = 0.5, verbose = TRUE) {
 
@@ -85,16 +69,6 @@ filter_column_missing_rate.Metabolite <- function(object, threshold = 0.5, verbo
 
 #' @rdname row_missing_rate
 #' @export
-#' @examples
-#' \dontrun{
-#'
-#' # for a data.frame or data.table
-#' v <- row_missing_rate(object = df)
-#'
-#' # to skip the first column (eg. ID)
-#' v <- row_missing_rate(object = df[, -1])
-#' }
-#'
 row_missing_rate.default <- function(object) {
   r <- apply(object, 1, function(x) sum(is.na(x)) / length(x))
   names(r) <- unlist(object[, 1])
@@ -104,13 +78,10 @@ row_missing_rate.default <- function(object) {
 
 #' @rdname row_missing_rate
 #' @export
-#' @examples
-#' \dontrun{
-#'
+#' @examples 
 #' # for a Metabolite object
-#' v <- row_missing_rate(object)
-#'
-#' }
+#' data(df_plasma)
+#' v <- row_missing_rate(df_plasma)
 #'
 row_missing_rate.Metabolite <- function(object) {
   object <- object@assayData
@@ -125,13 +96,6 @@ row_missing_rate.Metabolite <- function(object) {
 
 #' @rdname filter_row_missing_rate
 #' @export
-#' @examples
-#' \dontrun{
-#'
-#' d <- filter_row_missing_rate(object)
-#'
-#' }
-#'
 filter_row_missing_rate.default <- function(object, threshold = 0.5, verbose = TRUE) {
   stopifnot(is.numeric(threshold) & threshold <=1 & threshold >= 0)
   object <- as.data.table(object)
@@ -151,7 +115,10 @@ filter_row_missing_rate.default <- function(object, threshold = 0.5, verbose = T
 
 #' @rdname filter_row_missing_rate
 #' @export
-#'
+#' @examples 
+#' data(df_plasma)
+#' v <- filter_row_missing_rate(df_plasma)
+#' 
 filter_row_missing_rate.Metabolite <- function(object, threshold = 0.5, verbose = TRUE) {
   stopifnot(is.numeric(threshold) & threshold <=1 & threshold >= 0)
   nrow_old <- NROW(object@assayData)
@@ -172,17 +139,6 @@ filter_row_missing_rate.Metabolite <- function(object, threshold = 0.5, verbose 
 
 #' @rdname filter_column_constant
 #' @export
-#' @examples
-#' \dontrun{
-#'
-#' # for a data.frame or data.table
-#' v <- filter_column_missing_rate(object = df)
-#'
-#' # if skip the first column (eg. ID)
-#' v <- filter_column_missing_rate(object = df[, -1])
-#'
-#' }
-#'
 filter_column_constant.default <- function(object, verbose = TRUE) {
   object <- as.data.table(object)
   r <- apply(object, 2, function(x) sd(x, na.rm = TRUE))
@@ -199,7 +155,10 @@ filter_column_constant.default <- function(object, verbose = TRUE) {
 
 #' @rdname filter_column_constant
 #' @export
-#'
+#' @examples 
+#' data(df_plasma)
+#' v <- filter_column_constant(df_plasma)
+#' 
 filter_column_constant.Metabolite <- function(object, verbose = TRUE) {
   ncol_old <- NCOL(object@assayData)
   # skip the first column (sample ID). and then merge
@@ -289,13 +248,6 @@ replace_outlier.default <- function(object, method = "winsorize", nSD = 5) {
 
 #' @rdname replace_outlier
 #' @export
-#' @examples
-#'
-#'
-#' \dontrun{
-#' d <- replace_outlier(object, method = "winsorize", nSD = 5)
-#' }
-#'
 replace_outlier.data.frame <- function(object, method = "winsorize", nSD = 5) {
   object <- apply(object, 2, replace_outlier, method = method, nSD = nSD)
   return(object)
@@ -305,12 +257,9 @@ replace_outlier.data.frame <- function(object, method = "winsorize", nSD = 5) {
 
 #' @rdname replace_outlier
 #' @export
-#' @examples
-#'
-#'
-#' \dontrun{
-#' d <- replace_outlier(object, method = "winsorize", nSD = 5)
-#' }
+#' @examples 
+#' data(df_plasma)
+#' d <- replace_outlier(df_plasma, method = "winsorize", nSD = 5)
 #'
 replace_outlier.Metabolite <- function(object, method = "winsorize", nSD = 5) {
 
@@ -330,14 +279,8 @@ replace_outlier.Metabolite <- function(object, method = "winsorize", nSD = 5) {
 #'
 #' @param object An object, a vector.
 #' @param nSD N times of the SD as outliers.
-#' Return TRUE or FALSE for a vector.
 #' @export
-#' @examples
-#'
-#'\dontrun{
-#' v <- is_outlier(x)
-#' }
-#'
+#' @return TRUE or FALSE for a vector.
 is_outlier <- function(object, nSD = 5) {
   object <- as.numeric(object)
   v_mean <- mean(object, na.rm = TRUE)
@@ -349,12 +292,6 @@ is_outlier <- function(object, nSD = 5) {
 
 #' @rdname outlier_rate
 #' @export
-#' @examples
-#'
-#'\dontrun{
-#' v <- outlier_rate(x)
-#' }
-#'
 outlier_rate.default <- function(object, nSD = 5) {
   r <- mean(is_outlier(object, nSD = nSD), na.rm = TRUE)
   return(r)
@@ -373,12 +310,9 @@ outlier_rate.data.frame <- function(object, nSD = 5) {
 #' @rdname outlier_rate
 #' @export
 #' @examples
-#' \dontrun{
-#'
 #' # for a Metabolite object
-#' v <- outlier_rate(object)
-#'
-#' }
+#' data(df_plasma)
+#' v <- outlier_rate(df_plasma)
 #'
 outlier_rate.Metabolite <- function(object, nSD = 5) {
   object <- object@assayData[, -1]
@@ -402,6 +336,7 @@ outlier_rate.Metabolite <- function(object, nSD = 5) {
 #' @param impute_method Imputation method, the default method is half the minimum value (`half-min`) of the metabolite. Currently support 'half-min', "median", "mean", "zero".
 #' @param verbose print log information.
 #' @export
+#' @return A Metabolite object after QC. 
 #'
 QC_pipeline <- function(object,
                         filter_column_constant = TRUE,
@@ -446,10 +381,7 @@ QC_pipeline <- function(object,
 #'
 #' @param x A vector
 #' @export
-#' @examples
-#'\dontrun{
-#' v <- RSD(x)
-#'}
+#' @return A vector of RDS values. 
 RSD <- function(x) {
   v_std <- sd(x, na.rm = TRUE)
   v_mean <- mean(x, na.rm = TRUE)
@@ -467,12 +399,7 @@ RSD <- function(x) {
 #' @param wsize Window size.
 #' @param ssize Slide size.
 #' @param defswitch Definition of a switch.
-#' @references <https://github.com/liucaomics/genuMet>
-#' @examples
-#'\dontrun{
-#' v <- genuMet_makefeature(df)
-#'}
-#'
+#' @note The genuMet method:  https://github.com/liucaomics/genuMet
 genuMet_makefeature <- function(object, wsize=100, ssize= 0.5, defswitch=0.2) {
   if (! requireNamespace("genuMet", quietly = TRUE)) {
     stop(paste0("Please install genuMet package first: ` (\"xyomics/genuMet\") `."), call. = FALSE)
@@ -496,12 +423,7 @@ genuMet_makefeature <- function(object, wsize=100, ssize= 0.5, defswitch=0.2) {
 #'
 #' @param x A vector
 #' @export
-#' @examples
-#'
-#'\dontrun{
-#' v <- paretoscale(x)
-#'}
-#'
+#' @return A vector after transformation. 
 pareto_scale <- function(x) {
   v_mean <- mean(x, na.rm = TRUE)
   v_sd <- sd(x, na.rm = TRUE)
@@ -518,12 +440,7 @@ pareto_scale <- function(x) {
 #'
 #' @param x A vector
 #' @export
-#' @examples
-#'
-#'\dontrun{
-#' v <- inverse_rank_transform(x)
-#'}
-#'
+#' @return A vector after transformation. 
 inverse_rank_transform <- function(x) {
   stopifnot(is.vector(x))
   transformed <- qnorm((rank(x ,na.last="keep") -0.5) /sum(!is.na(x)))
@@ -539,11 +456,10 @@ inverse_rank_transform <- function(x) {
 #' @param object A Metabolite object.
 #' @param method Transform method, eg. "log", "pareto_scale", "scale", "inverse_rank_transform". A User defined method is also supported.
 #' @export
-#' @examples
-#'
-#'\dontrun{
-#' d <- transformation(x)
-#'}
+#' @return A Metabolite object after transformation. 
+#' @examples 
+#' data(df_plasma)
+#' d <- transformation(df_plasma)
 #'
 transformation <- function(object, method = "log") {
   stopifnot(inherits(object, "Metabolite"))
@@ -672,13 +588,8 @@ bridge <- function(object, conversion_factor_data = NULL, QC_ID_pattern = "MTRX"
 #' @param verbose print log information.
 #' @seealso \code{\link{batch_norm}}
 #' @importFrom utils txtProgressBar setTxtProgressBar
-#' @examples
-#' \dontrun{
-#' d <- QCmatrix_norm(object = df)
-#' }
 #' @export
-#'
-#'
+#' @return A Metabolite object after normalization.
 QCmatrix_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern = "MTRX", test = FALSE, verbose = TRUE) {
   stopifnot(inherits(object, "Metabolite"))
   OutputData <- copy(object@assayData)
@@ -798,13 +709,8 @@ QCmatrix_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern =
 #' @param verbose print log information.
 #' @seealso \code{\link{batch_norm}}, \code{\link{QCmatrix_norm}}
 #' @importFrom utils txtProgressBar setTxtProgressBar
-#' @examples
-#' \dontrun{
-#' d <- nearestQC_norm(object = df)
-#' }
 #' @export
-#'
-#'
+#' @return A Metabolite object after normalization.
 nearestQC_norm <- function(object, n_nearest_QCsample= 3, feature_platform = "PLATFORM", QC_ID_pattern = "MTRX", test = FALSE, verbose = TRUE) {
   stopifnot(inherits(object, "Metabolite"))
   OutputData <- copy(object@assayData)
@@ -916,9 +822,6 @@ nearestQC_norm <- function(object, n_nearest_QCsample= 3, feature_platform = "PL
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @return A Metabolite object after normalization. 
 #' @export
-#'
-#'
-#'
 batch_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern = "MTRX", test = FALSE, verbose = TRUE) {
   stopifnot(inherits(object, "Metabolite"))
   OutputData <- copy(object@assayData)
@@ -1017,13 +920,8 @@ batch_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern = "M
 #' @param verbose print log information.
 #' @seealso \code{\link{batch_norm}}
 #' @importFrom utils txtProgressBar setTxtProgressBar
-#' @examples
-#' \dontrun{
-#' d <- QCmatrix_norm(object = df)
-#' }
 #' @export
-#'
-#'
+#' @return A Metabolite object after normalization.
 modelling_norm <- function(object, method = c("LOESS", "KNN", "XGBoost"), 
                            feature_platform = "PLATFORM", 
                            QC_ID_pattern = "MTRX",
@@ -1186,12 +1084,9 @@ modelling_norm <- function(object, method = c("LOESS", "KNN", "XGBoost"),
 
 #' @rdname impute
 #' @export
-#' @examples
-#'
-#'
-#' \dontrun{
-#' d <- impute(object)
-#' }
+#' @examples 
+#' data(df_plasma)
+#' d <- impute(df_plasma)
 #'
 impute.Metabolite <- function(object, method = c('half-min', "median", "mean", "zero", "kNN")) {
 
@@ -1210,9 +1105,9 @@ impute.Metabolite <- function(object, method = c('half-min', "median", "mean", "
   return(object)
 }
 
+
 #' @rdname impute
 #' @export
-#' @note default method is used for a vector
 impute.default <- function(object, method = "half-min") {
   if(is.vector(object)) {
     x <- as.numeric(object)
@@ -1233,7 +1128,8 @@ impute.default <- function(object, method = "half-min") {
 
 #' @rdname impute
 #' @export
-#' @note `impute_kNN`: Imputation using nearest neighbor averaging (kNN) method, the input is a Metabolite object, assayData was first transposed to row as metabolties and column as samples. 
+#' @note `impute_kNN`: Imputation using nearest neighbor averaging (kNN) method, 
+#' the input is a Metabolite object, assayData was first transposed to row as metabolties and column as samples. 
 impute_kNN <- function(object) {
   check_pkg("impute")
   

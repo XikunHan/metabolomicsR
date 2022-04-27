@@ -15,13 +15,9 @@ plot_tsne(object, color = "NEG", shape = "NEG", size = 1.5)
 
 \item{size}{Point size.}
 }
+\value{
+tSNE plot.
+}
 \description{
 Plot t-distributed stochastic neighbor embedding. See more details in \code{\link[M3C]{tsne}}.
-}
-\examples{
-\dontrun{
-p<- plot_tsne(df_2017_QC_norm_PCA, color = "NEG", shape = "QCSample")
-p
-
-}
 }

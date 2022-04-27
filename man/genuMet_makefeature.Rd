@@ -18,12 +18,6 @@ genuMet_makefeature(object, wsize = 100, ssize = 0.5, defswitch = 0.2)
 \description{
 The makefeature function from genuMet uses a Metabolite object as input. genuMet is an R package used  distinguish genuine untargeted metabolic features without quality control samples.
 }
-\examples{
-\dontrun{
-v <- genuMet_makefeature(df)
-}
-
-}
-\references{
-<https://github.com/liucaomics/genuMet>
+\note{
+The genuMet method:  https://github.com/liucaomics/genuMet
 }

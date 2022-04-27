@@ -78,8 +78,6 @@ load_excel <- function(
 #' default: PARENT_SAMPLE_NAME (provided from Metabolon file).
 #' @return A Metabolite object with slots: assayData, featureData, and sampleData.
 #' @export
-#'
-#'
 load_data <- function(
   data_path = NULL,
   feature_path = NULL,
@@ -119,6 +117,7 @@ load_data <- function(
 #' @param file Output file to save the metabolite measurements 
 #' (suffixes: "_assay.txt", "_feature_annotation.txt", "_sample_annotation.txt", "_logs.txt). 
 #' @export
+#' @return No return value.
 #'
 #'
 save_data <- function(object, file = "")  {
@@ -140,10 +139,6 @@ save_data <- function(object, file = "")  {
 #' @param verbose print log information.
 #' @return A Metabolite object after merging with slots: assayData, featureData, and sampleData.
 #' @export
-#' @examples
-#' # to merge two Metabolite objects
-#' # df <- merge_data(df_plasma, df_plasma)
-#' 
 merge_data <- function(
   object_X = NULL,
   object_Y = NULL,
@@ -218,10 +213,7 @@ merge_data <- function(
 #' \item{"change_featureID": change the name of featureID (provide the new column name in `@featureData` for dataset)}
 #' }
 #' @export
-#' @examples
-#' # df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "change_featureID")
-#' 
-
+#' @return A Metabolite object after updating. 
 update_Metabolite <- function(object,
                               dataset = NULL,
                               action = NULL

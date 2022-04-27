@@ -9,13 +9,9 @@ pareto_scale(x)
 \arguments{
 \item{x}{A vector}
 }
+\value{
+A vector after transformation.
+}
 \description{
 pareto scale transformation
-}
-\examples{
-
-\dontrun{
-v <- paretoscale(x)
-}
-
 }

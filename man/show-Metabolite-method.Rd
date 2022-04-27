@@ -10,6 +10,9 @@
 \arguments{
 \item{object}{A Metabolite object.}
 }
+\value{
+print a Metabolite object.
+}
 \description{
 Print a Metabolite class object
 }

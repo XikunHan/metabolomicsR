@@ -12,6 +12,9 @@ save_data(object, file = "")
 \item{file}{Output file to save the metabolite measurements 
 (suffixes: "_assay.txt", "_feature_annotation.txt", "_sample_annotation.txt", "_logs.txt).}
 }
+\value{
+No return value.
+}
 \description{
 Save metabolite data in separate txt files
 }

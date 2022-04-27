@@ -23,10 +23,7 @@ filter_row_missing_rate(object, threshold, verbose)
 Remove samples below a specific missing rate threshold.
 }
 \examples{
-\dontrun{
-
-d <- filter_row_missing_rate(object)
-
-}
+data(df_plasma)
+v <- filter_row_missing_rate(df_plasma)
 
 }

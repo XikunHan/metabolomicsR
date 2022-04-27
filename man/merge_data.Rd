@@ -22,8 +22,3 @@ A Metabolite object after merging with slots: assayData, featureData, and sample
 \description{
 Merge two Metabolite objects.
 }
-\examples{
-# to merge two Metabolite objects
-# df <- merge_data(df_plasma, df_plasma)
-
-}

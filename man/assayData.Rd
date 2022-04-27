@@ -13,6 +13,9 @@ assayData(object)
 \arguments{
 \item{object}{A Metabolite object.}
 }
+\value{
+A data.table of assayData.
+}
 \description{
 Accessors for Metabolite object. Get the assayData in the Metabolite object.
 }

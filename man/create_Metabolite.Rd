@@ -28,6 +28,8 @@ create_Metabolite(
 }
 \value{
 A Metabolite object with slots: assayData, featureData, and sampleData.
+
+A Metabolite object.
 }
 \description{
 Create a Metabolite object from three input data sets:
@@ -36,12 +38,7 @@ Create a Metabolite object from three input data sets:
 3) sample annotation (eg. sample meta data)
 }
 \examples{
-\dontrun{
-
-df <- create_Metabolite(assayData = df_data, featureData = df_feature, sampleData =  df_sample)
-
-}
-
+# df <- create_Metabolite(assayData = df_data, featureData = df_feature, sampleData =  df_sample)
 }
 \seealso{
 \code{\link{Metabolite}}, \code{\link{load_excel}}, \code{\link{load_data}}

@@ -53,13 +53,9 @@ plot_Metabolite(
 
 \item{save_to_file}{Path to save the figure.}
 }
+\value{
+A boxplot of a Metabolite object
+}
 \description{
 Plot a Metabolite object including boxplot (more to add.).
-}
-\examples{
-\dontrun{
-p <- plot_Metabolite(df_m_PCA, plot = "boxplot")
-p
-}
-
 }

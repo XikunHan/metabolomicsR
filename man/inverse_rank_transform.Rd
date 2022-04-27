@@ -9,13 +9,9 @@ inverse_rank_transform(x)
 \arguments{
 \item{x}{A vector}
 }
+\value{
+A vector after transformation.
+}
 \description{
 rank-based inverse normal transformation for a metabolite.
-}
-\examples{
-
-\dontrun{
-v <- inverse_rank_transform(x)
-}
-
 }

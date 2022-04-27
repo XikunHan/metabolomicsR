@@ -16,6 +16,9 @@ subset(object, subset, select)
 
 \item{select}{expression indicating columns to select (features). See \code{\link[base]{subset}}. Expression will be evaluate in the `@assayData`.}
 }
+\value{
+An object after subsetting rows or columns.
+}
 \description{
 subset a Metabolite object.
 }
