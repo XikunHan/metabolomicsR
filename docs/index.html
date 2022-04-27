@@ -5,20 +5,20 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Tools to preproces, analyse, and visualize metabolomic data. 
+<meta name="description" content="Tools to preprocess, analyse, and visualize metabolomics data. 
   We included a set of functions for sample and metabolite quality control, 
   outlier detection, missing value imputation, dimensional reduction, normalization, 
   data integration, regression, metabolite annotation, enrichment analysis, 
   and visualization of data and results. The package is designed to be a comprehensive R package 
   that can be easily used by researchers with basic R programming skills. 
   The framework designed here is versatile and is extensible to other various methods.">
-<title>Tools for metabolomic data • metabolomicsR</title>
+<title>Tools for Metabolomics Data • metabolomicsR</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Tools for metabolomic data">
-<meta property="og:description" content="Tools to preproces, analyse, and visualize metabolomic data. 
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Tools for Metabolomics Data">
+<meta property="og:description" content="Tools to preprocess, analyse, and visualize metabolomics data. 
   We included a set of functions for sample and metabolite quality control, 
   outlier detection, missing value imputation, dimensional reduction, normalization, 
   data integration, regression, metabolite annotation, enrichment analysis, 
@@ -78,9 +78,13 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><div class="section level3">
-<h3 id="tools-to-process-analyze-and-visualize-metabolomic-data">Tools to process, analyze, and visualize metabolomic data.<a class="anchor" aria-label="anchor" href="#tools-to-process-analyze-and-visualize-metabolomic-data"></a>
-</h3>
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="metabolomicsr">metabolomicsR<a class="anchor" aria-label="anchor" href="#metabolomicsr"></a>
+</h1></div>
+<div class="section level4">
+<h4 id="tools-to-process-analyze-and-visualize-metabolomic-data">Tools to process, analyze, and visualize metabolomic data.<a class="anchor" aria-label="anchor" href="#tools-to-process-analyze-and-visualize-metabolomic-data"></a>
+</h4>
+<p><br></p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -95,26 +99,26 @@
 <td><code>remotes::install_github("XikunHan/metabolomicsR")</code></td>
 </tr></tbody>
 </table>
-<p><br><br></p>
+<p><br></p>
 </div>
 <div class="section level2">
 <h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
 <p><a href="https://xikunhan.github.io/metabolomicsR/docs/articles/Introduction.html">The
 detailed tutorial</a>.</p>
-<p>{metabolomicsR} is a streamlined R package to preprocess, analyze,
-and visualize metabolomic data. We included a set of functions for
-sample and metabolite quality control, outlier detection, missing value
-imputation, dimensional reduction, normalization, data integration,
-regression analysis, annotation, enrichment analysis, and visualization
-of data and results. The {metabolomicsR} is designed to be a
-comprehensive R package that can be easily used by researchers with
-basic R programming skills. The framework designed here is also
-versatile and is extensible to various methods and metabolomic
-platforms.</p>
+<p><strong>metabolomicsR</strong> is a streamlined R package to
+preprocess, analyze, and visualize metabolomic data. We included a set
+of functions for sample and metabolite quality control, outlier
+detection, missing value imputation, dimensional reduction,
+normalization, data integration, regression analysis, annotation,
+enrichment analysis, and visualization of data and results. The
+<strong>metabolomicsR</strong> is designed to be a comprehensive R
+package that can be easily used by researchers with basic R programming
+skills. The framework designed here is also versatile and is extensible
+to various methods and metabolomic platforms.</p>
 <div class="section level5">
 <h5 id="seamless-workflow-to-preprocess-analyze-and-visualize-metabolomics-data-in-metabolomicsr-">Seamless workflow to preprocess, analyze, and visualize metabolomics
-data in <code>{metabolomicsR}</code>
+data in metabolomicsR
 <img src="reference/figures/workflow.png" align="center" width="120%" height="180%"><a class="anchor" aria-label="anchor" href="#seamless-workflow-to-preprocess-analyze-and-visualize-metabolomics-data-in-metabolomicsr-"></a>
 </h5>
 </div>
@@ -126,7 +130,7 @@ package.</p>
 <p><br><br></p>
 </div>
 </div>
-
+</div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
