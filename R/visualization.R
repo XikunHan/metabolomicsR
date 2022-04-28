@@ -323,9 +323,11 @@ plot_volcano <- function(fit, x = "estimate", y = "p.value", p.value_log10 = TRU
 #' @param model_a Column names for model a (one or more covariates, as the first model).
 #' @param model_b Column names for model b (one or more covariates, as the second model).
 #' @param lab Title (eg. "BIOCHEMICAL"), default value is x.
+#' @param text_x Annotation position of text in x-axis. 
+#' @param text_y Annotation position of text in y-axis.
 #' @export
 #' @return ROC. 
-plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b = NULL, lab = NULL) {
+plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b = NULL, lab = NULL, text_x = 0.6, text_y = 0.3) {
   
   D <- M <- model_A <- name <- y_magic <- NULL
   
@@ -367,7 +369,7 @@ plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b 
     p <- ggplot(df, aes(m = model_A, d = y_magic)) + 
       geom_roc(labels=FALSE, n.cuts = 0) +
       geom_abline(intercept = 0, slope = 1,linetype=4) +
-      annotate("text",x=0.2,y= 0.85, label = auc_ci$auc_ci,
+      annotate("text",x= text_x, y= text_y, label = auc_ci$auc_ci,
                parse = FALSE,colour = "red", size =5) +
       theme(legend.justification=c(0,0),
             plot.title = element_text(hjust = 0.5),
@@ -406,11 +408,11 @@ plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b 
       stat_roc(labels=FALSE, n.cuts=0) +
       scale_color_manual(values = v_color) +
       geom_abline(intercept = 0, slope = 1,linetype=4) +
-      annotate("text", x=0.6, y= 0.35,  label = paste0(model_A_text, "\n"), size =4, colour = v_color[1]) +
-      annotate("text", x=0.6, y= 0.3,  label = paste0(model_B_text, "\n"), size =4, colour = v_color[2]) +
-      annotate("text", x=0.6, y= 0.25,  label = paste0("(P-diff: ", sprintf("%1.3f",fit_p.value), ")\n"), size =4) +
+      annotate("text", x= text_x, y= text_y + 0.05,  label = paste0(model_A_text, "\n"), size =4, colour = v_color[1]) +
+      annotate("text", x= text_x, y= text_y,  label = paste0(model_B_text, "\n"), size =4, colour = v_color[2]) +
+      annotate("text", x= text_x, y= text_y - 0.05,  label = paste0("(P-diff: ", sprintf("%1.3f",fit_p.value), ")\n"), size =4) +
       theme(legend.justification=c(0,0),
-            legend.position=c(0.18,0.02),
+            legend.position= "none",
             legend.title = element_blank(),
             legend.background = element_rect(fill=alpha("blue", 0)),
             panel.background = element_blank(),

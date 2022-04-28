@@ -10,7 +10,9 @@ plot_ROC(
   x = NULL,
   model_a = NULL,
   model_b = NULL,
-  lab = NULL
+  lab = NULL,
+  text_x = 0.6,
+  text_y = 0.3
 )
 }
 \arguments{
@@ -25,6 +27,10 @@ plot_ROC(
 \item{model_b}{Column names for model b (one or more covariates, as the second model).}
 
 \item{lab}{Title (eg. "BIOCHEMICAL"), default value is x.}
+
+\item{text_x}{Annotation position of text in x-axis.}
+
+\item{text_y}{Annotation position of text in y-axis.}
 }
 \value{
 ROC.
