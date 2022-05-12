@@ -36,7 +36,7 @@ filter_column_missing_rate.default <- function(object, threshold = 0.5, verbose 
   r <- column_missing_rate(object)
 
   if(verbose) {
-    cat(paste0("\n Number of columns with a missing rate >= ", threshold, " : n = ", sum(r >= threshold),  "\n"))
+    cat(crayon::green(paste0("\nNumber of columns with a missing rate >= ", threshold, " : n = ", sum(r >= threshold),  "\n")))
   }
   r <- r[r < threshold]
   return(object[, names(r), with = FALSE])
@@ -54,15 +54,16 @@ filter_column_missing_rate.default <- function(object, threshold = 0.5, verbose 
 filter_column_missing_rate.Metabolite <- function(object, threshold = 0.5, verbose = TRUE) {
 
   ncol_old <- NCOL(object@assayData)
-  object@assayData <- filter_column_missing_rate(object@assayData, threshold = threshold, verbose = verbose)
+  obeject_new <- filter_column_missing_rate(object@assayData, threshold = threshold, verbose = verbose)
+  
   object@logs <- paste0(object@logs,
                         format(Sys.time(), "%d/%m/%y %H:%M:%OS"),
                         ": Filter data with a missing rate >= ", threshold,
-                        ", removed ", ncol_old -  NCOL(object@assayData), " features. \n")
-  if(ncol_old -  NCOL(object@assayData) == 0) {
-    return(object)
-  }
-  return(update_Metabolite(object))
+                        ", removed ", ncol_old -  (NCOL(obeject_new) + 1), " features. \n")
+  
+  object <- update_Metabolite(object, action = "keep_feature", dataset =  names(obeject_new))
+
+  return(object)
 }
 
 
@@ -101,7 +102,7 @@ filter_row_missing_rate.default <- function(object, threshold = 0.5, verbose = T
   object <- as.data.table(object)
   r <- row_missing_rate(object)
   if(verbose) {
-    cat(paste0("\n Number of rows with a missing rate >= ", threshold, " : n = ", sum(r >= threshold),  "\n"))
+    cat(crayon::green(paste0("\nNumber of rows with a missing rate >= ", threshold, " : n = ", sum(r >= threshold),  "\n")))
   }
 
   if(sum(r >= threshold) == 0) {
@@ -122,15 +123,16 @@ filter_row_missing_rate.default <- function(object, threshold = 0.5, verbose = T
 filter_row_missing_rate.Metabolite <- function(object, threshold = 0.5, verbose = TRUE) {
   stopifnot(is.numeric(threshold) & threshold <=1 & threshold >= 0)
   nrow_old <- NROW(object@assayData)
-  object@assayData <- filter_row_missing_rate(object@assayData, threshold = threshold, verbose = verbose)
+  
+  obeject_new <- filter_row_missing_rate(object@assayData, threshold = threshold, verbose = verbose)
+  
   object@logs <- paste0(object@logs,
                         format(Sys.time(), "%d/%m/%y %H:%M:%OS"),
-                        ": Filter data with a missing rate >= ", threshold,
-                        ", removed ", nrow_old -  NROW(object@assayData), " samples. \n")
-  if(nrow_old -  NROW(object@assayData) == 0) {
-    return(object)
-  }
-  return(update_Metabolite(object))
+                        ": Filter data with a row missing rate >= ", threshold,
+                        ", removed ", nrow_old -  NROW(obeject_new), " samples. \n")
+  
+  object <- update_Metabolite(object, action = "keep_sample", dataset =  obeject_new$sampleID)
+  return(object)
 }
 
 
@@ -139,13 +141,23 @@ filter_row_missing_rate.Metabolite <- function(object, threshold = 0.5, verbose 
 
 #' @rdname filter_column_constant
 #' @export
-filter_column_constant.default <- function(object, verbose = TRUE) {
+calculate_column_constant <- function(object, verbose = TRUE) {
   object <- as.data.table(object)
   r <- apply(object, 2, function(x) sd(x, na.rm = TRUE))
-
+  
   if(verbose) {
-    cat(paste0("\nConstant columns n = ", sum(r == 0 | is.na(r)), "\n"))
+    cat(crayon::green(paste0("\nConstant columns n = ", sum(r == 0 | is.na(r)), "\n")))
   }
+  return(r)
+}
+
+
+
+#' @rdname filter_column_constant
+#' @export
+filter_column_constant.default <- function(object, verbose = TRUE) {
+ 
+  r <- calculate_column_constant(object, verbose = verbose)
   r <- r[! (r == 0 | is.na(r))]
 
   return(object[, names(r), with = FALSE])
@@ -161,18 +173,16 @@ filter_column_constant.default <- function(object, verbose = TRUE) {
 #' 
 filter_column_constant.Metabolite <- function(object, verbose = TRUE) {
   ncol_old <- NCOL(object@assayData)
-  # skip the first column (sample ID). and then merge
-  object@assayData <- cbind(object@assayData[, 1], filter_column_constant(object = object@assayData[, -1], verbose = verbose))
+
+  obeject_new <- filter_column_constant(object = object@assayData[, -1], verbose = verbose)
+  
   object@logs <- paste0(object@logs,
                         format(Sys.time(), "%d/%m/%y %H:%M:%OS"),
                         ": Filter data with a constant column, removed ",
-                        ncol_old -  NCOL(object@assayData), " features. \n")
+                        ncol_old -  (NCOL(obeject_new) + 1), " features. \n")
 
-  if(ncol_old -  NCOL(object@assayData) == 0) {
-    return(object)
-  }
-
-  return(update_Metabolite(object))
+  object <- update_Metabolite(object, action = "keep_feature", dataset =  names(obeject_new))
+  return(object)
 }
 
 
@@ -263,7 +273,6 @@ replace_outlier.data.frame <- function(object, method = "winsorize", nSD = 5) {
 #'
 replace_outlier.Metabolite <- function(object, method = "winsorize", nSD = 5) {
 
-
   data <- replace_outlier(object@assayData[, -1], method = method, nSD = nSD)
   object@assayData <- cbind(object@assayData[, 1],data)
   object@logs <- paste0(object@logs,
@@ -327,7 +336,7 @@ outlier_rate.Metabolite <- function(object, nSD = 5) {
 #'
 #' This function will run QC steps on a Metabolite object
 #'
-#' @param object An object, data.frame, data.table or Metabolite.
+#' @param object A Metabolite object.
 #' @param filter_column_constant A logical value, whether to filter columns (features) with a constant value.
 #' @param filter_column_missing_rate_threshold A numeric threshold to filter columns (features) below a missing rate, default: 0.5. Other values: 0.2, 0.8. If NULL, then skip this step.
 #' @param filter_row_missing_rate_threshold A numeric threshold to filter rows (samples) below a missing rate. Default: NULL, to skip this step. Other values: 0.5, 0.2, 0.8.

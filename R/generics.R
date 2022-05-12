@@ -190,6 +190,7 @@ setMethod("show", "Metabolite", function(object) {
 #' @param featureID a character of the metabolite ID column (in feature file and the column names of data), default: CHEM_ID (provided from Metabolon file).
 #' @param sampleID a character of the sample ID column (in sample and the first column of data), default: PARENT_SAMPLE_NAME (provided from Metabolon file).
 #' @param logs Log information.
+#' @param miscData Ancillary data.
 #' @return A Metabolite object with slots: assayData, featureData, and sampleData.
 #' @seealso \code{\link{Metabolite}}, \code{\link{load_excel}}, \code{\link{load_data}}
 #' @export
@@ -200,9 +201,10 @@ create_Metabolite <- function(
   assayData,
   featureData,
   sampleData,
-  featureID,
-  sampleID,
-  logs
+  featureID = "featureID",
+  sampleID = "sampleID",
+  logs,
+  miscData = list()
 ) {
 
   setDT(assayData)
@@ -290,7 +292,7 @@ create_Metabolite <- function(
     featureID = "featureID",
     sampleID = "sampleID",
     logs = paste0(logs, format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Initiate data: ", NROW(sampleData), " samples and ", NROW(featureData), " features.\n"),
-    miscData = list()
+    miscData = miscData
   )
 }
 

@@ -4,6 +4,7 @@
 #' @importFrom methods new is show validObject
 #' @importFrom utils head str
 #' @importFrom plotROC geom_roc melt_roc stat_roc
+#' @importFrom hrbrthemes theme_ipsum
 #'
 NULL
 

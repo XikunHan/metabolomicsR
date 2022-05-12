@@ -425,3 +425,77 @@ plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b 
 }
 
 
+
+
+
+
+#' quality control visualization
+#'
+#' This function will plot QC results
+#'
+#' @param object A Metabolite object.
+#' @param nSD Define the N times of the SD as outliers.
+#' @export
+#' @return QC metrics
+#'
+plot_QC <- function(object, nSD = 5) {
+  df <- calculate_column_constant(object@assayData[, -1], verbose = FALSE)
+  df <- data.table(x = df == 0 | is.na(df))
+  column_constant <- df
+  p_constant <- ggplot(data= df, aes(x=x)) +
+    geom_bar(fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+    geom_text(stat='count', aes(label=..count..), vjust=-0.5) +
+    hrbrthemes::theme_ipsum() +
+    labs(x = "", title = "Constant columns") +
+    theme(title = element_text(size = 12))
+  
+  df <- column_missing_rate(object)
+  df <- data.table(x = df)
+  column_missing_rate <- df
+  p_column_missing_rate <- ggplot(data = df, aes(x= x)) +
+    geom_histogram(bins = 30, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+    hrbrthemes::theme_ipsum() +
+    labs(x = "", title = "Column missing rate") +
+    theme(title = element_text(size = 12))
+  
+  
+  df <- row_missing_rate(object)
+  df <- data.table(x = df)
+  row_missing_rate <- df
+  p_row_missing_rate <- ggplot(data = df, aes(x= x)) +
+    geom_histogram(bins = 30, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+    hrbrthemes::theme_ipsum() +
+    labs(x = "", title = "Row missing rate") +
+    theme(title = element_text(size = 12))
+
+  
+  df <- outlier_rate(object, nSD = nSD)
+  df <- data.table(x = df)
+  outlier_rate <- df
+  p_outlier_rate <- ggplot(data = df, aes(x= x)) +
+    geom_histogram(bins = 30, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+    hrbrthemes::theme_ipsum() +
+    labs(x = "", title = "Outlier rate") +
+    theme(title = element_text(size = 12))
+  
+  p_list <- list(p_constant, 
+                 p_column_missing_rate, 
+                 p_row_missing_rate,
+                 p_outlier_rate)
+  
+  
+  p <- ggstatsplot::combine_plots(
+    p_list,
+    plotgrid.args = list(nrow = 2, ncol = 2)
+  )
+  
+  QC_metrics <- list(column_constant = column_constant, 
+                     column_missing_rate = column_missing_rate,
+                     row_missing_rate = row_missing_rate,
+                     outlier_rate = outlier_rate, 
+                     p = p
+                     )
+  return(QC_metrics)
+}
+
+

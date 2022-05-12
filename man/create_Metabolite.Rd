@@ -8,9 +8,10 @@ create_Metabolite(
   assayData,
   featureData,
   sampleData,
-  featureID,
-  sampleID,
-  logs
+  featureID = "featureID",
+  sampleID = "sampleID",
+  logs,
+  miscData = list()
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ create_Metabolite(
 \item{sampleID}{a character of the sample ID column (in sample and the first column of data), default: PARENT_SAMPLE_NAME (provided from Metabolon file).}
 
 \item{logs}{Log information.}
+
+\item{miscData}{Ancillary data.}
 }
 \value{
 A Metabolite object with slots: assayData, featureData, and sampleData.

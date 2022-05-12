@@ -16,7 +16,7 @@ QC_pipeline(
 )
 }
 \arguments{
-\item{object}{An object, data.frame, data.table or Metabolite.}
+\item{object}{A Metabolite object.}
 
 \item{filter_column_constant}{A logical value, whether to filter columns (features) with a constant value.}
 

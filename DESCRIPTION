@@ -50,7 +50,9 @@ Suggests:
     pROC,
     BiocStyle,
     MASS,
-    xgboost
+    xgboost,
+    crayon,
+    hrbrthemes
 RoxygenNote: 7.1.2
 biocViews: Software, Metabolomics, MassSpectrometry, Regression, Normalization, QualityControl
 LazyData: FALSE

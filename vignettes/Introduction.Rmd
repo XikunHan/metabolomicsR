@@ -46,6 +46,8 @@ We first designed a “Metabolite” class based on the object-oriented programm
 
 To demonstrate the package, we obtained metabolomic data from Qatar Metabolomics Study on Diabetes, similar to the data format from non-targeted mass spectrometry by Metabolon. The dataset is available via [figshare](https://doi.org/10.6084/m9.figshare.5904022).
 
+The data can be imported directly from excel, csv or other formats that imported into R.
+
 ```{r}
 
 library(metabolomicsR)
@@ -82,7 +84,7 @@ df_plasma
 ```
 </details>
 
-The `{update_Metabolite}` fuction provides several methods to update the data, including "injection_order", "keep_feature", "remove_feature", "keep_sample", "remove_sample", "add_sample_annotation", and "change_featureID". 
+The `{update_Metabolite}` function provides several methods to update the data, including "injection_order", "keep_feature", "remove_feature", "keep_sample", "remove_sample", "add_sample_annotation", and "change_featureID". 
 
 
 ```{r}
@@ -147,10 +149,30 @@ df_saliva
 
 # Quality control pipeline
 
-We provided a pipeline for metabolite and sample quality control (QC) procedures. In the QC pipeline, we included the following functions: remove metabolites or samples beyond a particular missing rate threshold (eg. 0.5), detect outliers (eg. +- 5 SD) and replace outliers with NA or winsorize outliers, and popular methods to impute missing values (eg. half of the minimum value). All the steps can be customized in the “QC_pipeline” function or be used in each function (eg. “filter_column_missing_rate”, “replace_outlier”, and “impute”).
+We provided a pipeline for metabolite and sample quality control (QC) procedures. In the QC pipeline, we included the following functions: remove metabolites or samples beyond a particular missing rate threshold (e.g., 0.5), detect outliers (e.g., ± 5 standard deviations) and replace outliers with missing values or winsorize outliers, and various popular methods to impute missing values (e.g., half of the minimum value, median, zero, or nearest neighbor averaging [kNN] method). All the steps can be customized that have been implemented in the “QC_pipeline” function or be used from each individual function (eg. “filter_column_missing_rate”, “replace_outlier”, and “impute”).
+
+
+First, we display the QC metrics using the `{plot_QC}` function
+```{r, fig.width = 16, fig.height = 12}
+
+p <- plot_QC(df_plasma)
+p$p
+
+```
+
+
+<details>
+<summary>**click to show plasma QC metrics**</summary>
+```{r}
+p
+```
+</details>
+
 
 ```{r}
+
 df_plasma_QC <- QC_pipeline(df_plasma, replace_outlier_method = "winsorize", impute_method = NULL)
+
 ```
 
 <details>
@@ -159,6 +181,16 @@ df_plasma_QC <- QC_pipeline(df_plasma, replace_outlier_method = "winsorize", imp
 df_plasma_QC
 ```
 </details>
+
+
+
+For the urine QC metrics
+```{r, fig.width = 16, fig.height = 12}
+p <- plot_QC(df_urine)
+p$p
+
+```
+
 
 ```{r}
 df_urine_QC <- QC_pipeline(df_urine, replace_outlier_method = "winsorize", impute_method = NULL)
@@ -171,7 +203,15 @@ df_urine_QC
 ```
 </details>
 
+
+```{r, fig.width = 16, fig.height = 12}
+p <- plot_QC(df_saliva)
+p$p
+```
+
 ```{r}
+
+
 df_saliva_QC <- QC_pipeline(df_saliva, replace_outlier_method = "winsorize", impute_method = NULL)
 ```
 
@@ -254,7 +294,7 @@ plot_Metabolite(df_plasma_scale, plot = "histogram", color = "ETHNICITY")
 
 # Normalization
 
-Normalization of metabolomic data is an important step to remove systematic variation, and to facilitate the identification of real biological metabolites. Here we provided the following normalization methods: batch-based normalization, QC sample-based/nearest QC sample-based normalization, and LOESS normalization. The last three methods are used when the internal QC samples are available.
+Normalization of metabolomics data is an important step to remove systematic variation, and to facilitate the identification of real biological metabolites. We provide popular normalization methods: batch-based normalization, QC sample-based/nearest QC sample-based normalization, and LOESS normalization. The latter three methods are useful when the measurements of internal quality control samples are provided. Briefly, in the “batch_norm” function, we implemented a batch-based normalization method that the raw values were divided by the median values of samples in each instrument batch to force the median value to one in each batch. “QCmatrix_norm” function will use reference quality control samples to normalize raw metabolite measurement values.
 
 
 <details>
@@ -563,6 +603,8 @@ plot_ROC(object = df_plasma_scale, y = "T2D",
          model_b = c("M00527", "BMI", "AGE", "GENDER"))
 
 ```
+
+
 
 
 <details>

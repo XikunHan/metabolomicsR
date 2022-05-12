@@ -2,11 +2,14 @@
 % Please edit documentation in R/generics.R, R/process.R
 \name{filter_column_constant}
 \alias{filter_column_constant}
+\alias{calculate_column_constant}
 \alias{filter_column_constant.default}
 \alias{filter_column_constant.Metabolite}
 \title{filter columns if values are constant}
 \usage{
 filter_column_constant(object, verbose)
+
+calculate_column_constant(object, verbose = TRUE)
 
 \method{filter_column_constant}{default}(object, verbose = TRUE)
 

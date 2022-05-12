@@ -313,14 +313,15 @@ update_Metabolite <- function(object,
   }
 
   if(is.null(action)) {
-    logs = paste0(object@logs, format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Update data, ", 
+    logs = paste0(object@logs, format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Current data, ", 
                   NROW(df_sample), " samples and ", NROW(df_feature), " features. \n")
   } else {
     logs = paste0(object@logs, format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Update data, action: ",
                   action, ", ", NROW(df_sample), " samples and ", NROW(df_feature), " features. \n")
   }
+  
 
-    new(
+  new(
     Class = 'Metabolite',
     assayData = df_data,
     featureData = df_feature,
@@ -330,4 +331,5 @@ update_Metabolite <- function(object,
     logs = logs,
     miscData = object@miscData
   )
+  
 }
