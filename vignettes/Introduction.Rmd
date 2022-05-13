@@ -184,7 +184,7 @@ df_plasma_QC
 
 
 
-For the urine QC metrics
+For the urine QC metrics:
 ```{r, fig.width = 16, fig.height = 12}
 p <- plot_QC(df_urine)
 p$p
@@ -195,6 +195,7 @@ p$p
 ```{r}
 df_urine_QC <- QC_pipeline(df_urine, replace_outlier_method = "winsorize", impute_method = NULL)
 ```
+
 
 <details>
 <summary>**click to show urine data after QC**</summary>
@@ -207,10 +208,10 @@ df_urine_QC
 ```{r, fig.width = 16, fig.height = 12}
 p <- plot_QC(df_saliva)
 p$p
+
 ```
 
 ```{r}
-
 
 df_saliva_QC <- QC_pipeline(df_saliva, replace_outlier_method = "winsorize", impute_method = NULL)
 ```
@@ -234,6 +235,7 @@ df_plasma_scale <-  transformation(df_plasma_QC, method = "log")
 df_plasma_scale <-  transformation(df_plasma_scale, method = "scale")
 ```
 
+
 <details>
 <summary>**click to show plasma data after scaling**</summary>
 ```{r}
@@ -253,6 +255,7 @@ df_plasma_scale
 plot_Metabolite(df_plasma_QC, plot = "boxplot", x = "T2D", color ="ETHNICITY", shape = "T2D")
 
 ```
+
 
 ```{r, fig.width = 12, fig.height = 6}
 # select three metabolites
@@ -491,8 +494,9 @@ plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 
 ```{r}
 
-fit_glm <- regression(object = df_plasma_scale, phenoData = NULL, model = "logistic", outcome = "T2D",
-                         covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
+fit_glm <- regression(object = df_plasma_scale, phenoData = NULL, 
+                      model = "logistic", outcome = "T2D",
+                      covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
 
 head(fit_glm)
 ```
@@ -512,14 +516,15 @@ plot_volcano(dd, label = "BIOCHEMICAL")
 
 ```{r}
 
-fit2 <- regression(object = df_plasma_scale, phenoData = NULL, model = "auto", outcome = c("BMI", "T2D"),
-                         covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
+fit2 <- regression(object = df_plasma_scale, phenoData = NULL, 
+                   model = "auto", outcome = c("BMI", "T2D"),
+                   covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
 
 head(fit2)
 ```
 
-```{r}
 
+```{r}
 dd2 <- merge(fit2, featureData(df_plasma_scale), by.x = "term", by.y = "featureID")
 
 dd2[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
