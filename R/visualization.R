@@ -440,7 +440,7 @@ plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b 
 #'
 plot_QC <- function(object, nSD = 5) {
   df <- calculate_column_constant(object@assayData[, -1], verbose = FALSE)
-  df <- data.table(x = df == 0 | is.na(df))
+  df <- data.table(ID = names(object@assayData[, -1]), x = df == 0 | is.na(df))
   column_constant <- df
   p_constant <- ggplot(data= df, aes(x=x)) +
     geom_bar(fill="#69b3a2", color="#e9ecef", alpha=0.9) +
@@ -449,8 +449,8 @@ plot_QC <- function(object, nSD = 5) {
     labs(x = "", title = "Constant columns") +
     theme(title = element_text(size = 12))
   
-  df <- column_missing_rate(object)
-  df <- data.table(x = df)
+  df <- column_missing_rate(object)[-1]
+  df <- data.table(ID = names(object@assayData[, -1]), x = df)
   column_missing_rate <- df
   p_column_missing_rate <- ggplot(data = df, aes(x= x)) +
     geom_histogram(bins = 30, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
@@ -460,7 +460,7 @@ plot_QC <- function(object, nSD = 5) {
   
   
   df <- row_missing_rate(object)
-  df <- data.table(x = df)
+  df <- data.table(ID = object@assayData$sampleID, x = df)
   row_missing_rate <- df
   p_row_missing_rate <- ggplot(data = df, aes(x= x)) +
     geom_histogram(bins = 30, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
@@ -470,7 +470,7 @@ plot_QC <- function(object, nSD = 5) {
 
   
   df <- outlier_rate(object, nSD = nSD)
-  df <- data.table(x = df)
+  df <- data.table(ID = names(object@assayData[, -1]), x = df)
   outlier_rate <- df
   p_outlier_rate <- ggplot(data = df, aes(x= x)) +
     geom_histogram(bins = 30, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
