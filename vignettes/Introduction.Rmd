@@ -532,9 +532,38 @@ plot_volcano(dd2, color = "outcome", label = "BIOCHEMICAL")
 
 ```
 
-<br>
+<br><br>
 
-## Association analysis 4: extension to other regression models
+# ROC
+
+```{r, fig.height=8,fig.width=9}
+
+# ROC for one variable, to add a wrapped for many metabolites separately
+plot_ROC(object = df_plasma_scale, y = "T2D", x = "M00527")
+plot_ROC(object = df_plasma_scale, y = "T2D", x = c("M00527", "BMI"))
+
+```
+
+<br><br>
+
+## ROC: compare two models
+
+```{r, fig.height=8,fig.width=9}
+
+plot_ROC(object = df_plasma_scale, y = "T2D", 
+         model_a = c("BMI", "AGE", "GENDER"), 
+         model_b = c("M00527", "BMI", "AGE", "GENDER"))
+
+```
+
+<br><br>
+
+# Extension
+
+The metabolomicsR framework is versatile and is extensible to other various methods, measurement platforms, and omics data types. Developers can customize new visualization and statistical methods, or provide an interface to deploy available statistical methods based on the metabolomicsR data structure. 
+
+
+## Extension 1: Negative binomial generalized linear models
 
 We have provided various regression models in the `{metabolomicsR}` package. Here we show how to extend the `{regression}` function to other models.
 
@@ -585,30 +614,21 @@ dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 ```
 
-<br><br>
 
-# ROC
+## Extension 2: Call available methods and packages
 
-```{r, fig.height=8,fig.width=9}
+Here, we show an extension example to detect genuine untargeted metabolic features based on a previous method (genuMet): 
 
-# ROC for one variable, to add a wrapped for many metabolites separately
-plot_ROC(object = df_plasma_scale, y = "T2D", x = "M00527")
-plot_ROC(object = df_plasma_scale, y = "T2D", x = c("M00527", "BMI"))
+```{r}
 
-```
-
-<br><br>
-
-## ROC: compare two models
-
-```{r, fig.height=8,fig.width=9}
-
-plot_ROC(object = df_plasma_scale, y = "T2D", 
-         model_a = c("BMI", "AGE", "GENDER"), 
-         model_b = c("M00527", "BMI", "AGE", "GENDER"))
+res_genuMet <- genuMet_makefeature(df_plasma)
+str(res_genuMet)
 
 ```
 
+
+<br>
+<br><br>
 
 
 

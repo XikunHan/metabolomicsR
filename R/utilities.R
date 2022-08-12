@@ -4,7 +4,6 @@
 #' @importFrom methods new is show validObject
 #' @importFrom utils head str
 #' @importFrom plotROC geom_roc melt_roc stat_roc
-#' @importFrom hrbrthemes theme_ipsum
 #'
 NULL
 
@@ -59,6 +58,7 @@ check_pkg <- function(x) {
 #' @noRd
 f_injection_reorder <- function(data = NULL) {
 
+  # internal function
   data$SUBSET <- data$SUBSET_NEG
 
   dd <- as.data.table(data[, table(data$SUBSET, data$SUBSET_POLAR)])
@@ -102,9 +102,3 @@ f_injection_reorder <- function(data = NULL) {
 }
 
 
-
-# utils::globalVariables(c("featureID"))
-
-
-# utils::globalVariables(c("featureID",  "highlight_", "value", "variable", "x_",
-#                          "D", "M", "model_A", "name", "y_magic"))

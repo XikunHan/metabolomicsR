@@ -4,7 +4,7 @@
 \alias{genuMet_makefeature}
 \title{distinguish genuine untargeted metabolic features without QC samples}
 \usage{
-genuMet_makefeature(object, wsize = 100, ssize = 0.5, defswitch = 0.2)
+genuMet_makefeature(object, wsize = 10, ssize = 0.5, defswitch = 0.2)
 }
 \arguments{
 \item{object}{A Metabolite object.}

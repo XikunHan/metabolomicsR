@@ -384,7 +384,6 @@ plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b 
     return(p)
     
   } else {
-    # RColorBrewer::display.brewer.all()
     v_color <- RColorBrewer::brewer.pal(9,"Set1")[c(2,5)]
     fit1 <- glm(as.formula(paste(y , " ~ ", paste0(model_a, collapse = " + "))), 
                 data = df,family = binomial())
@@ -439,6 +438,9 @@ plot_ROC <- function(object = NULL, y = NULL, x = NULL, model_a = NULL, model_b 
 #' @return QC metrics
 #'
 plot_QC <- function(object, nSD = 5) {
+  
+  x <- ..count.. <- NULL
+  
   df <- calculate_column_constant(object@assayData[, -1], verbose = FALSE)
   df <- data.table(ID = names(object@assayData[, -1]), x = df == 0 | is.na(df))
   column_constant <- df

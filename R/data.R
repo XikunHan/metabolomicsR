@@ -11,8 +11,6 @@
 
 #' Load metabolite data from an excel file
 #'
-#' Load metabolite data from an excel file
-#'
 #' @param path Path to the xls/xlsx file.
 #' @param data_sheet A integer of xlsx sheet number for metabolite measurements 
 #' (peak area data or normalized data, sample [row] * feature [column])

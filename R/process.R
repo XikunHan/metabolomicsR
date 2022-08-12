@@ -131,7 +131,7 @@ filter_row_missing_rate.Metabolite <- function(object, threshold = 0.5, verbose 
                         ": Filter data with a row missing rate >= ", threshold,
                         ", removed ", nrow_old -  NROW(obeject_new), " samples. \n")
   
-  object <- update_Metabolite(object, action = "keep_sample", dataset =  obeject_new$sampleID)
+  object <- update_Metabolite(object, dataset = obeject_new$sampleID, action = "keep_sample")
   return(object)
 }
 
@@ -408,8 +408,10 @@ RSD <- function(x) {
 #' @param wsize Window size.
 #' @param ssize Slide size.
 #' @param defswitch Definition of a switch.
+#' 
+#' @export
 #' @note The genuMet method:  https://github.com/liucaomics/genuMet
-genuMet_makefeature <- function(object, wsize=100, ssize= 0.5, defswitch=0.2) {
+genuMet_makefeature <- function(object, wsize=10, ssize= 0.5, defswitch=0.2) {
   if (! requireNamespace("genuMet", quietly = TRUE)) {
     stop(paste0("Please install genuMet package first: ` (\"xyomics/genuMet\") `."), call. = FALSE)
   }
