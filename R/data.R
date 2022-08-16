@@ -107,7 +107,7 @@ load_data <- function(
 }
 
 
-#' Save metabolite data 
+#' Save metabolite data in txt files 
 #'
 #' Save metabolite data in separate txt files
 #'
@@ -118,12 +118,44 @@ load_data <- function(
 #' @return No return value.
 #'
 #'
-save_data <- function(object, file = "")  {
+save_data_txt <- function(object, file = "")  {
   fwrite(object@assayData, file = paste0(file, "_assay.txt"), sep = "\t", na = "NA", quote = FALSE)
   fwrite(object@featureData, file = paste0(file, "_feature_annotation.txt"), sep = "\t", na = "NA", quote = FALSE)
   fwrite(object@sampleData, file = paste0(file, "_sample_annotation.txt"), sep = "\t", na = "NA", quote = FALSE)
   fwrite(list(object@logs), file = paste0(file, "_logs.txt"), sep = "\t", na = "NA", quote = FALSE)
   }
+
+
+
+#' Save metabolite data in an Excel file
+#'
+#'
+#' @param object A Metabolite object
+#' @param file Output file to save the metabolite measurements 
+#' (suffixes: ".xlsx", "_logs.txt). 
+#' @export
+#' @return No return value.
+#'
+#'
+save_data_xls <- function(object, file = "")  {
+  # xlsx::write.xlsx(object@assayData, file = paste0(file, "xlsx"), sheetName = "Sheet1")
+  # xlsx::write.xlsx(object@featureData, file = paste0(file, "xlsx"), sheetName = "Sheet2")
+  # xlsx::write.xlsx(object@sampleData, file = paste0(file, "xlsx"), sheetName = "Sheet3")
+  # 
+  
+  wb <- openxlsx::createWorkbook()
+  openxlsx::addWorksheet(wb, "assayData")
+  openxlsx::addWorksheet(wb, "featureData")
+  openxlsx::addWorksheet(wb, "sampleData")
+  
+  openxlsx::writeData(wb, "assayData", object@assayData)
+  openxlsx::writeData(wb, "featureData", object@featureData)
+  openxlsx::writeData(wb, "sampleData", object@sampleData)
+  
+  openxlsx::saveWorkbook(wb, file = paste0(file, ".xlsx"), overwrite = TRUE)
+  
+  fwrite(list(object@logs), file = paste0(file, "_logs.txt"), sep = "\t", na = "NA", quote = FALSE)
+}
 
 
 #' merge two Metabolite objects
@@ -329,5 +361,71 @@ update_Metabolite <- function(object,
     logs = logs,
     miscData = object@miscData
   )
+  
+}
+
+
+
+
+
+
+#' Convert maplet data to a Metabolite object
+#' 
+#' @param object Data in the maplet package, a SummarizedExperiment data object.
+#' @param featureID feature ID column name in the maplet data (-> elementMetadata -> listData). 
+#' @param sampleID sample ID column name in the maplet data (-> colData -> listData). 
+#' @return A Metabolite object.
+#' @export
+maplet2Metabolite <- function(object, featureID = "name", sampleID = "sample") {
+  
+  df_sample <- object@colData@listData
+  df_sample <- data.table(as.data.frame(df_sample))
+  setnames(df_sample, sampleID, "sampleID")
+  
+  df_feature <- object@elementMetadata@listData
+  df_feature <- data.table(as.data.frame(df_feature))
+  setnames(df_feature, featureID, "featureID")
+  
+  df_data <- object@assays@data@listData[[1]]
+  df_data  <- data.table(t(df_data), keep.rownames = TRUE)
+  # rename df_data
+  setnames(df_data, c("sampleID", df_feature$featureID))
+  
+  logs <- paste0(format(Sys.time(), "%d/%m/%y %H:%M:%OS"), ": Convert data from maplet data.\n")
+  object_convert <- create_Metabolite(assayData = df_data,
+                              featureData = df_feature,
+                              sampleData = df_sample,
+                              featureID = "featureID",
+                              sampleID = "sampleID",
+                              logs = logs, 
+                              miscData = object@metadata
+  )
+  
+  return(object_convert)
+}
+
+
+
+
+
+#' Convert a Metabolite object to maplet data
+#' 
+#' @param object A Metabolite object
+#' @return Data in the maplet package, a SummarizedExperiment data object.
+#' @export
+Metabolite2maplet <- function(object) {
+  save_data_xls(object, file = "tmp_data_convert")
+  file_data <- "tmp_data_convert.xlsx"
+  
+  object_convert <-
+    mt_load_checksum(file=file_data) %>%
+    mt_load_xls(file=file_data, sheet="assayData", samples_in_row=T, id_col="sampleID") %>%
+    mt_anno_xls(file=file_data, sheet="sampleData", anno_type="samples", anno_id_col ="sampleID") %>%
+    mt_anno_xls(file=file_data, sheet="featureData",anno_type="features", anno_id_col="featureID", data_id_col = "name") 
+  
+  file.remove(file_data)
+  file.remove("tmp_data_convert_logs.txt")
+  
+  return(object_convert)
   
 }

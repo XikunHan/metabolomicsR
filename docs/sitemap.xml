@@ -25,6 +25,9 @@
     <loc>https://xikunhan.github.io/metabolomicsR/reference/Metabolite-class.html</loc>
   </url>
   <url>
+    <loc>https://xikunhan.github.io/metabolomicsR/reference/Metabolite2maplet.html</loc>
+  </url>
+  <url>
     <loc>https://xikunhan.github.io/metabolomicsR/reference/QC_pipeline.html</loc>
   </url>
   <url>
@@ -32,6 +35,9 @@
   </url>
   <url>
     <loc>https://xikunhan.github.io/metabolomicsR/reference/RSD.html</loc>
+  </url>
+  <url>
+    <loc>https://xikunhan.github.io/metabolomicsR/reference/anno_hmdb.html</loc>
   </url>
   <url>
     <loc>https://xikunhan.github.io/metabolomicsR/reference/assayData.html</loc>
@@ -97,6 +103,9 @@
     <loc>https://xikunhan.github.io/metabolomicsR/reference/load_excel.html</loc>
   </url>
   <url>
+    <loc>https://xikunhan.github.io/metabolomicsR/reference/maplet2Metabolite.html</loc>
+  </url>
+  <url>
     <loc>https://xikunhan.github.io/metabolomicsR/reference/merge_data.html</loc>
   </url>
   <url>
@@ -155,6 +164,12 @@
   </url>
   <url>
     <loc>https://xikunhan.github.io/metabolomicsR/reference/save_data.html</loc>
+  </url>
+  <url>
+    <loc>https://xikunhan.github.io/metabolomicsR/reference/save_data_txt.html</loc>
+  </url>
+  <url>
+    <loc>https://xikunhan.github.io/metabolomicsR/reference/save_data_xls.html</loc>
   </url>
   <url>
     <loc>https://xikunhan.github.io/metabolomicsR/reference/show-Metabolite-method.html</loc>

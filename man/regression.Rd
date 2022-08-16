@@ -3,6 +3,7 @@
 \name{regression}
 \alias{regression}
 \alias{regression_each}
+\alias{regression_each_as_outcome}
 \title{regression analysis}
 \usage{
 regression(
@@ -30,6 +31,19 @@ regression_each(
   factors = NULL,
   feature_name = NULL,
   time = NULL,
+  verbose = TRUE,
+  ncpus = 1,
+  p.adjust.method = "bonferroni",
+  ...
+)
+
+regression_each_as_outcome(
+  object,
+  phenoData = NULL,
+  exposure = NULL,
+  covars = NULL,
+  factors = NULL,
+  feature_name = NULL,
   verbose = TRUE,
   ncpus = 1,
   p.adjust.method = "bonferroni",
@@ -68,6 +82,9 @@ term estimate std.error statistic p.value n outcome p.value.adj.
 }
 \description{
 Run regression models with adjusting for covariates. `regression_each` is used for one outcome. In `regression`, several outcomes can be specified to run together.
+}
+\note{
+\code{regression_each_as_outcome}: Run linear regression models where each feature is outcome.
 }
 \examples{
 data(df_plasma)

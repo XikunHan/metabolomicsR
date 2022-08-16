@@ -476,14 +476,37 @@ fit_lm <- regression(object = df_plasma_scale, phenoData = NULL, model = "lm", o
 
 head(fit_lm)
 
-```
-
-```{r}
-
 dd <- merge(fit_lm, featureData(df_plasma_scale), by.x = "term", by.y = "featureID")
 
 dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
+
+
+```
+
+### Association analysis 1: linear regression -- annotation in HMDB 
+```{r}
+
+df_sig <- dd[sig == 1 & !is.na(HMDb_ID), ]
+
+
+library(stringr)
+
+# this function is used to change HMDB ID.
+add_two_zeros <- function(x) {
+  if(str_count(x) == 9) x <- str_replace(x, "HMDB", "HMDB00")
+  return(x)
+}
+
+v_list <- sapply(df_sig$HMDb_ID, add_two_zeros)
+v_list
+
+df_sig$HMDB_anno <- anno_hmdb(v_list)
+df_sig
+
+# explore the first entry
+df_sig$HMDB_anno[[1]]@metabolite
+df_sig$HMDB_anno[[1]]@diseases
 
 ```
 
@@ -613,7 +636,7 @@ dd <- merge(fit, featureData(df_plasma_scale), by.x = "term", by.y = "featureID"
 dd[, sig := ifelse(p.value.adj < 0.1, 1, 0)]
 plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 ```
-
+<br>
 
 ## Extension 2: Call available methods and packages
 
@@ -626,8 +649,105 @@ str(res_genuMet)
 
 ```
 
+<br>
+
+## Extension 3: Bridge to maplet package
+
+In this section, we show two functions to bridge the data objects between R package maplet and our package metabolomicsR.
+
+```{r}
+
+# load the data from maplet. 
+# the maplet package is available at: https://github.com/krumsieklab/maplet 
+
+library(maplet)
+
+file_data <- system.file("extdata", "example_data/simulated_data.xlsx", package = "maplet")
+file_data 
+
+maplet_data <-
+  maplet::mt_load_checksum(file=file_data, checksum = "80afcd72481c6cf3dcf83342e3513699") %>%
+  maplet::mt_load_xls(file=file_data, sheet="data", samples_in_row=T, id_col="sample") %>%
+  maplet::mt_anno_xls(file=file_data, sheet="metinfo",anno_type="features", anno_id_col="name", data_id_col = "name") %>%
+  maplet::mt_anno_xls(file=file_data, sheet="clin", anno_type="samples", anno_id_col ="sample", data_id_col ="sample") 
+
+maplet_data
+
+d <- maplet2Metabolite(maplet_data)
+
+d2 <- Metabolite2maplet(d)
+d2
+
+```
+
 
 <br>
+
+<details>
+<summary>**click to show data d**</summary>
+```{r}
+d
+```
+</details>
+
+<br>
+
+
+
+
+## Extension 4: Nightingale’s NMR platform
+
+In this section, we show the application of our metabolomicsR package to Nightingale’s NMR platform data, including data import, transformation, visualization, and association analysis. 
+
+```{r}
+
+# the Nightingale data were downloaded from https://nightingalehealth.github.io/ggforestplot/articles/nmr-data-analysis-tutorial.html
+
+library(data.table)
+df_data <- fread("~/Documents/test/NightingaleData/12345-Results.csv")
+setnames(df_data, 1, "sampleID")
+
+df_sample <- fread("~/Documents/test/NightingaleData/clinical_data.csv")
+setnames(df_sample, 1, "sampleID")
+df_sample$sampleID <- df_data$sampleID
+
+df_feature <- data.table(featureID = names(df_data)[-1])
+
+# create Metabolite object
+df <- create_Metabolite(df_data, df_feature ,df_sample)
+
+sampleData(df)[, obesity := ifelse(BMI >= 30, 1, 0)]
+
+plot_Metabolite(df, plot = "boxplot", x = "obesity", color ="obesity", shape = "obesity", feature_name = "GlycA")
+
+
+# Transformation
+df <-  transformation(df, method = "log1p")
+df <-  transformation(df, method = "scale")
+
+
+# Association of BMI (as exposure) and each metabolite (as outcome)
+fit <- regression_each_as_outcome(object = df, phenoData = NULL, exposure = "BMI", 
+                                  feature_name = c("Total_C", "non_HDL_C", "Remnant_C", "VLDL_C", "Clinical_LDL_C"),
+                                  covars = c("gender", "baseline_age"), factors = "gender")
+
+
+# the results were the same as the "nmr-data-analysis-tutorial.html"
+fit
+
+```
+
+
+<br>
+
+
+
+# References
+- Cao, L. et al. genuMet: distinguish genuine untargeted metabolic features without quality control samples. bioRxiv 837260 (2019) doi:10.1101/837260.
+-	Yousri, N. A. et al. A systems view of type 2 diabetes-associated metabolic perturbations in saliva, blood and urine at different timescales of glycaemic control. Diabetologia 58, 1855–1867 (2015).
+
+
+
 <br><br>
 
 

@@ -388,7 +388,6 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
     v_formula <- deparse(formula)
   }
 
-  # print(covars)
   stopifnot(all(covars %in% names(phenoData)))
 
   if (!is.null(factors)) {
@@ -399,8 +398,6 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
 
   df <- merge(phenoData, object@assayData, by = object@sampleID)
 
-  # check model == "auto"
-
   if(model == "auto") {
     cat("model = `auto`, to infer `lm` or `logistic` \n")
     if(all(unique(df[, get(outcome)]) %in% c(0, 1, NA))) {
@@ -409,6 +406,7 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
       model <- "lm"
     }
   }
+  
   fit_model <- paste0("fit_", model)
   fit_model <- get(fit_model)
 
@@ -430,6 +428,7 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
     cat(paste0("\nRun `", model, "` model for ", length(x_list), " features: \n"))
     cat(v_formula, "+ `feature` \n")
   }
+  
   if(ncpus > 1) {
     future::plan(future::multiprocess, workers = ncpus)
   }
@@ -439,9 +438,9 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
     future.apply::future_lapply
   } else {
       pbapply::pblapply
-    }
+  }
+  
   v_ids <- 1L:length(x_list)
-  # progressr::handlers(global = TRUE)
   p <- progressr::progressor(along = v_ids)
 
   fit_res <- lapply_parallel(
@@ -466,6 +465,125 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
   return(fit_res)
 }
 
+
+
+
+
+#' @rdname regression
+#' @note \code{regression_each_as_outcome}: Run linear regression models where each feature is outcome.
+#' @export
+regression_each_as_outcome <- function(object, phenoData = NULL,
+                            exposure = NULL, covars = NULL, factors = NULL, feature_name = NULL, 
+                            verbose = TRUE, ncpus = 1, p.adjust.method = "bonferroni", ...) {
+  
+  
+  model <- "lm"
+  if(is.null(model)) {
+    stop("model is not specified.", call. = FALSE)
+  }
+  
+  v_args <- list(...)
+  
+  if(!is.null(feature_name)) {
+    x_list <- feature_name
+  } else {
+    x_list <- names(object@assayData)[2:NCOL(object@assayData)]
+  }
+  
+  # phenoData, merge with sampleData
+  if(is.null(phenoData)) {
+    warnings(paste0("`phenoData` is NULL, `@sampleData` will be used. "))
+    phenoData <- copy(object@sampleData)
+  } else {
+    phenoData <- as.data.table(phenoData)
+    stopifnot(object@sampleID %in% names(phenoData))
+    # phenoData <- merge(phenoData, object@sampleData, by = object@sampleID, suffixes = c("", "_"))
+  }
+  
+  stopifnot(!any(x_list %in% names(phenoData)))
+  
+  
+    # cat("Build formula using covars and outcomes. \n")
+    if(is.null(covars)) warning("Covars are NULL.")
+    v_formula <- paste( "~", paste(c(exposure, covars), sep="", collapse = " + "))
+  
+  # print(covars)
+  stopifnot(all(covars %in% names(phenoData)))
+  
+  if (!is.null(factors)) {
+    stopifnot(all(factors %in% names(phenoData)))
+    stopifnot(all(factors %in% covars))
+    phenoData[, (factors) := lapply(.SD, as.factor) , .SDcols = factors]
+  }
+  
+  df <- merge(phenoData, object@assayData, by = object@sampleID)
+  
+  
+  fit_lm <- function(data = NULL, formula = NULL, keep = NULL) {
+    v_var <- all.vars(formula)
+    df <- data[, v_var, with = FALSE]
+    fit <- tryCatch(
+      do.call("lm", args = list(data = df, formula = formula)),
+      error = function(e) {
+        cat(paste0("Failed to fit model: ", e), "\n")
+      })
+    
+    if(inherits(fit, "lm")) {
+      res  <- as.data.table(broom::tidy(fit))
+      if(! is.null(keep))  res <- res[res$term %in% keep, ]
+      res$n <- length(fit$residuals)
+      res$outcome <- v_var[1]
+    } else {
+      res <- list(estimate = NA)
+    }
+    return(res)
+  }
+  
+  if(NROW(df) < 3) {
+    stop(paste0("Only "), NROW(df), " rows in the merged file.", call. = FALSE)
+  }
+  
+  
+  if(verbose) {
+    cat(paste0("\nRun `", model, "` model for ", length(x_list), " features: \n"))
+    cat("`feature`", v_formula, " \n")
+  }
+  if(ncpus > 1) {
+    future::plan(future::multiprocess, workers = ncpus)
+  }
+  
+  lapply_parallel <- if(future::nbrOfWorkers() > 1) {
+    if(verbose) cat(paste0("Parallele runing with ncpus = ", future::nbrOfWorkers()), "\n")
+    future.apply::future_lapply
+  } else {
+    pbapply::pblapply
+  }
+  v_ids <- 1L:length(x_list)
+  # progressr::handlers(global = TRUE)
+  p <- progressr::progressor(along = v_ids)
+  
+  fit_res <- lapply_parallel(
+    X = v_ids,
+    FUN = function(i) {
+      p(sprintf("i=%g", i))
+      v_i <- x_list[i]
+      v_formula_i <- as.formula(paste0(v_i, v_formula))
+      tryCatch(
+        do.call(fit_lm, args = list(data = df, formula = v_formula_i, keep = exposure, ...)),
+        error = function(e) {
+          paste0("Failed to fit model: ", e)
+          list()
+        })
+    }
+  )
+  
+  if(all(is.na(fit_res))) return(NA)
+  fit_res <- rbindlist(fit_res, fill=TRUE)
+  fit_res$exposure <- exposure
+  fit_res$model <- model
+  fit_res$p.value.adj <- stats::p.adjust(fit_res$p.value, method = p.adjust.method)
+  return(fit_res)
+}
 
 
 

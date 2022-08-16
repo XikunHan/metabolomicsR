@@ -1215,3 +1215,43 @@ correlation <- function(
   return(res)
 }
 
+
+
+############### annotation #######################
+
+
+#' Query metabolite ID in HMDB database
+#'
+#' @param object a vector of HMDB IDs to query. 
+#' @return A list of query results. 
+#' @export
+#' 
+anno_hmdb <- function(object, ncpus = 1) {
+  if(ncpus > 1) {
+    future::plan(future::multiprocess, workers = ncpus)
+  }
+  lapply_parallel <- if(future::nbrOfWorkers() > 1) {
+    if(verbose) cat(paste0("Parallele runing with ncpus = ", future::nbrOfWorkers()), "\n")
+    future.apply::future_lapply
+  } else {
+    pbapply::pblapply
+  }
+  v_ids <- 1L:length(object)
+  p <- progressr::progressor(along = v_ids)
+  fit_res <- lapply_parallel(
+    X = v_ids,
+    FUN = function(i) {
+      p(sprintf("i=%g", i))
+      v_i <- object[i]
+      tryCatch(
+        hmdbQuery::HmdbEntry(id = v_i),
+        error = function(e) {
+          paste0("Failed to query: ", v_i, " - ", e)
+          list(NA)
+        })
+    }
+  )
+  if(all(is.na(fit_res))) return(NA)
+  return(fit_res)
+}
+

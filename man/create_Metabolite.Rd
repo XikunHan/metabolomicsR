@@ -10,7 +10,7 @@ create_Metabolite(
   sampleData,
   featureID = "featureID",
   sampleID = "sampleID",
-  logs,
+  logs = "",
   miscData = list()
 )
 }

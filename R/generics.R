@@ -203,7 +203,7 @@ create_Metabolite <- function(
   sampleData,
   featureID = "featureID",
   sampleID = "sampleID",
-  logs,
+  logs = "",
   miscData = list()
 ) {
 
