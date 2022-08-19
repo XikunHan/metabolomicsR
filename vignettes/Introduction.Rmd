@@ -22,7 +22,7 @@ knitr::opts_chunk$set(warning=FALSE, error=FALSE, message=FALSE)
 <br>
 <strong>`{metabolomicsR}`: Tools to process, analyze, and visualize metabolomic data.</strong>
 
-<strong>metabolomicsR</strong> is a streamlined R package to preprocess, analyze, and visualize metabolomic data. We included a set of functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression analysis, annotation, and visualization of data and results. The <strong>metabolomicsR</strong> is designed to be a comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is also versatile and is extensible to various methods and metabolomic platforms. Here, we demonstrate the step-by-step use of the main functions from this package.
+<strong>metabolomicsR</strong> is a streamlined R package to preprocess, analyze, and visualize metabolomic data. We included a set of functions for sample and metabolite quality control, outlier detection, missing value imputation, dimensional reduction, normalization, data integration, regression analysis, annotation, and visualization of data and results. The <strong>metabolomicsR</strong> is designed to be a comprehensive R package that can be easily used by researchers with basic R programming skills. The framework designed here is also versatile and extensible to various methods and metabolomic platforms. Here, we demonstrate the step-by-step use of the main functions from this package.
 
 <strong>Figure:</strong> Seamless workflow to preprocess, analyze, and visualize metabolomic data in <strong>metabolomicsR</strong> <img src="../man/figures/workflow.png" align="center" width="120%" height="180%"/>
 
@@ -380,10 +380,10 @@ p5 <- plot_injection_order(df_urine_QC_norm_KNN, color = "QCsample", shape = "GC
 p5
 
 
-# to benchmark the performance
-df_urine_QC_norm_xgboost <- modelling_norm(df_urine_QC, method = "XGBoost") 
-p6 <- plot_injection_order(df_urine_QC_norm_xgboost, color = "QCsample", shape = "GC/MS", feature_name = v_features)
-p6
+# test XGBoost
+# df_urine_QC_norm_xgboost <- modelling_norm(df_urine_QC, method = "XGBoost") 
+# p6 <- plot_injection_order(df_urine_QC_norm_xgboost, color = "QCsample", shape = "GC/MS", feature_name = v_features)
+# p6
 
 ```
 
@@ -468,11 +468,13 @@ p
 
 
 ## Association analysis 1: linear regression
-Association analysis between metabolites and interested outcomes was implemented in the `{regression}` function, supporting general linear regression, logistic regression, poisson regression, proportional hazards regression model, linear mixed-effects model, and logistic linear mixed-effects model, with or without covariates. All the regression models can be run for selected metabolites or all metabolites in a single job with the support of parallel computing.
+Association analysis between metabolites and interested outcomes was implemented in the `{regression}` function, supporting general linear regression, logistic regression, poisson regression, proportional hazards regression model, linear mixed-effects model, and logistic linear mixed-effects model, with or without covariates. All the regression models can be run for selected metabolites or all metabolites in a single job with the support of parallel computing. We also provided the option to run linear regression models where a metabolite is the outcome (an example is shown in the Section "## Extension 4: Nightingale’s NMR platform" below). 
 
 ```{r}
-fit_lm <- regression(object = df_plasma_scale, phenoData = NULL, model = "lm", outcome = "BMI",
-                          covars = c("AGE", "GENDER", "ETHNICITY"), factors = "ETHNICITY")
+fit_lm <- regression(object = df_plasma_scale, phenoData = NULL, 
+                     model = "lm", outcome = "BMI",
+                     covars = c("AGE", "GENDER", "ETHNICITY"), 
+                     factors = "ETHNICITY")
 
 head(fit_lm)
 
@@ -519,7 +521,8 @@ df_sig$HMDB_anno[[1]]@diseases
 
 fit_glm <- regression(object = df_plasma_scale, phenoData = NULL, 
                       model = "logistic", outcome = "T2D",
-                      covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
+                      covars = c("AGE","GENDER", "ETHNICITY"), 
+                      factors = "ETHNICITY")
 
 head(fit_glm)
 ```
@@ -541,7 +544,8 @@ plot_volcano(dd, label = "BIOCHEMICAL")
 
 fit2 <- regression(object = df_plasma_scale, phenoData = NULL, 
                    model = "auto", outcome = c("BMI", "T2D"),
-                   covars = c("AGE","GENDER", "ETHNICITY"), factors = "ETHNICITY")
+                   covars = c("AGE","GENDER", "ETHNICITY"), 
+                   factors = "ETHNICITY")
 
 head(fit2)
 ```
@@ -743,9 +747,13 @@ fit
 
 
 # References
-- Cao, L. et al. genuMet: distinguish genuine untargeted metabolic features without quality control samples. bioRxiv 837260 (2019) doi:10.1101/837260.
--	Yousri, N. A. et al. A systems view of type 2 diabetes-associated metabolic perturbations in saliva, blood and urine at different timescales of glycaemic control. Diabetologia 58, 1855–1867 (2015).
-
+- Ejigu,B.A. et al. (2013) Evaluation of normalization methods to pave the way towards large-scale LC-MS-based metabolomics profiling experiments. OMICS, 17, 473–485.
+- Johnson,C.H. et al. (2016) Metabolomics: beyond biomarkers and towards mechanisms. Nat. Rev. Mol. Cell Biol., 17, 451–459.
+- Long,N.P. et al. (2020) Toward a Standardized Strategy of Clinical Metabolomics for the Advancement of Precision Medicine. Metabolites, 10.
+- Pinu,F.R. et al. (2019) Systems Biology and Multi-Omics Integration: Viewpoints from the Metabolomics Research Community. Metabolites, 9.
+- Stanstrup,J. et al. (2019) The metaRbolomics Toolbox in Bioconductor and beyond. Metabolites, 9.
+- Cao,L. et al. (2019) genuMet: distinguish genuine untargeted metabolic features without quality control samples. bioRxiv, 837260.
+- Yousri,N.A. et al. (2015) A systems view of type 2 diabetes-associated metabolic perturbations in saliva, blood and urine at different timescales of glycaemic control. Diabetologia, 58, 1855–1867.
 
 
 <br><br>
