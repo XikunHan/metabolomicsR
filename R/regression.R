@@ -13,6 +13,7 @@
 #' @param verbose Print log information.
 #' @param ncpus Number of CPUS for parallele job.
 #' @param p.adjust.method Adjust for P value method, see \code{\link{p.adjust}}.
+#' @param exposure exposure variables.
 #' @param \dots Further arguments passed to regression model.
 #' @returns term estimate std.error statistic p.value n outcome p.value.adj.
 #' @export
@@ -430,7 +431,7 @@ regression_each <- function(object, phenoData = NULL, model = NULL, formula = NU
   }
   
   if(ncpus > 1) {
-    future::plan(future::multiprocess, workers = ncpus)
+    future::plan(future::multicore, workers = ncpus)
   }
 
   lapply_parallel <- if(future::nbrOfWorkers() > 1) {
@@ -549,7 +550,7 @@ regression_each_as_outcome <- function(object, phenoData = NULL,
     cat("`feature`", v_formula, " \n")
   }
   if(ncpus > 1) {
-    future::plan(future::multiprocess, workers = ncpus)
+    future::plan(future::multicore, workers = ncpus)
   }
   
   lapply_parallel <- if(future::nbrOfWorkers() > 1) {

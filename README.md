@@ -28,10 +28,20 @@ integration, regression analysis, annotation, enrichment analysis, and
 visualization of data and results. The <strong>metabolomicsR</strong> is
 designed to be a comprehensive R package that can be easily used by
 researchers with basic R programming skills. The framework designed here
-is also versatile and is extensible to various methods and metabolomic
+is also versatile and extensible to various methods and metabolomic
 platforms.
 
 ##### Seamless workflow to preprocess, analyze, and visualize metabolomics data in metabolomicsR <img src="man/figures/workflow.png" align="center" width="120%" height="180%"/>
+
+<br>
+
+### How to cite metabolomicsR
+
+> Han, Xikun, and Liming Liang. 2022. “metabolomicsR: A Streamlined
+> Workflow to Analyze Metabolomic Data in R.” Bioinformatics Advances 2
+> (1): vbac067. <https://doi.org/10.1093/bioadv/vbac067>
+
+<br>
 
 ### Contact:
 

@@ -4,6 +4,7 @@
 \alias{impute}
 \alias{impute.Metabolite}
 \alias{impute.default}
+\alias{impute.data.frame}
 \alias{impute_kNN}
 \title{impute missing values}
 \usage{
@@ -12,6 +13,8 @@ impute(object, method)
 \method{impute}{Metabolite}(object, method = c("half-min", "median", "mean", "zero", "kNN"))
 
 \method{impute}{default}(object, method = "half-min")
+
+\method{impute}{data.frame}(object, method = c("half-min", "median", "mean", "zero", "kNN"))
 
 impute_kNN(object)
 }

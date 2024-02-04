@@ -48,7 +48,7 @@ To demonstrate the package, we obtained metabolomic data from Qatar Metabolomics
 
 The data can be imported directly from excel, csv or other formats that imported into R.
 
-```{r}
+```{r import data}
 
 library(metabolomicsR)
 library(data.table)
@@ -79,7 +79,7 @@ In the “assayData”, the first column is the sample IDs to match with “samp
 
 <details>
 <summary>**click to show plasma data**</summary>
-```{r}
+```{r print plasma}
 df_plasma
 ```
 </details>
@@ -87,7 +87,7 @@ df_plasma
 The `{update_Metabolite}` function provides several methods to update the data, including "injection_order", "keep_feature", "remove_feature", "keep_sample", "remove_sample", "add_sample_annotation", and "change_featureID". 
 
 
-```{r}
+```{r update df_plasma}
 # change the feature ID to the column `COMP_IDstr`
 df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "change_featureID")
 
@@ -97,12 +97,12 @@ df_plasma <- update_Metabolite(df_plasma, dataset = "COMP_IDstr", action = "chan
 
 <details>
 <summary>**click to show plasma data**</summary>
-```{r}
+```{r print df_plasma}
 df_plasma
 ```
 </details>
 
-```{r}
+```{r load df_urine}
 # load urine metabolomic data
 df_urine <- load_excel(path = file_path,
                         data_sheet = 2,
@@ -664,7 +664,9 @@ In this section, we show two functions to bridge the data objects between R pack
 # load the data from maplet. 
 # the maplet package is available at: https://github.com/krumsieklab/maplet 
 
-library(maplet)
+# not run here
+if(0) {
+  library(maplet)
 
 file_data <- system.file("extdata", "example_data/simulated_data.xlsx", package = "maplet")
 file_data 
@@ -681,20 +683,10 @@ d <- maplet2Metabolite(maplet_data)
 
 d2 <- Metabolite2maplet(d)
 d2
+}
 
 ```
 
-
-<br>
-
-<details>
-<summary>**click to show data d**</summary>
-```{r}
-d
-```
-</details>
-
-<br>
 
 
 
@@ -758,6 +750,14 @@ fit
 
 <br><br>
 
+
+
+<br>
+
+
+# How to cite metabolomicsR
+
+> Han, Xikun, and Liming Liang. 2022. “metabolomicsR: A Streamlined Workflow to Analyze Metabolomic Data in R.” Bioinformatics Advances 2 (1): vbac067. https://doi.org/10.1093/bioadv/vbac067
 
 
 <details>

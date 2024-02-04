@@ -1,8 +1,8 @@
 Package: metabolomicsR
 Type: Package
 Title: Tools for Metabolomics Data
-Version: 1.0.0
-Date: 2022-04-27
+Version: 1.1.0
+Date: 2024-02-04
 Authors@R: 
     person(given = "Xikun",
            family = "Han",
@@ -16,7 +16,7 @@ Description: Tools to preprocess, analyse, and visualize metabolomics data.
   data integration, regression, metabolite annotation, enrichment analysis, 
   and visualization of data and results. The package is designed to be a comprehensive R package 
   that can be easily used by researchers with basic R programming skills. 
-  The framework designed here is versatile and is extensible to other various methods.
+  The framework designed here is versatile and is extensible to other various methods. 
 License: GPL-2
 Encoding: UTF-8
 Depends: 
@@ -53,8 +53,9 @@ Suggests:
     xgboost,
     crayon,
     hrbrthemes,
-    hmdbQuery
-RoxygenNote: 7.1.2
+    hmdbQuery,
+    openxlsx
+RoxygenNote: 7.2.3
 biocViews: Software, Metabolomics, MassSpectrometry, Regression, Normalization, QualityControl
 LazyData: FALSE
 VignetteBuilder: knitr

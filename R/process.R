@@ -260,6 +260,7 @@ replace_outlier.default <- function(object, method = "winsorize", nSD = 5) {
 #' @export
 replace_outlier.data.frame <- function(object, method = "winsorize", nSD = 5) {
   object <- apply(object, 2, replace_outlier, method = method, nSD = nSD)
+  object <- data.table(object)
   return(object)
 }
 
@@ -303,6 +304,7 @@ is_outlier <- function(object, nSD = 5) {
 #' @export
 outlier_rate.default <- function(object, nSD = 5) {
   r <- mean(is_outlier(object, nSD = nSD), na.rm = TRUE)
+  # cat("Outlier rate: ", r, "\n")
   return(r)
 }
 
@@ -382,6 +384,72 @@ QC_pipeline <- function(object,
   }
   return(object)
 }
+
+
+
+#' quality control pipeline for a simplified data.frame.
+#'
+#' This function will run QC steps on a simplified data.frame.
+#'
+#' @param object A data.frame object, first two columnns are ID and Batch.
+#' @param filter_column_constant A logical value, whether to filter columns (features) with a constant value.
+#' @param filter_column_missing_rate_threshold A numeric threshold to filter columns (features) below a missing rate, default: 0.5. Other values: 0.2, 0.8. If NULL, then skip this step.
+#' @param filter_row_missing_rate_threshold A numeric threshold to filter rows (samples) below a missing rate. Default: NULL, to skip this step. Other values: 0.5, 0.2, 0.8.
+#' @param replace_outlier_method Method to replace outlier value, see \code{\link{replace_outlier}}.
+#' @param nSD Define the N times of the SD as outliers.
+#' @param impute_method Imputation method, the default method is half the minimum value (`half-min`) of the metabolite. Currently support 'half-min', "median", "mean", "zero".
+#' @param run_batch_norm Whether run run_batch_norm (`batch_norm_df`)
+#' @param verbose print log information.
+#' @export
+#' @return A Metabolite object after QC. 
+#'
+QC_pipeline_df <- function(object,
+                        filter_column_constant = TRUE,
+                        filter_column_missing_rate_threshold = 0.5,
+                        filter_row_missing_rate_threshold = NULL,
+                        replace_outlier_method = NULL,
+                        nSD = 5,
+                        impute_method = "half-min",
+                        run_batch_norm = FALSE,
+                        verbose = TRUE
+) {
+  
+  logs <- paste0("Logs: ", "\n",
+                        format(Sys.time(), "%d/%m/%y %H:%M:%OS"),
+                        ": Run QC pipeline.\n")
+  
+  object_ID <- object[, c(1,2)]
+  object_data <- object[, -c(1,2)]
+  
+  if(filter_column_constant) {
+    object_data <- filter_column_constant(object_data, verbose = verbose)
+  }
+  
+  if(!is.null(filter_column_missing_rate_threshold)) {
+    object_data <- filter_column_missing_rate(object_data, threshold = filter_column_missing_rate_threshold, verbose = verbose)
+  }
+  
+  if(!is.null(filter_row_missing_rate_threshold)) {
+    object_data <- filter_row_missing_rate(object_data, threshold = filter_row_missing_rate_threshold, verbose = verbose)
+  }
+  
+  if(!is.null(replace_outlier_method)) {
+    object_data <- replace_outlier(object_data, method = replace_outlier_method, nSD = nSD)
+  }
+  
+  if(!is.null(impute_method)) {
+    object_data <- impute(object_data, method = impute_method)
+  }
+  
+  object <- cbind(object_ID, object_data)
+  
+  if(run_batch_norm) {
+    object <- batch_norm_df(object)
+  }
+  
+  return(object)
+}
+
 
 
 #' RSD
@@ -913,7 +981,69 @@ batch_norm <- function(object, feature_platform = "PLATFORM", QC_ID_pattern = "M
 }
 
 
+#' batch normalization for a data.frame
+#'
+#' Normalization data by the median value of each batch in a data.frame
+#'
+#' @param object A data.frame object. The first two columns are "ID" and "Batch", the remaining columns for batch normalization
+#' @param test test the function for the first 20 columns.
+#' @param verbose print log information.
+#' @importFrom utils txtProgressBar setTxtProgressBar
+#' @return A data.frame object after normalization. 
+#' @export
+batch_norm_df <- function(object, test = FALSE, verbose = TRUE) {
+  stopifnot(inherits(object, "data.frame"))
+  OutputData <- copy(object)
+  InputData <- copy(object)
+  
+  # check first two column
+  if(! all(names(object)[1:2] %in% c("ID", "Batch")) ) {
+    stop(paste0("`", names(object)[1:2], "` columns should be ID and Batch"), call. = FALSE)
+  }
 
+  platforms <- object[, get("Batch")]
+
+  if(verbose) {
+    cat("\nBatch information:\n")
+    print(table(platforms))
+    cat("\n")
+  }
+
+  v_n_col <- dim(object)[2]
+
+  if(isTRUE(test)) {
+    v_n_col <- 10
+  } else if(test >=2 ) {
+    v_n_col <- test
+  }
+
+  pb <- txtProgressBar(min = 0, max = v_n_col, style = 3, file = stderr())
+
+  sample_IDs <- object[,get("ID")]
+
+  v_batch <- platforms
+  
+  for(j in 3L:v_n_col) {
+    setTxtProgressBar(pb = pb, value = j)
+
+    v_metab <- names(object)[j]
+    InputData_each <- unlist(InputData[, j, with = FALSE])
+    
+    
+    for (id_batch in unique(v_batch[! is.na(v_batch)])) {
+
+      Index_each <- (v_batch  == id_batch)
+
+      v_median <- median(InputData_each[Index_each], na.rm = TRUE)
+
+      set(OutputData, which(Index_each), j, InputData_each[which(Index_each)]/v_median)
+    }
+  }
+
+  close(con = pb)
+
+  return(OutputData)
+}
 
 
 #' LOESS normalization
@@ -1139,6 +1269,24 @@ impute.default <- function(object, method = "half-min") {
 
 #' @rdname impute
 #' @export
+impute.data.frame <- function(object, method = c('half-min', "median", "mean", "zero", "kNN")) {
+  
+  method <- match.arg(method)
+  
+  if(method == "kNN") {
+    return(impute_kNN(object))
+  }
+  
+  object <- apply(object, 2, impute, method = method)
+  object <- data.table(object)
+  return(object)
+}
+
+
+
+
+#' @rdname impute
+#' @export
 #' @note `impute_kNN`: Imputation using nearest neighbor averaging (kNN) method, 
 #' the input is a Metabolite object, assayData was first transposed to row as metabolties and column as samples. 
 impute_kNN <- function(object) {
@@ -1223,12 +1371,13 @@ correlation <- function(
 #' Query metabolite ID in HMDB database
 #'
 #' @param object a vector of HMDB IDs to query. 
+#' @param ncpus number of cpu
 #' @return A list of query results. 
 #' @export
 #' 
 anno_hmdb <- function(object, ncpus = 1) {
   if(ncpus > 1) {
-    future::plan(future::multiprocess, workers = ncpus)
+    future::plan(future::multicore, workers = ncpus)
   }
   lapply_parallel <- if(future::nbrOfWorkers() > 1) {
     if(verbose) cat(paste0("Parallele runing with ncpus = ", future::nbrOfWorkers()), "\n")

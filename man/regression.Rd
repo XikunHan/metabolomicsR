@@ -76,6 +76,8 @@ regression_each_as_outcome(
 \item{\dots}{Further arguments passed to regression model.}
 
 \item{formula}{A character or formula object to fit model (only used in `regression_each`)}
+
+\item{exposure}{exposure variables.}
 }
 \value{
 term estimate std.error statistic p.value n outcome p.value.adj.

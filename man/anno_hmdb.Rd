@@ -8,6 +8,8 @@ anno_hmdb(object, ncpus = 1)
 }
 \arguments{
 \item{object}{a vector of HMDB IDs to query.}
+
+\item{ncpus}{number of cpu}
 }
 \value{
 A list of query results.
