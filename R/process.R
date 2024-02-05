@@ -456,7 +456,7 @@ QC_pipeline_df <- function(object,
     if(! run_transform %in% c("log", "pareto_scale", "scale", "inverse_rank_transform")) {
       warnings(paste0(paste0("A user defined function: ", run_transform, ". \n", c("log", "pareto_scale", "scale", "inverse_rank_transform"), collapse = ", "), " are currently provided in the `metabolomicsR` package."), call. = FALSE)
     }
-    object <- cbind(object[, 1:2], apply(object[, -(1:2)], 2, function(x) do.call(method, list(x))))
+    object <- cbind(object[, 1:2], apply(object[, -(1:2)], 2, function(x) do.call(run_transform, list(x))))
   }
   
   return(object)
