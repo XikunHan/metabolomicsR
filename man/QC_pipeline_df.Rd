@@ -9,10 +9,11 @@ QC_pipeline_df(
   filter_column_constant = TRUE,
   filter_column_missing_rate_threshold = 0.5,
   filter_row_missing_rate_threshold = NULL,
-  replace_outlier_method = NULL,
+  replace_outlier_method = "winsorize",
   nSD = 5,
   impute_method = "half-min",
   run_batch_norm = FALSE,
+  run_transform = "scale",
   verbose = TRUE
 )
 }
@@ -32,6 +33,8 @@ QC_pipeline_df(
 \item{impute_method}{Imputation method, the default method is half the minimum value (`half-min`) of the metabolite. Currently support 'half-min', "median", "mean", "zero".}
 
 \item{run_batch_norm}{Whether run run_batch_norm (`batch_norm_df`)}
+
+\item{run_transform}{Specify the transform method (`transformation`), eg. "log", "pareto_scale", "scale", "inverse_rank_transform". A User defined method is also supported.}
 
 \item{verbose}{print log information.}
 }

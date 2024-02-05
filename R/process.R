@@ -399,6 +399,8 @@ QC_pipeline <- function(object,
 #' @param nSD Define the N times of the SD as outliers.
 #' @param impute_method Imputation method, the default method is half the minimum value (`half-min`) of the metabolite. Currently support 'half-min', "median", "mean", "zero".
 #' @param run_batch_norm Whether run run_batch_norm (`batch_norm_df`)
+#' @param run_transform Specify the transform method (`transformation`), eg. "log", "pareto_scale", "scale", "inverse_rank_transform". A User defined method is also supported.
+#' @export
 #' @param verbose print log information.
 #' @export
 #' @return A Metabolite object after QC. 
@@ -407,16 +409,19 @@ QC_pipeline_df <- function(object,
                         filter_column_constant = TRUE,
                         filter_column_missing_rate_threshold = 0.5,
                         filter_row_missing_rate_threshold = NULL,
-                        replace_outlier_method = NULL,
+                        replace_outlier_method = "winsorize",
                         nSD = 5,
                         impute_method = "half-min",
                         run_batch_norm = FALSE,
+                        run_transform = "scale",
                         verbose = TRUE
 ) {
   
   logs <- paste0("Logs: ", "\n",
                         format(Sys.time(), "%d/%m/%y %H:%M:%OS"),
                         ": Run QC pipeline.\n")
+  
+  stopifnot(inherits(object, "data.frame"))
   
   object_ID <- object[, c(1,2)]
   object_data <- object[, -c(1,2)]
@@ -445,6 +450,13 @@ QC_pipeline_df <- function(object,
   
   if(run_batch_norm) {
     object <- batch_norm_df(object)
+  }
+  
+  if(!is.null(run_transform)) {
+    if(! run_transform %in% c("log", "pareto_scale", "scale", "inverse_rank_transform")) {
+      warnings(paste0(paste0("A user defined function: ", run_transform, ". \n", c("log", "pareto_scale", "scale", "inverse_rank_transform"), collapse = ", "), " are currently provided in the `metabolomicsR` package."), call. = FALSE)
+    }
+    object <- cbind(object[, 1:2], apply(object[, -(1:2)], 2, function(x) do.call(method, list(x))))
   }
   
   return(object)
