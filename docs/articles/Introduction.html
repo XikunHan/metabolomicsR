@@ -8,8 +8,8 @@
 <meta name="description" content="metabolomicsR">
 <title>An introduction to the metabolomicsR • metabolomicsR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="An introduction to the metabolomicsR">
 <meta property="og:description" content="metabolomicsR">
@@ -170,6 +170,7 @@ that imported into R.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @assayData (first and last 10 columns [ 356  *  759 ])  ***</span></span>
 <span><span class="co">##       sampleID 1,11-Undecanedicarboxylic acid 1,2-dipalmitoylglycerol</span></span>
+<span><span class="co">##         &lt;char&gt;                          &lt;num&gt;                   &lt;num&gt;</span></span>
 <span><span class="co">##   1: QMDiab222                           8578                      NA</span></span>
 <span><span class="co">##   2: QMDiab113                          15145                      NA</span></span>
 <span><span class="co">##   3:  QMDiab29                             NA                   96455</span></span>
@@ -182,6 +183,7 @@ that imported into R.</p>
 <span><span class="co">## 355: QMDiab202                           7378                  108152</span></span>
 <span><span class="co">## 356: QMDiab103                           6667                   57851</span></span>
 <span><span class="co">##      1,2-propanediol 1,3,7-trimethylurate 1,3-dihydroxyacetone</span></span>
+<span><span class="co">##                &lt;num&gt;                &lt;num&gt;                &lt;num&gt;</span></span>
 <span><span class="co">##   1:          103724                22259               104059</span></span>
 <span><span class="co">##   2:              NA                39841                   NA</span></span>
 <span><span class="co">##   3:          159945                10605               165416</span></span>
@@ -194,6 +196,7 @@ that imported into R.</p>
 <span><span class="co">## 355:          112229                21748               175918</span></span>
 <span><span class="co">## 356:          146948                 8458                82064</span></span>
 <span><span class="co">##      1,3-dipalmitoylglycerol 1,5-anhydroglucitol (1,5-AG) 1,7-dimethylurate</span></span>
+<span><span class="co">##                        &lt;num&gt;                        &lt;num&gt;             &lt;num&gt;</span></span>
 <span><span class="co">##   1:                    7067                       357499             19986</span></span>
 <span><span class="co">##   2:                   36542                       440058             16620</span></span>
 <span><span class="co">##   3:                   54209                       355790             12220</span></span>
@@ -206,6 +209,7 @@ that imported into R.</p>
 <span><span class="co">## 355:                   78154                       106745             21434</span></span>
 <span><span class="co">## 356:                   34234                       534697             12979</span></span>
 <span><span class="co">##      1-arachidonoylglycerophosphocholine* X - 19183 X - 19299 X - 19302</span></span>
+<span><span class="co">##                                     &lt;num&gt;     &lt;num&gt;     &lt;num&gt;     &lt;num&gt;</span></span>
 <span><span class="co">##   1:                              2173598        NA        NA        NA</span></span>
 <span><span class="co">##   2:                              2464846        NA      9033        NA</span></span>
 <span><span class="co">##   3:                              2613798        NA     10231        NA</span></span>
@@ -218,6 +222,7 @@ that imported into R.</p>
 <span><span class="co">## 355:                              2104899        NA        NA        NA</span></span>
 <span><span class="co">## 356:                               992388        NA        NA        NA</span></span>
 <span><span class="co">##      X - 19380 X - 19411 X - 19434 X - 19436 X - 19437 X - 19438 X - 19451</span></span>
+<span><span class="co">##          &lt;num&gt;     &lt;num&gt;     &lt;num&gt;     &lt;num&gt;     &lt;num&gt;     &lt;num&gt;     &lt;num&gt;</span></span>
 <span><span class="co">##   1:    158054     88569      7539        NA     64644     18055        NA</span></span>
 <span><span class="co">##   2:    125669     87268     12681        NA     52074     12805      2994</span></span>
 <span><span class="co">##   3:    194732    106360      7787        NA     31782     18467        NA</span></span>
@@ -230,6 +235,7 @@ that imported into R.</p>
 <span><span class="co">## 355:    162256    112923        NA        NA     42586     51588        NA</span></span>
 <span><span class="co">## 356:    137705    112636        NA        NA     89283     23515     10619</span></span>
 <span><span class="co">##      X - 19574</span></span>
+<span><span class="co">##          &lt;num&gt;</span></span>
 <span><span class="co">##   1:        NA</span></span>
 <span><span class="co">##   2:        NA</span></span>
 <span><span class="co">##   3:        NA</span></span>
@@ -244,6 +250,7 @@ that imported into R.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @featureData (ID:  featureID ) ***</span></span>
 <span><span class="co">##                           featureID PATHWAY_SORTORDER</span></span>
+<span><span class="co">##                              &lt;char&gt;            &lt;char&gt;</span></span>
 <span><span class="co">##   1: 1,11-Undecanedicarboxylic acid             800.1</span></span>
 <span><span class="co">##   2:        1,2-dipalmitoylglycerol              1070</span></span>
 <span><span class="co">##   3:                1,2-propanediol               986</span></span>
@@ -256,6 +263,7 @@ that imported into R.</p>
 <span><span class="co">## 757:                      X - 19451              &lt;NA&gt;</span></span>
 <span><span class="co">## 758:                      X - 19574              &lt;NA&gt;</span></span>
 <span><span class="co">##                         BIOCHEMICAL SUPER_PATHWAY</span></span>
+<span><span class="co">##                              &lt;char&gt;        &lt;char&gt;</span></span>
 <span><span class="co">##   1: 1,11-Undecanedicarboxylic acid         Lipid</span></span>
 <span><span class="co">##   2:        1,2-dipalmitoylglycerol         Lipid</span></span>
 <span><span class="co">##   3:                1,2-propanediol         Lipid</span></span>
@@ -268,6 +276,7 @@ that imported into R.</p>
 <span><span class="co">## 757:                      X - 19451          &lt;NA&gt;</span></span>
 <span><span class="co">## 758:                      X - 19574          &lt;NA&gt;</span></span>
 <span><span class="co">##                                           SUB_PATHWAY COMP_ID  PLATFORM</span></span>
+<span><span class="co">##                                                &lt;char&gt;  &lt;char&gt;    &lt;char&gt;</span></span>
 <span><span class="co">##   1:                        Fatty acid, dicarboxylate   43027 LC/MS Neg</span></span>
 <span><span class="co">##   2:                                   Diacylglycerol   11953     GC/MS</span></span>
 <span><span class="co">##   3:                                    Ketone bodies   38002     GC/MS</span></span>
@@ -280,6 +289,7 @@ that imported into R.</p>
 <span><span class="co">## 757:                                             &lt;NA&gt;   42927 LC/MS Neg</span></span>
 <span><span class="co">## 758:                                             &lt;NA&gt;   43130 LC/MS Neg</span></span>
 <span><span class="co">##                      RI               MASS PUBCHEM                 CAS   KEGG</span></span>
+<span><span class="co">##                  &lt;char&gt;             &lt;char&gt;  &lt;char&gt;              &lt;char&gt; &lt;char&gt;</span></span>
 <span><span class="co">##   1:               3578              243.2   10458           505-52-2;   &lt;NA&gt;</span></span>
 <span><span class="co">##   2:               2600                145   99931         40290-32-2;   &lt;NA&gt;</span></span>
 <span><span class="co">##   3:               1041                117    &lt;NA&gt;            57-55-6; C00583</span></span>
@@ -292,6 +302,7 @@ that imported into R.</p>
 <span><span class="co">## 757:             3728.5              239.1    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;</span></span>
 <span><span class="co">## 758:             4045.7 307.10000000000002    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;</span></span>
 <span><span class="co">##        HMDb_ID COMP_IDstr</span></span>
+<span><span class="co">##         &lt;char&gt;     &lt;char&gt;</span></span>
 <span><span class="co">##   1: HMDB02327     M43027</span></span>
 <span><span class="co">##   2: HMDB07098     M11953</span></span>
 <span><span class="co">##   3: HMDB01881     M38002</span></span>
@@ -305,25 +316,26 @@ that imported into R.</p>
 <span><span class="co">## 758:      &lt;NA&gt;     M43130</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @sampleData (ID:  sampleID ) ***</span></span>
-<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY T2D</span></span>
-<span><span class="co">##   1: QMDiab222 34.50513      0 25.01021         2   0</span></span>
-<span><span class="co">##   2: QMDiab113 47.06639      1 28.36776         3   0</span></span>
-<span><span class="co">##   3:  QMDiab29 55.49076      1 29.70564         1   0</span></span>
-<span><span class="co">##   4: QMDiab243 56.33402      1 23.14050         2   0</span></span>
-<span><span class="co">##   5: QMDiab270 35.63039      1 30.06229         1   0</span></span>
-<span><span class="co">##  ---                                                 </span></span>
-<span><span class="co">## 352: QMDiab352 41.55510      1 31.22690         3   1</span></span>
-<span><span class="co">## 353: QMDiab135 52.55305      0 29.07577         2   1</span></span>
-<span><span class="co">## 354: QMDiab229 30.31348      0 22.22656         2   0</span></span>
-<span><span class="co">## 355: QMDiab202 49.40999      1 33.72008         1   1</span></span>
-<span><span class="co">## 356: QMDiab103 23.85489      0 35.96389         1   0</span></span>
+<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY   T2D</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;    &lt;num&gt;     &lt;num&gt; &lt;num&gt;</span></span>
+<span><span class="co">##   1: QMDiab222 34.50513      0 25.01021         2     0</span></span>
+<span><span class="co">##   2: QMDiab113 47.06639      1 28.36776         3     0</span></span>
+<span><span class="co">##   3:  QMDiab29 55.49076      1 29.70564         1     0</span></span>
+<span><span class="co">##   4: QMDiab243 56.33402      1 23.14050         2     0</span></span>
+<span><span class="co">##   5: QMDiab270 35.63039      1 30.06229         1     0</span></span>
+<span><span class="co">##  ---                                                   </span></span>
+<span><span class="co">## 352: QMDiab352 41.55510      1 31.22690         3     1</span></span>
+<span><span class="co">## 353: QMDiab135 52.55305      0 29.07577         2     1</span></span>
+<span><span class="co">## 354: QMDiab229 30.31348      0 22.22656         2     0</span></span>
+<span><span class="co">## 355: QMDiab202 49.40999      1 33.72008         1     1</span></span>
+<span><span class="co">## 356: QMDiab103 23.85489      0 35.96389         1     0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @miscData  ***</span></span>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpxJcNN8/temp_libpath8839451f2cbe/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Initiate data: 356 samples and 758 features.</span></span></code></pre>
+<span><span class="co">## 04/02/24 19:40:36: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 04/02/24 19:40:36: Initiate data: 356 samples and 758 features.</span></span></code></pre>
 </details><p>The <code>{update_Metabolite}</code> function provides several
 methods to update the data, including “injection_order”, “keep_feature”,
 “remove_feature”, “keep_sample”, “remove_sample”,
@@ -339,6 +351,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @assayData (first and last 10 columns [ 356  *  759 ])  ***</span></span>
 <span><span class="co">##       sampleID M43027 M11953 M38002 M34404 M35963 M35728 M20675 M34400  M33228</span></span>
+<span><span class="co">##         &lt;char&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;   &lt;num&gt;</span></span>
 <span><span class="co">##   1: QMDiab222   8578     NA 103724  22259 104059   7067 357499  19986 2173598</span></span>
 <span><span class="co">##   2: QMDiab113  15145     NA     NA  39841     NA  36542 440058  16620 2464846</span></span>
 <span><span class="co">##   3:  QMDiab29     NA  96455 159945  10605 165416  54209 355790  12220 2613798</span></span>
@@ -351,6 +364,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 355: QMDiab202   7378 108152 112229  21748 175918  78154 106745  21434 2104899</span></span>
 <span><span class="co">## 356: QMDiab103   6667  57851 146948   8458  82064  34234 534697  12979  992388</span></span>
 <span><span class="co">##      M42659 M42775 M42778 M42856 M42887 M42910 M42912 M42913 M42914 M42927</span></span>
+<span><span class="co">##       &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1:     NA     NA     NA 158054  88569   7539     NA  64644  18055     NA</span></span>
 <span><span class="co">##   2:     NA   9033     NA 125669  87268  12681     NA  52074  12805   2994</span></span>
 <span><span class="co">##   3:     NA  10231     NA 194732 106360   7787     NA  31782  18467     NA</span></span>
@@ -363,6 +377,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 355:     NA     NA     NA 162256 112923     NA     NA  42586  51588     NA</span></span>
 <span><span class="co">## 356:     NA     NA     NA 137705 112636     NA     NA  89283  23515  10619</span></span>
 <span><span class="co">##      M43130</span></span>
+<span><span class="co">##       &lt;num&gt;</span></span>
 <span><span class="co">##   1:     NA</span></span>
 <span><span class="co">##   2:     NA</span></span>
 <span><span class="co">##   3:     NA</span></span>
@@ -377,6 +392,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @featureData (ID:  featureID ) ***</span></span>
 <span><span class="co">##      featureID PATHWAY_SORTORDER                    BIOCHEMICAL SUPER_PATHWAY</span></span>
+<span><span class="co">##         &lt;char&gt;            &lt;char&gt;                         &lt;char&gt;        &lt;char&gt;</span></span>
 <span><span class="co">##   1:    M43027             800.1 1,11-Undecanedicarboxylic acid         Lipid</span></span>
 <span><span class="co">##   2:    M11953              1070        1,2-dipalmitoylglycerol         Lipid</span></span>
 <span><span class="co">##   3:    M38002               986                1,2-propanediol         Lipid</span></span>
@@ -389,6 +405,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 757:    M42927              &lt;NA&gt;                      X - 19451          &lt;NA&gt;</span></span>
 <span><span class="co">## 758:    M43130              &lt;NA&gt;                      X - 19574          &lt;NA&gt;</span></span>
 <span><span class="co">##                                           SUB_PATHWAY COMP_ID  PLATFORM</span></span>
+<span><span class="co">##                                                &lt;char&gt;  &lt;char&gt;    &lt;char&gt;</span></span>
 <span><span class="co">##   1:                        Fatty acid, dicarboxylate   43027 LC/MS Neg</span></span>
 <span><span class="co">##   2:                                   Diacylglycerol   11953     GC/MS</span></span>
 <span><span class="co">##   3:                                    Ketone bodies   38002     GC/MS</span></span>
@@ -401,6 +418,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 757:                                             &lt;NA&gt;   42927 LC/MS Neg</span></span>
 <span><span class="co">## 758:                                             &lt;NA&gt;   43130 LC/MS Neg</span></span>
 <span><span class="co">##                      RI               MASS PUBCHEM                 CAS   KEGG</span></span>
+<span><span class="co">##                  &lt;char&gt;             &lt;char&gt;  &lt;char&gt;              &lt;char&gt; &lt;char&gt;</span></span>
 <span><span class="co">##   1:               3578              243.2   10458           505-52-2;   &lt;NA&gt;</span></span>
 <span><span class="co">##   2:               2600                145   99931         40290-32-2;   &lt;NA&gt;</span></span>
 <span><span class="co">##   3:               1041                117    &lt;NA&gt;            57-55-6; C00583</span></span>
@@ -413,6 +431,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 757:             3728.5              239.1    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;</span></span>
 <span><span class="co">## 758:             4045.7 307.10000000000002    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;</span></span>
 <span><span class="co">##        HMDb_ID COMP_IDstr</span></span>
+<span><span class="co">##         &lt;char&gt;     &lt;char&gt;</span></span>
 <span><span class="co">##   1: HMDB02327     M43027</span></span>
 <span><span class="co">##   2: HMDB07098     M11953</span></span>
 <span><span class="co">##   3: HMDB01881     M38002</span></span>
@@ -426,26 +445,27 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 758:      &lt;NA&gt;     M43130</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @sampleData (ID:  sampleID ) ***</span></span>
-<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY T2D</span></span>
-<span><span class="co">##   1: QMDiab222 34.50513      0 25.01021         2   0</span></span>
-<span><span class="co">##   2: QMDiab113 47.06639      1 28.36776         3   0</span></span>
-<span><span class="co">##   3:  QMDiab29 55.49076      1 29.70564         1   0</span></span>
-<span><span class="co">##   4: QMDiab243 56.33402      1 23.14050         2   0</span></span>
-<span><span class="co">##   5: QMDiab270 35.63039      1 30.06229         1   0</span></span>
-<span><span class="co">##  ---                                                 </span></span>
-<span><span class="co">## 352: QMDiab352 41.55510      1 31.22690         3   1</span></span>
-<span><span class="co">## 353: QMDiab135 52.55305      0 29.07577         2   1</span></span>
-<span><span class="co">## 354: QMDiab229 30.31348      0 22.22656         2   0</span></span>
-<span><span class="co">## 355: QMDiab202 49.40999      1 33.72008         1   1</span></span>
-<span><span class="co">## 356: QMDiab103 23.85489      0 35.96389         1   0</span></span>
+<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY   T2D</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;    &lt;num&gt;     &lt;num&gt; &lt;num&gt;</span></span>
+<span><span class="co">##   1: QMDiab222 34.50513      0 25.01021         2     0</span></span>
+<span><span class="co">##   2: QMDiab113 47.06639      1 28.36776         3     0</span></span>
+<span><span class="co">##   3:  QMDiab29 55.49076      1 29.70564         1     0</span></span>
+<span><span class="co">##   4: QMDiab243 56.33402      1 23.14050         2     0</span></span>
+<span><span class="co">##   5: QMDiab270 35.63039      1 30.06229         1     0</span></span>
+<span><span class="co">##  ---                                                   </span></span>
+<span><span class="co">## 352: QMDiab352 41.55510      1 31.22690         3     1</span></span>
+<span><span class="co">## 353: QMDiab135 52.55305      0 29.07577         2     1</span></span>
+<span><span class="co">## 354: QMDiab229 30.31348      0 22.22656         2     0</span></span>
+<span><span class="co">## 355: QMDiab202 49.40999      1 33.72008         1     1</span></span>
+<span><span class="co">## 356: QMDiab103 23.85489      0 35.96389         1     0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @miscData  ***</span></span>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpxJcNN8/temp_libpath8839451f2cbe/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Initiate data: 356 samples and 758 features.</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Update data, action: change_featureID, 356 samples and 758 features.</span></span></code></pre>
+<span><span class="co">## 04/02/24 19:40:36: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 04/02/24 19:40:36: Initiate data: 356 samples and 758 features.</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 356 samples and 758 features.</span></span></code></pre>
 </details><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load urine metabolomic data</span></span>
 <span><span class="va">df_urine</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_excel.html">load_excel</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">file_path</span>,</span>
@@ -465,6 +485,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @assayData (first and last 10 columns [ 359  *  892 ])  ***</span></span>
 <span><span class="co">##       sampleID   M38002 M34404  M32391 M20675   M21049  M34400 M40506  M34455</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;   &lt;num&gt;  &lt;num&gt;    &lt;num&gt;   &lt;num&gt;  &lt;num&gt;   &lt;num&gt;</span></span>
 <span><span class="co">##   1: QMDiab254  1189337 146900  265120  53499 15379982  619745  53261  227263</span></span>
 <span><span class="co">##   2: QMDiab290  9944836 716781 2042008  71989 26406420 1988553 123129 1221563</span></span>
 <span><span class="co">##   3:  QMDiab54   926350 182438  775726  48752  7551248 1159521  72837  215868</span></span>
@@ -477,6 +498,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 358: QMDiab248  1807105 338741  148964  62614   937893  603113  48151  293379</span></span>
 <span><span class="co">## 359:   QMDiab4 10103832 203176  245175  50822 28406416  243598  74996  696766</span></span>
 <span><span class="co">##        M30460 M42272 M42314 M42335 M42351 M42352 M42553 M42856 M42913 M43112</span></span>
+<span><span class="co">##         &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1:  5502123  96913  31056  33430     NA  35558     NA  23369  21931     NA</span></span>
 <span><span class="co">##   2: 17475172 124745  66036  39595     NA 732853     NA  28220  27811     NA</span></span>
 <span><span class="co">##   3:  6423459  44266  23363  39645     NA  62630     NA  13148  25018     NA</span></span>
@@ -489,6 +511,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 358:       NA  36055  29644  22465     NA  19287     NA  27299  36462     NA</span></span>
 <span><span class="co">## 359: 27087992 185546  45205  60944     NA 149210   9804  35991 186372     NA</span></span>
 <span><span class="co">##      M43129 M43130</span></span>
+<span><span class="co">##       &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1:     NA     NA</span></span>
 <span><span class="co">##   2:     NA   7215</span></span>
 <span><span class="co">##   3:     NA   8596</span></span>
@@ -503,6 +526,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @featureData (ID:  featureID ) ***</span></span>
 <span><span class="co">##      featureID PATHWAY_SORTORDER                  BIOCHEMICAL SUPER_PATHWAY</span></span>
+<span><span class="co">##         &lt;char&gt;            &lt;char&gt;                       &lt;char&gt;        &lt;char&gt;</span></span>
 <span><span class="co">##   1:    M38002               986              1,2-propanediol         Lipid</span></span>
 <span><span class="co">##   2:    M34404              1805         1,3,7-trimethylurate   Xenobiotics</span></span>
 <span><span class="co">##   3:    M32391              1802            1,3-dimethylurate   Xenobiotics</span></span>
@@ -515,6 +539,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 890:    M43129              &lt;NA&gt;                    X - 19573          &lt;NA&gt;</span></span>
 <span><span class="co">## 891:    M43130              &lt;NA&gt;                    X - 19574          &lt;NA&gt;</span></span>
 <span><span class="co">##                                           SUB_PATHWAY COMP_ID  PLATFORM</span></span>
+<span><span class="co">##                                                &lt;char&gt;  &lt;char&gt;    &lt;char&gt;</span></span>
 <span><span class="co">##   1:                                    Ketone bodies   38002     GC/MS</span></span>
 <span><span class="co">##   2:                              Xanthine metabolism   34404 LC/MS Neg</span></span>
 <span><span class="co">##   3:                              Xanthine metabolism   32391     GC/MS</span></span>
@@ -527,6 +552,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 890:                                             &lt;NA&gt;   43129 LC/MS Neg</span></span>
 <span><span class="co">## 891:                                             &lt;NA&gt;   43130 LC/MS Neg</span></span>
 <span><span class="co">##                      RI               MASS  PUBCHEM        CAS   KEGG   HMDb_ID</span></span>
+<span><span class="co">##                  &lt;char&gt;             &lt;char&gt;   &lt;char&gt;     &lt;char&gt; &lt;char&gt;    &lt;char&gt;</span></span>
 <span><span class="co">##   1:               1041                117     &lt;NA&gt;   57-55-6; C00583 HMDB01881</span></span>
 <span><span class="co">##   2:               1988              209.1    79437 5415-44-1; C16361 HMDB02123</span></span>
 <span><span class="co">##   3:               1937 325.10000000000002    70346 944-73-0 ;   &lt;NA&gt; HMDB01857</span></span>
@@ -539,6 +565,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 890:             3906.5              403.2     &lt;NA&gt;       &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
 <span><span class="co">## 891:             4045.7 307.10000000000002     &lt;NA&gt;       &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
 <span><span class="co">##      COMP_IDstr</span></span>
+<span><span class="co">##          &lt;char&gt;</span></span>
 <span><span class="co">##   1:     M38002</span></span>
 <span><span class="co">##   2:     M34404</span></span>
 <span><span class="co">##   3:     M32391</span></span>
@@ -552,26 +579,27 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 891:     M43130</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @sampleData (ID:  sampleID ) ***</span></span>
-<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY T2D</span></span>
-<span><span class="co">##   1: QMDiab254 53.10335      0 32.05128         1   0</span></span>
-<span><span class="co">##   2: QMDiab290 39.79192      1 30.51426         4   0</span></span>
-<span><span class="co">##   3:  QMDiab54 36.82136      0 24.16831         1   0</span></span>
-<span><span class="co">##   4:  QMDiab55 34.75975      0 44.44444         1   1</span></span>
-<span><span class="co">##   5: QMDiab319 50.17933      1 27.18090         1   1</span></span>
-<span><span class="co">##  ---                                                 </span></span>
-<span><span class="co">## 355:  QMDiab70 35.40315      1 33.83403         1   1</span></span>
-<span><span class="co">## 356: QMDiab118 49.06229      1 25.64494         1   0</span></span>
-<span><span class="co">## 357:  QMDiab65 47.22245      1 23.38435         1   0</span></span>
-<span><span class="co">## 358: QMDiab248 56.39151      0 27.58621         1   1</span></span>
-<span><span class="co">## 359:   QMDiab4 24.22450      0 41.66521         1   0</span></span>
+<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY   T2D</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;    &lt;num&gt;     &lt;num&gt; &lt;num&gt;</span></span>
+<span><span class="co">##   1: QMDiab254 53.10335      0 32.05128         1     0</span></span>
+<span><span class="co">##   2: QMDiab290 39.79192      1 30.51426         4     0</span></span>
+<span><span class="co">##   3:  QMDiab54 36.82136      0 24.16831         1     0</span></span>
+<span><span class="co">##   4:  QMDiab55 34.75975      0 44.44444         1     1</span></span>
+<span><span class="co">##   5: QMDiab319 50.17933      1 27.18090         1     1</span></span>
+<span><span class="co">##  ---                                                   </span></span>
+<span><span class="co">## 355:  QMDiab70 35.40315      1 33.83403         1     1</span></span>
+<span><span class="co">## 356: QMDiab118 49.06229      1 25.64494         1     0</span></span>
+<span><span class="co">## 357:  QMDiab65 47.22245      1 23.38435         1     0</span></span>
+<span><span class="co">## 358: QMDiab248 56.39151      0 27.58621         1     1</span></span>
+<span><span class="co">## 359:   QMDiab4 24.22450      0 41.66521         1     0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @miscData  ***</span></span>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpxJcNN8/temp_libpath8839451f2cbe/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Initiate data: 359 samples and 891 features.</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Update data, action: change_featureID, 359 samples and 891 features.</span></span></code></pre>
+<span><span class="co">## 04/02/24 19:40:37: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Initiate data: 359 samples and 891 features.</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 359 samples and 891 features.</span></span></code></pre>
 </details><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load saliva metatabolomic data</span></span>
 <span><span class="va">df_saliva</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_excel.html">load_excel</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">file_path</span>,</span>
@@ -590,6 +618,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @assayData (first and last 10 columns [ 321  *  603 ])  ***</span></span>
 <span><span class="co">##       sampleID M43027  M38002 M01654 M35963 M35690 M20675 M21049 M34400 M35628</span></span>
+<span><span class="co">##         &lt;char&gt;  &lt;num&gt;   &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1: QMDiab370  11974  720004     NA     NA  91544 211457     NA   2661     NA</span></span>
 <span><span class="co">##   2: QMDiab245  15485  481889  24313  53097  80819 175312  25921   2250  27847</span></span>
 <span><span class="co">##   3:  QMDiab34  13916  979243     NA  44158 104042 271930     NA     NA     NA</span></span>
@@ -602,6 +631,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 320: QMDiab352  18975  280464     NA     NA  20491  77539     NA     NA  19239</span></span>
 <span><span class="co">## 321: QMDiab127  16344  881910  64403  44381 206525 912153     NA     NA  12066</span></span>
 <span><span class="co">##      M42851 M42877 M42913 M42914 M43042 M43049 M43050 M43110 M43122 M43128</span></span>
+<span><span class="co">##       &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1:   4937     NA   5390     NA  22149   4997   5548     NA     NA  14190</span></span>
 <span><span class="co">##   2:   3316     NA  10883   1110  22797   8284     NA     NA     NA  15273</span></span>
 <span><span class="co">##   3:   3260     NA     NA     NA  15291     NA     NA     NA     NA  10602</span></span>
@@ -614,6 +644,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 320:     NA     NA   9140   4056   3362     NA     NA     NA     NA  21376</span></span>
 <span><span class="co">## 321:     NA   2645   7590   4894  25546   5422     NA     NA     NA  15142</span></span>
 <span><span class="co">##      M43137</span></span>
+<span><span class="co">##       &lt;num&gt;</span></span>
 <span><span class="co">##   1:     NA</span></span>
 <span><span class="co">##   2:     NA</span></span>
 <span><span class="co">##   3:     NA</span></span>
@@ -628,6 +659,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @featureData (ID:  featureID ) ***</span></span>
 <span><span class="co">##      featureID PATHWAY_SORTORDER                BIOCHEMICAL SUPER_PATHWAY</span></span>
+<span><span class="co">##         &lt;char&gt;            &lt;char&gt;                     &lt;char&gt;        &lt;char&gt;</span></span>
 <span><span class="co">##   1:    M43027             800.1 1,11-undecanedicarboxylate         Lipid</span></span>
 <span><span class="co">##   2:    M38002               986            1,2-propanediol         Lipid</span></span>
 <span><span class="co">##   3:    M01654               273         1,3-diaminopropane    Amino acid</span></span>
@@ -640,6 +672,7 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 601:    M43128              &lt;NA&gt;                  X - 19572          &lt;NA&gt;</span></span>
 <span><span class="co">## 602:    M43137              &lt;NA&gt;                  X - 19581          &lt;NA&gt;</span></span>
 <span><span class="co">##                                           SUB_PATHWAY COMP_ID  PLATFORM</span></span>
+<span><span class="co">##                                                &lt;char&gt;  &lt;char&gt;    &lt;char&gt;</span></span>
 <span><span class="co">##   1:                        Fatty acid, dicarboxylate   43027 LC/MS Neg</span></span>
 <span><span class="co">##   2:                                    Ketone bodies   38002     GC/MS</span></span>
 <span><span class="co">##   3:      Urea cycle; arginine-, proline-, metabolism    1654     GC/MS</span></span>
@@ -651,19 +684,21 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 600:                                             &lt;NA&gt;   43122 LC/MS Neg</span></span>
 <span><span class="co">## 601:                                             &lt;NA&gt;   43128 LC/MS Neg</span></span>
 <span><span class="co">## 602:                                             &lt;NA&gt;   43137 LC/MS Neg</span></span>
-<span><span class="co">##                      RI  MASS PUBCHEM                 CAS   KEGG   HMDb_ID</span></span>
-<span><span class="co">##   1:               3578 243.2   10458           505-52-2;   &lt;NA&gt; HMDB02327</span></span>
-<span><span class="co">##   2:               1041   117    &lt;NA&gt;            57-55-6; C00583 HMDB01881</span></span>
-<span><span class="co">##   3:             1633.8   174     428           109-76-2; C00986 HMDB00002</span></span>
-<span><span class="co">##   4:               1263   103     670 96-26-4;62147-49-3; C00184 HMDB01882</span></span>
-<span><span class="co">##   5:               1208 115.8    &lt;NA&gt;           110-63-4;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">##  ---                                                                      </span></span>
-<span><span class="co">## 598:             3657.6 227.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 599:             3618.7   471    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 600:             2953.2 744.5    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 601:             3761.2 431.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 602: 4949.6000000000004 938.5    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">##                      RI   MASS PUBCHEM                 CAS   KEGG   HMDb_ID</span></span>
+<span><span class="co">##                  &lt;char&gt; &lt;char&gt;  &lt;char&gt;              &lt;char&gt; &lt;char&gt;    &lt;char&gt;</span></span>
+<span><span class="co">##   1:               3578  243.2   10458           505-52-2;   &lt;NA&gt; HMDB02327</span></span>
+<span><span class="co">##   2:               1041    117    &lt;NA&gt;            57-55-6; C00583 HMDB01881</span></span>
+<span><span class="co">##   3:             1633.8    174     428           109-76-2; C00986 HMDB00002</span></span>
+<span><span class="co">##   4:               1263    103     670 96-26-4;62147-49-3; C00184 HMDB01882</span></span>
+<span><span class="co">##   5:               1208  115.8    &lt;NA&gt;           110-63-4;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">##  ---                                                                       </span></span>
+<span><span class="co">## 598:             3657.6  227.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 599:             3618.7    471    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 600:             2953.2  744.5    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 601:             3761.2  431.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 602: 4949.6000000000004  938.5    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
 <span><span class="co">##      COMP_IDstr</span></span>
+<span><span class="co">##          &lt;char&gt;</span></span>
 <span><span class="co">##   1:     M43027</span></span>
 <span><span class="co">##   2:     M38002</span></span>
 <span><span class="co">##   3:     M01654</span></span>
@@ -677,26 +712,27 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## 602:     M43137</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @sampleData (ID:  sampleID ) ***</span></span>
-<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY T2D</span></span>
-<span><span class="co">##   1: QMDiab370 56.49829      1 25.76591         1   1</span></span>
-<span><span class="co">##   2: QMDiab245 51.51540      0 23.89943         1   0</span></span>
-<span><span class="co">##   3:  QMDiab34 28.00548      0 23.90118         3   0</span></span>
-<span><span class="co">##   4: QMDiab287 41.43463      0 31.47107         4   1</span></span>
-<span><span class="co">##   5: QMDiab355 28.34771      0 25.16103         1   0</span></span>
-<span><span class="co">##  ---                                                 </span></span>
-<span><span class="co">## 317: QMDiab202 49.40999      1 33.72008         1   1</span></span>
-<span><span class="co">## 318:  QMDiab80 25.86995      0 29.89101         1   0</span></span>
-<span><span class="co">## 319: QMDiab107 38.50240      1 24.60973         2   0</span></span>
-<span><span class="co">## 320: QMDiab352 41.55510      1 31.22690         3   1</span></span>
-<span><span class="co">## 321: QMDiab127 34.69952      1 30.47797         1   0</span></span>
+<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY   T2D</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;    &lt;num&gt;     &lt;num&gt; &lt;num&gt;</span></span>
+<span><span class="co">##   1: QMDiab370 56.49829      1 25.76591         1     1</span></span>
+<span><span class="co">##   2: QMDiab245 51.51540      0 23.89943         1     0</span></span>
+<span><span class="co">##   3:  QMDiab34 28.00548      0 23.90118         3     0</span></span>
+<span><span class="co">##   4: QMDiab287 41.43463      0 31.47107         4     1</span></span>
+<span><span class="co">##   5: QMDiab355 28.34771      0 25.16103         1     0</span></span>
+<span><span class="co">##  ---                                                   </span></span>
+<span><span class="co">## 317: QMDiab202 49.40999      1 33.72008         1     1</span></span>
+<span><span class="co">## 318:  QMDiab80 25.86995      0 29.89101         1     0</span></span>
+<span><span class="co">## 319: QMDiab107 38.50240      1 24.60973         2     0</span></span>
+<span><span class="co">## 320: QMDiab352 41.55510      1 31.22690         3     1</span></span>
+<span><span class="co">## 321: QMDiab127 34.69952      1 30.47797         1     0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @miscData  ***</span></span>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpxJcNN8/temp_libpath8839451f2cbe/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Initiate data: 321 samples and 602 features.</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Update data, action: change_featureID, 321 samples and 602 features.</span></span></code></pre>
+<span><span class="co">## 04/02/24 19:40:37: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Initiate data: 321 samples and 602 features.</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 321 samples and 602 features.</span></span></code></pre>
 </details><p><br><br></p>
 </div>
 <div class="section level2">
@@ -722,21 +758,23 @@ function</p>
 </summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span></span></code></pre></div>
 <pre><code><span><span class="co">## $column_constant</span></span>
-<span><span class="co">##          ID     x</span></span>
-<span><span class="co">##   1: M43027 FALSE</span></span>
-<span><span class="co">##   2: M11953 FALSE</span></span>
-<span><span class="co">##   3: M38002 FALSE</span></span>
-<span><span class="co">##   4: M34404 FALSE</span></span>
-<span><span class="co">##   5: M35963 FALSE</span></span>
-<span><span class="co">##  ---             </span></span>
-<span><span class="co">## 754: M42912  TRUE</span></span>
-<span><span class="co">## 755: M42913 FALSE</span></span>
-<span><span class="co">## 756: M42914 FALSE</span></span>
-<span><span class="co">## 757: M42927 FALSE</span></span>
-<span><span class="co">## 758: M43130 FALSE</span></span>
+<span><span class="co">##          ID      x</span></span>
+<span><span class="co">##      &lt;char&gt; &lt;lgcl&gt;</span></span>
+<span><span class="co">##   1: M43027  FALSE</span></span>
+<span><span class="co">##   2: M11953  FALSE</span></span>
+<span><span class="co">##   3: M38002  FALSE</span></span>
+<span><span class="co">##   4: M34404  FALSE</span></span>
+<span><span class="co">##   5: M35963  FALSE</span></span>
+<span><span class="co">##  ---              </span></span>
+<span><span class="co">## 754: M42912   TRUE</span></span>
+<span><span class="co">## 755: M42913  FALSE</span></span>
+<span><span class="co">## 756: M42914  FALSE</span></span>
+<span><span class="co">## 757: M42927  FALSE</span></span>
+<span><span class="co">## 758: M43130  FALSE</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $column_missing_rate</span></span>
 <span><span class="co">##          ID           x</span></span>
+<span><span class="co">##      &lt;char&gt;       &lt;num&gt;</span></span>
 <span><span class="co">##   1: M43027 0.151685393</span></span>
 <span><span class="co">##   2: M11953 0.146067416</span></span>
 <span><span class="co">##   3: M38002 0.056179775</span></span>
@@ -751,6 +789,7 @@ function</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## $row_missing_rate</span></span>
 <span><span class="co">##             ID         x</span></span>
+<span><span class="co">##         &lt;char&gt;     &lt;num&gt;</span></span>
 <span><span class="co">##   1: QMDiab222 0.3588391</span></span>
 <span><span class="co">##   2: QMDiab113 0.2968338</span></span>
 <span><span class="co">##   3:  QMDiab29 0.2862797</span></span>
@@ -765,6 +804,7 @@ function</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## $outlier_rate</span></span>
 <span><span class="co">##          ID           x</span></span>
+<span><span class="co">##      &lt;char&gt;       &lt;num&gt;</span></span>
 <span><span class="co">##   1: M43027 0.006622517</span></span>
 <span><span class="co">##   2: M11953 0.000000000</span></span>
 <span><span class="co">##   3: M38002 0.011904762</span></span>
@@ -792,6 +832,7 @@ function</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @assayData (first and last 10 columns [ 356  *  546 ])  ***</span></span>
 <span><span class="co">##       sampleID M43027 M11953 M38002 M34404 M35963 M35728 M20675 M34400  M33228</span></span>
+<span><span class="co">##         &lt;char&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;   &lt;num&gt;</span></span>
 <span><span class="co">##   1: QMDiab222   8578     NA 103724  22259 104059   7067 357499  19986 2173598</span></span>
 <span><span class="co">##   2: QMDiab113  15145     NA     NA  39841     NA  36542 440058  16620 2464846</span></span>
 <span><span class="co">##   3:  QMDiab29     NA  96455 159945  10605 165416  54209 355790  12220 2613798</span></span>
@@ -804,6 +845,7 @@ function</p>
 <span><span class="co">## 355: QMDiab202   7378 108152 112229  21748 175918  78154 106745  21434 2104899</span></span>
 <span><span class="co">## 356: QMDiab103   6667  57851 146948   8458  82064  34234 534697  12979  992388</span></span>
 <span><span class="co">##      M42307 M42314 M42544 M42548 M42549 M42552 M42554 M42856 M42887 M42913</span></span>
+<span><span class="co">##       &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1:     NA  30592   3839  13734     NA     NA  37654 158054  88569  64644</span></span>
 <span><span class="co">##   2:   6978  81380   4128  15288     NA   4697  28262 125669  87268  52074</span></span>
 <span><span class="co">##   3:  17943 104253   6788  18861   6761   5096  30139 194732 106360  31782</span></span>
@@ -816,6 +858,7 @@ function</p>
 <span><span class="co">## 355:   8119  70566   8470  11932     NA   5895  27858 162256 112923  42586</span></span>
 <span><span class="co">## 356:   7647  46836   7420   8019     NA   8253  32159 137705 112636  89283</span></span>
 <span><span class="co">##      M42914</span></span>
+<span><span class="co">##       &lt;num&gt;</span></span>
 <span><span class="co">##   1:  18055</span></span>
 <span><span class="co">##   2:  12805</span></span>
 <span><span class="co">##   3:  18467</span></span>
@@ -830,6 +873,7 @@ function</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @featureData (ID:  featureID ) ***</span></span>
 <span><span class="co">##      featureID PATHWAY_SORTORDER                    BIOCHEMICAL SUPER_PATHWAY</span></span>
+<span><span class="co">##         &lt;char&gt;            &lt;char&gt;                         &lt;char&gt;        &lt;char&gt;</span></span>
 <span><span class="co">##   1:    M43027             800.1 1,11-Undecanedicarboxylic acid         Lipid</span></span>
 <span><span class="co">##   2:    M11953              1070        1,2-dipalmitoylglycerol         Lipid</span></span>
 <span><span class="co">##   3:    M38002               986                1,2-propanediol         Lipid</span></span>
@@ -842,6 +886,7 @@ function</p>
 <span><span class="co">## 544:    M42913              &lt;NA&gt;                      X - 19437          &lt;NA&gt;</span></span>
 <span><span class="co">## 545:    M42914              &lt;NA&gt;                      X - 19438          &lt;NA&gt;</span></span>
 <span><span class="co">##                                           SUB_PATHWAY COMP_ID  PLATFORM</span></span>
+<span><span class="co">##                                                &lt;char&gt;  &lt;char&gt;    &lt;char&gt;</span></span>
 <span><span class="co">##   1:                        Fatty acid, dicarboxylate   43027 LC/MS Neg</span></span>
 <span><span class="co">##   2:                                   Diacylglycerol   11953     GC/MS</span></span>
 <span><span class="co">##   3:                                    Ketone bodies   38002     GC/MS</span></span>
@@ -853,19 +898,21 @@ function</p>
 <span><span class="co">## 543:                                             &lt;NA&gt;   42887 LC/MS Neg</span></span>
 <span><span class="co">## 544:                                             &lt;NA&gt;   42913 LC/MS Neg</span></span>
 <span><span class="co">## 545:                                             &lt;NA&gt;   42914 LC/MS Neg</span></span>
-<span><span class="co">##                      RI  MASS PUBCHEM                 CAS   KEGG   HMDb_ID</span></span>
-<span><span class="co">##   1:               3578 243.2   10458           505-52-2;   &lt;NA&gt; HMDB02327</span></span>
-<span><span class="co">##   2:               2600   145   99931         40290-32-2;   &lt;NA&gt; HMDB07098</span></span>
-<span><span class="co">##   3:               1041   117    &lt;NA&gt;            57-55-6; C00583 HMDB01881</span></span>
-<span><span class="co">##   4:               1988 209.1   79437          5415-44-1; C16361 HMDB02123</span></span>
-<span><span class="co">##   5:               1263   103     670 96-26-4;62147-49-3; C00184 HMDB01882</span></span>
-<span><span class="co">##  ---                                                                      </span></span>
-<span><span class="co">## 541: 4730.8999999999996 283.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 542:               2287 412.4    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 543:               1308 383.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 544: 1150.0999999999999 397.1    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 545:             1222.3 217.1    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">##                      RI   MASS PUBCHEM                 CAS   KEGG   HMDb_ID</span></span>
+<span><span class="co">##                  &lt;char&gt; &lt;char&gt;  &lt;char&gt;              &lt;char&gt; &lt;char&gt;    &lt;char&gt;</span></span>
+<span><span class="co">##   1:               3578  243.2   10458           505-52-2;   &lt;NA&gt; HMDB02327</span></span>
+<span><span class="co">##   2:               2600    145   99931         40290-32-2;   &lt;NA&gt; HMDB07098</span></span>
+<span><span class="co">##   3:               1041    117    &lt;NA&gt;            57-55-6; C00583 HMDB01881</span></span>
+<span><span class="co">##   4:               1988  209.1   79437          5415-44-1; C16361 HMDB02123</span></span>
+<span><span class="co">##   5:               1263    103     670 96-26-4;62147-49-3; C00184 HMDB01882</span></span>
+<span><span class="co">##  ---                                                                       </span></span>
+<span><span class="co">## 541: 4730.8999999999996  283.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 542:               2287  412.4    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 543:               1308  383.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 544: 1150.0999999999999  397.1    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 545:             1222.3  217.1    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
 <span><span class="co">##      COMP_IDstr</span></span>
+<span><span class="co">##          &lt;char&gt;</span></span>
 <span><span class="co">##   1:     M43027</span></span>
 <span><span class="co">##   2:     M11953</span></span>
 <span><span class="co">##   3:     M38002</span></span>
@@ -879,33 +926,34 @@ function</p>
 <span><span class="co">## 545:     M42914</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @sampleData (ID:  sampleID ) ***</span></span>
-<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY T2D</span></span>
-<span><span class="co">##   1: QMDiab222 34.50513      0 25.01021         2   0</span></span>
-<span><span class="co">##   2: QMDiab113 47.06639      1 28.36776         3   0</span></span>
-<span><span class="co">##   3:  QMDiab29 55.49076      1 29.70564         1   0</span></span>
-<span><span class="co">##   4: QMDiab243 56.33402      1 23.14050         2   0</span></span>
-<span><span class="co">##   5: QMDiab270 35.63039      1 30.06229         1   0</span></span>
-<span><span class="co">##  ---                                                 </span></span>
-<span><span class="co">## 352: QMDiab352 41.55510      1 31.22690         3   1</span></span>
-<span><span class="co">## 353: QMDiab135 52.55305      0 29.07577         2   1</span></span>
-<span><span class="co">## 354: QMDiab229 30.31348      0 22.22656         2   0</span></span>
-<span><span class="co">## 355: QMDiab202 49.40999      1 33.72008         1   1</span></span>
-<span><span class="co">## 356: QMDiab103 23.85489      0 35.96389         1   0</span></span>
+<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY   T2D</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;    &lt;num&gt;     &lt;num&gt; &lt;num&gt;</span></span>
+<span><span class="co">##   1: QMDiab222 34.50513      0 25.01021         2     0</span></span>
+<span><span class="co">##   2: QMDiab113 47.06639      1 28.36776         3     0</span></span>
+<span><span class="co">##   3:  QMDiab29 55.49076      1 29.70564         1     0</span></span>
+<span><span class="co">##   4: QMDiab243 56.33402      1 23.14050         2     0</span></span>
+<span><span class="co">##   5: QMDiab270 35.63039      1 30.06229         1     0</span></span>
+<span><span class="co">##  ---                                                   </span></span>
+<span><span class="co">## 352: QMDiab352 41.55510      1 31.22690         3     1</span></span>
+<span><span class="co">## 353: QMDiab135 52.55305      0 29.07577         2     1</span></span>
+<span><span class="co">## 354: QMDiab229 30.31348      0 22.22656         2     0</span></span>
+<span><span class="co">## 355: QMDiab202 49.40999      1 33.72008         1     1</span></span>
+<span><span class="co">## 356: QMDiab103 23.85489      0 35.96389         1     0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @miscData  ***</span></span>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpxJcNN8/temp_libpath8839451f2cbe/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Initiate data: 356 samples and 758 features.</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Update data, action: change_featureID, 356 samples and 758 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:36: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 04/02/24 19:40:36: Initiate data: 356 samples and 758 features.</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 356 samples and 758 features. </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## 04/02/24 19:19:06: Run QC pipeline.</span></span>
-<span><span class="co">## 04/02/24 19:19:06: Filter data with a constant column, removed 37 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:06: Update data, action: keep_feature, 356 samples and 721 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:06: Filter data with a missing rate &gt;= 0.5, removed 175 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:06: Update data, action: keep_feature, 356 samples and 545 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:06: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
+<span><span class="co">## 04/02/24 19:40:39: Run QC pipeline.</span></span>
+<span><span class="co">## 04/02/24 19:40:39: Filter data with a constant column, removed 37 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:39: Update data, action: keep_feature, 356 samples and 721 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:39: Filter data with a missing rate &gt;= 0.5, removed 175 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:39: Update data, action: keep_feature, 356 samples and 545 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:39: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
 </details><p>For the urine QC metrics:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_QC.html">plot_QC</a></span><span class="op">(</span><span class="va">df_urine</span><span class="op">)</span></span>
@@ -925,6 +973,7 @@ function</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @assayData (first and last 10 columns [ 359  *  787 ])  ***</span></span>
 <span><span class="co">##       sampleID   M38002 M34404  M32391 M20675   M21049  M34400 M40506  M34455</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;   &lt;num&gt;  &lt;num&gt;    &lt;num&gt;   &lt;num&gt;  &lt;num&gt;   &lt;num&gt;</span></span>
 <span><span class="co">##   1: QMDiab254  1189337 146900  265120  53499 15379982  619745  53261  227263</span></span>
 <span><span class="co">##   2: QMDiab290  9944836 716781 2042008  71989 26406420 1988553 123129 1221563</span></span>
 <span><span class="co">##   3:  QMDiab54   926350 182438  775726  48752  7551248 1159521  72837  215868</span></span>
@@ -937,6 +986,7 @@ function</p>
 <span><span class="co">## 358: QMDiab248  1807105 338741  148964  62614   937893  603113  48151  293379</span></span>
 <span><span class="co">## 359:   QMDiab4 10103832 203176  245175  50822 28406416  243598  74996  696766</span></span>
 <span><span class="co">##        M30460 M41595 M41702 M41709 M41768 M41837 M42272 M42314 M42335 M42352</span></span>
+<span><span class="co">##         &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1:  5502123  74988  29007   4223  17008   5636  96913  31056  33430  35558</span></span>
 <span><span class="co">##   2: 17475172  66278 101935  34251  14937   9552 124745  66036  39595 652059</span></span>
 <span><span class="co">##   3:  6423459  74225  51295  14090  32971   9104  44266  23363  39645  62630</span></span>
@@ -949,6 +999,7 @@ function</p>
 <span><span class="co">## 358:       NA  26670   8525   7059  13231   9698  36055  29644  22465  19287</span></span>
 <span><span class="co">## 359: 27087992  95140  66285  20229  35845  18570 185546  45205  60944 149210</span></span>
 <span><span class="co">##      M42856 M42913</span></span>
+<span><span class="co">##       &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1:  23369  21931</span></span>
 <span><span class="co">##   2:  28220  27811</span></span>
 <span><span class="co">##   3:  13148  25018</span></span>
@@ -963,6 +1014,7 @@ function</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @featureData (ID:  featureID ) ***</span></span>
 <span><span class="co">##      featureID PATHWAY_SORTORDER                  BIOCHEMICAL SUPER_PATHWAY</span></span>
+<span><span class="co">##         &lt;char&gt;            &lt;char&gt;                       &lt;char&gt;        &lt;char&gt;</span></span>
 <span><span class="co">##   1:    M38002               986              1,2-propanediol         Lipid</span></span>
 <span><span class="co">##   2:    M34404              1805         1,3,7-trimethylurate   Xenobiotics</span></span>
 <span><span class="co">##   3:    M32391              1802            1,3-dimethylurate   Xenobiotics</span></span>
@@ -975,6 +1027,7 @@ function</p>
 <span><span class="co">## 785:    M42856              &lt;NA&gt;                    X - 19380          &lt;NA&gt;</span></span>
 <span><span class="co">## 786:    M42913              &lt;NA&gt;                    X - 19437          &lt;NA&gt;</span></span>
 <span><span class="co">##                                           SUB_PATHWAY COMP_ID  PLATFORM</span></span>
+<span><span class="co">##                                                &lt;char&gt;  &lt;char&gt;    &lt;char&gt;</span></span>
 <span><span class="co">##   1:                                    Ketone bodies   38002     GC/MS</span></span>
 <span><span class="co">##   2:                              Xanthine metabolism   34404 LC/MS Neg</span></span>
 <span><span class="co">##   3:                              Xanthine metabolism   32391     GC/MS</span></span>
@@ -987,6 +1040,7 @@ function</p>
 <span><span class="co">## 785:                                             &lt;NA&gt;   42856 LC/MS Neg</span></span>
 <span><span class="co">## 786:                                             &lt;NA&gt;   42913 LC/MS Neg</span></span>
 <span><span class="co">##                      RI               MASS  PUBCHEM        CAS   KEGG   HMDb_ID</span></span>
+<span><span class="co">##                  &lt;char&gt;             &lt;char&gt;   &lt;char&gt;     &lt;char&gt; &lt;char&gt;    &lt;char&gt;</span></span>
 <span><span class="co">##   1:               1041                117     &lt;NA&gt;   57-55-6; C00583 HMDB01881</span></span>
 <span><span class="co">##   2:               1988              209.1    79437 5415-44-1; C16361 HMDB02123</span></span>
 <span><span class="co">##   3:               1937 325.10000000000002    70346 944-73-0 ;   &lt;NA&gt; HMDB01857</span></span>
@@ -999,6 +1053,7 @@ function</p>
 <span><span class="co">## 785:               2287              412.4     &lt;NA&gt;       &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
 <span><span class="co">## 786: 1150.0999999999999              397.1     &lt;NA&gt;       &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
 <span><span class="co">##      COMP_IDstr</span></span>
+<span><span class="co">##          &lt;char&gt;</span></span>
 <span><span class="co">##   1:     M38002</span></span>
 <span><span class="co">##   2:     M34404</span></span>
 <span><span class="co">##   3:     M32391</span></span>
@@ -1012,33 +1067,34 @@ function</p>
 <span><span class="co">## 786:     M42913</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @sampleData (ID:  sampleID ) ***</span></span>
-<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY T2D</span></span>
-<span><span class="co">##   1: QMDiab254 53.10335      0 32.05128         1   0</span></span>
-<span><span class="co">##   2: QMDiab290 39.79192      1 30.51426         4   0</span></span>
-<span><span class="co">##   3:  QMDiab54 36.82136      0 24.16831         1   0</span></span>
-<span><span class="co">##   4:  QMDiab55 34.75975      0 44.44444         1   1</span></span>
-<span><span class="co">##   5: QMDiab319 50.17933      1 27.18090         1   1</span></span>
-<span><span class="co">##  ---                                                 </span></span>
-<span><span class="co">## 355:  QMDiab70 35.40315      1 33.83403         1   1</span></span>
-<span><span class="co">## 356: QMDiab118 49.06229      1 25.64494         1   0</span></span>
-<span><span class="co">## 357:  QMDiab65 47.22245      1 23.38435         1   0</span></span>
-<span><span class="co">## 358: QMDiab248 56.39151      0 27.58621         1   1</span></span>
-<span><span class="co">## 359:   QMDiab4 24.22450      0 41.66521         1   0</span></span>
+<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY   T2D</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;    &lt;num&gt;     &lt;num&gt; &lt;num&gt;</span></span>
+<span><span class="co">##   1: QMDiab254 53.10335      0 32.05128         1     0</span></span>
+<span><span class="co">##   2: QMDiab290 39.79192      1 30.51426         4     0</span></span>
+<span><span class="co">##   3:  QMDiab54 36.82136      0 24.16831         1     0</span></span>
+<span><span class="co">##   4:  QMDiab55 34.75975      0 44.44444         1     1</span></span>
+<span><span class="co">##   5: QMDiab319 50.17933      1 27.18090         1     1</span></span>
+<span><span class="co">##  ---                                                   </span></span>
+<span><span class="co">## 355:  QMDiab70 35.40315      1 33.83403         1     1</span></span>
+<span><span class="co">## 356: QMDiab118 49.06229      1 25.64494         1     0</span></span>
+<span><span class="co">## 357:  QMDiab65 47.22245      1 23.38435         1     0</span></span>
+<span><span class="co">## 358: QMDiab248 56.39151      0 27.58621         1     1</span></span>
+<span><span class="co">## 359:   QMDiab4 24.22450      0 41.66521         1     0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @miscData  ***</span></span>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpxJcNN8/temp_libpath8839451f2cbe/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Initiate data: 359 samples and 891 features.</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Update data, action: change_featureID, 359 samples and 891 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:37: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Initiate data: 359 samples and 891 features.</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 359 samples and 891 features. </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## 04/02/24 19:19:07: Run QC pipeline.</span></span>
-<span><span class="co">## 04/02/24 19:19:07: Filter data with a constant column, removed 28 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:07: Update data, action: keep_feature, 359 samples and 863 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:07: Filter data with a missing rate &gt;= 0.5, removed 76 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:07: Update data, action: keep_feature, 359 samples and 786 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:07: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
+<span><span class="co">## 04/02/24 19:40:40: Run QC pipeline.</span></span>
+<span><span class="co">## 04/02/24 19:40:40: Filter data with a constant column, removed 28 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:40: Update data, action: keep_feature, 359 samples and 863 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:40: Filter data with a missing rate &gt;= 0.5, removed 76 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:40: Update data, action: keep_feature, 359 samples and 786 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:40: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
 </details><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_QC.html">plot_QC</a></span><span class="op">(</span><span class="va">df_saliva</span><span class="op">)</span></span>
 <span><span class="va">p</span><span class="op">$</span><span class="va">p</span></span></code></pre></div>
@@ -1057,6 +1113,7 @@ function</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @assayData (first and last 10 columns [ 321  *  365 ])  ***</span></span>
 <span><span class="co">##       sampleID M43027  M38002 M35690 M20675 M35628 M37536 M37752  M35691 M38276</span></span>
+<span><span class="co">##         &lt;char&gt;  &lt;num&gt;   &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;   &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1: QMDiab370  11974  720004  91544 211457     NA     NA 121286  352891 161984</span></span>
 <span><span class="co">##   2: QMDiab245  15485  481889  80819 175312  27847  24251  78051  179709 155695</span></span>
 <span><span class="co">##   3:  QMDiab34  13916  979243 104042 271930     NA  19333  54685   58106  99814</span></span>
@@ -1069,6 +1126,7 @@ function</p>
 <span><span class="co">## 320: QMDiab352  18975  280464  20491  77539  19239  35706  53731   95315  97904</span></span>
 <span><span class="co">## 321: QMDiab127  16344  881910 206525 912153  12066  30309 102026  843075 941156</span></span>
 <span><span class="co">##      M41491  M41548 M41921 M42238 M42272 M42741 M42851 M42913 M43042 M43049</span></span>
+<span><span class="co">##       &lt;num&gt;   &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1: 404368 1007590  10148   6156   2352     NA   4937   5390  22149   4997</span></span>
 <span><span class="co">##   2: 360478  641392  11972   5093     NA  13502   3316  10883  22797   8284</span></span>
 <span><span class="co">##   3: 368498  741774   4553   4875   9858     NA   3260     NA  15291     NA</span></span>
@@ -1081,6 +1139,7 @@ function</p>
 <span><span class="co">## 320:  85130  230107  15529     NA     NA   4080     NA   9140   3362     NA</span></span>
 <span><span class="co">## 321: 902186      NA  17118   9253   4176  60963     NA   7590  25546   5422</span></span>
 <span><span class="co">##      M43128</span></span>
+<span><span class="co">##       &lt;num&gt;</span></span>
 <span><span class="co">##   1:  14190</span></span>
 <span><span class="co">##   2:  15273</span></span>
 <span><span class="co">##   3:  10602</span></span>
@@ -1095,6 +1154,7 @@ function</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @featureData (ID:  featureID ) ***</span></span>
 <span><span class="co">##      featureID PATHWAY_SORTORDER                        BIOCHEMICAL</span></span>
+<span><span class="co">##         &lt;char&gt;            &lt;char&gt;                             &lt;char&gt;</span></span>
 <span><span class="co">##   1:    M43027             800.1         1,11-undecanedicarboxylate</span></span>
 <span><span class="co">##   2:    M38002               986                    1,2-propanediol</span></span>
 <span><span class="co">##   3:    M35690              1494                     1,4-butanediol</span></span>
@@ -1107,6 +1167,7 @@ function</p>
 <span><span class="co">## 363:    M43049              &lt;NA&gt;                          X - 19496</span></span>
 <span><span class="co">## 364:    M43128              &lt;NA&gt;                          X - 19572</span></span>
 <span><span class="co">##      SUPER_PATHWAY                                      SUB_PATHWAY COMP_ID</span></span>
+<span><span class="co">##             &lt;char&gt;                                           &lt;char&gt;  &lt;char&gt;</span></span>
 <span><span class="co">##   1:         Lipid                        Fatty acid, dicarboxylate   43027</span></span>
 <span><span class="co">##   2:         Lipid                                    Ketone bodies   38002</span></span>
 <span><span class="co">##   3:   Xenobiotics                                         Chemical   35690</span></span>
@@ -1118,19 +1179,21 @@ function</p>
 <span><span class="co">## 362:          &lt;NA&gt;                                             &lt;NA&gt;   43042</span></span>
 <span><span class="co">## 363:          &lt;NA&gt;                                             &lt;NA&gt;   43049</span></span>
 <span><span class="co">## 364:          &lt;NA&gt;                                             &lt;NA&gt;   43128</span></span>
-<span><span class="co">##       PLATFORM                 RI  MASS PUBCHEM         CAS   KEGG   HMDb_ID</span></span>
-<span><span class="co">##   1: LC/MS Neg               3578 243.2   10458   505-52-2;   &lt;NA&gt; HMDB02327</span></span>
-<span><span class="co">##   2:     GC/MS               1041   117    &lt;NA&gt;    57-55-6; C00583 HMDB01881</span></span>
-<span><span class="co">##   3:     GC/MS               1208 115.8    &lt;NA&gt;   110-63-4;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">##   4:     GC/MS             1788.7   217    &lt;NA&gt;   154-58-5; C07326 HMDB02712</span></span>
-<span><span class="co">##   5: LC/MS Neg               5928 478.3 9547071 89576-29-4;   &lt;NA&gt; HMDB11506</span></span>
-<span><span class="co">##  ---                                                                        </span></span>
-<span><span class="co">## 360: LC/MS Neg               1983 414.3    &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 361: LC/MS Neg 1150.0999999999999 397.1    &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 362: LC/MS Neg             2432.9 195.2    &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 363: LC/MS Neg             3626.9 171.3    &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 364: LC/MS Neg             3761.2 431.3    &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">##       PLATFORM                 RI   MASS PUBCHEM         CAS   KEGG   HMDb_ID</span></span>
+<span><span class="co">##         &lt;char&gt;             &lt;char&gt; &lt;char&gt;  &lt;char&gt;      &lt;char&gt; &lt;char&gt;    &lt;char&gt;</span></span>
+<span><span class="co">##   1: LC/MS Neg               3578  243.2   10458   505-52-2;   &lt;NA&gt; HMDB02327</span></span>
+<span><span class="co">##   2:     GC/MS               1041    117    &lt;NA&gt;    57-55-6; C00583 HMDB01881</span></span>
+<span><span class="co">##   3:     GC/MS               1208  115.8    &lt;NA&gt;   110-63-4;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">##   4:     GC/MS             1788.7    217    &lt;NA&gt;   154-58-5; C07326 HMDB02712</span></span>
+<span><span class="co">##   5: LC/MS Neg               5928  478.3 9547071 89576-29-4;   &lt;NA&gt; HMDB11506</span></span>
+<span><span class="co">##  ---                                                                         </span></span>
+<span><span class="co">## 360: LC/MS Neg               1983  414.3    &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 361: LC/MS Neg 1150.0999999999999  397.1    &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 362: LC/MS Neg             2432.9  195.2    &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 363: LC/MS Neg             3626.9  171.3    &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 364: LC/MS Neg             3761.2  431.3    &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
 <span><span class="co">##      COMP_IDstr</span></span>
+<span><span class="co">##          &lt;char&gt;</span></span>
 <span><span class="co">##   1:     M43027</span></span>
 <span><span class="co">##   2:     M38002</span></span>
 <span><span class="co">##   3:     M35690</span></span>
@@ -1144,33 +1207,34 @@ function</p>
 <span><span class="co">## 364:     M43128</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @sampleData (ID:  sampleID ) ***</span></span>
-<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY T2D</span></span>
-<span><span class="co">##   1: QMDiab370 56.49829      1 25.76591         1   1</span></span>
-<span><span class="co">##   2: QMDiab245 51.51540      0 23.89943         1   0</span></span>
-<span><span class="co">##   3:  QMDiab34 28.00548      0 23.90118         3   0</span></span>
-<span><span class="co">##   4: QMDiab287 41.43463      0 31.47107         4   1</span></span>
-<span><span class="co">##   5: QMDiab355 28.34771      0 25.16103         1   0</span></span>
-<span><span class="co">##  ---                                                 </span></span>
-<span><span class="co">## 317: QMDiab202 49.40999      1 33.72008         1   1</span></span>
-<span><span class="co">## 318:  QMDiab80 25.86995      0 29.89101         1   0</span></span>
-<span><span class="co">## 319: QMDiab107 38.50240      1 24.60973         2   0</span></span>
-<span><span class="co">## 320: QMDiab352 41.55510      1 31.22690         3   1</span></span>
-<span><span class="co">## 321: QMDiab127 34.69952      1 30.47797         1   0</span></span>
+<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY   T2D</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;    &lt;num&gt;     &lt;num&gt; &lt;num&gt;</span></span>
+<span><span class="co">##   1: QMDiab370 56.49829      1 25.76591         1     1</span></span>
+<span><span class="co">##   2: QMDiab245 51.51540      0 23.89943         1     0</span></span>
+<span><span class="co">##   3:  QMDiab34 28.00548      0 23.90118         3     0</span></span>
+<span><span class="co">##   4: QMDiab287 41.43463      0 31.47107         4     1</span></span>
+<span><span class="co">##   5: QMDiab355 28.34771      0 25.16103         1     0</span></span>
+<span><span class="co">##  ---                                                   </span></span>
+<span><span class="co">## 317: QMDiab202 49.40999      1 33.72008         1     1</span></span>
+<span><span class="co">## 318:  QMDiab80 25.86995      0 29.89101         1     0</span></span>
+<span><span class="co">## 319: QMDiab107 38.50240      1 24.60973         2     0</span></span>
+<span><span class="co">## 320: QMDiab352 41.55510      1 31.22690         3     1</span></span>
+<span><span class="co">## 321: QMDiab127 34.69952      1 30.47797         1     0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @miscData  ***</span></span>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpxJcNN8/temp_libpath8839451f2cbe/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Initiate data: 321 samples and 602 features.</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Update data, action: change_featureID, 321 samples and 602 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:37: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Initiate data: 321 samples and 602 features.</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 321 samples and 602 features. </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## 04/02/24 19:19:08: Run QC pipeline.</span></span>
-<span><span class="co">## 04/02/24 19:19:08: Filter data with a constant column, removed 35 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:08: Update data, action: keep_feature, 321 samples and 567 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:08: Filter data with a missing rate &gt;= 0.5, removed 202 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:08: Update data, action: keep_feature, 321 samples and 364 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:08: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
+<span><span class="co">## 04/02/24 19:40:41: Run QC pipeline.</span></span>
+<span><span class="co">## 04/02/24 19:40:41: Filter data with a constant column, removed 35 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:41: Update data, action: keep_feature, 321 samples and 567 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:41: Filter data with a missing rate &gt;= 0.5, removed 202 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:41: Update data, action: keep_feature, 321 samples and 364 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:41: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
 </details><p><br><br></p>
 </div>
 <div class="section level2">
@@ -1191,6 +1255,7 @@ scale, scale, and rank-based inverse normal transformation.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @assayData (first and last 10 columns [ 356  *  546 ])  ***</span></span>
 <span><span class="co">##       sampleID      M43027      M11953      M38002     M34404     M35963</span></span>
+<span><span class="co">##         &lt;char&gt;       &lt;num&gt;       &lt;num&gt;       &lt;num&gt;      &lt;num&gt;      &lt;num&gt;</span></span>
 <span><span class="co">##   1: QMDiab222  0.38328962 -2.06937034 -0.25776988  0.1300954  0.1329676</span></span>
 <span><span class="co">##   2: QMDiab113  1.09208975 -2.06937034 -2.09811585  0.7401431 -2.7715161</span></span>
 <span><span class="co">##   3:  QMDiab29 -2.07224771  0.37986636  0.19492231 -0.6468556  0.7526296</span></span>
@@ -1203,6 +1268,7 @@ scale, scale, and rank-based inverse normal transformation.</p>
 <span><span class="co">## 355: QMDiab202  0.19539060  0.50460026 -0.17539627  0.1057578  0.8349219</span></span>
 <span><span class="co">## 356: QMDiab103  0.06904336 -0.17721998  0.10633646 -0.8839089 -0.1844916</span></span>
 <span><span class="co">##           M35728     M20675     M34400     M33228      M42307      M42314</span></span>
+<span><span class="co">##            &lt;num&gt;      &lt;num&gt;      &lt;num&gt;      &lt;num&gt;       &lt;num&gt;       &lt;num&gt;</span></span>
 <span><span class="co">##   1: -2.15022266  0.4846600  0.1504626  0.7147450 -1.66388170 -0.28947392</span></span>
 <span><span class="co">##   2: -0.22011372  0.7246235 -0.1016651  0.9880064  0.23596643  1.43130720</span></span>
 <span><span class="co">##   3:  0.24318100  0.4791258 -0.5220933  1.1155149  1.20217335  1.86694301</span></span>
@@ -1215,6 +1281,7 @@ scale, scale, and rank-based inverse normal transformation.</p>
 <span><span class="co">## 355:  0.67293679 -0.9112866  0.2460864  0.6449519  0.39090187  1.18053745</span></span>
 <span><span class="co">## 356: -0.29675648  0.9495957 -0.4397136 -0.9890440  0.32962775  0.45961727</span></span>
 <span><span class="co">##          M42544      M42548     M42549      M42552      M42554      M42856</span></span>
+<span><span class="co">##           &lt;num&gt;       &lt;num&gt;      &lt;num&gt;       &lt;num&gt;       &lt;num&gt;       &lt;num&gt;</span></span>
 <span><span class="co">##   1: -0.7965687 -0.10047059 -0.9487939 -1.37729107  0.68352801 -0.11254665</span></span>
 <span><span class="co">##   2: -0.6745840  0.07424437 -0.9487939  0.08365871  0.29566066 -0.99002949</span></span>
 <span><span class="co">##   3:  0.1613181  0.41656906  0.8587908  0.18047655  0.38258560  0.68610780</span></span>
@@ -1227,6 +1294,7 @@ scale, scale, and rank-based inverse normal transformation.</p>
 <span><span class="co">## 355:  0.5333744 -0.32971701 -0.9487939  0.35343194  0.27619711 -0.01213065</span></span>
 <span><span class="co">## 356:  0.3109356 -0.97745562 -0.9487939  0.75298733  0.47028172 -0.64000024</span></span>
 <span><span class="co">##          M42887     M42913      M42914</span></span>
+<span><span class="co">##           &lt;num&gt;      &lt;num&gt;       &lt;num&gt;</span></span>
 <span><span class="co">##   1: -1.0147901  0.0919409 -0.07636980</span></span>
 <span><span class="co">##   2: -1.0843123 -0.2871253 -0.80423166</span></span>
 <span><span class="co">##   3: -0.1548217 -1.1527328 -0.02857249</span></span>
@@ -1241,6 +1309,7 @@ scale, scale, and rank-based inverse normal transformation.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @featureData (ID:  featureID ) ***</span></span>
 <span><span class="co">##      featureID PATHWAY_SORTORDER                    BIOCHEMICAL SUPER_PATHWAY</span></span>
+<span><span class="co">##         &lt;char&gt;            &lt;char&gt;                         &lt;char&gt;        &lt;char&gt;</span></span>
 <span><span class="co">##   1:    M43027             800.1 1,11-Undecanedicarboxylic acid         Lipid</span></span>
 <span><span class="co">##   2:    M11953              1070        1,2-dipalmitoylglycerol         Lipid</span></span>
 <span><span class="co">##   3:    M38002               986                1,2-propanediol         Lipid</span></span>
@@ -1253,6 +1322,7 @@ scale, scale, and rank-based inverse normal transformation.</p>
 <span><span class="co">## 544:    M42913              &lt;NA&gt;                      X - 19437          &lt;NA&gt;</span></span>
 <span><span class="co">## 545:    M42914              &lt;NA&gt;                      X - 19438          &lt;NA&gt;</span></span>
 <span><span class="co">##                                           SUB_PATHWAY COMP_ID  PLATFORM</span></span>
+<span><span class="co">##                                                &lt;char&gt;  &lt;char&gt;    &lt;char&gt;</span></span>
 <span><span class="co">##   1:                        Fatty acid, dicarboxylate   43027 LC/MS Neg</span></span>
 <span><span class="co">##   2:                                   Diacylglycerol   11953     GC/MS</span></span>
 <span><span class="co">##   3:                                    Ketone bodies   38002     GC/MS</span></span>
@@ -1264,19 +1334,21 @@ scale, scale, and rank-based inverse normal transformation.</p>
 <span><span class="co">## 543:                                             &lt;NA&gt;   42887 LC/MS Neg</span></span>
 <span><span class="co">## 544:                                             &lt;NA&gt;   42913 LC/MS Neg</span></span>
 <span><span class="co">## 545:                                             &lt;NA&gt;   42914 LC/MS Neg</span></span>
-<span><span class="co">##                      RI  MASS PUBCHEM                 CAS   KEGG   HMDb_ID</span></span>
-<span><span class="co">##   1:               3578 243.2   10458           505-52-2;   &lt;NA&gt; HMDB02327</span></span>
-<span><span class="co">##   2:               2600   145   99931         40290-32-2;   &lt;NA&gt; HMDB07098</span></span>
-<span><span class="co">##   3:               1041   117    &lt;NA&gt;            57-55-6; C00583 HMDB01881</span></span>
-<span><span class="co">##   4:               1988 209.1   79437          5415-44-1; C16361 HMDB02123</span></span>
-<span><span class="co">##   5:               1263   103     670 96-26-4;62147-49-3; C00184 HMDB01882</span></span>
-<span><span class="co">##  ---                                                                      </span></span>
-<span><span class="co">## 541: 4730.8999999999996 283.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 542:               2287 412.4    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 543:               1308 383.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 544: 1150.0999999999999 397.1    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
-<span><span class="co">## 545:             1222.3 217.1    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">##                      RI   MASS PUBCHEM                 CAS   KEGG   HMDb_ID</span></span>
+<span><span class="co">##                  &lt;char&gt; &lt;char&gt;  &lt;char&gt;              &lt;char&gt; &lt;char&gt;    &lt;char&gt;</span></span>
+<span><span class="co">##   1:               3578  243.2   10458           505-52-2;   &lt;NA&gt; HMDB02327</span></span>
+<span><span class="co">##   2:               2600    145   99931         40290-32-2;   &lt;NA&gt; HMDB07098</span></span>
+<span><span class="co">##   3:               1041    117    &lt;NA&gt;            57-55-6; C00583 HMDB01881</span></span>
+<span><span class="co">##   4:               1988  209.1   79437          5415-44-1; C16361 HMDB02123</span></span>
+<span><span class="co">##   5:               1263    103     670 96-26-4;62147-49-3; C00184 HMDB01882</span></span>
+<span><span class="co">##  ---                                                                       </span></span>
+<span><span class="co">## 541: 4730.8999999999996  283.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 542:               2287  412.4    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 543:               1308  383.3    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 544: 1150.0999999999999  397.1    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">## 545:             1222.3  217.1    &lt;NA&gt;                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
 <span><span class="co">##      COMP_IDstr</span></span>
+<span><span class="co">##          &lt;char&gt;</span></span>
 <span><span class="co">##   1:     M43027</span></span>
 <span><span class="co">##   2:     M11953</span></span>
 <span><span class="co">##   3:     M38002</span></span>
@@ -1290,36 +1362,37 @@ scale, scale, and rank-based inverse normal transformation.</p>
 <span><span class="co">## 545:     M42914</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @sampleData (ID:  sampleID ) ***</span></span>
-<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY T2D</span></span>
-<span><span class="co">##   1: QMDiab222 34.50513      0 25.01021         2   0</span></span>
-<span><span class="co">##   2: QMDiab113 47.06639      1 28.36776         3   0</span></span>
-<span><span class="co">##   3:  QMDiab29 55.49076      1 29.70564         1   0</span></span>
-<span><span class="co">##   4: QMDiab243 56.33402      1 23.14050         2   0</span></span>
-<span><span class="co">##   5: QMDiab270 35.63039      1 30.06229         1   0</span></span>
-<span><span class="co">##  ---                                                 </span></span>
-<span><span class="co">## 352: QMDiab352 41.55510      1 31.22690         3   1</span></span>
-<span><span class="co">## 353: QMDiab135 52.55305      0 29.07577         2   1</span></span>
-<span><span class="co">## 354: QMDiab229 30.31348      0 22.22656         2   0</span></span>
-<span><span class="co">## 355: QMDiab202 49.40999      1 33.72008         1   1</span></span>
-<span><span class="co">## 356: QMDiab103 23.85489      0 35.96389         1   0</span></span>
+<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY   T2D</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;    &lt;num&gt;     &lt;num&gt; &lt;num&gt;</span></span>
+<span><span class="co">##   1: QMDiab222 34.50513      0 25.01021         2     0</span></span>
+<span><span class="co">##   2: QMDiab113 47.06639      1 28.36776         3     0</span></span>
+<span><span class="co">##   3:  QMDiab29 55.49076      1 29.70564         1     0</span></span>
+<span><span class="co">##   4: QMDiab243 56.33402      1 23.14050         2     0</span></span>
+<span><span class="co">##   5: QMDiab270 35.63039      1 30.06229         1     0</span></span>
+<span><span class="co">##  ---                                                   </span></span>
+<span><span class="co">## 352: QMDiab352 41.55510      1 31.22690         3     1</span></span>
+<span><span class="co">## 353: QMDiab135 52.55305      0 29.07577         2     1</span></span>
+<span><span class="co">## 354: QMDiab229 30.31348      0 22.22656         2     0</span></span>
+<span><span class="co">## 355: QMDiab202 49.40999      1 33.72008         1     1</span></span>
+<span><span class="co">## 356: QMDiab103 23.85489      0 35.96389         1     0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @miscData  ***</span></span>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpxJcNN8/temp_libpath8839451f2cbe/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Initiate data: 356 samples and 758 features.</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Update data, action: change_featureID, 356 samples and 758 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:36: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 04/02/24 19:40:36: Initiate data: 356 samples and 758 features.</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 356 samples and 758 features. </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## 04/02/24 19:19:06: Run QC pipeline.</span></span>
-<span><span class="co">## 04/02/24 19:19:06: Filter data with a constant column, removed 37 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:06: Update data, action: keep_feature, 356 samples and 721 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:06: Filter data with a missing rate &gt;= 0.5, removed 175 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:06: Update data, action: keep_feature, 356 samples and 545 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:06: Replace outliers using `winsorize` method 5 SDs. </span></span>
-<span><span class="co">## 04/02/24 19:19:08: Impute data using `half-min` method. </span></span>
-<span><span class="co">## 04/02/24 19:19:08: Transformation using `log` method. </span></span>
-<span><span class="co">## 04/02/24 19:19:08: Transformation using `scale` method.</span></span></code></pre>
+<span><span class="co">## 04/02/24 19:40:39: Run QC pipeline.</span></span>
+<span><span class="co">## 04/02/24 19:40:39: Filter data with a constant column, removed 37 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:39: Update data, action: keep_feature, 356 samples and 721 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:39: Filter data with a missing rate &gt;= 0.5, removed 175 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:39: Update data, action: keep_feature, 356 samples and 545 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:39: Replace outliers using `winsorize` method 5 SDs. </span></span>
+<span><span class="co">## 04/02/24 19:40:41: Impute data using `half-min` method. </span></span>
+<span><span class="co">## 04/02/24 19:40:41: Transformation using `log` method. </span></span>
+<span><span class="co">## 04/02/24 19:40:41: Transformation using `scale` method.</span></span></code></pre>
 </details><p><br><br></p>
 </div>
 <div class="section level2">
@@ -1415,6 +1488,7 @@ values.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @assayData (first and last 10 columns [ 359  *  787 ])  ***</span></span>
 <span><span class="co">##       sampleID   M38002 M34404  M32391 M20675   M21049  M34400 M40506  M34455</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;   &lt;num&gt;  &lt;num&gt;    &lt;num&gt;   &lt;num&gt;  &lt;num&gt;   &lt;num&gt;</span></span>
 <span><span class="co">##   1: QMDiab254  1189337 146900  265120  53499 15379982  619745  53261  227263</span></span>
 <span><span class="co">##   2: QMDiab290  9944836 716781 2042008  71989 26406420 1988553 123129 1221563</span></span>
 <span><span class="co">##   3:  QMDiab54   926350 182438  775726  48752  7551248 1159521  72837  215868</span></span>
@@ -1427,6 +1501,7 @@ values.</p>
 <span><span class="co">## 358: QMDiab248  1807105 338741  148964  62614   937893  603113  48151  293379</span></span>
 <span><span class="co">## 359:   QMDiab4 10103832 203176  245175  50822 28406416  243598  74996  696766</span></span>
 <span><span class="co">##        M30460 M41595 M41702 M41709 M41768 M41837 M42272 M42314 M42335 M42352</span></span>
+<span><span class="co">##         &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1:  5502123  74988  29007   4223  17008   5636  96913  31056  33430  35558</span></span>
 <span><span class="co">##   2: 17475172  66278 101935  34251  14937   9552 124745  66036  39595 652059</span></span>
 <span><span class="co">##   3:  6423459  74225  51295  14090  32971   9104  44266  23363  39645  62630</span></span>
@@ -1439,6 +1514,7 @@ values.</p>
 <span><span class="co">## 358:       NA  26670   8525   7059  13231   9698  36055  29644  22465  19287</span></span>
 <span><span class="co">## 359: 27087992  95140  66285  20229  35845  18570 185546  45205  60944 149210</span></span>
 <span><span class="co">##      M42856 M42913</span></span>
+<span><span class="co">##       &lt;num&gt;  &lt;num&gt;</span></span>
 <span><span class="co">##   1:  23369  21931</span></span>
 <span><span class="co">##   2:  28220  27811</span></span>
 <span><span class="co">##   3:  13148  25018</span></span>
@@ -1453,6 +1529,7 @@ values.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @featureData (ID:  featureID ) ***</span></span>
 <span><span class="co">##      featureID PATHWAY_SORTORDER                  BIOCHEMICAL SUPER_PATHWAY</span></span>
+<span><span class="co">##         &lt;char&gt;            &lt;char&gt;                       &lt;char&gt;        &lt;char&gt;</span></span>
 <span><span class="co">##   1:    M38002               986              1,2-propanediol         Lipid</span></span>
 <span><span class="co">##   2:    M34404              1805         1,3,7-trimethylurate   Xenobiotics</span></span>
 <span><span class="co">##   3:    M32391              1802            1,3-dimethylurate   Xenobiotics</span></span>
@@ -1465,6 +1542,7 @@ values.</p>
 <span><span class="co">## 785:    M42856              &lt;NA&gt;                    X - 19380          &lt;NA&gt;</span></span>
 <span><span class="co">## 786:    M42913              &lt;NA&gt;                    X - 19437          &lt;NA&gt;</span></span>
 <span><span class="co">##                                           SUB_PATHWAY COMP_ID  PLATFORM</span></span>
+<span><span class="co">##                                                &lt;char&gt;  &lt;char&gt;    &lt;char&gt;</span></span>
 <span><span class="co">##   1:                                    Ketone bodies   38002     GC/MS</span></span>
 <span><span class="co">##   2:                              Xanthine metabolism   34404 LC/MS Neg</span></span>
 <span><span class="co">##   3:                              Xanthine metabolism   32391     GC/MS</span></span>
@@ -1477,6 +1555,7 @@ values.</p>
 <span><span class="co">## 785:                                             &lt;NA&gt;   42856 LC/MS Neg</span></span>
 <span><span class="co">## 786:                                             &lt;NA&gt;   42913 LC/MS Neg</span></span>
 <span><span class="co">##                      RI               MASS  PUBCHEM        CAS   KEGG   HMDb_ID</span></span>
+<span><span class="co">##                  &lt;char&gt;             &lt;char&gt;   &lt;char&gt;     &lt;char&gt; &lt;char&gt;    &lt;char&gt;</span></span>
 <span><span class="co">##   1:               1041                117     &lt;NA&gt;   57-55-6; C00583 HMDB01881</span></span>
 <span><span class="co">##   2:               1988              209.1    79437 5415-44-1; C16361 HMDB02123</span></span>
 <span><span class="co">##   3:               1937 325.10000000000002    70346 944-73-0 ;   &lt;NA&gt; HMDB01857</span></span>
@@ -1489,6 +1568,7 @@ values.</p>
 <span><span class="co">## 785:               2287              412.4     &lt;NA&gt;       &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
 <span><span class="co">## 786: 1150.0999999999999              397.1     &lt;NA&gt;       &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;</span></span>
 <span><span class="co">##      COMP_IDstr</span></span>
+<span><span class="co">##          &lt;char&gt;</span></span>
 <span><span class="co">##   1:     M38002</span></span>
 <span><span class="co">##   2:     M34404</span></span>
 <span><span class="co">##   3:     M32391</span></span>
@@ -1502,47 +1582,49 @@ values.</p>
 <span><span class="co">## 786:     M42913</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @sampleData (ID:  sampleID ) ***</span></span>
-<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY T2D GC/MS LC/MS NEG LC/MS POS</span></span>
-<span><span class="co">##   1: QMDiab254 53.10335      0 32.05128         1   0     1         1         1</span></span>
-<span><span class="co">##   2: QMDiab290 39.79192      1 30.51426         4   0     1         1         1</span></span>
-<span><span class="co">##   3:  QMDiab54 36.82136      0 24.16831         1   0     1         1         1</span></span>
-<span><span class="co">##   4:  QMDiab55 34.75975      0 44.44444         1   1     1         1         1</span></span>
-<span><span class="co">##   5: QMDiab319 50.17933      1 27.18090         1   1     1         1         1</span></span>
-<span><span class="co">##  ---                                                                           </span></span>
-<span><span class="co">## 355:  QMDiab70 35.40315      1 33.83403         1   1     3         3         3</span></span>
-<span><span class="co">## 356: QMDiab118 49.06229      1 25.64494         1   0     3         3         3</span></span>
-<span><span class="co">## 357:  QMDiab65 47.22245      1 23.38435         1   0     3         3         3</span></span>
-<span><span class="co">## 358: QMDiab248 56.39151      0 27.58621         1   1     3         3         3</span></span>
-<span><span class="co">## 359:   QMDiab4 24.22450      0 41.66521         1   0     3         3         3</span></span>
-<span><span class="co">##      ID_injection_order QCsample</span></span>
-<span><span class="co">##   1:                  1        0</span></span>
-<span><span class="co">##   2:                  2        0</span></span>
-<span><span class="co">##   3:                  3        0</span></span>
-<span><span class="co">##   4:                  4        0</span></span>
-<span><span class="co">##   5:                  5        0</span></span>
-<span><span class="co">##  ---                            </span></span>
-<span><span class="co">## 355:                355        0</span></span>
-<span><span class="co">## 356:                356        0</span></span>
-<span><span class="co">## 357:                357        0</span></span>
-<span><span class="co">## 358:                358        0</span></span>
-<span><span class="co">## 359:                359        0</span></span>
+<span><span class="co">##       sampleID      AGE GENDER      BMI ETHNICITY   T2D GC/MS LC/MS NEG</span></span>
+<span><span class="co">##         &lt;char&gt;    &lt;num&gt;  &lt;num&gt;    &lt;num&gt;     &lt;num&gt; &lt;num&gt; &lt;int&gt;     &lt;int&gt;</span></span>
+<span><span class="co">##   1: QMDiab254 53.10335      0 32.05128         1     0     1         1</span></span>
+<span><span class="co">##   2: QMDiab290 39.79192      1 30.51426         4     0     1         1</span></span>
+<span><span class="co">##   3:  QMDiab54 36.82136      0 24.16831         1     0     1         1</span></span>
+<span><span class="co">##   4:  QMDiab55 34.75975      0 44.44444         1     1     1         1</span></span>
+<span><span class="co">##   5: QMDiab319 50.17933      1 27.18090         1     1     1         1</span></span>
+<span><span class="co">##  ---                                                                   </span></span>
+<span><span class="co">## 355:  QMDiab70 35.40315      1 33.83403         1     1     3         3</span></span>
+<span><span class="co">## 356: QMDiab118 49.06229      1 25.64494         1     0     3         3</span></span>
+<span><span class="co">## 357:  QMDiab65 47.22245      1 23.38435         1     0     3         3</span></span>
+<span><span class="co">## 358: QMDiab248 56.39151      0 27.58621         1     1     3         3</span></span>
+<span><span class="co">## 359:   QMDiab4 24.22450      0 41.66521         1     0     3         3</span></span>
+<span><span class="co">##      LC/MS POS ID_injection_order QCsample</span></span>
+<span><span class="co">##          &lt;int&gt;              &lt;int&gt;   &lt;fctr&gt;</span></span>
+<span><span class="co">##   1:         1                  1        0</span></span>
+<span><span class="co">##   2:         1                  2        0</span></span>
+<span><span class="co">##   3:         1                  3        0</span></span>
+<span><span class="co">##   4:         1                  4        0</span></span>
+<span><span class="co">##   5:         1                  5        0</span></span>
+<span><span class="co">##  ---                                      </span></span>
+<span><span class="co">## 355:         3                355        0</span></span>
+<span><span class="co">## 356:         3                356        0</span></span>
+<span><span class="co">## 357:         3                357        0</span></span>
+<span><span class="co">## 358:         3                358        0</span></span>
+<span><span class="co">## 359:         3                359        0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @miscData  ***</span></span>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpxJcNN8/temp_libpath8839451f2cbe/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Initiate data: 359 samples and 891 features.</span></span>
-<span><span class="co">## 04/02/24 19:19:04: Update data, action: change_featureID, 359 samples and 891 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:37: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Initiate data: 359 samples and 891 features.</span></span>
+<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 359 samples and 891 features. </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## 04/02/24 19:19:07: Run QC pipeline.</span></span>
-<span><span class="co">## 04/02/24 19:19:07: Filter data with a constant column, removed 28 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:07: Update data, action: keep_feature, 359 samples and 863 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:07: Filter data with a missing rate &gt;= 0.5, removed 76 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:07: Update data, action: keep_feature, 359 samples and 786 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:07: Replace outliers using `winsorize` method 5 SDs. </span></span>
-<span><span class="co">## 04/02/24 19:19:15: Update data, action: injection_order, 359 samples and 786 features. </span></span>
-<span><span class="co">## 04/02/24 19:19:15: Current data, 359 samples and 786 features.</span></span></code></pre>
+<span><span class="co">## 04/02/24 19:40:40: Run QC pipeline.</span></span>
+<span><span class="co">## 04/02/24 19:40:40: Filter data with a constant column, removed 28 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:40: Update data, action: keep_feature, 359 samples and 863 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:40: Filter data with a missing rate &gt;= 0.5, removed 76 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:40: Update data, action: keep_feature, 359 samples and 786 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:40: Replace outliers using `winsorize` method 5 SDs. </span></span>
+<span><span class="co">## 04/02/24 19:40:48: Update data, action: injection_order, 359 samples and 786 features. </span></span>
+<span><span class="co">## 04/02/24 19:40:48: Current data, 359 samples and 786 features.</span></span></code></pre>
 </details><p>We then selected the first 16 metabolites to show boxplot</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v_features</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/featureData.html">featureData</a></span><span class="op">(</span><span class="va">df_urine_QC</span><span class="op">)</span><span class="op">$</span><span class="va">featureID</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span><span class="op">]</span></span>
@@ -1771,14 +1853,16 @@ Nightingale’s NMR platform” below).</p>
 <span><span class="co">## BMI ~ AGE + GENDER + ETHNICITY + `feature`</span></span></code></pre>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fit_lm</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##      term     estimate std.error   statistic   p.value   n outcome model</span></span>
-<span><span class="co">## 1: M43027 -0.287065678 0.2909369 -0.98669400 0.3244762 356     BMI    lm</span></span>
-<span><span class="co">## 2: M11953  0.285148910 0.2945365  0.96812761 0.3336511 356     BMI    lm</span></span>
-<span><span class="co">## 3: M38002  0.063510129 0.2960686  0.21451153 0.8302735 356     BMI    lm</span></span>
-<span><span class="co">## 4: M34404  0.459471416 0.3109698  1.47754337 0.1404319 356     BMI    lm</span></span>
-<span><span class="co">## 5: M35963 -0.008355339 0.2942752 -0.02839294 0.9773650 356     BMI    lm</span></span>
-<span><span class="co">## 6: M35728  0.280617622 0.2929012  0.95806251 0.3386944 356     BMI    lm</span></span>
+<pre><code><span><span class="co">##      term     estimate std.error   statistic   p.value     n outcome  model</span></span>
+<span><span class="co">##    &lt;char&gt;        &lt;num&gt;     &lt;num&gt;       &lt;num&gt;     &lt;num&gt; &lt;int&gt;  &lt;char&gt; &lt;char&gt;</span></span>
+<span><span class="co">## 1: M43027 -0.287065678 0.2909369 -0.98669400 0.3244762   356     BMI     lm</span></span>
+<span><span class="co">## 2: M11953  0.285148910 0.2945365  0.96812761 0.3336511   356     BMI     lm</span></span>
+<span><span class="co">## 3: M38002  0.063510129 0.2960686  0.21451153 0.8302735   356     BMI     lm</span></span>
+<span><span class="co">## 4: M34404  0.459471416 0.3109698  1.47754337 0.1404319   356     BMI     lm</span></span>
+<span><span class="co">## 5: M35963 -0.008355339 0.2942752 -0.02839294 0.9773650   356     BMI     lm</span></span>
+<span><span class="co">## 6: M35728  0.280617622 0.2929012  0.95806251 0.3386944   356     BMI     lm</span></span>
 <span><span class="co">##    p.value.adj</span></span>
+<span><span class="co">##          &lt;num&gt;</span></span>
 <span><span class="co">## 1:           1</span></span>
 <span><span class="co">## 2:           1</span></span>
 <span><span class="co">## 3:           1</span></span>
@@ -1814,78 +1898,12 @@ Nightingale’s NMR platform” below).</p>
 <span><span class="co">## "HMDB0003339" "HMDB0000123" "HMDB0011172" "HMDB0003229" "HMDB0012458"</span></span></code></pre>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_sig</span><span class="op">$</span><span class="va">HMDB_anno</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/anno_hmdb.html">anno_hmdb</a></span><span class="op">(</span><span class="va">v_list</span><span class="op">)</span></span>
-<span><span class="va">df_sig</span></span></code></pre></div>
-<pre><code><span><span class="co">##       term  estimate std.error statistic      p.value   n outcome model</span></span>
-<span><span class="co">##  1: M01604  1.233122 0.2974927  4.145050 4.268753e-05 356     BMI    lm</span></span>
-<span><span class="co">##  2: M02132 -1.128078 0.2896670 -3.894397 1.179704e-04 356     BMI    lm</span></span>
-<span><span class="co">##  3: M15122  1.878923 0.3274293  5.738408 2.075711e-08 356     BMI    lm</span></span>
-<span><span class="co">##  4: M21047  1.254033 0.2858542  4.386968 1.524314e-05 356     BMI    lm</span></span>
-<span><span class="co">##  5: M22132  1.166521 0.2963684  3.936049 9.999276e-05 356     BMI    lm</span></span>
-<span><span class="co">##  6: M32322  1.577327 0.2986756  5.281072 2.264323e-07 356     BMI    lm</span></span>
-<span><span class="co">##  7: M32338 -1.263167 0.2903777 -4.350081 1.788941e-05 356     BMI    lm</span></span>
-<span><span class="co">##  8: M32393  1.398461 0.3180297  4.397267 1.457399e-05 356     BMI    lm</span></span>
-<span><span class="co">##  9: M33447  1.274460 0.3003524  4.243215 2.826921e-05 356     BMI    lm</span></span>
-<span><span class="co">## 10: M36776  1.390018 0.2915057  4.768408 2.731729e-06 356     BMI    lm</span></span>
-<span><span class="co">##      p.value.adj PATHWAY_SORTORDER</span></span>
-<span><span class="co">##  1: 2.326470e-02              1247</span></span>
-<span><span class="co">##  2: 6.429386e-02               263</span></span>
-<span><span class="co">##  3: 1.131263e-05               959</span></span>
-<span><span class="co">##  4: 8.307512e-03               182</span></span>
-<span><span class="co">##  5: 5.449606e-02               189</span></span>
-<span><span class="co">##  6: 1.234056e-04                39</span></span>
-<span><span class="co">##  7: 9.749729e-03                 1</span></span>
-<span><span class="co">##  8: 7.942822e-03               460</span></span>
-<span><span class="co">##  9: 1.540672e-02               702</span></span>
-<span><span class="co">## 10: 1.488793e-03              1157</span></span>
-<span><span class="co">##                                        BIOCHEMICAL SUPER_PATHWAY</span></span>
-<span><span class="co">##  1:                                          urate    Nucleotide</span></span>
-<span><span class="co">##  2:                                     citrulline    Amino acid</span></span>
-<span><span class="co">##  3:                                       glycerol         Lipid</span></span>
-<span><span class="co">##  4:                         3-methyl-2-oxobutyrate    Amino acid</span></span>
-<span><span class="co">##  5:                       alpha-hydroxyisocaproate    Amino acid</span></span>
-<span><span class="co">##  6:                                      glutamate    Amino acid</span></span>
-<span><span class="co">##  7:                                        glycine    Amino acid</span></span>
-<span><span class="co">##  8:                           gamma-glutamylvaline       Peptide</span></span>
-<span><span class="co">##  9:                          palmitoleate (16:1n7)         Lipid</span></span>
-<span><span class="co">## 10: 7-alpha-hydroxy-3-oxo-4-cholestenoate (7-Hoca)         Lipid</span></span>
-<span><span class="co">##                                     SUB_PATHWAY COMP_ID  PLATFORM     RI</span></span>
-<span><span class="co">##  1:         Purine metabolism, urate metabolism    1604 LC/MS Neg    769</span></span>
-<span><span class="co">##  2: Urea cycle; arginine-, proline-, metabolism    2132 LC/MS Pos    715</span></span>
-<span><span class="co">##  3:                     Glycerolipid metabolism   15122     GC/MS   1311</span></span>
-<span><span class="co">##  4:   Valine, leucine and isoleucine metabolism   21047 LC/MS Neg   1489</span></span>
-<span><span class="co">##  5:   Valine, leucine and isoleucine metabolism   22132 LC/MS Neg   1854</span></span>
-<span><span class="co">##  6:                        Glutamate metabolism   32322     GC/MS 1836.8</span></span>
-<span><span class="co">##  7:    Glycine, serine and threonine metabolism   32338     GC/MS 1486.9</span></span>
-<span><span class="co">##  8:                              gamma-glutamyl   32393 LC/MS Pos   2040</span></span>
-<span><span class="co">##  9:                       Long chain fatty acid   33447 LC/MS Neg   5477</span></span>
-<span><span class="co">## 10:                              Sterol/Steroid   36776 LC/MS Neg   5268</span></span>
-<span><span class="co">##                   MASS    PUBCHEM               CAS   KEGG   HMDb_ID COMP_IDstr</span></span>
-<span><span class="co">##  1:              167.1       &lt;NA&gt; 69-93-2;120K5305; C00366 HMDB00289     M01604</span></span>
-<span><span class="co">##  2:              176.1        833         372-75-8; C00327 HMDB00904     M02132</span></span>
-<span><span class="co">##  3:                205        753          56-81-5; C00116 HMDB00131     M15122</span></span>
-<span><span class="co">##  4:              115.1         49        3715-29-5; C00141 HMDB00019     M21047</span></span>
-<span><span class="co">##  5: 131.19999999999999      83697       10303-64-7; C03264 HMDB00746     M22132</span></span>
-<span><span class="co">##  6:              362.2        611          56-86-0; C00025 HMDB03339     M32322</span></span>
-<span><span class="co">##  7:              218.1 5257127750          56-40-6; C00037 HMDB00123     M32338</span></span>
-<span><span class="co">##  8:              247.2       &lt;NA&gt;        2746-34-1;   &lt;NA&gt; HMDB11172     M32393</span></span>
-<span><span class="co">##  9:              253.3     445638         373-49-9; C08362 HMDB03229     M33447</span></span>
-<span><span class="co">## 10:              429.4    3081085      115538-85-7; C17337 HMDB12458     M36776</span></span>
-<span><span class="co">##     sig      HMDB_anno</span></span>
-<span><span class="co">##  1:   1 &lt;HmdbEntry[6]&gt;</span></span>
-<span><span class="co">##  2:   1 &lt;HmdbEntry[6]&gt;</span></span>
-<span><span class="co">##  3:   1 &lt;HmdbEntry[6]&gt;</span></span>
-<span><span class="co">##  4:   1 &lt;HmdbEntry[6]&gt;</span></span>
-<span><span class="co">##  5:   1 &lt;HmdbEntry[6]&gt;</span></span>
-<span><span class="co">##  6:   1 &lt;HmdbEntry[6]&gt;</span></span>
-<span><span class="co">##  7:   1 &lt;HmdbEntry[6]&gt;</span></span>
-<span><span class="co">##  8:   1 &lt;HmdbEntry[6]&gt;</span></span>
-<span><span class="co">##  9:   1 &lt;HmdbEntry[6]&gt;</span></span>
-<span><span class="co">## 10:   1 &lt;HmdbEntry[6]&gt;</span></span></code></pre>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># explore the first entry</span></span>
+<span><span class="co"># df_sig</span></span>
+<span></span>
+<span><span class="co"># explore the first entry</span></span>
 <span><span class="va">df_sig</span><span class="op">$</span><span class="va">HMDB_anno</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">@</span><span class="va">metabolite</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Uric acid"</span></span></code></pre>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_sig</span><span class="op">$</span><span class="va">HMDB_anno</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">@</span><span class="va">diseases</span></span></code></pre></div>
 <pre><code><span><span class="co">##            disease                    disease                      disease </span></span>
 <span><span class="co">## name       "Diabetes mellitus type 2" "Impaired glucose tolerance" "Gout"  </span></span>
@@ -1953,7 +1971,7 @@ Nightingale’s NMR platform” below).</p>
 <div class="section level3">
 <h3 id="association-analysis-2-logistic-regression">Association analysis 2: logistic regression<a class="anchor" aria-label="anchor" href="#association-analysis-2-logistic-regression"></a>
 </h3>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit_glm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regression.html">regression</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">df_plasma_scale</span>, phenoData <span class="op">=</span> <span class="cn">NULL</span>, </span>
 <span>                      model <span class="op">=</span> <span class="st">"logistic"</span>, outcome <span class="op">=</span> <span class="st">"T2D"</span>,</span>
 <span>                      covars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AGE"</span>,<span class="st">"GENDER"</span>, <span class="st">"ETHNICITY"</span><span class="op">)</span>, </span>
@@ -1964,23 +1982,25 @@ Nightingale’s NMR platform” below).</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## Run `logistic` model for 545 features: </span></span>
 <span><span class="co">## T2D ~ AGE + GENDER + ETHNICITY + `feature`</span></span></code></pre>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fit_glm</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##      term    estimate std.error   statistic    p.value   n outcome    model</span></span>
-<span><span class="co">## 1: M43027 -0.01513772 0.1249949 -0.12110676 0.90360647 356     T2D logistic</span></span>
-<span><span class="co">## 2: M11953  0.07313020 0.1258779  0.58096115 0.56126664 356     T2D logistic</span></span>
-<span><span class="co">## 3: M38002  0.01273692 0.1286644  0.09899333 0.92114357 356     T2D logistic</span></span>
-<span><span class="co">## 4: M34404  0.02452545 0.1413296  0.17353372 0.86223193 356     T2D logistic</span></span>
-<span><span class="co">## 5: M35963  0.35664968 0.1338055  2.66543322 0.00768892 356     T2D logistic</span></span>
-<span><span class="co">## 6: M35728  0.01557804 0.1306566  0.11922888 0.90509402 356     T2D logistic</span></span>
+<pre><code><span><span class="co">##      term    estimate std.error   statistic    p.value     n outcome    model</span></span>
+<span><span class="co">##    &lt;char&gt;       &lt;num&gt;     &lt;num&gt;       &lt;num&gt;      &lt;num&gt; &lt;int&gt;  &lt;char&gt;   &lt;char&gt;</span></span>
+<span><span class="co">## 1: M43027 -0.01513772 0.1249949 -0.12110676 0.90360647   356     T2D logistic</span></span>
+<span><span class="co">## 2: M11953  0.07313020 0.1258779  0.58096115 0.56126664   356     T2D logistic</span></span>
+<span><span class="co">## 3: M38002  0.01273692 0.1286644  0.09899333 0.92114357   356     T2D logistic</span></span>
+<span><span class="co">## 4: M34404  0.02452545 0.1413296  0.17353372 0.86223193   356     T2D logistic</span></span>
+<span><span class="co">## 5: M35963  0.35664968 0.1338055  2.66543322 0.00768892   356     T2D logistic</span></span>
+<span><span class="co">## 6: M35728  0.01557804 0.1306566  0.11922888 0.90509402   356     T2D logistic</span></span>
 <span><span class="co">##    p.value.adj</span></span>
+<span><span class="co">##          &lt;num&gt;</span></span>
 <span><span class="co">## 1:           1</span></span>
 <span><span class="co">## 2:           1</span></span>
 <span><span class="co">## 3:           1</span></span>
 <span><span class="co">## 4:           1</span></span>
 <span><span class="co">## 5:           1</span></span>
 <span><span class="co">## 6:           1</span></span></code></pre>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html" class="external-link">merge</a></span><span class="op">(</span><span class="va">fit_glm</span>, <span class="fu"><a href="../reference/featureData.html">featureData</a></span><span class="op">(</span><span class="va">df_plasma_scale</span><span class="op">)</span>, by.x <span class="op">=</span> <span class="st">"term"</span>, by.y <span class="op">=</span> <span class="st">"featureID"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">dd</span><span class="op">[</span>, <span class="va">sig</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">p.value.adj</span> <span class="op">&lt;</span> <span class="fl">0.1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">]</span></span>
@@ -1992,7 +2012,7 @@ Nightingale’s NMR platform” below).</p>
 <div class="section level3">
 <h3 id="association-analysis-3-multiple-outcomes-using-model-auto">Association analysis 3: multiple outcomes, using model = “auto”<a class="anchor" aria-label="anchor" href="#association-analysis-3-multiple-outcomes-using-model-auto"></a>
 </h3>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regression.html">regression</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">df_plasma_scale</span>, phenoData <span class="op">=</span> <span class="cn">NULL</span>, </span>
 <span>                   model <span class="op">=</span> <span class="st">"auto"</span>, outcome <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BMI"</span>, <span class="st">"T2D"</span><span class="op">)</span>,</span>
 <span>                   covars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AGE"</span>,<span class="st">"GENDER"</span>, <span class="st">"ETHNICITY"</span><span class="op">)</span>, </span>
@@ -2009,23 +2029,25 @@ Nightingale’s NMR platform” below).</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## Run `logistic` model for 545 features: </span></span>
 <span><span class="co">## T2D ~ AGE + GENDER + ETHNICITY + `feature`</span></span></code></pre>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##      term     estimate std.error   statistic   p.value   n outcome model</span></span>
-<span><span class="co">## 1: M43027 -0.287065678 0.2909369 -0.98669400 0.3244762 356     BMI    lm</span></span>
-<span><span class="co">## 2: M11953  0.285148910 0.2945365  0.96812761 0.3336511 356     BMI    lm</span></span>
-<span><span class="co">## 3: M38002  0.063510129 0.2960686  0.21451153 0.8302735 356     BMI    lm</span></span>
-<span><span class="co">## 4: M34404  0.459471416 0.3109698  1.47754337 0.1404319 356     BMI    lm</span></span>
-<span><span class="co">## 5: M35963 -0.008355339 0.2942752 -0.02839294 0.9773650 356     BMI    lm</span></span>
-<span><span class="co">## 6: M35728  0.280617622 0.2929012  0.95806251 0.3386944 356     BMI    lm</span></span>
+<pre><code><span><span class="co">##      term     estimate std.error   statistic   p.value     n outcome  model</span></span>
+<span><span class="co">##    &lt;char&gt;        &lt;num&gt;     &lt;num&gt;       &lt;num&gt;     &lt;num&gt; &lt;int&gt;  &lt;char&gt; &lt;char&gt;</span></span>
+<span><span class="co">## 1: M43027 -0.287065678 0.2909369 -0.98669400 0.3244762   356     BMI     lm</span></span>
+<span><span class="co">## 2: M11953  0.285148910 0.2945365  0.96812761 0.3336511   356     BMI     lm</span></span>
+<span><span class="co">## 3: M38002  0.063510129 0.2960686  0.21451153 0.8302735   356     BMI     lm</span></span>
+<span><span class="co">## 4: M34404  0.459471416 0.3109698  1.47754337 0.1404319   356     BMI     lm</span></span>
+<span><span class="co">## 5: M35963 -0.008355339 0.2942752 -0.02839294 0.9773650   356     BMI     lm</span></span>
+<span><span class="co">## 6: M35728  0.280617622 0.2929012  0.95806251 0.3386944   356     BMI     lm</span></span>
 <span><span class="co">##    p.value.adj</span></span>
+<span><span class="co">##          &lt;num&gt;</span></span>
 <span><span class="co">## 1:           1</span></span>
 <span><span class="co">## 2:           1</span></span>
 <span><span class="co">## 3:           1</span></span>
 <span><span class="co">## 4:           1</span></span>
 <span><span class="co">## 5:           1</span></span>
 <span><span class="co">## 6:           1</span></span></code></pre>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dd2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html" class="external-link">merge</a></span><span class="op">(</span><span class="va">fit2</span>, <span class="fu"><a href="../reference/featureData.html">featureData</a></span><span class="op">(</span><span class="va">df_plasma_scale</span><span class="op">)</span>, by.x <span class="op">=</span> <span class="st">"term"</span>, by.y <span class="op">=</span> <span class="st">"featureID"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">dd2</span><span class="op">[</span>, <span class="va">sig</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">p.value.adj</span> <span class="op">&lt;</span> <span class="fl">0.1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">]</span></span>
@@ -2037,18 +2059,18 @@ Nightingale’s NMR platform” below).</p>
 <div class="section level2">
 <h2 id="roc">ROC<a class="anchor" aria-label="anchor" href="#roc"></a>
 </h2>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ROC for one variable, to add a wrapped for many metabolites separately</span></span>
 <span><span class="fu"><a href="../reference/plot_ROC.html">plot_ROC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">df_plasma_scale</span>, y <span class="op">=</span> <span class="st">"T2D"</span>, x <span class="op">=</span> <span class="st">"M00527"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Introduction_files/figure-html/unnamed-chunk-36-1.png" width="864"></p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_ROC.html">plot_ROC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">df_plasma_scale</span>, y <span class="op">=</span> <span class="st">"T2D"</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"M00527"</span>, <span class="st">"BMI"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Introduction_files/figure-html/unnamed-chunk-36-2.png" width="864"></p>
 <p><br><br></p>
 <div class="section level3">
 <h3 id="roc-compare-two-models">ROC: compare two models<a class="anchor" aria-label="anchor" href="#roc-compare-two-models"></a>
 </h3>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_ROC.html">plot_ROC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">df_plasma_scale</span>, y <span class="op">=</span> <span class="st">"T2D"</span>, </span>
 <span>         model_a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BMI"</span>, <span class="st">"AGE"</span>, <span class="st">"GENDER"</span><span class="op">)</span>, </span>
 <span>         model_b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"M00527"</span>, <span class="st">"BMI"</span>, <span class="st">"AGE"</span>, <span class="st">"GENDER"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -2070,7 +2092,7 @@ metabolomicsR data structure.</p>
 <p>We have provided various regression models in the
 <a href="https://github.com/XikunHan/metabolomicsR" class="external-link">metabolomicsR</a> package. Here we show how to extend the
 <code>{regression}</code> function to other models.</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># for example, to fit a Negative Binomial Generalized Linear Model, we first define a `fit_glm.nb` function. </span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/" class="external-link">MASS</a></span><span class="op">)</span></span>
@@ -2113,7 +2135,7 @@ metabolomicsR data structure.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## Run `glm.nb` model for 50 features: </span></span>
 <span><span class="co">## toy_y ~ AGE + GENDER + ETHNICITY + `feature`</span></span></code></pre>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html" class="external-link">merge</a></span><span class="op">(</span><span class="va">fit</span>, <span class="fu"><a href="../reference/featureData.html">featureData</a></span><span class="op">(</span><span class="va">df_plasma_scale</span><span class="op">)</span>, by.x <span class="op">=</span> <span class="st">"term"</span>, by.y <span class="op">=</span> <span class="st">"featureID"</span><span class="op">)</span></span>
 <span><span class="va">dd</span><span class="op">[</span>, <span class="va">sig</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">p.value.adj</span> <span class="op">&lt;</span> <span class="fl">0.1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="fu"><a href="../reference/plot_volcano.html">plot_volcano</a></span><span class="op">(</span><span class="va">dd</span>, color <span class="op">=</span> <span class="cn">NULL</span>, label <span class="op">=</span> <span class="st">"BIOCHEMICAL"</span><span class="op">)</span></span></code></pre></div>
@@ -2124,10 +2146,10 @@ metabolomicsR data structure.</p>
 </h3>
 <p>Here, we show an extension example to detect genuine untargeted
 metabolic features based on a previous method (genuMet):</p>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res_genuMet</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/genuMet_makefeature.html">genuMet_makefeature</a></span><span class="op">(</span><span class="va">df_plasma</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "70 windows in total"</span></span></code></pre>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">res_genuMet</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## List of 10</span></span>
 <span><span class="co">##  $ mbnames     : chr [1:758] "M43027" "M11953" "M38002" "M34404" ...</span></span>
@@ -2147,7 +2169,7 @@ metabolic features based on a previous method (genuMet):</p>
 </h3>
 <p>In this section, we show two functions to bridge the data objects
 between R package maplet and our package metabolomicsR.</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load the data from maplet. </span></span>
 <span><span class="co"># the maplet package is available at: https://github.com/krumsieklab/maplet </span></span>
 <span></span>
@@ -2178,7 +2200,7 @@ between R package maplet and our package metabolomicsR.</p>
 <p>In this section, we show the application of our metabolomicsR package
 to Nightingale’s NMR platform data, including data import,
 transformation, visualization, and association analysis.</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># the Nightingale data were downloaded from https://nightingalehealth.github.io/ggforestplot/articles/nmr-data-analysis-tutorial.html</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com" class="external-link">data.table</a></span><span class="op">)</span></span>
@@ -2198,7 +2220,7 @@ transformation, visualization, and association analysis.</p>
 <span></span>
 <span><span class="fu"><a href="../reference/plot_Metabolite.html">plot_Metabolite</a></span><span class="op">(</span><span class="va">df</span>, plot <span class="op">=</span> <span class="st">"boxplot"</span>, x <span class="op">=</span> <span class="st">"obesity"</span>, color <span class="op">=</span><span class="st">"obesity"</span>, shape <span class="op">=</span> <span class="st">"obesity"</span>, feature_name <span class="op">=</span> <span class="st">"GlycA"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Introduction_files/figure-html/unnamed-chunk-42-1.png" width="700"></p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Transformation</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span>  <span class="fu"><a href="../reference/transformation.html">transformation</a></span><span class="op">(</span><span class="va">df</span>, method <span class="op">=</span> <span class="st">"log1p"</span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span>  <span class="fu"><a href="../reference/transformation.html">transformation</a></span><span class="op">(</span><span class="va">df</span>, method <span class="op">=</span> <span class="st">"scale"</span><span class="op">)</span></span>
@@ -2211,21 +2233,23 @@ transformation, visualization, and association analysis.</p>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">## Run `lm` model for 5 features: </span></span>
 <span><span class="co">## `feature` ~ BMI + gender + baseline_age</span></span></code></pre>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># the results were the same as the "nmr-data-analysis-tutorial.html"</span></span>
 <span><span class="va">fit</span></span></code></pre></div>
-<pre><code><span><span class="co">##    term   estimate   std.error statistic      p.value    n        outcome</span></span>
-<span><span class="co">## 1:  BMI 0.01691751 0.005443141  3.108042 1.911458e-03 1887        Total_C</span></span>
-<span><span class="co">## 2:  BMI 0.02934311 0.005361011  5.473428 5.005349e-08 1887      non_HDL_C</span></span>
-<span><span class="co">## 3:  BMI 0.03026573 0.005351079  5.656005 1.786960e-08 1887      Remnant_C</span></span>
-<span><span class="co">## 4:  BMI 0.04278407 0.005261748  8.131150 7.627291e-16 1887         VLDL_C</span></span>
-<span><span class="co">## 5:  BMI 0.02508980 0.005406182  4.640946 3.707453e-06 1887 Clinical_LDL_C</span></span>
-<span><span class="co">##    exposure model  p.value.adj</span></span>
-<span><span class="co">## 1:      BMI    lm 9.557289e-03</span></span>
-<span><span class="co">## 2:      BMI    lm 2.502674e-07</span></span>
-<span><span class="co">## 3:      BMI    lm 8.934801e-08</span></span>
-<span><span class="co">## 4:      BMI    lm 3.813646e-15</span></span>
-<span><span class="co">## 5:      BMI    lm 1.853727e-05</span></span></code></pre>
+<pre><code><span><span class="co">##      term   estimate   std.error statistic      p.value     n        outcome</span></span>
+<span><span class="co">##    &lt;char&gt;      &lt;num&gt;       &lt;num&gt;     &lt;num&gt;        &lt;num&gt; &lt;int&gt;         &lt;char&gt;</span></span>
+<span><span class="co">## 1:    BMI 0.01691751 0.005443141  3.108042 1.911458e-03  1887        Total_C</span></span>
+<span><span class="co">## 2:    BMI 0.02934311 0.005361011  5.473428 5.005349e-08  1887      non_HDL_C</span></span>
+<span><span class="co">## 3:    BMI 0.03026573 0.005351079  5.656005 1.786960e-08  1887      Remnant_C</span></span>
+<span><span class="co">## 4:    BMI 0.04278407 0.005261748  8.131150 7.627291e-16  1887         VLDL_C</span></span>
+<span><span class="co">## 5:    BMI 0.02508980 0.005406182  4.640946 3.707453e-06  1887 Clinical_LDL_C</span></span>
+<span><span class="co">##    exposure  model  p.value.adj</span></span>
+<span><span class="co">##      &lt;char&gt; &lt;char&gt;        &lt;num&gt;</span></span>
+<span><span class="co">## 1:      BMI     lm 9.557289e-03</span></span>
+<span><span class="co">## 2:      BMI     lm 2.502674e-07</span></span>
+<span><span class="co">## 3:      BMI     lm 8.934801e-08</span></span>
+<span><span class="co">## 4:      BMI     lm 3.813646e-15</span></span>
+<span><span class="co">## 5:      BMI     lm 1.853727e-05</span></span></code></pre>
 <p><br></p>
 </div>
 </div>
@@ -2266,7 +2290,7 @@ Workflow to Analyze Metabolomic Data in R.” Bioinformatics Advances 2
 (1): vbac067. <a href="https://doi.org/10.1093/bioadv/vbac067" class="external-link uri">https://doi.org/10.1093/bioadv/vbac067</a></p>
 </blockquote>
 <details><summary><strong>Session Info</strong>
-</summary><div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## R version 4.3.0 (2023-04-21)</span></span>
 <span><span class="co">## Platform: aarch64-apple-darwin20 (64-bit)</span></span>
@@ -2287,37 +2311,37 @@ Workflow to Analyze Metabolomic Data in R.” Bioinformatics Advances 2
 <span><span class="co">## </span></span>
 <span><span class="co">## other attached packages:</span></span>
 <span><span class="co">## [1] MASS_7.3-60         stringr_1.5.0       plotROC_2.3.1      </span></span>
-<span><span class="co">## [4] cowplot_1.1.1       ggplot2_3.4.4       data.table_1.14.8  </span></span>
+<span><span class="co">## [4] cowplot_1.1.1       ggplot2_3.4.4       data.table_1.15.0  </span></span>
 <span><span class="co">## [7] metabolomicsR_1.1.0 BiocStyle_2.28.1   </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## loaded via a namespace (and not attached):</span></span>
-<span><span class="co">##   [1] RColorBrewer_1.1-3      rstudioapi_0.14         jsonlite_1.8.4         </span></span>
+<span><span class="co">##   [1] RColorBrewer_1.1-3      rstudioapi_0.14         jsonlite_1.8.8         </span></span>
 <span><span class="co">##   [4] datawizard_0.9.1        umap_0.2.10.0           correlation_0.8.4      </span></span>
 <span><span class="co">##   [7] magrittr_2.0.3          farver_2.1.1            rmarkdown_2.22         </span></span>
-<span><span class="co">##  [10] fs_1.6.2                ragg_1.2.5              vctrs_0.6.5            </span></span>
+<span><span class="co">##  [10] fs_1.6.3                ragg_1.2.5              vctrs_0.6.5            </span></span>
 <span><span class="co">##  [13] memoise_2.0.1           paletteer_1.6.0         askpass_1.1            </span></span>
-<span><span class="co">##  [16] effectsize_0.8.6        htmltools_0.5.5         curl_5.0.0             </span></span>
+<span><span class="co">##  [16] effectsize_0.8.6        htmltools_0.5.7         curl_5.0.0             </span></span>
 <span><span class="co">##  [19] broom_1.0.5             cellranger_1.1.0        pROC_1.18.4            </span></span>
-<span><span class="co">##  [22] sass_0.4.6              parallelly_1.36.0       bslib_0.4.2            </span></span>
-<span><span class="co">##  [25] desc_1.4.2              plyr_1.8.8              cachem_1.0.8           </span></span>
-<span><span class="co">##  [28] mime_0.12               lifecycle_1.0.3         iterators_1.0.14       </span></span>
+<span><span class="co">##  [22] sass_0.4.8              parallelly_1.36.0       bslib_0.6.1            </span></span>
+<span><span class="co">##  [25] desc_1.4.2              plyr_1.8.9              cachem_1.0.8           </span></span>
+<span><span class="co">##  [28] mime_0.12               lifecycle_1.0.4         iterators_1.0.14       </span></span>
 <span><span class="co">##  [31] pkgconfig_2.0.3         Matrix_1.6-1.1          R6_2.5.1               </span></span>
-<span><span class="co">##  [34] fastmap_1.1.1           future_1.33.1           shiny_1.7.4            </span></span>
-<span><span class="co">##  [37] BayesFactor_0.9.12-4.7  digest_0.6.31           colorspace_2.1-0       </span></span>
+<span><span class="co">##  [34] fastmap_1.1.1           future_1.33.1           shiny_1.8.0            </span></span>
+<span><span class="co">##  [37] BayesFactor_0.9.12-4.7  digest_0.6.34           colorspace_2.1-0       </span></span>
 <span><span class="co">##  [40] rematch2_2.1.2          S4Vectors_0.38.1        patchwork_1.2.0        </span></span>
 <span><span class="co">##  [43] rprojroot_2.0.3         prismatic_1.1.1         RSpectra_0.16-1        </span></span>
-<span><span class="co">##  [46] textshaping_0.3.6       labeling_0.4.2          progressr_0.14.0       </span></span>
-<span><span class="co">##  [49] fansi_1.0.4             compiler_4.3.0          fontquiver_0.2.1       </span></span>
-<span><span class="co">##  [52] withr_2.5.0             doParallel_1.0.17       backports_1.4.1        </span></span>
+<span><span class="co">##  [46] textshaping_0.3.6       labeling_0.4.3          progressr_0.14.0       </span></span>
+<span><span class="co">##  [49] fansi_1.0.6             compiler_4.3.0          fontquiver_0.2.1       </span></span>
+<span><span class="co">##  [52] withr_3.0.0             doParallel_1.0.17       backports_1.4.1        </span></span>
 <span><span class="co">##  [55] highr_0.10              hmdbQuery_1.20.0        Rttf2pt1_1.3.12        </span></span>
 <span><span class="co">##  [58] openssl_2.0.6           corpcor_1.6.10          gfonts_0.2.0           </span></span>
-<span><span class="co">##  [61] tools_4.3.0             httpuv_1.6.11           extrafontdb_1.0        </span></span>
-<span><span class="co">##  [64] statsExpressions_1.5.3  glue_1.6.2              promises_1.2.0.1       </span></span>
+<span><span class="co">##  [61] tools_4.3.0             httpuv_1.6.14           extrafontdb_1.0        </span></span>
+<span><span class="co">##  [64] statsExpressions_1.5.3  glue_1.7.0              promises_1.2.1         </span></span>
 <span><span class="co">##  [67] grid_4.3.0              Rtsne_0.16              cluster_2.1.4          </span></span>
 <span><span class="co">##  [70] reshape2_1.4.4          generics_0.1.3          snow_0.4-4             </span></span>
-<span><span class="co">##  [73] gtable_0.3.3            tidyr_1.3.0             utf8_1.2.3             </span></span>
+<span><span class="co">##  [73] gtable_0.3.4            tidyr_1.3.0             utf8_1.2.4             </span></span>
 <span><span class="co">##  [76] BiocGenerics_0.46.0     ggrepel_0.9.5           foreach_1.5.2          </span></span>
-<span><span class="co">##  [79] pillar_1.9.0            later_1.3.1             dplyr_1.1.4            </span></span>
+<span><span class="co">##  [79] pillar_1.9.0            later_1.3.2             dplyr_1.1.4            </span></span>
 <span><span class="co">##  [82] lattice_0.21-8          FNN_1.1.3.2             ggstatsplot_0.12.2     </span></span>
 <span><span class="co">##  [85] tidyselect_1.2.0        fontLiberation_0.1.0    pbapply_1.7-2          </span></span>
 <span><span class="co">##  [88] knitr_1.43              fontBitstreamVera_0.1.1 genuMet_1.0.1          </span></span>
@@ -2325,17 +2349,17 @@ Workflow to Analyze Metabolomic Data in R.” Bioinformatics Advances 2
 <span><span class="co">##  [94] crul_1.4.0              xfun_0.39               stringi_1.7.12         </span></span>
 <span><span class="co">##  [97] yaml_2.3.7              evaluate_0.21           codetools_0.2-19       </span></span>
 <span><span class="co">## [100] httpcode_0.3.0          extrafont_0.19          gdtools_0.3.5          </span></span>
-<span><span class="co">## [103] tibble_3.2.1            BiocManager_1.30.20     cli_3.6.1              </span></span>
+<span><span class="co">## [103] tibble_3.2.1            BiocManager_1.30.20     cli_3.6.2              </span></span>
 <span><span class="co">## [106] xtable_1.8-4            parameters_0.21.4       reticulate_1.35.0      </span></span>
 <span><span class="co">## [109] systemfonts_1.0.4       munsell_0.5.0           jquerylib_0.1.4        </span></span>
-<span><span class="co">## [112] Rcpp_1.0.10             readxl_1.4.2            doSNOW_1.0.20          </span></span>
+<span><span class="co">## [112] Rcpp_1.0.12             readxl_1.4.2            doSNOW_1.0.20          </span></span>
 <span><span class="co">## [115] globals_0.16.2          zeallot_0.1.0           coda_0.19-4            </span></span>
-<span><span class="co">## [118] png_0.1-8               XML_3.99-0.14           parallel_4.3.0         </span></span>
+<span><span class="co">## [118] png_0.1-8               XML_3.99-0.16.1         parallel_4.3.0         </span></span>
 <span><span class="co">## [121] MatrixModels_0.5-2      ellipsis_0.3.2          pkgdown_2.0.7          </span></span>
 <span><span class="co">## [124] bayestestR_0.13.1       listenv_0.9.1           matrixcalc_1.0-6       </span></span>
 <span><span class="co">## [127] mvtnorm_1.2-4           hrbrthemes_0.8.0        scales_1.3.0           </span></span>
 <span><span class="co">## [130] insight_0.19.8          purrr_1.0.2             crayon_1.5.2           </span></span>
-<span><span class="co">## [133] rlang_1.1.1</span></span></code></pre>
+<span><span class="co">## [133] rlang_1.1.3</span></span></code></pre>
 </details>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

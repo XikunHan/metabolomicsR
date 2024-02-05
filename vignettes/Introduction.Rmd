@@ -214,6 +214,7 @@ p$p
 ```{r}
 
 df_saliva_QC <- QC_pipeline(df_saliva, replace_outlier_method = "winsorize", impute_method = NULL)
+
 ```
 
 <details>
@@ -504,7 +505,7 @@ v_list <- sapply(df_sig$HMDb_ID, add_two_zeros)
 v_list
 
 df_sig$HMDB_anno <- anno_hmdb(v_list)
-df_sig
+# df_sig
 
 # explore the first entry
 df_sig$HMDB_anno[[1]]@metabolite
