@@ -5,64 +5,48 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="metabolomicsR">
 <title>An introduction to the metabolomicsR • metabolomicsR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="An introduction to the metabolomicsR">
-<meta property="og:description" content="metabolomicsR">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="An introduction to the metabolomicsR">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">metabolomicsR</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/Introduction.html">An introduction to the metabolomicsR</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/Introduction.html">An introduction to the metabolomicsR</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/XikunHan/metabolomicsR/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/XikunHan/metabolomicsR/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article">
 
@@ -71,7 +55,8 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>An introduction to the metabolomicsR</h1>
+
+      <h1>An introduction to the metabolomicsR</h1>
                         <h4 data-toc-skip class="author">Xikun Han</h4>
                         
       
@@ -334,8 +319,8 @@ that imported into R.</p>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:40:36: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:40:36: Initiate data: 356 samples and 758 features.</span></span></code></pre>
+<span><span class="co">## 30/09/24 15:03:21: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpT8jCiy/temp_libpath4093848d1ed/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Initiate data: 356 samples and 758 features.</span></span></code></pre>
 </details><p>The <code>{update_Metabolite}</code> function provides several
 methods to update the data, including “injection_order”, “keep_feature”,
 “remove_feature”, “keep_sample”, “remove_sample”,
@@ -463,9 +448,9 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:40:36: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:40:36: Initiate data: 356 samples and 758 features.</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 356 samples and 758 features.</span></span></code></pre>
+<span><span class="co">## 30/09/24 15:03:21: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpT8jCiy/temp_libpath4093848d1ed/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Initiate data: 356 samples and 758 features.</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Update data, action: change_featureID, 356 samples and 758 features.</span></span></code></pre>
 </details><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load urine metabolomic data</span></span>
 <span><span class="va">df_urine</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_excel.html">load_excel</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">file_path</span>,</span>
@@ -597,9 +582,9 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Initiate data: 359 samples and 891 features.</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 359 samples and 891 features.</span></span></code></pre>
+<span><span class="co">## 30/09/24 15:03:21: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpT8jCiy/temp_libpath4093848d1ed/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Initiate data: 359 samples and 891 features.</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Update data, action: change_featureID, 359 samples and 891 features.</span></span></code></pre>
 </details><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load saliva metatabolomic data</span></span>
 <span><span class="va">df_saliva</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_excel.html">load_excel</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">file_path</span>,</span>
@@ -730,9 +715,9 @@ methods to update the data, including “injection_order”, “keep_feature”,
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Initiate data: 321 samples and 602 features.</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 321 samples and 602 features.</span></span></code></pre>
+<span><span class="co">## 30/09/24 15:03:21: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpT8jCiy/temp_libpath4093848d1ed/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Initiate data: 321 samples and 602 features.</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Update data, action: change_featureID, 321 samples and 602 features.</span></span></code></pre>
 </details><p><br><br></p>
 </div>
 <div class="section level2">
@@ -944,16 +929,16 @@ function</p>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:40:36: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:40:36: Initiate data: 356 samples and 758 features.</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 356 samples and 758 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:21: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpT8jCiy/temp_libpath4093848d1ed/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Initiate data: 356 samples and 758 features.</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Update data, action: change_featureID, 356 samples and 758 features. </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## 04/02/24 19:40:39: Run QC pipeline.</span></span>
-<span><span class="co">## 04/02/24 19:40:39: Filter data with a constant column, removed 37 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:39: Update data, action: keep_feature, 356 samples and 721 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:39: Filter data with a missing rate &gt;= 0.5, removed 175 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:39: Update data, action: keep_feature, 356 samples and 545 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:39: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
+<span><span class="co">## 30/09/24 15:03:23: Run QC pipeline.</span></span>
+<span><span class="co">## 30/09/24 15:03:23: Filter data with a constant column, removed 37 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:23: Update data, action: keep_feature, 356 samples and 721 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:23: Filter data with a missing rate &gt;= 0.5, removed 175 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:23: Update data, action: keep_feature, 356 samples and 545 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:23: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
 </details><p>For the urine QC metrics:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_QC.html">plot_QC</a></span><span class="op">(</span><span class="va">df_urine</span><span class="op">)</span></span>
@@ -1085,16 +1070,16 @@ function</p>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Initiate data: 359 samples and 891 features.</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 359 samples and 891 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:21: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpT8jCiy/temp_libpath4093848d1ed/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Initiate data: 359 samples and 891 features.</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Update data, action: change_featureID, 359 samples and 891 features. </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## 04/02/24 19:40:40: Run QC pipeline.</span></span>
-<span><span class="co">## 04/02/24 19:40:40: Filter data with a constant column, removed 28 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:40: Update data, action: keep_feature, 359 samples and 863 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:40: Filter data with a missing rate &gt;= 0.5, removed 76 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:40: Update data, action: keep_feature, 359 samples and 786 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:40: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
+<span><span class="co">## 30/09/24 15:03:24: Run QC pipeline.</span></span>
+<span><span class="co">## 30/09/24 15:03:24: Filter data with a constant column, removed 28 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:24: Update data, action: keep_feature, 359 samples and 863 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:24: Filter data with a missing rate &gt;= 0.5, removed 76 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:24: Update data, action: keep_feature, 359 samples and 786 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:24: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
 </details><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_QC.html">plot_QC</a></span><span class="op">(</span><span class="va">df_saliva</span><span class="op">)</span></span>
 <span><span class="va">p</span><span class="op">$</span><span class="va">p</span></span></code></pre></div>
@@ -1225,16 +1210,16 @@ function</p>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Initiate data: 321 samples and 602 features.</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 321 samples and 602 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:21: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpT8jCiy/temp_libpath4093848d1ed/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Initiate data: 321 samples and 602 features.</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Update data, action: change_featureID, 321 samples and 602 features. </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## 04/02/24 19:40:41: Run QC pipeline.</span></span>
-<span><span class="co">## 04/02/24 19:40:41: Filter data with a constant column, removed 35 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:41: Update data, action: keep_feature, 321 samples and 567 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:41: Filter data with a missing rate &gt;= 0.5, removed 202 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:41: Update data, action: keep_feature, 321 samples and 364 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:41: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
+<span><span class="co">## 30/09/24 15:03:25: Run QC pipeline.</span></span>
+<span><span class="co">## 30/09/24 15:03:25: Filter data with a constant column, removed 35 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:25: Update data, action: keep_feature, 321 samples and 567 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:25: Filter data with a missing rate &gt;= 0.5, removed 202 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:25: Update data, action: keep_feature, 321 samples and 364 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:25: Replace outliers using `winsorize` method 5 SDs.</span></span></code></pre>
 </details><p><br><br></p>
 </div>
 <div class="section level2">
@@ -1380,19 +1365,19 @@ scale, scale, and rank-based inverse normal transformation.</p>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:40:36: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:40:36: Initiate data: 356 samples and 758 features.</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 356 samples and 758 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:21: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpT8jCiy/temp_libpath4093848d1ed/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Initiate data: 356 samples and 758 features.</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Update data, action: change_featureID, 356 samples and 758 features. </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## 04/02/24 19:40:39: Run QC pipeline.</span></span>
-<span><span class="co">## 04/02/24 19:40:39: Filter data with a constant column, removed 37 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:39: Update data, action: keep_feature, 356 samples and 721 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:39: Filter data with a missing rate &gt;= 0.5, removed 175 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:39: Update data, action: keep_feature, 356 samples and 545 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:39: Replace outliers using `winsorize` method 5 SDs. </span></span>
-<span><span class="co">## 04/02/24 19:40:41: Impute data using `half-min` method. </span></span>
-<span><span class="co">## 04/02/24 19:40:41: Transformation using `log` method. </span></span>
-<span><span class="co">## 04/02/24 19:40:41: Transformation using `scale` method.</span></span></code></pre>
+<span><span class="co">## 30/09/24 15:03:23: Run QC pipeline.</span></span>
+<span><span class="co">## 30/09/24 15:03:23: Filter data with a constant column, removed 37 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:23: Update data, action: keep_feature, 356 samples and 721 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:23: Filter data with a missing rate &gt;= 0.5, removed 175 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:23: Update data, action: keep_feature, 356 samples and 545 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:23: Replace outliers using `winsorize` method 5 SDs. </span></span>
+<span><span class="co">## 30/09/24 15:03:25: Impute data using `half-min` method. </span></span>
+<span><span class="co">## 30/09/24 15:03:25: Transformation using `log` method. </span></span>
+<span><span class="co">## 30/09/24 15:03:26: Transformation using `scale` method.</span></span></code></pre>
 </details><p><br><br></p>
 </div>
 <div class="section level2">
@@ -1613,18 +1598,18 @@ values.</p>
 <span><span class="co">## integer(0)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ***  @logs  ***</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpLDsffD/temp_libpath8ff66b9e2bf8/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Initiate data: 359 samples and 891 features.</span></span>
-<span><span class="co">## 04/02/24 19:40:37: Update data, action: change_featureID, 359 samples and 891 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:21: Import data from: /private/var/folders/s5/8k7hjg5105n0tncfylf0bdsm0000gn/T/RtmpT8jCiy/temp_libpath4093848d1ed/metabolomicsR/extdata/QMDiab_metabolomics_OrigScale.xlsx .</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Initiate data: 359 samples and 891 features.</span></span>
+<span><span class="co">## 30/09/24 15:03:21: Update data, action: change_featureID, 359 samples and 891 features. </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## 04/02/24 19:40:40: Run QC pipeline.</span></span>
-<span><span class="co">## 04/02/24 19:40:40: Filter data with a constant column, removed 28 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:40: Update data, action: keep_feature, 359 samples and 863 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:40: Filter data with a missing rate &gt;= 0.5, removed 76 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:40: Update data, action: keep_feature, 359 samples and 786 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:40: Replace outliers using `winsorize` method 5 SDs. </span></span>
-<span><span class="co">## 04/02/24 19:40:48: Update data, action: injection_order, 359 samples and 786 features. </span></span>
-<span><span class="co">## 04/02/24 19:40:48: Current data, 359 samples and 786 features.</span></span></code></pre>
+<span><span class="co">## 30/09/24 15:03:24: Run QC pipeline.</span></span>
+<span><span class="co">## 30/09/24 15:03:24: Filter data with a constant column, removed 28 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:24: Update data, action: keep_feature, 359 samples and 863 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:24: Filter data with a missing rate &gt;= 0.5, removed 76 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:24: Update data, action: keep_feature, 359 samples and 786 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:24: Replace outliers using `winsorize` method 5 SDs. </span></span>
+<span><span class="co">## 30/09/24 15:03:31: Update data, action: injection_order, 359 samples and 786 features. </span></span>
+<span><span class="co">## 30/09/24 15:03:31: Current data, 359 samples and 786 features.</span></span></code></pre>
 </details><p>We then selected the first 16 metabolites to show boxplot</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v_features</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/featureData.html">featureData</a></span><span class="op">(</span><span class="va">df_urine_QC</span><span class="op">)</span><span class="op">$</span><span class="va">featureID</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span><span class="op">]</span></span>
@@ -2303,87 +2288,84 @@ Workflow to Analyze Metabolomic Data in R.” Bioinformatics Advances 2
 <span><span class="co">## locale:</span></span>
 <span><span class="co">## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## time zone: America/New_York</span></span>
+<span><span class="co">## time zone: Asia/Shanghai</span></span>
 <span><span class="co">## tzcode source: internal</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## attached base packages:</span></span>
 <span><span class="co">## [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## other attached packages:</span></span>
-<span><span class="co">## [1] MASS_7.3-60         stringr_1.5.0       plotROC_2.3.1      </span></span>
-<span><span class="co">## [4] cowplot_1.1.1       ggplot2_3.4.4       data.table_1.15.0  </span></span>
+<span><span class="co">## [1] MASS_7.3-60.0.1     stringr_1.5.1       plotROC_2.3.1      </span></span>
+<span><span class="co">## [4] cowplot_1.1.3       ggplot2_3.5.1       data.table_1.15.4  </span></span>
 <span><span class="co">## [7] metabolomicsR_1.1.0 BiocStyle_2.28.1   </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## loaded via a namespace (and not attached):</span></span>
-<span><span class="co">##   [1] RColorBrewer_1.1-3      rstudioapi_0.14         jsonlite_1.8.8         </span></span>
-<span><span class="co">##   [4] datawizard_0.9.1        umap_0.2.10.0           correlation_0.8.4      </span></span>
-<span><span class="co">##   [7] magrittr_2.0.3          farver_2.1.1            rmarkdown_2.22         </span></span>
-<span><span class="co">##  [10] fs_1.6.3                ragg_1.2.5              vctrs_0.6.5            </span></span>
-<span><span class="co">##  [13] memoise_2.0.1           paletteer_1.6.0         askpass_1.1            </span></span>
-<span><span class="co">##  [16] effectsize_0.8.6        htmltools_0.5.7         curl_5.0.0             </span></span>
-<span><span class="co">##  [19] broom_1.0.5             cellranger_1.1.0        pROC_1.18.4            </span></span>
-<span><span class="co">##  [22] sass_0.4.8              parallelly_1.36.0       bslib_0.6.1            </span></span>
-<span><span class="co">##  [25] desc_1.4.2              plyr_1.8.9              cachem_1.0.8           </span></span>
+<span><span class="co">##   [1] RColorBrewer_1.1-3      rstudioapi_0.16.0       jsonlite_1.8.8         </span></span>
+<span><span class="co">##   [4] datawizard_0.10.0       umap_0.2.10.0           correlation_0.8.4      </span></span>
+<span><span class="co">##   [7] magrittr_2.0.3          farver_2.1.2            rmarkdown_2.28         </span></span>
+<span><span class="co">##  [10] fs_1.6.4                ragg_1.3.2              vctrs_0.6.5            </span></span>
+<span><span class="co">##  [13] paletteer_1.6.0         askpass_1.2.0           effectsize_0.8.8       </span></span>
+<span><span class="co">##  [16] htmltools_0.5.8.1       curl_5.2.3              broom_1.0.6            </span></span>
+<span><span class="co">##  [19] cellranger_1.1.0        pROC_1.18.5             sass_0.4.9             </span></span>
+<span><span class="co">##  [22] parallelly_1.38.0       bslib_0.8.0             htmlwidgets_1.6.4      </span></span>
+<span><span class="co">##  [25] desc_1.4.3              plyr_1.8.9              cachem_1.1.0           </span></span>
 <span><span class="co">##  [28] mime_0.12               lifecycle_1.0.4         iterators_1.0.14       </span></span>
-<span><span class="co">##  [31] pkgconfig_2.0.3         Matrix_1.6-1.1          R6_2.5.1               </span></span>
-<span><span class="co">##  [34] fastmap_1.1.1           future_1.33.1           shiny_1.8.0            </span></span>
-<span><span class="co">##  [37] BayesFactor_0.9.12-4.7  digest_0.6.34           colorspace_2.1-0       </span></span>
-<span><span class="co">##  [40] rematch2_2.1.2          S4Vectors_0.38.1        patchwork_1.2.0        </span></span>
-<span><span class="co">##  [43] rprojroot_2.0.3         prismatic_1.1.1         RSpectra_0.16-1        </span></span>
-<span><span class="co">##  [46] textshaping_0.3.6       labeling_0.4.3          progressr_0.14.0       </span></span>
-<span><span class="co">##  [49] fansi_1.0.6             compiler_4.3.0          fontquiver_0.2.1       </span></span>
-<span><span class="co">##  [52] withr_3.0.0             doParallel_1.0.17       backports_1.4.1        </span></span>
-<span><span class="co">##  [55] highr_0.10              hmdbQuery_1.20.0        Rttf2pt1_1.3.12        </span></span>
-<span><span class="co">##  [58] openssl_2.0.6           corpcor_1.6.10          gfonts_0.2.0           </span></span>
-<span><span class="co">##  [61] tools_4.3.0             httpuv_1.6.14           extrafontdb_1.0        </span></span>
-<span><span class="co">##  [64] statsExpressions_1.5.3  glue_1.7.0              promises_1.2.1         </span></span>
-<span><span class="co">##  [67] grid_4.3.0              Rtsne_0.16              cluster_2.1.4          </span></span>
-<span><span class="co">##  [70] reshape2_1.4.4          generics_0.1.3          snow_0.4-4             </span></span>
-<span><span class="co">##  [73] gtable_0.3.4            tidyr_1.3.0             utf8_1.2.4             </span></span>
-<span><span class="co">##  [76] BiocGenerics_0.46.0     ggrepel_0.9.5           foreach_1.5.2          </span></span>
-<span><span class="co">##  [79] pillar_1.9.0            later_1.3.2             dplyr_1.1.4            </span></span>
-<span><span class="co">##  [82] lattice_0.21-8          FNN_1.1.3.2             ggstatsplot_0.12.2     </span></span>
-<span><span class="co">##  [85] tidyselect_1.2.0        fontLiberation_0.1.0    pbapply_1.7-2          </span></span>
-<span><span class="co">##  [88] knitr_1.43              fontBitstreamVera_0.1.1 genuMet_1.0.1          </span></span>
-<span><span class="co">##  [91] bookdown_0.34           M3C_1.22.0              stats4_4.3.0           </span></span>
-<span><span class="co">##  [94] crul_1.4.0              xfun_0.39               stringi_1.7.12         </span></span>
-<span><span class="co">##  [97] yaml_2.3.7              evaluate_0.21           codetools_0.2-19       </span></span>
-<span><span class="co">## [100] httpcode_0.3.0          extrafont_0.19          gdtools_0.3.5          </span></span>
-<span><span class="co">## [103] tibble_3.2.1            BiocManager_1.30.20     cli_3.6.2              </span></span>
-<span><span class="co">## [106] xtable_1.8-4            parameters_0.21.4       reticulate_1.35.0      </span></span>
-<span><span class="co">## [109] systemfonts_1.0.4       munsell_0.5.0           jquerylib_0.1.4        </span></span>
-<span><span class="co">## [112] Rcpp_1.0.12             readxl_1.4.2            doSNOW_1.0.20          </span></span>
-<span><span class="co">## [115] globals_0.16.2          zeallot_0.1.0           coda_0.19-4            </span></span>
-<span><span class="co">## [118] png_0.1-8               XML_3.99-0.16.1         parallel_4.3.0         </span></span>
-<span><span class="co">## [121] MatrixModels_0.5-2      ellipsis_0.3.2          pkgdown_2.0.7          </span></span>
-<span><span class="co">## [124] bayestestR_0.13.1       listenv_0.9.1           matrixcalc_1.0-6       </span></span>
-<span><span class="co">## [127] mvtnorm_1.2-4           hrbrthemes_0.8.0        scales_1.3.0           </span></span>
-<span><span class="co">## [130] insight_0.19.8          purrr_1.0.2             crayon_1.5.2           </span></span>
-<span><span class="co">## [133] rlang_1.1.3</span></span></code></pre>
+<span><span class="co">##  [31] pkgconfig_2.0.3         Matrix_1.6-5            R6_2.5.1               </span></span>
+<span><span class="co">##  [34] fastmap_1.2.0           future_1.34.0           shiny_1.9.1            </span></span>
+<span><span class="co">##  [37] BayesFactor_0.9.12-4.7  digest_0.6.37           colorspace_2.1-1       </span></span>
+<span><span class="co">##  [40] rematch2_2.1.2          patchwork_1.2.0         S4Vectors_0.38.2       </span></span>
+<span><span class="co">##  [43] prismatic_1.1.2         RSpectra_0.16-2         textshaping_0.4.0      </span></span>
+<span><span class="co">##  [46] labeling_0.4.3          progressr_0.14.0        fansi_1.0.6            </span></span>
+<span><span class="co">##  [49] compiler_4.3.0          fontquiver_0.2.1        withr_3.0.1            </span></span>
+<span><span class="co">##  [52] doParallel_1.0.17       backports_1.5.0         highr_0.11             </span></span>
+<span><span class="co">##  [55] hmdbQuery_1.20.0        Rttf2pt1_1.3.12         openssl_2.2.1          </span></span>
+<span><span class="co">##  [58] corpcor_1.6.10          gfonts_0.2.0            tools_4.3.0            </span></span>
+<span><span class="co">##  [61] httpuv_1.6.15           extrafontdb_1.0         statsExpressions_1.5.4 </span></span>
+<span><span class="co">##  [64] glue_1.7.0              promises_1.3.0          grid_4.3.0             </span></span>
+<span><span class="co">##  [67] Rtsne_0.17              cluster_2.1.6           reshape2_1.4.4         </span></span>
+<span><span class="co">##  [70] generics_0.1.3          snow_0.4-4              gtable_0.3.5           </span></span>
+<span><span class="co">##  [73] tidyr_1.3.1             utf8_1.2.4              BiocGenerics_0.46.0    </span></span>
+<span><span class="co">##  [76] ggrepel_0.9.5           foreach_1.5.2           pillar_1.9.0           </span></span>
+<span><span class="co">##  [79] later_1.3.2             dplyr_1.1.4             lattice_0.22-6         </span></span>
+<span><span class="co">##  [82] FNN_1.1.4               ggstatsplot_0.12.3      tidyselect_1.2.1       </span></span>
+<span><span class="co">##  [85] fontLiberation_0.1.0    pbapply_1.7-2           knitr_1.48             </span></span>
+<span><span class="co">##  [88] fontBitstreamVera_0.1.1 genuMet_1.0.1           bookdown_0.40          </span></span>
+<span><span class="co">##  [91] M3C_1.22.0              stats4_4.3.0            crul_1.5.0             </span></span>
+<span><span class="co">##  [94] xfun_0.47               stringi_1.8.4           yaml_2.3.10            </span></span>
+<span><span class="co">##  [97] evaluate_0.24.0         codetools_0.2-20        httpcode_0.3.0         </span></span>
+<span><span class="co">## [100] extrafont_0.19          gdtools_0.3.7           tibble_3.2.1           </span></span>
+<span><span class="co">## [103] BiocManager_1.30.24     cli_3.6.3               xtable_1.8-4           </span></span>
+<span><span class="co">## [106] parameters_0.22.1       reticulate_1.37.0       systemfonts_1.1.0      </span></span>
+<span><span class="co">## [109] munsell_0.5.1           jquerylib_0.1.4         Rcpp_1.0.13            </span></span>
+<span><span class="co">## [112] readxl_1.4.3            doSNOW_1.0.20           globals_0.16.3         </span></span>
+<span><span class="co">## [115] zeallot_0.1.0           coda_0.19-4.1           png_0.1-8              </span></span>
+<span><span class="co">## [118] XML_3.99-0.17           parallel_4.3.0          MatrixModels_0.5-3     </span></span>
+<span><span class="co">## [121] pkgdown_2.1.1           bayestestR_0.14.0       listenv_0.9.1          </span></span>
+<span><span class="co">## [124] matrixcalc_1.0-6        mvtnorm_1.2-6           hrbrthemes_0.8.7       </span></span>
+<span><span class="co">## [127] scales_1.3.0            insight_0.20.3          purrr_1.0.2            </span></span>
+<span><span class="co">## [130] crayon_1.5.3            rlang_1.1.4</span></span></code></pre>
 </details>
 </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p>
-<p>Developed by Xikun Han.</p>
+  <p>Developed by Xikun Han.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>

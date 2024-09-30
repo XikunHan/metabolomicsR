@@ -1,0 +1,12 @@
+[2024-09-30 14:38:30] [INFO]    [OmnipathR] Welcome to OmnipathR!
+[2024-09-30 14:38:30] [TRACE]   [OmnipathR] Reading JSON from `/Users/xikunhan/Library/Caches/OmnipathR/cache.json` (encoding: UTF-8).
+[2024-09-30 14:38:30] [TRACE]   [OmnipathR] JSON validation successful: TRUE
+[2024-09-30 14:38:30] [INFO]    [OmnipathR] Initialized cache: `/Users/xikunhan/Library/Caches/OmnipathR`.
+[2024-09-30 14:38:30] [TRACE]   [OmnipathR] Reading JSON from `/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library/OmnipathR/db/db_def.json` (encoding: UTF-8).
+[2024-09-30 14:38:30] [TRACE]   [OmnipathR] JSON validation successful: TRUE
+[2024-09-30 14:38:30] [TRACE]   [OmnipathR] Reading JSON from `/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library/OmnipathR/internal/magic_bytes.json` (encoding: UTF-8).
+[2024-09-30 14:38:30] [TRACE]   [OmnipathR] JSON validation successful: TRUE
+[2024-09-30 14:38:30] [TRACE]   [OmnipathR] Reading JSON from `/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library/OmnipathR/internal/urls.json` (encoding: UTF-8).
+[2024-09-30 14:38:30] [TRACE]   [OmnipathR] JSON validation successful: TRUE
+[2024-09-30 14:38:30] [TRACE]   [OmnipathR] Reading JSON from `/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library/OmnipathR/internal/id_types.json` (encoding: UTF-8).
+[2024-09-30 14:38:30] [TRACE]   [OmnipathR] JSON validation successful: TRUE
