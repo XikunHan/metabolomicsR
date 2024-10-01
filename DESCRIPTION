@@ -44,7 +44,6 @@ Suggests:
     progressr,
     ggrepel,
     here,
-    genuMet,
     ggstatsplot,
     cowplot,
     pROC,
