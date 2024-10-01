@@ -1,13 +1,13 @@
 url: https://xikunhan.github.io/metabolomicsR/
 template:
   bootstrap: 5
-  light-switch: true
+  light-switch: yes
   bslib:
-    primary: "#0054AD"
+    primary: '#0054AD'
     border-radius: 0.5rem
     btn-border-radius: 0.25rem
-    danger: "#A6081A"
-
+    danger: '#A6081A'
 authors:
   Xikun Han:
     href: https://xikunhan.rbind.io/
+
