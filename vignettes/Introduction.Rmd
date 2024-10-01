@@ -648,9 +648,14 @@ plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 Here, we show an extension example to detect genuine untargeted metabolic features based on a previous method (genuMet): 
 
 ```{r}
+# devtools::install_github("xyomics/genuMet")
 
+# not run here
+if(0) {
 res_genuMet <- genuMet_makefeature(df_plasma)
 str(res_genuMet)
+
+}
 
 ```
 
