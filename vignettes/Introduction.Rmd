@@ -647,11 +647,12 @@ plot_volcano(dd, color = NULL, label = "BIOCHEMICAL")
 
 Here, we show an extension example to detect genuine untargeted metabolic features based on a previous method (genuMet): 
 
-```{r}
+```{r, eval=FALSE}
 # devtools::install_github("xyomics/genuMet")
 
 # not run here
 if(0) {
+
 res_genuMet <- genuMet_makefeature(df_plasma)
 str(res_genuMet)
 
@@ -706,10 +707,14 @@ In this section, we show the application of our metabolomicsR package to Nightin
 # the Nightingale data were downloaded from https://nightingalehealth.github.io/ggforestplot/articles/nmr-data-analysis-tutorial.html
 
 library(data.table)
-df_data <- fread("~/Documents/test/NightingaleData/12345-Results.csv")
+
+file1 <- file_path <- base::system.file("extdata", "12345-Results.csv.gz", package = "metabolomicsR", mustWork = TRUE)
+
+df_data <- fread(file = file1 )
 setnames(df_data, 1, "sampleID")
 
-df_sample <- fread("~/Documents/test/NightingaleData/clinical_data.csv")
+file2 <- file_path <- base::system.file("extdata", "clinical_data.csv", package = "metabolomicsR", mustWork = TRUE)
+df_sample <- fread(file = file2)
 setnames(df_sample, 1, "sampleID")
 df_sample$sampleID <- df_data$sampleID
 

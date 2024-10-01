@@ -488,7 +488,6 @@ RSD <- function(x) {
 #' @param wsize Window size.
 #' @param ssize Slide size.
 #' @param defswitch Definition of a switch.
-#' 
 #' @export
 #' @note The genuMet method:  https://github.com/liucaomics/genuMet
 genuMet_makefeature <- function(object, wsize=10, ssize= 0.5, defswitch=0.2) {
@@ -499,6 +498,7 @@ genuMet_makefeature <- function(object, wsize=10, ssize= 0.5, defswitch=0.2) {
   df <- t(df[, -1])
   colnames(df) <- object@assayData[, get(object@sampleID)]
   df <- as.data.frame(df)
+  # library(genuMet)
   metf <- genuMet::makefeature(data=df, wsize=wsize, ssize= ssize, defswitch = defswitch)
   return(metf)
 }

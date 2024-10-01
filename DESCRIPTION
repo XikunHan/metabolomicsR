@@ -54,7 +54,7 @@ Suggests:
     hrbrthemes,
     hmdbQuery,
     openxlsx
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 biocViews: Software, Metabolomics, MassSpectrometry, Regression, Normalization, QualityControl
 LazyData: FALSE
 VignetteBuilder: knitr
