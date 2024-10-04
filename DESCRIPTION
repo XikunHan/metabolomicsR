@@ -53,7 +53,8 @@ Suggests:
     crayon,
     hrbrthemes,
     hmdbQuery,
-    openxlsx
+    openxlsx,
+    R.utils
 RoxygenNote: 7.3.2
 biocViews: Software, Metabolomics, MassSpectrometry, Regression, Normalization, QualityControl
 LazyData: FALSE
