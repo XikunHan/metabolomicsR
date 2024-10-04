@@ -18,7 +18,7 @@
 ## Getting started
 
 [The detailed
-tutorial](https://xikunhan.github.io/metabolomicsR/docs/articles/Introduction.html).
+tutorial](https://xikunhan.github.io/metabolomicsR/articles/Introduction.html).
 
 <strong>metabolomicsR</strong> is a streamlined R package to preprocess,
 analyze, and visualize metabolomic data. We included a set of functions
